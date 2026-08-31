@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reunion Hackathon · Warszawa · Luty 2027</title>
+<meta name="description" content="100 najlepszych polskich studentów z zagranicy. 48 godzin budowania w Warszawie. Organizator: Global Polish Student Society.">
+<meta name="theme-color" content="#F2EDE4">
+
+<!-- TODO: po podpięciu domeny odkomentuj i uzupełnij
+<link rel="canonical" href="https://TWOJA-DOMENA.pl/">
+-->
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:site_name" content="Reunion Hackathon">
+<meta property="og:title" content="Reunion Hackathon · Warszawa · Luty 2027">
+<meta property="og:description" content="100 najlepszych polskich studentów z zagranicy. 48 godzin budowania w Warszawie. Organizator: Global Polish Student Society.">
+<meta property="og:image" content="assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reunion Hackathon · Warszawa · Luty 2027">
+<meta name="twitter:description" content="100 najlepszych polskich studentów z zagranicy. 48 godzin budowania w Warszawie. Organizator: Global Polish Student Society.">
+<meta name="twitter:image" content="assets/og-image.png">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@900&display=swap">
+<link rel="stylesheet" href="styles.css">
+
+<!-- Cloudflare Web Analytics: wklej tutaj snippet z panelu Cloudflare
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "TWOJ_TOKEN"}'></script>
+-->
+</head>
+<body>
+
+<a class="skip-link" href="#misja">Przejdź do treści</a>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#top">
+      <svg class="sygnet" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+        <rect x="0" y="0" width="24" height="24" rx="4" fill="#BD0001"/>
+        <path d="M16.5 6.5 V13 H10" fill="none" stroke="#F2EDE4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M13 9.5 L9.5 13 L13 16.5" fill="none" stroke="#F2EDE4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="nav__wordmark">REUNION HACKATHON</span>
+    </a>
+
+    <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+      <span class="burger__bar"></span>
+      <span class="burger__bar"></span>
+    </button>
+
+    <nav class="menu" id="menu" aria-label="Nawigacja główna">
+      <ul class="menu__list">
+        <li><a href="#tracki">Tracki</a></li>
+        <li><a href="#agenda">Agenda</a></li>
+        <li><a href="#rekrutacja">Rekrutacja</a></li>
+        <li><a href="#partnerzy">Partnerzy</a></li>
+        <li class="nav-team" hidden><a href="#zespol">Zespół</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a class="btn btn--primary btn--sm" data-apply data-apply-nav data-label="Aplikuj" href="#rekrutacja">Aplikuj</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1. HERO -->
+  <section class="hero" id="top">
+    <div class="hero__inner wrap">
+      <div class="hero__text">
+        <p class="kicker">WARSZAWA · LUTY 2027 · EDYCJA 01</p>
+        <h1 class="hero__title">REUNION HACKATHON</h1>
+        <p class="lead">48 godzin pracy nad realnymi wyzwaniami firm i instytucji.</p>
+        <p class="stats" id="stats"><span>100 BUILDERÓW</span> · <span>48 GODZIN</span> · <span>1 MIASTO</span></p>
+        <div class="btn-row">
+          <a class="btn btn--primary" data-apply data-label="Aplikuj" href="#rekrutacja">Aplikuj</a>
+          <a class="btn btn--ghost" href="#partnerzy">Zostań partnerem</a>
+        </div>
+      </div>
+
+      <div class="hero__radar">
+        <svg class="radar" viewBox="0 0 800 800" role="img" aria-label="Celownik z Warszawą w środku i miastami uczelni uczestników: Sztokholm, Kopenhaga, Oxford, Londyn, Delft, Zurych, Mediolan, Madryt">
+          <g class="radar__rings">
+            <circle cx="400" cy="400" r="260"/>
+            <circle cx="400" cy="400" r="325"/>
+            <circle cx="400" cy="400" r="390"/>
+            <circle cx="400" cy="400" r="455"/>
+            <circle cx="400" cy="400" r="520"/>
+          </g>
+
+          <g class="radar__cross">
+            <line x1="140" y1="400" x2="660" y2="400"/>
+            <line x1="400" y1="140" x2="400" y2="660"/>
+          </g>
+
+          <circle class="radar__dial" cx="400" cy="400" r="210"/>
+
+          <g class="radar__ticks">
+        <line x1="400.0" y1="182.0" x2="400.0" y2="166.0"/>
+        <line x1="456.4" y1="189.4" x2="459.0" y2="179.8"/>
+        <line x1="509.0" y1="211.2" x2="517.0" y2="197.4"/>
+        <line x1="554.1" y1="245.9" x2="561.2" y2="238.8"/>
+        <line x1="588.8" y1="291.0" x2="602.6" y2="283.0"/>
+        <line x1="610.6" y1="343.6" x2="620.2" y2="341.0"/>
+        <line x1="618.0" y1="400.0" x2="634.0" y2="400.0"/>
+        <line x1="610.6" y1="456.4" x2="620.2" y2="459.0"/>
+        <line x1="588.8" y1="509.0" x2="602.6" y2="517.0"/>
+        <line x1="554.1" y1="554.1" x2="561.2" y2="561.2"/>
+        <line x1="509.0" y1="588.8" x2="517.0" y2="602.6"/>
+        <line x1="456.4" y1="610.6" x2="459.0" y2="620.2"/>
+        <line x1="400.0" y1="618.0" x2="400.0" y2="634.0"/>
+        <line x1="343.6" y1="610.6" x2="341.0" y2="620.2"/>
+        <line x1="291.0" y1="588.8" x2="283.0" y2="602.6"/>
+        <line x1="245.9" y1="554.1" x2="238.8" y2="561.2"/>
+        <line x1="211.2" y1="509.0" x2="197.4" y2="517.0"/>
+        <line x1="189.4" y1="456.4" x2="179.8" y2="459.0"/>
+        <line x1="182.0" y1="400.0" x2="166.0" y2="400.0"/>
+        <line x1="189.4" y1="343.6" x2="179.8" y2="341.0"/>
+        <line x1="211.2" y1="291.0" x2="197.4" y2="283.0"/>
+        <line x1="245.9" y1="245.9" x2="238.8" y2="238.8"/>
+        <line x1="291.0" y1="211.2" x2="283.0" y2="197.4"/>
+        <line x1="343.6" y1="189.4" x2="341.0" y2="179.8"/>
+          </g>
+
+          <g class="radar__links">
+            <line x1="373" y1="253" x2="400" y2="400"/>
+            <line x1="296" y1="330" x2="400" y2="400"/>
+            <line x1="192" y1="376" x2="400" y2="400"/>
+            <line x1="214" y1="408" x2="400" y2="400"/>
+            <line x1="244" y1="440" x2="400" y2="400"/>
+            <line x1="262" y1="472" x2="400" y2="400"/>
+            <line x1="256" y1="512" x2="400" y2="400"/>
+            <line x1="188" y1="556" x2="400" y2="400"/>
+          </g>
+
+          <g class="radar__cities">
+            <circle cx="373" cy="253" r="3.5"/>
+            <circle cx="296" cy="330" r="3.5"/>
+            <circle cx="192" cy="376" r="3.5"/>
+            <circle cx="214" cy="408" r="3.5"/>
+            <circle cx="244" cy="440" r="3.5"/>
+            <circle cx="262" cy="472" r="3.5"/>
+            <circle cx="256" cy="512" r="3.5"/>
+            <circle cx="188" cy="556" r="3.5"/>
+          </g>
+
+          <g class="radar__labels">
+            <!-- Sztokholm jako jedyny ma etykiete po prawej stronie punktu: nagłówek hero
+                 wylewa sie poza swoj box i przy ~1300 px wchodzil na nia z lewej. -->
+            <text x="387" y="257" text-anchor="start">SZTOKHOLM<tspan class="radar__km"> · 810 KM</tspan></text>
+            <text x="282" y="334" text-anchor="end">KOPENHAGA<tspan class="radar__km"> · 670 KM</tspan></text>
+            <text x="178" y="380" text-anchor="end">OXFORD<tspan class="radar__km"> · 1 500 KM</tspan></text>
+            <text x="200" y="412" text-anchor="end">LONDYN<tspan class="radar__km"> · 1 450 KM</tspan></text>
+            <text x="230" y="444" text-anchor="end">DELFT<tspan class="radar__km"> · 1 140 KM</tspan></text>
+            <text x="248" y="476" text-anchor="end">ZURYCH<tspan class="radar__km"> · 1 040 KM</tspan></text>
+            <text x="242" y="516" text-anchor="end">MEDIOLAN<tspan class="radar__km"> · 1 140 KM</tspan></text>
+            <text x="174" y="560" text-anchor="end">MADRYT<tspan class="radar__km"> · 2 290 KM</tspan></text>
+          </g>
+
+          <circle class="radar__core" cx="400" cy="400" r="9"/>
+
+          <text class="radar__here" x="422" y="395">WAW · WARSZAWA</text>
+          <text class="radar__coords" x="422" y="413">52.2297°N · 21.0122°E</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. MISJA -->
+  <section class="section" id="misja">
+    <div class="wrap">
+      <p class="kicker">01 · MISJA</p>
+      <h2 class="h2">Budujemy Polskę, do której warto wracać.</h2>
+      <p class="lead lead--tight">Najlepsi polscy studenci z zagranicy wracają na 48 godzin, żeby budować w Polsce.</p>
+
+      <ul class="figures">
+        <li class="figure">
+          <p class="figure__num">100</p>
+          <p class="figure__label">Builderów</p>
+        </li>
+        <li class="figure">
+          <p class="figure__num">48</p>
+          <p class="figure__label">Godzin budowania</p>
+        </li>
+        <li class="figure">
+          <p class="figure__num">10&nbsp;000+</p>
+          <p class="figure__label">Członków GPSS</p>
+        </li>
+        <li class="figure">
+          <p class="figure__num">1</p>
+          <p class="figure__label">Miasto</p>
+        </li>
+      </ul>
+
+      <p class="figures__note">Organizator · Global Polish Student Society · Największa organizacja polskich studentów za granicą</p>
+    </div>
+
+    <!-- Pas logotypow uczelni. Brakujacy plik degraduje sie w main.js
+         do nazwy uczelni, bez pustej ramki i bez zmiany wysokosci pasa. -->
+    <div class="logos">
+      <div class="logos__track">
+        <ul class="logos__group">
+          <li class="logos__item" aria-label="Imperial College London"><img class="logos__img logos__img--imperial" src="assets/logos/imperial.svg" alt="Imperial College London" width="160" height="34" loading="lazy" decoding="async"></li>
+          <li class="logos__item" aria-label="University of Oxford"><img class="logos__img logos__img--oxford" src="assets/logos/oxford.svg" alt="University of Oxford" width="160" height="34" loading="lazy" decoding="async"></li>
+          <li class="logos__item" aria-label="University of Cambridge"><img class="logos__img logos__img--cambridge" src="assets/logos/cambridge.svg" alt="University of Cambridge" width="160" height="34" loading="lazy" decoding="async"></li>
+          <li class="logos__item" aria-label="University College London"><img class="logos__img logos__img--ucl" src="assets/logos/ucl.svg" alt="University College London" width="160" height="34" loading="lazy" decoding="async"></li>
+          <li class="logos__item" aria-label="London School of Economics"><img class="logos__img logos__img--lse" src="assets/logos/lse.svg" alt="London School of Economics" width="160" height="34" loading="lazy" decoding="async"></li>
+          <li class="logos__item" aria-label="University of Warwick"><img class="logos__img logos__img--warwick" src="assets/logos/warwick.svg" alt="University of Warwick" width="160" height="34" loading="lazy" decoding="async"></li>
+          <li class="logos__item" aria-label="ETH Zürich"><img class="logos__img logos__img--eth" src="assets/logos/eth.svg" alt="ETH Zürich" width="160" height="34" loading="lazy" decoding="async"></li>
+          <li class="logos__item" aria-label="TU Delft"><img class="logos__img logos__img--tudelft" src="assets/logos/tudelft.svg" alt="TU Delft" width="160" height="34" loading="lazy" decoding="async"></li>
+          <li class="logos__item" aria-label="Uniwersytet Bocconi"><img class="logos__img logos__img--bocconi" src="assets/logos/bocconi.svg" alt="Uniwersytet Bocconi" width="160" height="34" loading="lazy" decoding="async"></li>
+          <li class="logos__item" aria-label="IE Business School"><img class="logos__img logos__img--ie" src="assets/logos/ie.svg" alt="IE Business School" width="160" height="34" loading="lazy" decoding="async"></li>
+        </ul>
+        <ul class="logos__group" aria-hidden="true">
+          <li class="logos__item" aria-label="Imperial College London"><img class="logos__img logos__img--imperial" src="assets/logos/imperial.svg" alt="Imperial College London" width="160" height="34" loading="lazy" decoding="async"></li>
+          <li class="logos__item" aria-label="University of Oxford"><img class="logos__img logos__img--oxford" src="assets/logos/oxford.svg" alt="University of Oxford" width="160" height="34" loading="lazy" decoding="async"></li>
+          <li class="logos__item" aria-label="University of Cambridge"><img class="logos__img logos__img--cambridge" src="assets/logos/cambridge.svg" alt="University of Cambridge" width="160" height="34" loading="lazy" decoding="async"></li>
+          <li class="logos__item" aria-label="University College London"><img class="logos__img logos__img--ucl" src="assets/logos/ucl.svg" alt="University College London" width="160" height="34" loading="lazy" decoding="async"></li>
+          <li class="logos__item" aria-label="London School of Economics"><img class="logos__img logos__img--lse" src="assets/logos/lse.svg" alt="London School of Economics" width="160" height="34" loading="lazy" decoding="async"></li>
+          <li class="logos__item" aria-label="University of Warwick"><img class="logos__img logos__img--warwick" src="assets/logos/warwick.svg" alt="University of Warwick" width="160" height="34" loading="lazy" decoding="async"></li>
+          <li class="logos__item" aria-label="ETH Zürich"><img class="logos__img logos__img--eth" src="assets/logos/eth.svg" alt="ETH Zürich" width="160" height="34" loading="lazy" decoding="async"></li>
+          <li class="logos__item" aria-label="TU Delft"><img class="logos__img logos__img--tudelft" src="assets/logos/tudelft.svg" alt="TU Delft" width="160" height="34" loading="lazy" decoding="async"></li>
+          <li class="logos__item" aria-label="Uniwersytet Bocconi"><img class="logos__img logos__img--bocconi" src="assets/logos/bocconi.svg" alt="Uniwersytet Bocconi" width="160" height="34" loading="lazy" decoding="async"></li>
+          <li class="logos__item" aria-label="IE Business School"><img class="logos__img logos__img--ie" src="assets/logos/ie.svg" alt="IE Business School" width="160" height="34" loading="lazy" decoding="async"></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. DLACZEGO WARTO -->
+  <section class="section" id="dlaczego">
+    <div class="wrap">
+      <p class="kicker">02 · DLACZEGO WARTO</p>
+      <h2 class="h2">48 godzin, które zostawiają konkretny efekt.</h2>
+      <ul class="cards">
+        <li class="card">
+          <span class="card__num" aria-hidden="true">01</span>
+          <span class="card__rule" aria-hidden="true"></span>
+          <h3 class="card__title">Realne wyzwania</h3>
+          <p class="card__body">Problemy prosto z realnego rynku, nie ćwiczenia z tutoriala.</p>
+        </li>
+        <li class="card">
+          <span class="card__num" aria-hidden="true">02</span>
+          <span class="card__rule" aria-hidden="true"></span>
+          <h3 class="card__title">Ludzie jak Ty</h3>
+          <p class="card__body">100 osób z topowych uczelni Europy w jednej sali.</p>
+        </li>
+        <li class="card">
+          <span class="card__num" aria-hidden="true">03</span>
+          <span class="card__rule" aria-hidden="true"></span>
+          <h3 class="card__title">Ścieżki kariery w Polsce</h3>
+          <p class="card__body">Firmy i instytucje, dla których możesz budować po powrocie.</p>
+        </li>
+        <li class="card">
+          <span class="card__num" aria-hidden="true">04</span>
+          <span class="card__rule" aria-hidden="true"></span>
+          <h3 class="card__title">Mentoring i jury</h3>
+          <p class="card__body">Eksperci partnerów przy zespołach przez całe 48 godzin.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 4. TRACKI -->
+  <section class="section" id="tracki">
+    <div class="wrap">
+      <p class="kicker">03 · TEMAT PRZEWODNI</p>
+      <h2 class="h2">Transformacja AI.</h2>
+      <p class="lead lead--tight">Temat przewodni jest pewny. Cztery ścieżki ogłosimy razem z partnerami, którzy je współtworzą.</p>
+
+      <!-- Sciezki celowo bez nazw: powstaja razem z partnerami, wiec do momentu
+           ogloszenia sa zarezerwowanymi miejscami, nie zapowiedziami. -->
+      <ul class="slots">
+        <li class="slot">
+          <span class="slot__num">01</span>
+          <span class="slot__label">Ścieżka partnerska</span>
+        </li>
+        <li class="slot">
+          <span class="slot__num">02</span>
+          <span class="slot__label">Ścieżka partnerska</span>
+        </li>
+        <li class="slot">
+          <span class="slot__num">03</span>
+          <span class="slot__label">Ścieżka partnerska</span>
+        </li>
+        <li class="slot">
+          <span class="slot__num">04</span>
+          <span class="slot__label">Ścieżka partnerska</span>
+        </li>
+      </ul>
+
+      <a class="track-cta" data-partner href="#partnerzy">
+        <span class="track-cta__label">Jedna z nich może być Twoja.</span>
+        <span class="track-cta__body">Cztery ścieżki, czterech partnerów. Każdą projektujemy wokół realnego wyzwania Twojej firmy i pod Twoim brandem.</span>
+        <span class="track-cta__more">Napisz do nas</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 5. AGENDA -->
+  <section class="section section--agenda" id="agenda">
+    <div class="wrap">
+      <p class="kicker">04 · PLAN WYDARZENIA</p>
+      <h2 class="h2">48 godzin. Od pomysłu do demo.</h2>
+      <ol class="timeline" role="list">
+        <li class="timeline__step" role="listitem">
+          <p class="timeline__time">0h</p>
+          <span class="timeline__rail" aria-hidden="true"><span class="timeline__node"></span></span>
+          <h3 class="timeline__title">Otwarcie</h3>
+          <p class="timeline__body">Wyzwania partnerów, formowanie zespołów, start buildu.</p>
+        </li>
+        <li class="timeline__step" role="listitem">
+          <p class="timeline__time">0-36h</p>
+          <span class="timeline__rail" aria-hidden="true"><span class="timeline__node"></span></span>
+          <h3 class="timeline__title">Budowanie</h3>
+          <p class="timeline__body">Praca non stop, warsztaty, mentoring, checkpointy postępów.</p>
+        </li>
+        <li class="timeline__step" role="listitem">
+          <p class="timeline__time">36-48h</p>
+          <span class="timeline__rail" aria-hidden="true"><span class="timeline__node"></span></span>
+          <h3 class="timeline__title">Finał</h3>
+          <p class="timeline__body">Demo day przed jury, nagrody, strefa rekrutacyjna partnerów.</p>
+        </li>
+        <!-- Linia jest ostatnia w liscie, zeby nth-of-type liczylo same kroki. -->
+        <li class="timeline__line" role="presentation" aria-hidden="true"></li>
+      </ol>
+
+      <ul class="counters">
+        <li class="counter">3 dni</li>
+        <li class="counter">4 ścieżki</li>
+        <li class="counter">1 demo day</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 6. REKRUTACJA -->
+  <section class="section" id="rekrutacja">
+    <div class="wrap">
+      <p class="kicker">05 · APLIKACJE</p>
+      <h2 class="h2">Szukamy builderów.</h2>
+      <p class="lead lead--tight">100 miejsc, selekcja aplikacyjna, udział bezpłatny.</p>
+
+      <ul class="facts">
+        <li class="fact">100 miejsc</li>
+        <li class="fact">Solo lub zespołowo</li>
+        <li class="fact">Studenci i absolwenci</li>
+      </ul>
+      <div class="btn-row">
+        <a class="btn btn--primary" data-apply data-label="Wypełnij formularz" href="#rekrutacja">Wypełnij formularz</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. PARTNERZY -->
+  <section class="section section--partners" id="partnerzy">
+    <div class="partners__bg" aria-hidden="true">
+      <svg class="radar radar--mini" viewBox="0 0 800 800" focusable="false">
+        <circle class="radar__dial" cx="400" cy="400" r="210"/>
+        <g class="radar__cross">
+          <line x1="140" y1="400" x2="660" y2="400"/>
+          <line x1="400" y1="140" x2="400" y2="660"/>
+        </g>
+        <g class="radar__ticks">
+        <line x1="400.0" y1="182.0" x2="400.0" y2="166.0"/>
+        <line x1="456.4" y1="189.4" x2="459.0" y2="179.8"/>
+        <line x1="509.0" y1="211.2" x2="517.0" y2="197.4"/>
+        <line x1="554.1" y1="245.9" x2="561.2" y2="238.8"/>
+        <line x1="588.8" y1="291.0" x2="602.6" y2="283.0"/>
+        <line x1="610.6" y1="343.6" x2="620.2" y2="341.0"/>
+        <line x1="618.0" y1="400.0" x2="634.0" y2="400.0"/>
+        <line x1="610.6" y1="456.4" x2="620.2" y2="459.0"/>
+        <line x1="588.8" y1="509.0" x2="602.6" y2="517.0"/>
+        <line x1="554.1" y1="554.1" x2="561.2" y2="561.2"/>
+        <line x1="509.0" y1="588.8" x2="517.0" y2="602.6"/>
+        <line x1="456.4" y1="610.6" x2="459.0" y2="620.2"/>
+        <line x1="400.0" y1="618.0" x2="400.0" y2="634.0"/>
+        <line x1="343.6" y1="610.6" x2="341.0" y2="620.2"/>
+        <line x1="291.0" y1="588.8" x2="283.0" y2="602.6"/>
+        <line x1="245.9" y1="554.1" x2="238.8" y2="561.2"/>
+        <line x1="211.2" y1="509.0" x2="197.4" y2="517.0"/>
+        <line x1="189.4" y1="456.4" x2="179.8" y2="459.0"/>
+        <line x1="182.0" y1="400.0" x2="166.0" y2="400.0"/>
+        <line x1="189.4" y1="343.6" x2="179.8" y2="341.0"/>
+        <line x1="211.2" y1="291.0" x2="197.4" y2="283.0"/>
+        <line x1="245.9" y1="245.9" x2="238.8" y2="238.8"/>
+        <line x1="291.0" y1="211.2" x2="283.0" y2="197.4"/>
+        <line x1="343.6" y1="189.4" x2="341.0" y2="179.8"/>
+        </g>
+        <circle class="radar__core radar__core--static" cx="400" cy="400" r="9"/>
+      </svg>
+    </div>
+    <div class="wrap">
+      <p class="kicker">06 · PARTNERZY</p>
+      <h2 class="h2">Zbuduj to z nami.</h2>
+      <p class="lead lead--tight">Grono partnerów pierwszej edycji ogłosimy wkrótce. Własne wyzwanie, mentoring, rekrutacja i marka wśród stu najlepszych polskich studentów z zagranicy.</p>
+      <div class="btn-row">
+        <a class="btn btn--primary" id="partner-cta" data-partner href="#partnerzy">Zostań partnerem</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. ZESPÓŁ (render z CONFIG.TEAM) -->
+  <section class="section" id="zespol" hidden>
+    <div class="wrap">
+      <p class="kicker">07 · ZESPÓŁ</p>
+      <h2 class="h2">Kto to robi.</h2>
+      <ul class="team" id="team-grid"></ul>
+    </div>
+  </section>
+
+  <!-- 9. FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <p class="kicker">08 · FAQ</p>
+      <h2 class="h2">Pytania i odpowiedzi.</h2>
+      <div class="faq">
+        <details class="faq__item">
+          <summary class="faq__q">Kto może aplikować?</summary>
+          <p class="faq__a">Polscy studenci i świeżo upieczeni absolwenci, przede wszystkim z uczelni zagranicznych. Dokładne kryteria opublikujemy razem z formularzem.</p>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__q">Ile kosztuje udział?</summary>
+          <p class="faq__a">Udział jest bezpłatny. Liczba miejsc jest ograniczona do 100, obowiązuje selekcja aplikacyjna.</p>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__q">Czy muszę mieć zespół?</summary>
+          <p class="faq__a">Nie. Możesz aplikować solo, zespoły można też sformować na miejscu podczas otwarcia.</p>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__q">Czy trzeba umieć programować?</summary>
+          <p class="faq__a">Rdzeniem wydarzenia jest budowanie, ale dobre zespoły potrzebują też designu i biznesu. Liczy się to, co wnosisz do projektu.</p>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__q">Kiedy rusza rekrutacja?</summary>
+          <p class="faq__a">Wkrótce. Formularz pojawi się na tej stronie, obserwuj też kanały GPSS.</p>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__q">Gdzie odbywa się wydarzenie?</summary>
+          <p class="faq__a">W Warszawie. Dokładną lokalizację ogłosimy przed startem rekrutacji.</p>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__q">Czy organizator pokrywa dojazd i nocleg?</summary>
+          <p class="faq__a">Szczegóły logistyki przekażemy zakwalifikowanym uczestnikom.</p>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__q">W jakim języku jest wydarzenie?</summary>
+          <p class="faq__a">Po polsku. Część warsztatów i materiałów może być po angielsku.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. CTA KOŃCOWE -->
+  <section class="section section--cta">
+    <div class="wrap">
+      <p class="return-home"><span>return(home);</span><span class="cursor" aria-hidden="true"></span></p>
+      <p class="cta__lead">Bądź na sali, kiedy to się zacznie.</p>
+      <div class="btn-row btn-row--center">
+        <a class="btn btn--primary" data-apply data-label="Aplikuj" href="#rekrutacja">Aplikuj</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__left">
+      <svg class="sygnet" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+        <rect x="0" y="0" width="24" height="24" rx="4" fill="#BD0001"/>
+        <path d="M16.5 6.5 V13 H10" fill="none" stroke="#F2EDE4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M13 9.5 L9.5 13 L13 16.5" fill="none" stroke="#F2EDE4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p class="footer__org">Reunion Hackathon · Organizator: Global Polish Student Society · <a href="https://polsoc.eu" target="_blank" rel="noopener">polsoc.eu</a></p>
+    </div>
+    <ul class="footer__links" id="footer-links"></ul>
+  </div>
+  <div class="wrap footer__bottom">
+    <p>© 2026 Global Polish Student Society</p>
+    <!-- Miejsce na przyszłe linki prawne:
+    <ul class="footer__legal">
+      <li><a href="regulamin.html">Regulamin</a></li>
+      <li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li>
+    </ul>
+    -->
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
