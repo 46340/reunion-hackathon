@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Reunion Hackathon · Brand Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@900&display=swap">
+<style>
+/* ==========================================================================
+   Reunion Hackathon · Brand Book
+   Zrodlo prawdy: styles.css i index.html w tym repo. Kazda wartosc tutaj jest
+   przepisana ze zrodla, nie z oka. Kontrasty policzone wg WCAG 2.1 na papierze.
+   ========================================================================== */
+
+:root {
+  --paper:     #F2EDE4;
+  --ink:       #17130E;
+  --ink-60:    rgba(23, 19, 14, 0.60);
+  --ink-25:    rgba(23, 19, 14, 0.251);
+  --ink-14:    rgba(23, 19, 14, 0.1412);
+  --red:       #BD0001;
+  --red-hover: #8F0001;
+  --logo-red:  #D2202F;
+
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --font-numeral: "Playfair Display", Georgia, "Times New Roman", serif;
+}
+
+@page { size: A4; margin: 0; }
+
+* , *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 9.5pt;
+  line-height: 1.6;
+  font-weight: 400;
+  font-stretch: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  position: relative;
+  width: 210mm;
+  height: 297mm;
+  padding: 20mm 18mm 16mm;
+  background: var(--paper);
+  overflow: hidden;
+  page-break-after: always;
+  break-after: page;
+}
+.page:last-child { page-break-after: auto; break-after: auto; }
+
+/* --- naglowek i stopka strony -------------------------------------------- */
+
+.runhead {
+  position: absolute;
+  top: 10mm; left: 18mm; right: 18mm;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 6.5pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+  padding-bottom: 3mm;
+  border-bottom: 1px solid var(--ink-14);
+}
+
+.folio {
+  position: absolute;
+  bottom: 10mm; left: 18mm; right: 18mm;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 6.5pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+  padding-top: 3mm;
+  border-top: 1px solid var(--ink-14);
+}
+
+/* --- typografia dokumentu ------------------------------------------------- */
+
+.kicker {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 7pt;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 0 0 4mm;
+}
+
+h1.title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 125%;
+  font-size: 38pt;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin: 0 0 6mm;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-stretch: 100%;
+  font-size: 20pt;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin: 0 0 5mm;
+}
+
+h3 {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 7.5pt;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0 0 3mm;
+  padding-top: 2.5mm;
+  border-top: 1px solid var(--ink-14);
+}
+
+p { margin: 0 0 3.5mm; max-width: 62ch; }
+.lead { font-size: 11pt; line-height: 1.55; color: var(--ink-60); max-width: 52ch; }
+.muted { color: var(--ink-60); }
+.mono { font-family: var(--font-mono); }
+
+/* --- siatki --------------------------------------------------------------- */
+
+.cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+.cols-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; }
+
+/* --- tabele --------------------------------------------------------------- */
+
+table { width: 100%; border-collapse: collapse; margin-bottom: 5mm; }
+th, td {
+  text-align: left;
+  padding: 1.5mm 2.5mm 1.5mm 0;
+  border-bottom: 1px solid var(--ink-14);
+  vertical-align: top;
+}
+th {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 6.5pt;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+}
+td { font-size: 8pt; line-height: 1.45; }
+td.code, td .code {
+  font-family: var(--font-mono);
+  font-size: 7.5pt;
+  letter-spacing: 0.02em;
+}
+
+/* --- bloki kodu ----------------------------------------------------------- */
+
+pre {
+  font-family: var(--font-mono);
+  font-size: 7pt;
+  line-height: 1.5;
+  background: rgba(23, 19, 14, 0.045);
+  border-left: 2px solid var(--red);
+  padding: 3mm 4.5mm;
+  margin: 0 0 3mm;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+/* --- probki koloru -------------------------------------------------------- */
+
+.swatch { margin-bottom: 4mm; }
+.swatch__chip {
+  height: 22mm;
+  border: 1px solid var(--ink-14);
+  margin-bottom: 2mm;
+  display: flex;
+  align-items: flex-end;
+  padding: 2.5mm;
+}
+.swatch__chip span {
+  font-family: var(--font-mono);
+  font-size: 6.5pt;
+  letter-spacing: 0.12em;
+}
+.swatch__name {
+  font-family: var(--font-mono);
+  font-size: 7pt;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0 0 1mm;
+}
+.swatch__meta {
+  font-family: var(--font-mono);
+  font-size: 6.5pt;
+  line-height: 1.6;
+  color: var(--ink-60);
+  margin: 0;
+}
+
+/* --- okladka -------------------------------------------------------------- */
+
+.cover { display: flex; flex-direction: column; justify-content: space-between; }
+.cover__mark { width: 34mm; height: 34mm; }
+.cover__rule { border-top: 1px solid var(--ink-14); padding-top: 4mm; }
+
+.figure__num {
+  font-family: var(--font-numeral);
+  font-weight: 900;
+  font-size: 30pt;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0 0 1mm;
+}
+.figure__label {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 6.5pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-60);
+  margin: 0;
+}
+
+/* --- reguly tak/nie ------------------------------------------------------- */
+
+.rules { list-style: none; padding: 0; margin: 0; }
+.rules li {
+  font-size: 8pt;
+  line-height: 1.45;
+  padding: 1.3mm 0 1.3mm 7mm;
+  border-bottom: 1px solid var(--ink-14);
+  position: relative;
+}
+.rules li::before {
+  position: absolute;
+  left: 0;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 7.5pt;
+}
+.rules--do li::before   { content: "TAK"; color: var(--red); font-size: 6pt; letter-spacing: .1em; }
+.rules--dont li::before { content: "NIE"; color: var(--ink-60); font-size: 6pt; letter-spacing: .1em; }
+
+/* --- przyciski (demo) ----------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 7pt;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3mm 6mm;
+  border: 1px solid transparent;
+  margin-right: 3mm;
+}
+.btn--primary { background: var(--red); color: var(--paper); border-color: var(--red); }
+.btn--ghost   { border-color: var(--ink-14); color: var(--ink); }
+
+/* --- celownik ------------------------------------------------------------- */
+
+.radar__rings circle { fill: none; stroke: var(--ink); stroke-width: 1; }
+.radar__rings circle:nth-child(1) { stroke-opacity: 0.102; }
+.radar__rings circle:nth-child(2) { stroke-opacity: 0.0902; }
+.radar__rings circle:nth-child(3) { stroke-opacity: 0.0784; }
+.radar__rings circle:nth-child(4) { stroke-opacity: 0.0706; }
+.radar__rings circle:nth-child(5) { stroke-opacity: 0.0588; }
+.radar__cross line { stroke: var(--ink-25); stroke-width: 1; }
+.radar__dial { fill: none; stroke: var(--red); stroke-width: 1.5; }
+.radar__ticks line { stroke: var(--red); stroke-width: 1.5; }
+.radar__links line { stroke: var(--red); stroke-width: 0.75; opacity: 0.7; }
+.radar__cities circle { fill: var(--ink); }
+.radar__core { fill: var(--red); }
+.radar__labels text {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  fill: var(--ink);
+}
+.radar__km { fill: rgba(23, 19, 14, 0.60); }
+.radar__here {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: 0.15em;
+  fill: var(--red);
+}
+.radar__coords {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  fill: rgba(23, 19, 14, 0.60);
+}
+
+/* --- siatka konstrukcyjna sygnetu ---------------------------------------- */
+.grid line { stroke: var(--red); stroke-width: 0.4; opacity: 0.55; }
+.grid circle { fill: none; stroke: var(--red); stroke-width: 0.4; opacity: 0.55; }
+.dim { font-family: var(--font-mono); font-size: 2.6px; fill: var(--red); letter-spacing: 0.08em; }
+</style>
+</head>
+<body>
+
+<!-- ======================= 1 · OKLADKA ======================= -->
+<section class="page cover">
+  <div>
+    <svg class="cover__mark" viewBox="0 0 48 48" aria-label="Sygnet Reunion Hackathon">
+      <path d="M21.59 2.01 A22.13 22.13 0 0 0 23.40 46.12" fill="none" stroke="#17130E" stroke-width="3.75" stroke-linecap="round"/>
+      <path d="M33.58 43.94 A22.13 22.13 0 0 0 32.84 3.72" fill="none" stroke="#D2202F" stroke-width="3.75" stroke-linecap="round"/>
+      <circle cx="27.72" cy="24" r="4.39" fill="#D2202F"/>
+    </svg>
+  </div>
+
+  <div>
+    <p class="kicker">Brand Book · v1.0</p>
+    <h1 class="title">REUNION<br>HACKATHON</h1>
+    <p class="lead" style="margin-bottom:8mm">System wizualny wydarzenia. Papier, atrament, czerwień
+      sygnałowa i celownik wycelowany w Warszawę.</p>
+
+    <div class="cols-3" style="max-width:130mm">
+      <div><p class="figure__num">100</p><p class="figure__label">Builderów</p></div>
+      <div><p class="figure__num">48</p><p class="figure__label">Godzin</p></div>
+      <div><p class="figure__num">1</p><p class="figure__label">Miasto</p></div>
+    </div>
+  </div>
+
+  <div class="cover__rule">
+    <p class="mono muted" style="font-size:7pt;letter-spacing:.16em;text-transform:uppercase;margin:0">
+      Warszawa · 5–7 lutego 2027 · Organizator: Global Polish Student Society
+    </p>
+    <p class="mono muted" style="font-size:6.5pt;letter-spacing:.14em;margin:2mm 0 0">
+      Dokument opisuje styl strony reunion-hackathon.vercel.app. Wszystkie wartości
+      pochodzą wprost ze <span class="mono">styles.css</span> i <span class="mono">index.html</span>.
+    </p>
+  </div>
+</section>
+
+<!-- ======================= 2 · SYGNET ======================= -->
+<section class="page">
+  <div class="runhead"><span>Reunion Hackathon · Brand Book</span><span>01 · Sygnet</span></div>
+
+  <p class="kicker">01 · Sygnet</p>
+  <h2>Dwa łuki i punkt zbiórki.</h2>
+  <p class="lead">Znak czyta się jako celownik złapany w pół obrotu: ciemny łuk to droga
+    z zagranicy, czerwony to Warszawa, punkt w środku to miejsce spotkania.</p>
+
+  <div class="cols-2" style="margin-top:6mm">
+    <div>
+      <h3>Konstrukcja</h3>
+      <svg viewBox="0 0 48 48" width="100%" style="max-width:62mm;border:1px solid var(--ink-14)">
+        <g class="grid">
+          <line x1="24" y1="0" x2="24" y2="48"/>
+          <line x1="0" y1="24" x2="48" y2="24"/>
+          <circle cx="24" cy="24" r="22.13"/>
+        </g>
+        <path d="M21.59 2.01 A22.13 22.13 0 0 0 23.40 46.12" fill="none" stroke="#17130E" stroke-width="3.75" stroke-linecap="round"/>
+        <path d="M33.58 43.94 A22.13 22.13 0 0 0 32.84 3.72" fill="none" stroke="#D2202F" stroke-width="3.75" stroke-linecap="round"/>
+        <circle cx="27.72" cy="24" r="4.39" fill="#D2202F"/>
+      </svg>
+      <p class="mono muted" style="font-size:6.5pt;margin-top:2mm">
+        Pole 48 × 48. Promień środkowy łuku 22,13. Czerwona linia = oś konstrukcyjna.
+      </p>
+    </div>
+
+    <div>
+      <h3>Geometria</h3>
+      <table>
+        <tr><td>Pole znaku</td><td class="code">48 × 48</td></tr>
+        <tr><td>Promień środkowy</td><td class="code">22.13</td></tr>
+        <tr><td>Grubość kreski</td><td class="code">3.75</td></tr>
+        <tr><td>Zakończenia</td><td class="code">round</td></tr>
+        <tr><td>Łuk ciemny</td><td class="code">172° · lewa strona</td></tr>
+        <tr><td>Łuk czerwony</td><td class="code">131° · prawa strona</td></tr>
+        <tr><td>Przerwy</td><td class="code">28,5° · góra i dół</td></tr>
+        <tr><td>Punkt</td><td class="code">r 4.39</td></tr>
+        <tr><td>Przesunięcie punktu</td><td class="code">+3.72 w prawo</td></tr>
+      </table>
+      <p class="muted" style="font-size:7.5pt">
+        Punkt jest celowo przesunięty w prawo od środka pola. To nie jest błąd —
+        tak wygląda znak w decku partnerskim i tak został odrysowany.
+      </p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:5mm">Gotowy kod</h3>
+<pre>&lt;svg viewBox="0 0 48 48" width="48" height="48"&gt;
+  &lt;path d="M21.59 2.01 A22.13 22.13 0 0 0 23.40 46.12"
+        fill="none" stroke="#17130E" stroke-width="3.75" stroke-linecap="round"/&gt;
+  &lt;path d="M33.58 43.94 A22.13 22.13 0 0 0 32.84 3.72"
+        fill="none" stroke="#D2202F" stroke-width="3.75" stroke-linecap="round"/&gt;
+  &lt;circle cx="27.72" cy="24" r="4.39" fill="#D2202F"/&gt;
+&lt;/svg&gt;</pre>
+
+  <div class="cols-2" style="margin-top:2mm">
+    <div>
+      <h3>Zasady</h3>
+      <ul class="rules rules--do">
+        <li>Znak zawsze na papierze <span class="mono">#F2EDE4</span> albo na bieli.</li>
+        <li>Pole ochronne = promień znaku z każdej strony.</li>
+        <li>Minimalna wielkość 20 px / 6 mm.</li>
+        <li>W parze z wordmarkiem: odstęp <span class="mono">0.7rem</span>, Archivo 700, <span class="mono">font-stretch 110%</span>, tracking <span class="mono">0.14em</span>.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="border-color:transparent">&nbsp;</h3>
+      <ul class="rules rules--dont">
+        <li>Nie zamieniać kolorów łuków miejscami.</li>
+        <li>Nie dosuwać punktu do środka pola.</li>
+        <li>Nie obracać, nie pochylać, nie skalować nierównomiernie.</li>
+        <li>Nie kłaść na zdjęciu ani na kolorze innym niż papier.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="folio"><span>Sygnet</span><span>str. 2</span></div>
+</section>
+
+<!-- ======================= 3 · KOLORY ======================= -->
+<section class="page">
+  <div class="runhead"><span>Reunion Hackathon · Brand Book</span><span>02 · Kolory</span></div>
+
+  <p class="kicker">02 · Kolory</p>
+  <h2>Papier, atrament, czerwień sygnałowa.</h2>
+  <p class="lead">Trzy kolory bazowe i skala przezroczystości atramentu. Nic poza tym —
+    paleta jest wąska celowo, cały kontrast robi typografia.</p>
+
+  <div class="cols-3" style="margin-top:6mm">
+    <div class="swatch">
+      <div class="swatch__chip" style="background:#F2EDE4"></div>
+      <p class="swatch__name">Paper</p>
+      <p class="swatch__meta">#F2EDE4<br>rgb(242, 237, 228)<br>--paper<br>Tło całej strony</p>
+    </div>
+    <div class="swatch">
+      <div class="swatch__chip" style="background:#17130E"><span style="color:#F2EDE4">15,85:1</span></div>
+      <p class="swatch__name">Ink</p>
+      <p class="swatch__meta">#17130E<br>rgb(23, 19, 14)<br>--ink<br>Tekst, nagłówki, punkty miast</p>
+    </div>
+    <div class="swatch">
+      <div class="swatch__chip" style="background:#BD0001"><span style="color:#F2EDE4">5,69:1</span></div>
+      <p class="swatch__name">Signal Red</p>
+      <p class="swatch__meta">#BD0001<br>rgb(189, 0, 1)<br>--red<br>Kickery, tarcza, przyciski</p>
+    </div>
+  </div>
+
+  <h3>Pochodne i stany</h3>
+  <table>
+    <tr>
+      <th style="width:26%">Token</th><th style="width:22%">Wartość</th>
+      <th style="width:18%">Na papierze</th><th style="width:14%">Kontrast</th><th>Zastosowanie</th>
+    </tr>
+    <tr><td class="code">--red-hover</td><td class="code">#8F0001</td><td class="code">#8F0001</td><td class="code">8,31:1</td><td>Hover przycisków i linków</td></tr>
+    <tr><td class="code">--ink-60</td><td class="code">rgba(23,19,14,.60)</td><td class="code">#6F6A64</td><td class="code">4,59:1</td><td>Tekst drugorzędny, leady</td></tr>
+    <tr><td class="code">--ink-25</td><td class="code">rgba(23,19,14,.251)</td><td class="code">#BBB6AE</td><td class="code">1,73:1</td><td>Krzyż celownika. Nigdy pod tekst</td></tr>
+    <tr><td class="code">--ink-14</td><td class="code">rgba(23,19,14,.1412)</td><td class="code">#D3CEC6</td><td class="code">1,34:1</td><td>Linie i ramki 1px</td></tr>
+  </table>
+  <p class="muted" style="font-size:7.5pt;margin-top:-2mm">
+    Cała typografia przechodzi WCAG AA. <span class="mono">--ink-25</span> i <span class="mono">--ink-14</span>
+    są wyłącznie dekoracyjne — kontrast poniżej 3:1 dyskwalifikuje je jako kolor tekstu.
+  </p>
+
+  <h3>Czerwień znaku a czerwień interfejsu</h3>
+  <div class="cols-2">
+    <div>
+      <table>
+        <tr><th>Kontekst</th><th>Kolor</th><th>Kontrast</th></tr>
+        <tr><td>Sygnet</td><td class="code">#D2202F</td><td class="code">4,52:1</td></tr>
+        <tr><td>Interfejs</td><td class="code">#BD0001</td><td class="code">5,69:1</td></tr>
+      </table>
+    </div>
+    <div>
+      <p class="muted" style="font-size:7.5pt;margin:0">
+        Znak trzyma czerwień decku partnerskiego <span class="mono">#D2202F</span>, interfejs jedzie na
+        <span class="mono">#BD0001</span>. To świadoma niezgodność: <span class="mono">#D2202F</span> ma na papierze
+        4,52:1, czyli ledwo mieści się w AA, więc na przyciski i tekst nie wchodzi.
+        Znak to grafika, nie tekst, i tam ta czerwień działa.
+      </p>
+    </div>
+  </div>
+
+  <h3>Proporcje</h3>
+  <div style="display:flex;height:11mm;border:1px solid var(--ink-14)">
+    <div style="flex:84;background:#F2EDE4"></div>
+    <div style="flex:12;background:#17130E"></div>
+    <div style="flex:4;background:#BD0001"></div>
+  </div>
+  <p class="mono muted" style="font-size:6.5pt;letter-spacing:.14em;margin-top:2mm">
+    ~84% papier · ~12% atrament · ~4% czerwień. Czerwień jest akcentem, nie polem.
+  </p>
+
+  <div class="folio"><span>Kolory</span><span>str. 3</span></div>
+</section>
+
+<!-- ======================= 4 · TYPOGRAFIA ======================= -->
+<section class="page">
+  <div class="runhead"><span>Reunion Hackathon · Brand Book</span><span>03 · Typografia</span></div>
+
+  <p class="kicker">03 · Typografia</p>
+  <h2>Trzy kroje, trzy zadania.</h2>
+  <p class="lead">Archivo niesie treść, IBM Plex Mono robi etykiety i dane, Playfair Display
+    wchodzi wyłącznie pod wielkie liczby.</p>
+
+  <div style="margin-top:5mm">
+    <h3>Archivo · nagłówki i proza</h3>
+    <p style="font-family:var(--font-display);font-weight:800;font-stretch:125%;font-size:21pt;line-height:.95;letter-spacing:-.02em;margin:0 0 1.5mm">
+      Budujemy Polskę,<br>do której warto wracać.</p>
+    <p class="mono muted" style="font-size:6.5pt;letter-spacing:.14em;margin:0">
+      Zmienna oś szerokości 62..125 · grubości 100..900 · Google Fonts
+    </p>
+  </div>
+
+  <div style="margin-top:4mm">
+    <h3>IBM Plex Mono · etykiety, dane, nawigacja</h3>
+    <p class="mono" style="font-size:10pt;letter-spacing:.14em;margin:0 0 1.5mm">
+      100 BUILDERÓW · 48 GODZIN · 1 MIASTO
+    </p>
+    <p class="mono muted" style="font-size:6.5pt;letter-spacing:.14em;margin:0">Grubości 400, 500, 600</p>
+  </div>
+
+  <div style="margin-top:4mm">
+    <h3>Playfair Display · wyłącznie wielkie liczby</h3>
+    <p style="font-family:var(--font-numeral);font-weight:900;font-size:26pt;line-height:1;letter-spacing:-.02em;margin:0 0 1.5mm">
+      100 · 48 · 10 000+
+    </p>
+    <p class="mono muted" style="font-size:6.5pt;letter-spacing:.14em;margin:0">
+      Grubość 900 · nigdy pod nagłówki ani prozę
+    </p>
+  </div>
+
+  <h3 style="margin-top:3mm">Skala</h3>
+  <table style="margin-bottom:2.5mm">
+    <tr>
+      <th style="width:20%">Rola</th><th style="width:16%">Krój</th><th style="width:12%">Waga</th>
+      <th style="width:10%">Szer.</th><th style="width:24%">Rozmiar</th><th>Tracking</th>
+    </tr>
+    <tr><td class="code">.hero__title</td><td>Archivo</td><td class="code">800</td><td class="code">125%</td><td class="code">clamp(2.6rem, 8vw, 6.5rem)</td><td class="code">-0.02em</td></tr>
+    <tr><td class="code">.h2</td><td>Archivo</td><td class="code">700</td><td class="code">100%</td><td class="code">clamp(1.85rem, 4vw, 3rem)</td><td class="code">-0.015em</td></tr>
+    <tr><td class="code">.lead</td><td>Archivo</td><td class="code">400</td><td class="code">100%</td><td class="code">clamp(1.05rem, 1.6vw, 1.25rem)</td><td class="code">—</td></tr>
+    <tr><td class="code">body</td><td>Archivo</td><td class="code">400</td><td class="code">100%</td><td class="code">1.05rem / 1.65</td><td class="code">—</td></tr>
+    <tr><td class="code">.nav__wordmark</td><td>Archivo</td><td class="code">700</td><td class="code">110%</td><td class="code">0.8rem</td><td class="code">0.14em</td></tr>
+    <tr><td class="code">.figure__num</td><td>Playfair</td><td class="code">900</td><td class="code">—</td><td class="code">clamp(3rem, 7vw, 6rem)</td><td class="code">-0.02em</td></tr>
+    <tr><td class="code">.kicker</td><td>Plex Mono</td><td class="code">500</td><td class="code">—</td><td class="code">0.75rem</td><td class="code">0.2em</td></tr>
+    <tr><td class="code">.btn</td><td>Plex Mono</td><td class="code">500</td><td class="code">—</td><td class="code">0.82rem</td><td class="code">0.1em</td></tr>
+    <tr><td class="code">.figure__label</td><td>Plex Mono</td><td class="code">500</td><td class="code">—</td><td class="code">0.72rem</td><td class="code">0.18em</td></tr>
+  </table>
+
+  <h3>Zasady</h3>
+  <ul class="rules rules--do" style="font-size:7.5pt">
+    <li>Etykiety zawsze wersalikami w Plex Mono, tracking <span class="mono">0.08em</span>–<span class="mono">0.2em</span>.</li>
+    <li>Nagłówki mają ujemny tracking — im większy stopień, tym ciaśniej.</li>
+    <li><span class="mono">font-stretch</span> rośnie tylko w wordmarku (110%) i w hero (125%).</li>
+    <li>Miara prozy: <span class="mono">52ch</span> dla leadów, <span class="mono">20ch</span> dla H2.</li>
+  </ul>
+
+  <div class="folio"><span>Typografia</span><span>str. 4</span></div>
+</section>
+
+<!-- ======================= 5 · CELOWNIK ======================= -->
+<section class="page">
+  <div class="runhead"><span>Reunion Hackathon · Brand Book</span><span>04 · Celownik</span></div>
+
+  <p class="kicker">04 · Celownik</p>
+  <h2>Warszawa w środku, uczelnie dookoła.</h2>
+  <p class="lead">Główny motyw graficzny. Osiem miast, w których studiują uczestnicy,
+    połączonych linią z punktem docelowym.</p>
+
+  <!-- Kadr jak na stronie: zewnetrzne pierscienie sa przyciete krawedzia,
+       zeby tarcza i etykiety zostaly czytelne w druku. -->
+  <div style="display:flex;gap:5mm;align-items:flex-start;margin-top:4mm">
+    <svg viewBox="-45 150 715 500" style="width:110mm;flex:none">
+      <g class="radar__rings">
+        <circle cx="400" cy="400" r="260"/><circle cx="400" cy="400" r="325"/>
+        <circle cx="400" cy="400" r="390"/><circle cx="400" cy="400" r="455"/>
+        <circle cx="400" cy="400" r="520"/>
+      </g>
+      <g class="radar__cross">
+        <line x1="140" y1="400" x2="660" y2="400"/><line x1="400" y1="140" x2="400" y2="660"/>
+      </g>
+      <circle class="radar__dial" cx="400" cy="400" r="210"/>
+      <g class="radar__ticks">
+        <line x1="400.0" y1="182.0" x2="400.0" y2="166.0"/><line x1="456.4" y1="189.4" x2="459.0" y2="179.8"/>
+        <line x1="509.0" y1="211.2" x2="517.0" y2="197.4"/><line x1="554.1" y1="245.9" x2="561.2" y2="238.8"/>
+        <line x1="588.8" y1="291.0" x2="602.6" y2="283.0"/><line x1="610.6" y1="343.6" x2="620.2" y2="341.0"/>
+        <line x1="618.0" y1="400.0" x2="634.0" y2="400.0"/><line x1="610.6" y1="456.4" x2="620.2" y2="459.0"/>
+        <line x1="588.8" y1="509.0" x2="602.6" y2="517.0"/><line x1="554.1" y1="554.1" x2="561.2" y2="561.2"/>
+        <line x1="509.0" y1="588.8" x2="517.0" y2="602.6"/><line x1="456.4" y1="610.6" x2="459.0" y2="620.2"/>
+        <line x1="400.0" y1="618.0" x2="400.0" y2="634.0"/><line x1="343.6" y1="610.6" x2="341.0" y2="620.2"/>
+        <line x1="291.0" y1="588.8" x2="283.0" y2="602.6"/><line x1="245.9" y1="554.1" x2="238.8" y2="561.2"/>
+        <line x1="211.2" y1="509.0" x2="197.4" y2="517.0"/><line x1="189.4" y1="456.4" x2="179.8" y2="459.0"/>
+        <line x1="182.0" y1="400.0" x2="166.0" y2="400.0"/><line x1="189.4" y1="343.6" x2="179.8" y2="341.0"/>
+        <line x1="211.2" y1="291.0" x2="197.4" y2="283.0"/><line x1="245.9" y1="245.9" x2="238.8" y2="238.8"/>
+        <line x1="291.0" y1="211.2" x2="283.0" y2="197.4"/><line x1="343.6" y1="189.4" x2="341.0" y2="179.8"/>
+      </g>
+      <g class="radar__links">
+        <line x1="373" y1="253" x2="400" y2="400"/><line x1="296" y1="330" x2="400" y2="400"/>
+        <line x1="192" y1="376" x2="400" y2="400"/><line x1="214" y1="408" x2="400" y2="400"/>
+        <line x1="244" y1="440" x2="400" y2="400"/><line x1="262" y1="472" x2="400" y2="400"/>
+        <line x1="256" y1="512" x2="400" y2="400"/><line x1="188" y1="556" x2="400" y2="400"/>
+      </g>
+      <g class="radar__cities">
+        <circle cx="373" cy="253" r="3.5"/><circle cx="296" cy="330" r="3.5"/>
+        <circle cx="192" cy="376" r="3.5"/><circle cx="214" cy="408" r="3.5"/>
+        <circle cx="244" cy="440" r="3.5"/><circle cx="262" cy="472" r="3.5"/>
+        <circle cx="256" cy="512" r="3.5"/><circle cx="188" cy="556" r="3.5"/>
+      </g>
+      <g class="radar__labels">
+        <text x="387" y="257" text-anchor="start">SZTOKHOLM<tspan class="radar__km"> · 810 KM</tspan></text>
+        <text x="282" y="334" text-anchor="end">KOPENHAGA<tspan class="radar__km"> · 670 KM</tspan></text>
+        <text x="178" y="380" text-anchor="end">OXFORD<tspan class="radar__km"> · 1 500 KM</tspan></text>
+        <text x="200" y="412" text-anchor="end">LONDYN<tspan class="radar__km"> · 1 450 KM</tspan></text>
+        <text x="230" y="444" text-anchor="end">DELFT<tspan class="radar__km"> · 1 140 KM</tspan></text>
+        <text x="248" y="476" text-anchor="end">ZURYCH<tspan class="radar__km"> · 1 040 KM</tspan></text>
+        <text x="242" y="516" text-anchor="end">MEDIOLAN<tspan class="radar__km"> · 1 140 KM</tspan></text>
+        <text x="174" y="560" text-anchor="end">MADRYT<tspan class="radar__km"> · 2 290 KM</tspan></text>
+      </g>
+      <circle class="radar__core" cx="400" cy="400" r="9"/>
+      <text class="radar__here" x="422" y="395">WAW · WARSZAWA</text>
+      <text class="radar__coords" x="422" y="413">52.2297°N · 21.0122°E</text>
+    </svg>
+
+    <div style="flex:1">
+      <h3>Miasta</h3>
+      <table style="margin-bottom:3mm">
+        <tr><th>Miasto</th><th style="width:38%;white-space:nowrap">Dystans</th></tr>
+        <tr><td>Sztokholm</td><td class="code" style="white-space:nowrap">810 km</td></tr>
+        <tr><td>Kopenhaga</td><td class="code" style="white-space:nowrap">670 km</td></tr>
+        <tr><td>Oxford</td><td class="code" style="white-space:nowrap">1 500 km</td></tr>
+        <tr><td>Londyn</td><td class="code" style="white-space:nowrap">1 450 km</td></tr>
+        <tr><td>Delft</td><td class="code" style="white-space:nowrap">1 140 km</td></tr>
+        <tr><td>Zurych</td><td class="code" style="white-space:nowrap">1 040 km</td></tr>
+        <tr><td>Mediolan</td><td class="code" style="white-space:nowrap">1 140 km</td></tr>
+        <tr><td>Madryt</td><td class="code" style="white-space:nowrap">2 290 km</td></tr>
+      </table>
+      <p class="muted" style="font-size:7.5pt">
+        Środek: <span class="mono">WAW · Warszawa</span>, 52.2297°N · 21.0122°E.
+        Dystanse są przybliżone i zaokrąglone do dziesiątek kilometrów.
+      </p>
+    </div>
+  </div>
+
+  <div class="cols-2" style="margin-top:3mm">
+    <div>
+      <h3>Budowa</h3>
+      <table>
+        <tr><td>Pole</td><td class="code">viewBox 0 0 800 800</td></tr>
+        <tr><td>Środek</td><td class="code">400, 400</td></tr>
+        <tr><td>Pierścienie</td><td class="code">260 · 325 · 390 · 455 · 520</td></tr>
+        <tr><td>Krycie pierścieni</td><td class="code">.102 → .0588</td></tr>
+        <tr><td>Tarcza</td><td class="code">r 210 · czerwień 1.5px</td></tr>
+        <tr><td>Podziałka</td><td class="code">24 kreski co 15°</td></tr>
+        <tr><td>Rdzeń</td><td class="code">r 9 · czerwień</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3>Zasady</h3>
+      <ul class="rules rules--do">
+        <li>Celownik leży warstwą pod tekstem, nigdy nad nim.</li>
+        <li>Może być przycięty krawędzią sekcji — środek tarczy musi zostać widoczny.</li>
+        <li>Etykiety miast zawsze w Plex Mono, wersalikami, tracking <span class="mono">0.12em</span>.</li>
+        <li>Dystans w etykiecie schodzi do <span class="mono">--ink-60</span>, nazwa miasta zostaje w <span class="mono">--ink</span>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="folio"><span>Celownik</span><span>str. 5</span></div>
+</section>
+
+<!-- ======================= 6 · KOMPONENTY ======================= -->
+<section class="page">
+  <div class="runhead"><span>Reunion Hackathon · Brand Book</span><span>05 · Komponenty</span></div>
+
+  <p class="kicker">05 · Komponenty i rytm</p>
+  <h2>Jak to się składa.</h2>
+
+  <div class="cols-2" style="margin-top:5mm">
+    <div>
+      <h3>Przyciski</h3>
+      <div style="margin-bottom:3mm">
+        <span class="btn btn--primary">Aplikuj</span>
+        <span class="btn btn--ghost">Zostań partnerem</span>
+      </div>
+      <p class="muted" style="font-size:7.5pt">
+        Primary: tło <span class="mono">--red</span>, tekst <span class="mono">--paper</span>, hover <span class="mono">--red-hover</span>.
+        Ghost: ramka <span class="mono">--ink-14</span>, hover przechodzi ramką i tekstem na <span class="mono">--red-hover</span>.
+        Padding <span class="mono">0.95rem 1.75rem</span>, bez zaokrągleń.
+      </p>
+    </div>
+    <div>
+      <h3>Kicker sekcji</h3>
+      <p class="kicker" style="margin-bottom:2mm">01 · Misja</p>
+      <p class="muted" style="font-size:7.5pt">
+        Każda sekcja otwiera się numerowanym kickerem w czerwieni. Numeracja dwucyfrowa
+        z wiodącym zerem, separator to <span class="mono">·</span> ze spacjami.
+      </p>
+    </div>
+  </div>
+
+  <h3>Rytm i siatka</h3>
+  <table>
+    <tr><td style="width:34%">Szerokość kolumny</td><td class="code">1160px (--wrap)</td></tr>
+    <tr><td>Margines boczny</td><td class="code">1.5rem (--gutter)</td></tr>
+    <tr><td>Wysokość nawigacji</td><td class="code">64px (--nav-h)</td></tr>
+    <tr><td>Odstęp sekcji</td><td class="code">padding-block: 8.5rem</td></tr>
+    <tr><td>Linia</td><td class="code">1px solid var(--ink-14)</td></tr>
+    <tr><td>Zaokrąglenia</td><td class="code">brak — wszystko na ostro</td></tr>
+  </table>
+  <p class="muted" style="font-size:7.5pt;margin-top:-2mm">
+    Sekcje rozdziela linia 1px, nie odstęp. Nic nie ma cienia ani zaokrąglonych rogów —
+    strona ma wyglądać jak druk, nie jak panel.
+  </p>
+
+  <h3>Logotypy uczelni</h3>
+  <p class="muted" style="font-size:7.5pt">
+    Pas przewija się bez końca, logotypy w oryginalnych barwach uczelni, wysokość
+    znormalizowana do <span class="mono">34px</span>, szerokość z proporcji. Bez filtrów i bez wygaszania.
+    Uwaga: logotyp z nieprzezroczystym białym tłem odetnie się prostokątem od papieru.
+  </p>
+  <p class="mono muted" style="font-size:6.5pt;letter-spacing:.12em;line-height:1.9">
+    IMPERIAL · OXFORD · CAMBRIDGE · UCL · LSE · WARWICK · ETH ZÜRICH · TU DELFT · BOCCONI · IE
+  </p>
+
+  <h3>Czego nie robić</h3>
+  <ul class="rules rules--dont">
+    <li>Nie dokładać kolorów do palety. Jak czegoś brakuje, użyj przezroczystości atramentu.</li>
+    <li>Nie mieszać czerwieni: <span class="mono">#D2202F</span> jest wyłącznie dla sygnetu, interfejs ma <span class="mono">#BD0001</span>.</li>
+    <li>Nie zastępować Plex Mono innym monospace — tracking jest dobrany pod ten krój.</li>
+    <li>Nie centrować prozy. Cała treść wyrównana do lewej.</li>
+    <li>Nie dodawać cieni, gradientów ani zaokrągleń, żeby „ożywić” layout.</li>
+  </ul>
+
+  <div class="folio"><span>Komponenty</span><span>str. 6</span></div>
+</section>
+
+<!-- ======================= 7 · TOKENY ======================= -->
+<section class="page">
+  <div class="runhead"><span>Reunion Hackathon · Brand Book</span><span>06 · Tokeny</span></div>
+
+  <p class="kicker">06 · Tokeny</p>
+  <h2 style="margin-bottom:3mm">Do skopiowania.</h2>
+  <p class="lead" style="margin-bottom:2mm">Wklej te dwa bloki, trzymaj się zasad niżej —
+    nowy plik będzie wyglądał jak reszta.</p>
+
+  <h3 style="margin-top:3mm">CSS</h3>
+<pre>:root {
+  --paper:        #F2EDE4;
+  --ink:          #17130E;
+  --ink-60:       rgba(23, 19, 14, 0.60);
+  --ink-25:       rgba(23, 19, 14, 0.251);
+  --ink-14:       rgba(23, 19, 14, 0.1412);
+  --red:          #BD0001;
+  --red-hover:    #8F0001;
+
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body:    "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --font-numeral: "Playfair Display", Georgia, "Times New Roman", serif;
+
+  --wrap:         1160px;
+  --gutter:       1.5rem;
+  --nav-h:        64px;
+  --line:         1px solid var(--ink-14);
+}</pre>
+
+  <h3>Kroje</h3>
+<pre>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+&lt;link rel="stylesheet" href="https://fonts.googleapis.com/css2?
+  family=Archivo:wdth,wght@62..125,100..900
+  &amp;family=IBM+Plex+Mono:wght@400;500;600
+  &amp;family=Playfair+Display:wght@900&amp;display=swap"&gt;</pre>
+  <p class="muted" style="font-size:7.5pt;margin-top:-1mm">
+    Adres jest zapisany łamany dla czytelności — w kodzie musi być jedną linią, bez spacji.
+  </p>
+
+  <h3>Dziesięć zasad</h3>
+  <table>
+    <tr><td style="width:7mm" class="code">01</td><td>Tło zawsze <span class="mono">--paper</span>. Nie biel, nie szarość.</td></tr>
+    <tr><td class="code">02</td><td>Czerwień jest akcentem, nie polem. Około 4% powierzchni.</td></tr>
+    <tr><td class="code">03</td><td>Zero zaokrągleń, zero cieni, zero gradientów.</td></tr>
+    <tr><td class="code">04</td><td>Sekcje rozdziela linia <span class="mono">1px</span> w <span class="mono">--ink-14</span>, nie sam odstęp.</td></tr>
+    <tr><td class="code">05</td><td>Każda sekcja otwiera się kickerem <span class="mono">NN · NAZWA</span> w czerwieni.</td></tr>
+    <tr><td class="code">06</td><td>Etykiety i dane: Plex Mono, wersaliki, tracking od <span class="mono">0.08em</span>.</td></tr>
+    <tr><td class="code">07</td><td>Nagłówki: Archivo, tracking ujemny, miara do <span class="mono">20ch</span>.</td></tr>
+    <tr><td class="code">08</td><td>Playfair wyłącznie pod wielkie liczby. Nigdy pod tekst.</td></tr>
+    <tr><td class="code">09</td><td>Proza schodzi do <span class="mono">--ink-60</span>, nagłówki zostają w <span class="mono">--ink</span>.</td></tr>
+    <tr><td class="code">10</td><td>Kontrast tekstu minimum 4,5:1. <span class="mono">--ink-25</span> i <span class="mono">--ink-14</span> to dekoracja.</td></tr>
+  </table>
+
+  <div class="folio"><span>Tokeny</span><span>str. 7</span></div>
+</section>
+
+</body>
+</html>
