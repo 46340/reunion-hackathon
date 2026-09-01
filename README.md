@@ -230,6 +230,19 @@ Pięciostopniowa skala pierścieni celownika (`.102` do `.0588`) i wartości alf
 > wyciągniętych ze strumieni PDF decku partnerskiego. Obecne wartości `#F2EDE4` i `#BD0001`
 > przyszły z briefu jako wiążące. Jeśli deck jest nadrzędny, to jest jedno miejsce do cofnięcia.
 
+### Sygnet
+
+Sygnet to oficjalny znak z nagłówka decku partnerskiego (str. 2, lewy górny róg), odrysowany
+z geometrii zmierzonej na renderze PDF w 600 dpi: okrąg o promieniu środkowym `22.13`
+w polu `48x48`, grubość kreski `3.75`, zaokrąglone końce. Łuk atramentowy `#17130E` bierze
+lewą stronę (172°), łuk czerwony `#D2202F` prawą (131°), przerwy u góry i u dołu mają po 28,5°.
+Punkt zbiorki to koło `r=4.39` przesunięte o `3.72` w prawo od środka — to przesunięcie jest
+w oryginale, nie jest błędem odrysu.
+
+> **Uwaga.** Sygnet trzyma czerwień decku `#D2202F`, a reszta strony jedzie na `--red: #BD0001`
+> z briefu. Te dwie czerwienie stoją obok siebie w nawigacji (znak vs. przycisk APLIKUJ)
+> i różnicę widać. Do ujednolicenia trzeba zdecydować, który dokument jest nadrzędny.
+
 Zmiana palety w jednym miejscu (`:root`) przemalowuje całą stronę. Poza tym kolory są jeszcze
 zapisane na sztywno w trzech miejscach, bo to samodzielne pliki SVG i inline sygnety:
 `assets/favicon.svg`, `assets/og-image.svg` oraz sygnet w `index.html` (nav i stopka),
