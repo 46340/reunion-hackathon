@@ -18,7 +18,7 @@ kroje z rolami i wagami, geometrię sygnetu, listę miast na celowniku oraz goto
 | 2 | Sygnet — konstrukcja, geometria, gotowy SVG, zasady użycia |
 | 3 | Kolory — próbki, tokeny, kontrasty WCAG, proporcje |
 | 4 | Typografia — trzy kroje, skala, zasady |
-| 5 | Celownik — osiem miast z dystansami, budowa |
+| 5 | Celownik — osiem miast ze współrzędnymi, dystansami i punktami SVG, budowa |
 | 6 | Komponenty i rytm — przyciski, siatka, logotypy, czego nie robić |
 | 7 | Tokeny — CSS i link do krojów do skopiowania, dziesięć zasad |
 
@@ -44,4 +44,11 @@ Jeśli zmienisz paletę, skalę typograficzną albo listę miast na celowniku, p
 `brand-book.html` i przerenderuj PDF — inaczej dokument zacznie kłamać.
 
 Kontrasty na stronie 3 są policzone wg WCAG 2.1 względem papieru `#F2EDE4`,
-a nie przepisane z oka.
+a nie przepisane z oka. Dystanse i azymuty miast na stronie 5 są policzone po wielkim
+okręgu z podanych współrzędnych.
+
+Uwaga o celowniku: pozycje miast na tarczy są stylizowane, nie kartograficzne. Dystanse
+zgadzają się z rzeczywistością (max odchylenie 1,3%), ale kierunki są korygowane do 20°,
+żeby etykiety się nie nakładały, a promień nie jest proporcjonalny do kilometrów.
+Dlatego tabela podaje wprost punkty `x, y` — przy odtwarzaniu przepisuje się je,
+a nie wylicza.

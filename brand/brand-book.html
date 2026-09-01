@@ -635,48 +635,57 @@ pre {
     </svg>
 
     <div style="flex:1">
-      <h3>Miasta</h3>
+      <h3>Budowa</h3>
       <table style="margin-bottom:3mm">
-        <tr><th>Miasto</th><th style="width:38%;white-space:nowrap">Dystans</th></tr>
-        <tr><td>Sztokholm</td><td class="code" style="white-space:nowrap">810 km</td></tr>
-        <tr><td>Kopenhaga</td><td class="code" style="white-space:nowrap">670 km</td></tr>
-        <tr><td>Oxford</td><td class="code" style="white-space:nowrap">1 500 km</td></tr>
-        <tr><td>Londyn</td><td class="code" style="white-space:nowrap">1 450 km</td></tr>
-        <tr><td>Delft</td><td class="code" style="white-space:nowrap">1 140 km</td></tr>
-        <tr><td>Zurych</td><td class="code" style="white-space:nowrap">1 040 km</td></tr>
-        <tr><td>Mediolan</td><td class="code" style="white-space:nowrap">1 140 km</td></tr>
-        <tr><td>Madryt</td><td class="code" style="white-space:nowrap">2 290 km</td></tr>
+        <tr><td>Pole</td><td class="code">viewBox 0 0 800 800</td></tr>
+        <tr><td>Środek</td><td class="code">400, 400</td></tr>
+        <tr><td>Pierścienie</td><td class="code">r 260 → 520, co 65</td></tr>
+        <tr><td>Krycie</td><td class="code">.102 → .0588</td></tr>
+        <tr><td>Tarcza</td><td class="code">r 210 · czerwień 1.5px</td></tr>
+        <tr><td>Podziałka</td><td class="code">24 kreski co 15°</td></tr>
+        <tr><td>Rdzeń</td><td class="code">r 9 · czerwień</td></tr>
+        <tr><td>Punkt</td><td class="code">r 3.5 · --ink</td></tr>
       </table>
-      <p class="muted" style="font-size:7.5pt">
-        Środek: <span class="mono">WAW · Warszawa</span>, 52.2297°N · 21.0122°E.
-        Dystanse są przybliżone i zaokrąglone do dziesiątek kilometrów.
+      <p class="muted" style="font-size:7.5pt;margin:0">
+        Środek to <span class="mono">WAW · Warszawa</span>,
+        <span class="mono">52.2297°N · 21.0122°E</span>, punkt <span class="mono">400, 400</span>.
       </p>
     </div>
   </div>
 
-  <div class="cols-2" style="margin-top:3mm">
-    <div>
-      <h3>Budowa</h3>
-      <table>
-        <tr><td>Pole</td><td class="code">viewBox 0 0 800 800</td></tr>
-        <tr><td>Środek</td><td class="code">400, 400</td></tr>
-        <tr><td>Pierścienie</td><td class="code">260 · 325 · 390 · 455 · 520</td></tr>
-        <tr><td>Krycie pierścieni</td><td class="code">.102 → .0588</td></tr>
-        <tr><td>Tarcza</td><td class="code">r 210 · czerwień 1.5px</td></tr>
-        <tr><td>Podziałka</td><td class="code">24 kreski co 15°</td></tr>
-        <tr><td>Rdzeń</td><td class="code">r 9 · czerwień</td></tr>
-      </table>
-    </div>
-    <div>
-      <h3>Zasady</h3>
-      <ul class="rules rules--do">
-        <li>Celownik leży warstwą pod tekstem, nigdy nad nim.</li>
-        <li>Może być przycięty krawędzią sekcji — środek tarczy musi zostać widoczny.</li>
-        <li>Etykiety miast zawsze w Plex Mono, wersalikami, tracking <span class="mono">0.12em</span>.</li>
-        <li>Dystans w etykiecie schodzi do <span class="mono">--ink-60</span>, nazwa miasta zostaje w <span class="mono">--ink</span>.</li>
-      </ul>
-    </div>
-  </div>
+  <h3 style="margin-top:3mm">Miasta</h3>
+  <table style="margin-bottom:2.5mm">
+    <tr>
+      <th style="width:15%">Miasto</th><th style="width:24%">Uczelnia</th>
+      <th style="width:27%">Współrzędne</th><th style="width:16%">Dystans</th><th>Punkt SVG</th>
+    </tr>
+    <tr><td>Sztokholm</td><td>—</td><td class="code" style="white-space:nowrap">59.3293°N · 18.0686°E</td><td class="code" style="white-space:nowrap">810 km</td><td class="code">373, 253</td></tr>
+    <tr><td>Kopenhaga</td><td>—</td><td class="code" style="white-space:nowrap">55.6761°N · 12.5683°E</td><td class="code" style="white-space:nowrap">670 km</td><td class="code">296, 330</td></tr>
+    <tr><td>Oxford</td><td>Oxford</td><td class="code" style="white-space:nowrap">51.7520°N · 1.2577°W</td><td class="code" style="white-space:nowrap">1 500 km</td><td class="code">192, 376</td></tr>
+    <tr><td>Londyn</td><td>Imperial · UCL · LSE</td><td class="code" style="white-space:nowrap">51.5074°N · 0.1278°W</td><td class="code" style="white-space:nowrap">1 450 km</td><td class="code">214, 408</td></tr>
+    <tr><td>Delft</td><td>TU Delft</td><td class="code" style="white-space:nowrap">52.0116°N · 4.3571°E</td><td class="code" style="white-space:nowrap">1 140 km</td><td class="code">244, 440</td></tr>
+    <tr><td>Zurych</td><td>ETH Zürich</td><td class="code" style="white-space:nowrap">47.3769°N · 8.5417°E</td><td class="code" style="white-space:nowrap">1 040 km</td><td class="code">262, 472</td></tr>
+    <tr><td>Mediolan</td><td>Bocconi</td><td class="code" style="white-space:nowrap">45.4642°N · 9.1900°E</td><td class="code" style="white-space:nowrap">1 140 km</td><td class="code">256, 512</td></tr>
+    <tr><td>Madryt</td><td>IE Business School</td><td class="code" style="white-space:nowrap">40.4168°N · 3.7038°W</td><td class="code" style="white-space:nowrap">2 290 km</td><td class="code">188, 556</td></tr>
+  </table>
+
+  <p class="muted" style="font-size:7.5pt;max-width:none">
+    <strong style="font-weight:700">Celownik nie jest odwzorowaniem kartograficznym.</strong>
+    Dystanse są prawdziwe — to odległości po wielkim okręgu od Warszawy, zaokrąglone do
+    dziesiątek kilometrów (największe odchylenie: Oxford, 1,3%). Kierunki są tylko w przybliżeniu
+    geograficzne: Sztokholm, Oxford, Zurych i Mediolan trafiają w azymut z dokładnością do 1,5°,
+    ale Delft jest przesunięty o 20°, Madryt o 11°, a Londyn o 8° — tak, żeby etykiety nie
+    wchodziły na siebie. Promień też nie jest proporcjonalny do kilometrów. Odtwarzając celownik,
+    przepisz punkty <span class="mono">x, y</span> z tabeli — nie licz ich ze wzoru.
+  </p>
+
+  <h3>Zasady</h3>
+  <ul class="rules rules--do" style="font-size:7.5pt">
+    <li>Celownik leży warstwą pod tekstem, nigdy nad nim.</li>
+    <li>Może być przycięty krawędzią sekcji — środek tarczy musi zostać widoczny.</li>
+    <li>Etykiety miast w Plex Mono, wersalikami, tracking <span class="mono">0.12em</span>.</li>
+    <li>Dystans schodzi do <span class="mono">--ink-60</span>, nazwa miasta zostaje w <span class="mono">--ink</span>.</li>
+  </ul>
 
   <div class="folio"><span>Celownik</span><span>str. 5</span></div>
 </section>
@@ -733,6 +742,11 @@ pre {
   </p>
   <p class="mono muted" style="font-size:6.5pt;letter-spacing:.12em;line-height:1.9">
     IMPERIAL · OXFORD · CAMBRIDGE · UCL · LSE · WARWICK · ETH ZÜRICH · TU DELFT · BOCCONI · IE
+  </p>
+  <p class="muted" style="font-size:7.5pt;margin-top:2mm">
+    Pas i celownik nie pokrywają się w pełni: Sztokholm i Kopenhaga mają punkt na celowniku,
+    ale nie mają logotypu w pasie, a Cambridge i Warwick odwrotnie. To stan na dziś, nie zasada —
+    przy aktualizacji którejkolwiek listy warto zdecydować, czy mają się zejść.
   </p>
 
   <h3>Czego nie robić</h3>
