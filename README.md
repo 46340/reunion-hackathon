@@ -204,6 +204,14 @@ danej uczelni, a trzy pliki pochodzą z zasobów niewolnych (fair use).
 Brakujący plik nie psuje layoutu: `main.js` podmienia taki element na nazwę uczelni
 zapisaną monospace, pas trzyma wysokość i konsola zostaje czysta.
 
+Logotypy lecą w oryginalnych barwach uczelni. Wcześniej pas był odbarwiony
+(`grayscale(1) contrast(1.1)` przy `opacity: .55`) i rozjaśniał się dopiero na hover —
+to zdjęto, bo pas miał ożywiać stronę, a nie chować się w tle. Barwy siedzą w samych
+plikach SVG, więc w `styles.css` nie ma już żadnego filtra na `.logos__img`.
+Uwaga przy podmianie pliku: logotyp z nieprzezroczystym białym tłem odetnie się
+prostokątem od papieru `#F2EDE4`. Obecne dziesięć plików jest czyste — białe wypełnienia
+siedzą wewnątrz herbów, nie pod całym znakiem.
+
 ---
 
 ## Paleta

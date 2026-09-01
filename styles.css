@@ -430,19 +430,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   flex: none;
 }
 
-/* Znormalizowana wysokosc, szerokosc z proporcji. Grayscale jest tu konieczny:
-   kazdy logotyp ma wlasny kolor firmowy i bez odbarwienia pas rozjezdza sie
-   wizualnie na kremowym tle. */
+/* Znormalizowana wysokosc, szerokosc z proporcji. Logotypy ida w oryginalnych
+   barwach uczelni — granat Oxfordu, fiolet UCL, czerwien LSE, blekit TU Delft.
+   Kolor jest tu celowy: pas ma ozywiac strone, a nie chowac sie w tle. */
 .logos__img {
   height: 34px;
   width: auto;
   max-width: 190px;
   object-fit: contain;
-  filter: grayscale(1) contrast(1.1);
-  opacity: 0.55;
-  transition: filter 0.25s ease, opacity 0.25s ease;
 }
-.logos__item:hover .logos__img { filter: none; opacity: 1; }
 
 /* Logotypy o skrajnych proporcjach: bez limitu jeden znak zdominowalby pas. */
 .logos__img--cambridge,
