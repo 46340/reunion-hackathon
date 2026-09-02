@@ -990,10 +990,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .radar__here { font-size: 22px; }
   .radar__coords { font-size: 17px; }
 
-  /* W malej skali same nazwy miast: dystanse to najdluzsza czesc etykiety
-     i to one wypychaly MADRYT, MEDIOLAN i LONDYN poza lewa krawedz viewBoxa.
-     Nazwy mieszcza sie wszystkie, wiec zaden punkt nie zostaje bez podpisu. */
-  .radar__km { display: none; }
+  /* W malej skali same nazwy miast: liczba studentow to najdluzsza czesc
+     etykiety i to ona wypychala KOPENHAGE i MEDIOLAN poza lewa krawedz
+     viewBoxa. Nazwy mieszcza sie wszystkie, wiec zaden punkt nie zostaje
+     bez podpisu. */
+  .radar__stat { display: none; }
 
   .cards { grid-template-columns: 1fr; }
   .card { padding: 2.25rem 1.5rem 2.5rem; }

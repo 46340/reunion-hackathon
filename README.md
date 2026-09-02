@@ -275,10 +275,16 @@ Archivo i IBM Plex Mono. Obraz OG i strona nie mówią więc tym samym krojem. R
   przewijania w zakresie 360 px do 1920 px.
 - **Celownik:** 8 miast, każde na właściwym azymucie od Warszawy (Sztokholm 350°, Kopenhaga
   304°, Londyn 268°, Delft 256°, Zurych 242°, Mediolan 232°, Madryt 234°). Promień rośnie
-  z dystansem, ale nie liniowo: przy skali liniowej Madryt 2 290 km zepchnąłby Kopenhagę
-  670 km na sam środek. Etykieta to nazwa miasta plus `<tspan class="radar__km">` z dystansem.
-  Poniżej 720 px dystanse się chowają: to one są najdłuższą częścią etykiety i bez tego
-  MADRYT, MEDIOLAN i LONDYN wychodziły poza lewą krawędź viewBoxa. Same nazwy mieszczą się
+  z dystansem, ale nie liniowo — pozycje punktów są stylizowane, nie kartograficzne
+  (metodologia w `brand/brand-book.html`, str. 5). Etykieta to nazwa miasta plus
+  `<tspan class="radar__stat">` z liczbą polskich studentów w danym kraju (Eurostat
+  `educ_uoe_mobs02` 2024 dla Szwecji/Danii/Szwajcarii/Hiszpanii; Nuffic i HESA/Jisc 2024/25
+  dla Niderlandów i UK, bo Eurostat przestał je tak raportować po 2019). Oxford, Londyn,
+  Delft i Mediolan dodatkowo dzielą krajową liczbę wagą wg wielkości uczelni — Oxford
+  i Mediolan wyszły na tyle cienkie, że są grubo zaokrąglone („ok. 40", „ok. 30").
+  Pełne źródła i wzór w brand booku, str. 5.
+  Poniżej 720 px liczby się chowają: to one są najdłuższą częścią etykiety i bez tego
+  KOPENHAGA i MEDIOLAN wychodziły poza lewą krawędź viewBoxa. Same nazwy mieszczą się
   wszystkie, więc żaden punkt nie zostaje bez podpisu.
   Sztokholm jako jedyny ma etykietę po prawej stronie punktu: `.hero__title` wylewa się poza
   swój box (jednowyrazowe "HACKATHON" nie ma gdzie się złamać) i w okolicach 1300 px wchodził

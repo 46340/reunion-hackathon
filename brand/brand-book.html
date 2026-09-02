@@ -160,6 +160,7 @@ th {
   color: var(--ink-60);
 }
 td { font-size: 8pt; line-height: 1.45; }
+.table--tight th, .table--tight td { padding-top: 0.9mm; padding-bottom: 0.9mm; }
 td.code, td .code {
   font-family: var(--font-mono);
   font-size: 7.5pt;
@@ -295,7 +296,7 @@ pre {
   letter-spacing: 0.12em;
   fill: var(--ink);
 }
-.radar__km { fill: rgba(23, 19, 14, 0.60); }
+.radar__stat { fill: rgba(23, 19, 14, 0.60); }
 .radar__here {
   font-family: var(--font-mono);
   font-weight: 500;
@@ -583,7 +584,7 @@ pre {
   <!-- Kadr jak na stronie: zewnetrzne pierscienie sa przyciete krawedzia,
        zeby tarcza i etykiety zostaly czytelne w druku. -->
   <div style="display:flex;gap:5mm;align-items:flex-start;margin-top:4mm">
-    <svg viewBox="-45 150 715 500" style="width:110mm;flex:none">
+    <svg viewBox="-115 150 785 500" style="width:100mm;flex:none">
       <g class="radar__rings">
         <circle cx="400" cy="400" r="260"/><circle cx="400" cy="400" r="325"/>
         <circle cx="400" cy="400" r="390"/><circle cx="400" cy="400" r="455"/>
@@ -620,14 +621,14 @@ pre {
         <circle cx="256" cy="512" r="3.5"/><circle cx="188" cy="556" r="3.5"/>
       </g>
       <g class="radar__labels">
-        <text x="387" y="257" text-anchor="start">SZTOKHOLM<tspan class="radar__km"> · 810 KM</tspan></text>
-        <text x="282" y="334" text-anchor="end">KOPENHAGA<tspan class="radar__km"> · 670 KM</tspan></text>
-        <text x="178" y="380" text-anchor="end">OXFORD<tspan class="radar__km"> · 1 500 KM</tspan></text>
-        <text x="200" y="412" text-anchor="end">LONDYN<tspan class="radar__km"> · 1 450 KM</tspan></text>
-        <text x="230" y="444" text-anchor="end">DELFT<tspan class="radar__km"> · 1 140 KM</tspan></text>
-        <text x="248" y="476" text-anchor="end">ZURYCH<tspan class="radar__km"> · 1 040 KM</tspan></text>
-        <text x="242" y="516" text-anchor="end">MEDIOLAN<tspan class="radar__km"> · 1 140 KM</tspan></text>
-        <text x="174" y="560" text-anchor="end">MADRYT<tspan class="radar__km"> · 2 290 KM</tspan></text>
+        <text x="387" y="257" text-anchor="start">SZTOKHOLM<tspan class="radar__stat"> · 470 STUD.</tspan></text>
+        <text x="282" y="334" text-anchor="end">KOPENHAGA<tspan class="radar__stat"> · 1 400 STUD.</tspan></text>
+        <text x="178" y="380" text-anchor="end">OXFORD<tspan class="radar__stat"> · OK. 40 STUD.</tspan></text>
+        <text x="200" y="412" text-anchor="end">LONDYN<tspan class="radar__stat"> · 170 STUD.</tspan></text>
+        <text x="230" y="444" text-anchor="end">DELFT<tspan class="radar__stat"> · 310 STUD.</tspan></text>
+        <text x="248" y="476" text-anchor="end">ZURYCH<tspan class="radar__stat"> · 550 STUD.</tspan></text>
+        <text x="242" y="516" text-anchor="end">MEDIOLAN<tspan class="radar__stat"> · OK. 30 STUD.</tspan></text>
+        <text x="174" y="560" text-anchor="end">MADRYT<tspan class="radar__stat"> · 590 STUD.</tspan></text>
       </g>
       <circle class="radar__core" cx="400" cy="400" r="9"/>
       <text class="radar__here" x="422" y="395">WAW · WARSZAWA</text>
@@ -653,30 +654,37 @@ pre {
     </div>
   </div>
 
-  <h3 style="margin-top:3mm">Miasta</h3>
-  <table style="margin-bottom:2.5mm">
+  <h3 style="margin-top:2mm">Miasta</h3>
+  <table class="table--tight" style="margin-bottom:1.5mm">
     <tr>
-      <th style="width:15%">Miasto</th><th style="width:24%">Uczelnia</th>
-      <th style="width:27%">Współrzędne</th><th style="width:16%">Dystans</th><th>Punkt SVG</th>
+      <th style="width:23%">Miasto / uczelnia</th><th style="width:11%">Studenci PL</th>
+      <th style="width:19%">Źródło</th><th style="width:26%">Współrzędne</th><th>Punkt SVG</th>
     </tr>
-    <tr><td>Sztokholm</td><td>—</td><td class="code" style="white-space:nowrap">59.3293°N · 18.0686°E</td><td class="code" style="white-space:nowrap">810 km</td><td class="code">373, 253</td></tr>
-    <tr><td>Kopenhaga</td><td>—</td><td class="code" style="white-space:nowrap">55.6761°N · 12.5683°E</td><td class="code" style="white-space:nowrap">670 km</td><td class="code">296, 330</td></tr>
-    <tr><td>Oxford</td><td>Oxford</td><td class="code" style="white-space:nowrap">51.7520°N · 1.2577°W</td><td class="code" style="white-space:nowrap">1 500 km</td><td class="code">192, 376</td></tr>
-    <tr><td>Londyn</td><td>Imperial · UCL · LSE</td><td class="code" style="white-space:nowrap">51.5074°N · 0.1278°W</td><td class="code" style="white-space:nowrap">1 450 km</td><td class="code">214, 408</td></tr>
-    <tr><td>Delft</td><td>TU Delft</td><td class="code" style="white-space:nowrap">52.0116°N · 4.3571°E</td><td class="code" style="white-space:nowrap">1 140 km</td><td class="code">244, 440</td></tr>
-    <tr><td>Zurych</td><td>ETH Zürich</td><td class="code" style="white-space:nowrap">47.3769°N · 8.5417°E</td><td class="code" style="white-space:nowrap">1 040 km</td><td class="code">262, 472</td></tr>
-    <tr><td>Mediolan</td><td>Bocconi</td><td class="code" style="white-space:nowrap">45.4642°N · 9.1900°E</td><td class="code" style="white-space:nowrap">1 140 km</td><td class="code">256, 512</td></tr>
-    <tr><td>Madryt</td><td>IE Business School</td><td class="code" style="white-space:nowrap">40.4168°N · 3.7038°W</td><td class="code" style="white-space:nowrap">2 290 km</td><td class="code">188, 556</td></tr>
+    <tr><td>Sztokholm</td><td class="code">470</td><td class="code" style="white-space:nowrap">Eurostat, 2024</td><td class="code" style="white-space:nowrap">59.3293°N · 18.0686°E</td><td class="code">373, 253</td></tr>
+    <tr><td>Kopenhaga</td><td class="code">1 400</td><td class="code" style="white-space:nowrap">Eurostat, 2024</td><td class="code" style="white-space:nowrap">55.6761°N · 12.5683°E</td><td class="code">296, 330</td></tr>
+    <tr><td>Oxford</td><td class="code">ok. 40†</td><td class="code" style="white-space:nowrap">HESA + szacunek†</td><td class="code" style="white-space:nowrap">51.7520°N · 1.2577°W</td><td class="code">192, 376</td></tr>
+    <tr><td>Londyn (Imperial·UCL·LSE)</td><td class="code">170†</td><td class="code" style="white-space:nowrap">HESA + szacunek†</td><td class="code" style="white-space:nowrap">51.5074°N · 0.1278°W</td><td class="code">214, 408</td></tr>
+    <tr><td>Delft (TU Delft)</td><td class="code">310†</td><td class="code" style="white-space:nowrap">Nuffic + szacunek†</td><td class="code" style="white-space:nowrap">52.0116°N · 4.3571°E</td><td class="code">244, 440</td></tr>
+    <tr><td>Zurych (ETH Zürich)</td><td class="code">550</td><td class="code" style="white-space:nowrap">Eurostat, 2024</td><td class="code" style="white-space:nowrap">47.3769°N · 8.5417°E</td><td class="code">262, 472</td></tr>
+    <tr><td>Mediolan (Bocconi)</td><td class="code">ok. 30†</td><td class="code" style="white-space:nowrap">Eurostat + szacunek†</td><td class="code" style="white-space:nowrap">45.4642°N · 9.1900°E</td><td class="code">256, 512</td></tr>
+    <tr><td>Madryt (IE Business School)</td><td class="code">590</td><td class="code" style="white-space:nowrap">Eurostat, 2024</td><td class="code" style="white-space:nowrap">40.4168°N · 3.7038°W</td><td class="code">188, 556</td></tr>
   </table>
 
-  <p class="muted" style="font-size:7.5pt;max-width:none">
-    <strong style="font-weight:700">Celownik nie jest odwzorowaniem kartograficznym.</strong>
-    Dystanse są prawdziwe — to odległości po wielkim okręgu od Warszawy, zaokrąglone do
-    dziesiątek kilometrów (największe odchylenie: Oxford, 1,3%). Kierunki są tylko w przybliżeniu
-    geograficzne: Sztokholm, Oxford, Zurych i Mediolan trafiają w azymut z dokładnością do 1,5°,
-    ale Delft jest przesunięty o 20°, Madryt o 11°, a Londyn o 8° — tak, żeby etykiety nie
-    wchodziły na siebie. Promień też nie jest proporcjonalny do kilometrów. Odtwarzając celownik,
-    przepisz punkty <span class="mono">x, y</span> z tabeli — nie licz ich ze wzoru.
+  <p class="muted" style="font-size:7.2pt;line-height:1.4;max-width:none;margin-bottom:1.5mm">
+    <strong style="font-weight:700">„Studenci PL"</strong> — Polacy studiujący w danym kraju.
+    Szwecja, Dania, Szwajcaria, Hiszpania: wprost z Eurostatu (<span class="mono">educ_uoe_mobs02</span>,
+    mobilni studenci wg kraju pochodzenia, 2024; Szwajcaria z flagą „definicja różni się").
+    Niderlandy i UK: najlepsze źródło krajowe (Nuffic, HESA/Jisc 2024/25) — Eurostat przestał
+    je tak raportować po 2019.
+    <strong style="font-weight:700">† = szacunek wewnątrzkrajowy</strong> tam, gdzie jedno miasto
+    ≠ cały kraj: krajowa liczba × (studenci zagr. uczelni ÷ studenci zagr. kraju) — Oxford
+    12 565/685 565; Londyn (Imperial+UCL+LSE) 49 986/685 565; Delft 6 900/131 004; Mediolan
+    ~4 000/133 000. Iloczyn dwóch źródeł, nie pomiar: Oxford i Mediolan wyszły tak cienkie
+    (≈40, ≈30), że zaokrąglono je grubo, żeby nie udawały precyzji, której nie mają.
+  </p>
+  <p class="muted" style="font-size:7.2pt;line-height:1.4;max-width:none;margin-bottom:0">
+    Pozycje <span class="mono">x, y</span> na tarczy są stylizowane, nie kartograficzne.
+    Odtwarzając celownik, przepisz punkty z tabeli — nie licz ich ze wzoru.
   </p>
 
   <h3>Zasady</h3>
@@ -684,7 +692,7 @@ pre {
     <li>Celownik leży warstwą pod tekstem, nigdy nad nim.</li>
     <li>Może być przycięty krawędzią sekcji — środek tarczy musi zostać widoczny.</li>
     <li>Etykiety miast w Plex Mono, wersalikami, tracking <span class="mono">0.12em</span>.</li>
-    <li>Dystans schodzi do <span class="mono">--ink-60</span>, nazwa miasta zostaje w <span class="mono">--ink</span>.</li>
+    <li>Liczba schodzi do <span class="mono">--ink-60</span>, nazwa miasta zostaje w <span class="mono">--ink</span>.</li>
   </ul>
 
   <div class="folio"><span>Celownik</span><span>str. 5</span></div>
