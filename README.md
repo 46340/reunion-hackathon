@@ -273,20 +273,25 @@ Archivo i IBM Plex Mono. Obraz OG i strona nie mówią więc tym samym krojem. R
 - **RWD:** punkty łamania 1024 px, 900 px, 720 px, 460 px i 420 px. Poniżej 720 px celownik
   przechodzi pod tekst hero, a pasek czasu w agendzie obraca się w pion. Brak poziomego
   przewijania w zakresie 360 px do 1920 px.
-- **Celownik:** 8 miast, każde na właściwym azymucie od Warszawy (Sztokholm 350°, Kopenhaga
-  304°, Londyn 268°, Delft 256°, Zurych 242°, Mediolan 232°, Madryt 234°). Promień rośnie
-  z dystansem, ale nie liniowo — pozycje punktów są stylizowane, nie kartograficzne
-  (metodologia w `brand/brand-book.html`, str. 5). Etykieta to nazwa miasta plus
-  `<tspan class="radar__stat">` z liczbą polskich studentów w danym kraju (Eurostat
-  `educ_uoe_mobs02` 2024 dla Szwecji/Danii/Szwajcarii/Hiszpanii; Nuffic i HESA/Jisc 2024/25
-  dla Niderlandów i UK, bo Eurostat przestał je tak raportować po 2019). Oxford, Londyn,
-  Delft i Mediolan dodatkowo dzielą krajową liczbę wagą wg wielkości uczelni — Oxford
-  i Mediolan wyszły na tyle cienkie, że są grubo zaokrąglone („ok. 40", „ok. 30").
-  Pełne źródła i wzór w brand booku, str. 5.
-  Poniżej 720 px liczby się chowają: to one są najdłuższą częścią etykiety i bez tego
-  KOPENHAGA i MEDIOLAN wychodziły poza lewą krawędź viewBoxa. Same nazwy mieszczą się
-  wszystkie, więc żaden punkt nie zostaje bez podpisu.
-  Sztokholm jako jedyny ma etykietę po prawej stronie punktu: `.hero__title` wylewa się poza
+- **Celownik:** 7 krajów (nie miast — patrz niżej), każdy na właściwym azymucie od Warszawy
+  (Szwecja 350°, Dania 304°, Wielka Brytania 268°, Niderlandy 256°, Szwajcaria 242°,
+  Włochy 232°, Hiszpania 234°). Promień rośnie z dystansem, ale nie liniowo — pozycje
+  punktów są stylizowane, nie kartograficzne (metodologia w `brand/brand-book.html`, str. 5).
+  Etykieta to nazwa kraju plus `<tspan class="radar__stat">` z liczbą polskich studentów
+  w tym kraju (Eurostat `educ_uoe_mobs02` 2024 dla Szwecji/Danii/Szwajcarii/Włoch/Hiszpanii;
+  Nuffic i HESA/Jisc 2024/25 dla Niderlandów i UK, bo Eurostat przestał je tak raportować
+  po 2019). Pełne źródła w brand booku, str. 5.
+  Do 2026-09-02 celownik pokazywał miasta i uczelnie (Oxford, Londyn, Delft, Zurych,
+  Mediolan, Madryt, Sztokholm, Kopenhaga) z dystansem w km, a Oxford/Londyn/Delft/Mediolan
+  dodatkowo dzieliły krajową liczbę wagą wg wielkości uczelni. Zmienione na kraje, bo
+  wynik podziału (Oxford ~40, Mediolan ~30 studentów) wyglądał na błąd, nie na dane — dwie
+  bliskie kropki UK z tą samą liczbą kraju byłyby tym samym problemem, więc Oxford
+  (dawny drugi punkt UK) został usunięty, zostaje jeden punkt UK w pozycji Londynu.
+  Poniżej 820 px liczby się chowają: „WIELKA BRYTANIA · 2 365 STUD." to najdłuższa etykieta
+  i przy węższym kontenerze celownika (patrz blok `@media 1024px`) zaczynała wychodzić poza
+  lewą krawędź gdzieś między 780 a 800 px szerokości okna — próg z zapasem. Same nazwy
+  krajów mieszczą się wszystkie, więc żaden punkt nie zostaje bez podpisu.
+  Szwecja jako jedyna ma etykietę po prawej stronie punktu: `.hero__title` wylewa się poza
   swój box (jednowyrazowe "HACKATHON" nie ma gdzie się złamać) i w okolicach 1300 px wchodził
   na tę etykietę z lewej strony.
 - **Pas logotypów:** przewija się bez przerwy, także pod kursorem. Nie zatrzymuje się na hover,

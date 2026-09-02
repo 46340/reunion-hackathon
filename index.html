@@ -86,7 +86,7 @@
       </div>
 
       <div class="hero__radar">
-        <svg class="radar" viewBox="0 0 800 800" role="img" aria-label="Celownik z Warszawą w środku i miastami uczelni uczestników: Sztokholm, Kopenhaga, Oxford, Londyn, Delft, Zurych, Mediolan, Madryt">
+        <svg class="radar" viewBox="0 0 800 800" role="img" aria-label="Celownik z Warszawą w środku i krajami, z których wracają uczestnicy: Szwecja, Dania, Wielka Brytania, Niderlandy, Szwajcaria, Włochy, Hiszpania">
           <g class="radar__rings">
             <circle cx="400" cy="400" r="260"/>
             <circle cx="400" cy="400" r="325"/>
@@ -132,7 +132,6 @@
           <g class="radar__links">
             <line x1="373" y1="253" x2="400" y2="400"/>
             <line x1="296" y1="330" x2="400" y2="400"/>
-            <line x1="192" y1="376" x2="400" y2="400"/>
             <line x1="214" y1="408" x2="400" y2="400"/>
             <line x1="244" y1="440" x2="400" y2="400"/>
             <line x1="262" y1="472" x2="400" y2="400"/>
@@ -143,7 +142,6 @@
           <g class="radar__cities">
             <circle cx="373" cy="253" r="3.5"/>
             <circle cx="296" cy="330" r="3.5"/>
-            <circle cx="192" cy="376" r="3.5"/>
             <circle cx="214" cy="408" r="3.5"/>
             <circle cx="244" cy="440" r="3.5"/>
             <circle cx="262" cy="472" r="3.5"/>
@@ -153,15 +151,16 @@
 
           <g class="radar__labels">
             <!-- Sztokholm jako jedyny ma etykiete po prawej stronie punktu: nagłówek hero
-                 wylewa sie poza swoj box i przy ~1300 px wchodzil na nia z lewej. -->
-            <text x="387" y="257" text-anchor="start">SZTOKHOLM<tspan class="radar__stat"> · 470 STUD.</tspan></text>
-            <text x="282" y="334" text-anchor="end">KOPENHAGA<tspan class="radar__stat"> · 1 400 STUD.</tspan></text>
-            <text x="178" y="380" text-anchor="end">OXFORD<tspan class="radar__stat"> · OK. 40 STUD.</tspan></text>
-            <text x="200" y="412" text-anchor="end">LONDYN<tspan class="radar__stat"> · 170 STUD.</tspan></text>
-            <text x="230" y="444" text-anchor="end">DELFT<tspan class="radar__stat"> · 310 STUD.</tspan></text>
-            <text x="248" y="476" text-anchor="end">ZURYCH<tspan class="radar__stat"> · 550 STUD.</tspan></text>
-            <text x="242" y="516" text-anchor="end">MEDIOLAN<tspan class="radar__stat"> · OK. 30 STUD.</tspan></text>
-            <text x="174" y="560" text-anchor="end">MADRYT<tspan class="radar__stat"> · 590 STUD.</tspan></text>
+                 wylewa sie poza swoj box i przy ~1300 px wchodzil na nia z lewej.
+                 Oxford (byly drugi punkt UK) usuniety: dwa punkty z ta sama etykieta
+                 kraju wygladaly jak duplikat, nie jak dane. Zostaje punkt Londynu. -->
+            <text x="387" y="257" text-anchor="start">SZWECJA<tspan class="radar__stat"> · 470 STUD.</tspan></text>
+            <text x="282" y="334" text-anchor="end">DANIA<tspan class="radar__stat"> · 1 400 STUD.</tspan></text>
+            <text x="200" y="412" text-anchor="end">WIELKA BRYTANIA<tspan class="radar__stat"> · 2 365 STUD.</tspan></text>
+            <text x="230" y="444" text-anchor="end">NIDERLANDY<tspan class="radar__stat"> · 5 960 STUD.</tspan></text>
+            <text x="248" y="476" text-anchor="end">SZWAJCARIA<tspan class="radar__stat"> · 550 STUD.</tspan></text>
+            <text x="242" y="516" text-anchor="end">WŁOCHY<tspan class="radar__stat"> · 980 STUD.</tspan></text>
+            <text x="174" y="560" text-anchor="end">HISZPANIA<tspan class="radar__stat"> · 590 STUD.</tspan></text>
           </g>
 
           <circle class="radar__core" cx="400" cy="400" r="9"/>

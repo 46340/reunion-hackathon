@@ -953,6 +953,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .facts { grid-template-columns: 1fr; }
 }
 
+@media (max-width: 820px) {
+  /* Liczba studentow to najdluzsza czesc etykiety -- "WIELKA BRYTANIA ·
+     2 365 STUD." -- i w kontenerze celownika ograniczonym do max-width:
+     620px (patrz blok 1024px) zaczyna wychodzic poza lewa krawedz gdzies
+     miedzy 780 a 800px szerokosci okna. Prog z zapasem, zeby nie lapac
+     sie na granicy przy innych czcionkach systemowych. */
+  .radar__stat { display: none; }
+}
+
 @media (max-width: 720px) {
   /* nawigacja mobilna */
   .burger { display: flex; }
@@ -989,12 +998,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .radar__labels text { font-size: 20px; letter-spacing: 0.08em; }
   .radar__here { font-size: 22px; }
   .radar__coords { font-size: 17px; }
-
-  /* W malej skali same nazwy miast: liczba studentow to najdluzsza czesc
-     etykiety i to ona wypychala KOPENHAGE i MEDIOLAN poza lewa krawedz
-     viewBoxa. Nazwy mieszcza sie wszystkie, wiec zaden punkt nie zostaje
-     bez podpisu. */
-  .radar__stat { display: none; }
 
   .cards { grid-template-columns: 1fr; }
   .card { padding: 2.25rem 1.5rem 2.5rem; }
