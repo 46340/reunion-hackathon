@@ -21,7 +21,7 @@ const CONFIG = {
       name: "Adam Bączek",
       role: "Lead",
       university: "Copenhagen Business School",
-      bio: "Współzałożyciel PolSoc Denmark. Na co dzień AI w biznesie.",
+      bio: "Prezes i współzałożyciel PolSoc Denmark.",
       linkedin: "https://www.linkedin.com/in/adam-b%C4%85czek-269921273",
       photo: "assets/img/team/adam-baczek.webp"
     },
