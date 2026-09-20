@@ -444,10 +444,12 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* --- grafiki -------------------------------------------------------------- */
 
-/* Ramka jest ukryta, dopoki obrazek sie nie zaladuje. Przy braku pliku strona
-   nie pokazuje ani pustego prostokata, ani ikony bledu - po prostu go nie ma.
-   Klase is-ready nadaje setupMedia w main.js po zdarzeniu load. */
-[data-media]:not(.is-ready) { display: none; }
+/* Ramka od razu rezerwuje swoje miejsce (aspect-ratio nizej), wiec doladowanie
+   lazy nie przesuwa tresci. Widoczna staje sie dopiero z obrazkiem: do tego
+   czasu jest przezroczysta, a gdyby pliku brakowalo, setupMedia usuwa ja
+   w calosci i uklad sklada sie sam. */
+.media { border-color: transparent; }
+.media.is-ready { border-color: var(--ink-14); }
 
 /* Zdjecia sa duotonem na papierze, nie kolorowym stockiem: sepiowa podkladka
    plus grayscale trzymaja je w palecie atrament/papier niezaleznie od tego,
@@ -460,12 +462,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   overflow: hidden;
 }
 
+/* Bez grayscale i bez multiply: grafiki przychodza juz jako duotone na papierze,
+   a czerwony akcent jest w nich trescia, nie przypadkiem - odbarwienie zabiloby
+   jedyny kolor w calym layoucie. Multiply przyciemnialoby ich wlasny papier
+   wzgledem tla strony. */
 .media__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(1) contrast(1.08) brightness(1.02);
-  mix-blend-mode: multiply;
 }
 
 .media--band { margin-top: 3.5rem; aspect-ratio: 3 / 1; }
@@ -1039,17 +1043,28 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.22;
-  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 35%, #000 65%, transparent);
-  mask-image: linear-gradient(to bottom, transparent, #000 35%, #000 65%, transparent);
+  opacity: 0.14;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 40%, #000 60%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 40%, #000 60%, transparent);
+}
+
+/* Rozjasnienie dokladnie pod tekstem. Sama grafika jest juz slaba, ale
+   "return(home);" musi zostac najciemniejszym punktem sekcji, a nie
+   konkurowac z tlumem w tle. */
+.section--cta .wrap::before {
+  content: "";
+  position: absolute;
+  inset: -3rem -2rem;
+  z-index: -1;
+  background: radial-gradient(ellipse at center,
+    var(--paper) 0%, rgba(242, 237, 228, 0.88) 45%, rgba(242, 237, 228, 0) 75%);
+  pointer-events: none;
 }
 
 .cta__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(1) contrast(1.1);
-  mix-blend-mode: multiply;
 }
 
 .section--cta .wrap { position: relative; z-index: 1; }
@@ -1240,8 +1255,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     position: relative;
     margin-top: 2.5rem;
   }
-  .timeline__step { display: block; position: relative; padding-left: 2.25rem; }
+  /* W pionie krok jest kolumna flexa, a nie siatka: dzieki temu data moze
+     wyjsc przed grafike i czerwony wezel na osi wypada dokladnie przy niej,
+     zamiast przy gornej krawedzi zdjecia. */
+  .timeline__step { display: flex; flex-direction: column; position: relative; padding-left: 2.25rem; }
   .timeline__step { padding-bottom: 2.75rem; }
+  .timeline__time  { order: 1; }
+  .timeline__media { order: 2; }
+  .timeline__title { order: 3; }
+  .timeline__body  { order: 4; }
   .timeline__step:nth-of-type(3) { padding-bottom: 0; }
 
   /* W pionie kazdy krok rysuje wlasny odcinek, dokladnie od srodka swojego
@@ -1260,7 +1282,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .timeline__rail { position: absolute; left: 0; top: 0.3rem; }
   /* W pionie oś nie jest juz siatka, wiec grid-row nie obowiazuje:
      grafika po prostu otwiera krok. */
-  .timeline__media { aspect-ratio: 16 / 9; margin-bottom: 1.25rem; }
+  .timeline__media { aspect-ratio: 16 / 9; margin: 0.35rem 0 1.25rem; }
   .timeline__time { margin-bottom: 0.35rem; }
   .timeline__title { margin-top: 0.4rem; }
   .timeline__body { max-width: none; }
