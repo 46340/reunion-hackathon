@@ -507,7 +507,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 /* Znormalizowana wysokosc, szerokosc z proporcji. Logotypy ida w oryginalnych
-   barwach uczelni — granat Oxfordu, fiolet UCL, czerwien LSE, blekit TU Delft.
+   barwach uczelni: granat Oxfordu, fiolet UCL, czerwien LSE, blekit TU Delft.
    Kolor jest tu celowy: pas ma ozywiac strone, a nie chowac sie w tle. */
 .logos__img {
   height: 34px;
