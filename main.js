@@ -13,35 +13,30 @@ const CONFIG = {
   // Kwoty nagrod nie ma w decku, wiec nie ma jej tez zaszytej w kodzie.
   PRIZE_POOL_LABEL: "",
   // Zdjecia: kwadrat 400x400, kadr od gory (obcinane do kola przez CSS).
-  // Karta czyta sie w stalej kolejnosci: rola, miasto, uczelnia, kierunek,
-  // fakty, LinkedIn. Puste pola po prostu znikaja, wiec braki nie psuja rytmu.
+  // Karta trzyma sie czterech rzeczy: nazwisko, rola, uczelnia, LinkedIn,
+  // plus jedno krotkie zdanie. Miasto wypadlo, bo powtarzalo uczelnie,
+  // kierunek - bo dlugie nazwy zawijaly sie na dwie linijki.
   TEAM: [
     {
       name: "Adam Bączek",
       role: "Lead",
-      city: "Kopenhaga",
       university: "Copenhagen Business School",
-      field: "MSc Digital Business",
-      bio: "Współzałożyciel Polish Student Society in Denmark. Interesuje się rozwojem AI i jego wykorzystaniem w biznesie. Po godzinach na korcie do padla albo na bieganiu.",
+      bio: "Współzałożyciel PolSoc Denmark. Na co dzień AI w biznesie.",
       linkedin: "",
       photo: "assets/img/team/adam-baczek.webp"
     },
     {
       name: "Mikołaj Sapek",
       role: "Operations",
-      city: "Kopenhaga",
       university: "Copenhagen Business School",
-      field: "MSc Business Administration and Data Science",
-      bio: "Wiceprezes i współzałożyciel Polish Student Society in Denmark. Wyróżniony uczestnik AEC Hackathon.",
+      bio: "Wiceprezes i współzałożyciel PolSoc Denmark.",
       linkedin: "https://www.linkedin.com/in/miko%C5%82aj-pawe%C5%82-sapek-8b5633267",
       photo: "assets/img/team/mikolaj-sapek.webp"
     },
     {
       name: "Alicja Rudawy",
       role: "Partnerships",
-      city: "Amsterdam",
       university: "University of Amsterdam",
-      field: "BSc Business Administration",
       bio: "",
       linkedin: "",
       photo: "assets/img/team/alicja-rudawy.webp"
@@ -49,17 +44,15 @@ const CONFIG = {
     {
       name: "Alicja Dorobis",
       role: "Program",
-      city: "Amsterdam",
       university: "University of Amsterdam",
-      field: "MSc Computational Science",
       bio: "Współorganizuje zawody triathlonowe w Polsce.",
       linkedin: "https://www.linkedin.com/in/alicjadorobis/",
       photo: "assets/img/team/alicja-dorobis.webp"
     },
-    { name: "Imię Nazwisko", role: "Marketing",  city: "", university: "Uczelnia", field: "", bio: "", linkedin: "", photo: "" },
-    { name: "Imię Nazwisko", role: "Community",  city: "", university: "Uczelnia", field: "", bio: "", linkedin: "", photo: "" },
-    { name: "Imię Nazwisko", role: "Tech",       city: "", university: "Uczelnia", field: "", bio: "", linkedin: "", photo: "" },
-    { name: "Imię Nazwisko", role: "Finance",    city: "", university: "Uczelnia", field: "", bio: "", linkedin: "", photo: "" }
+    { name: "Imię Nazwisko", role: "Marketing", university: "Uczelnia", bio: "", linkedin: "", photo: "" },
+    { name: "Imię Nazwisko", role: "Community", university: "Uczelnia", bio: "", linkedin: "", photo: "" },
+    { name: "Imię Nazwisko", role: "Tech",      university: "Uczelnia", bio: "", linkedin: "", photo: "" },
+    { name: "Imię Nazwisko", role: "Finance",   university: "Uczelnia", bio: "", linkedin: "", photo: "" }
   ]
 };
 
@@ -164,9 +157,7 @@ function teamCard(person, i) {
 
   card.appendChild(el("p", "team__name", person.name));
   if (person.role) card.appendChild(el("p", "team__role", person.role));
-  if (person.city) card.appendChild(el("p", "team__city", person.city));
   if (person.university) card.appendChild(el("p", "team__uni", person.university));
-  if (person.field) card.appendChild(el("p", "team__field", person.field));
   if (person.bio) card.appendChild(el("p", "team__bio", person.bio));
 
   if (person.linkedin) {
