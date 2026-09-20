@@ -969,7 +969,20 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   margin: 0 0 0.25rem;
 }
 
-.team__uni { font-size: 0.9rem; color: var(--ink-60); margin: 0; }
+/* Miasto jest etykieta, nie zdaniem: mono i wersaliki jak reszta
+   metadanych na stronie, ale atramentem, zeby nie konkurowalo z czerwona rola. */
+.team__city {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0 0 0.45rem;
+}
+
+.team__uni { font-size: 0.9rem; color: var(--ink); margin: 0; }
+
+.team__field { font-size: 0.85rem; color: var(--ink-60); margin: 0.1rem 0 0; }
 
 .team__bio {
   font-size: 0.9rem;
