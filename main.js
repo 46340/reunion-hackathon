@@ -3,12 +3,17 @@
 
 const CONFIG = {
   APPLY_URL: "",
-  PARTNER_EMAIL: "maksrokosz@icloud.com", // TODO potwierdzić przed publikacją
-  CONTACT_EMAIL: "",
+  // Adres i telefon z decku partnerskiego (str. 3), Maks Rokosz - Head of Partnerships.
+  PARTNER_EMAIL: "maks.rokosz@globalpolsoc.com",
+  CONTACT_EMAIL: "maks.rokosz@globalpolsoc.com",
   INSTAGRAM_URL: "",
   LINKEDIN_URL: "",
-  SHOW_TEAM: true,
+  // Zespol wraca dopiero z prawdziwymi nazwiskami i zdjeciami - osiem atrap
+  // "Imie Nazwisko" bylo do tej pory widoczne publicznie.
+  SHOW_TEAM: false,
   SHOW_PRIZE_POOL: false,
+  // Kwoty nagrod nie ma w decku, wiec nie ma jej tez zaszytej w kodzie.
+  PRIZE_POOL_LABEL: "",
   // 8 placeholderow do podmiany. Puste photo rysuje kolo z numerem porzadkowym.
   // bio: dwa krotkie zdania. Zdjecia: kwadrat min 1000x1000, kadr wysrodkowany (obcinane do kola).
   TEAM: [
@@ -58,14 +63,20 @@ function setupApply() {
 /* Czwarty segment linii statystyk w hero */
 function setupPrizePool() {
   const stats = document.getElementById("stats");
-  if (CONFIG.SHOW_PRIZE_POOL && stats) {
-    stats.append(" · ", el("span", "", "100K PLN W NAGRODACH"));
+  if (CONFIG.SHOW_PRIZE_POOL && CONFIG.PRIZE_POOL_LABEL && stats) {
+    stats.append(" · ", el("span", "", CONFIG.PRIZE_POOL_LABEL));
   }
 }
 
 /* Przycisk w sekcji Partnerzy i duzy kafelek w Trackach. Bez adresu kafelek
    zostaje kotwica do sekcji, a przycisk przechodzi w stan nieaktywny. */
 function setupPartnerCta() {
+  document.querySelectorAll("[data-partner-mail]").forEach(function (link) {
+    if (CONFIG.PARTNER_EMAIL) {
+      link.href = "mailto:" + CONFIG.PARTNER_EMAIL;
+      link.textContent = CONFIG.PARTNER_EMAIL;
+    }
+  });
   document.querySelectorAll("[data-partner]").forEach(function (cta) {
     if (CONFIG.PARTNER_EMAIL) {
       cta.href = "mailto:" + CONFIG.PARTNER_EMAIL +
@@ -161,6 +172,20 @@ function setupLogos() {
   });
 }
 
+/* Grafiki sa dokladane etapami. Dopoki pliku nie ma, cala ramka znika bez sladu -
+   siatka sklada sie sama, a strona nigdy nie pokazuje ikony zepsutego obrazka.
+   Ten sam mechanizm co w setupLogos, tylko usuwamy rodzica, nie sam <img>. */
+function setupMedia() {
+  document.querySelectorAll("[data-media] img").forEach(function (img) {
+    const frame = img.closest("[data-media]") || img;
+    function drop() { frame.remove(); }
+    function show() { frame.classList.add("is-ready"); }
+    img.addEventListener("error", drop);
+    img.addEventListener("load", show);
+    if (img.complete) { img.naturalWidth ? show() : drop(); }
+  });
+}
+
 function setupBurger() {
   const burger = document.getElementById("burger");
   const menu = document.getElementById("menu");
@@ -189,4 +214,5 @@ setupPartnerCta();
 setupFooterLinks();
 setupTeam();
 setupLogos();
+setupMedia();
 setupBurger();
