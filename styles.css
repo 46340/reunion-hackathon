@@ -426,9 +426,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* --- organizator (deck 02) ------------------------------------------------ */
 
 .org {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2.5rem 3rem;
   margin-top: 2.5rem;
   padding-top: 2.5rem;
   border-top: var(--line);
@@ -438,7 +435,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .org__body--pull {
   color: var(--ink);
+  font-size: 1.05rem;
   font-weight: 500;
+  max-width: 62ch;
   border-left: 2px solid var(--red);
   padding-left: 1.25rem;
 }
@@ -547,8 +546,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   background: var(--ink-14);
   border: var(--line);
 }
-
-.cards--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
 .card {
   position: relative;
@@ -928,6 +925,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .offer__media { aspect-ratio: 4 / 3; position: sticky; top: calc(var(--nav-h) + 2rem); }
 
+/* Dopoki grafiki nie ma (albo gdyby jej nie bylo wcale), oferta nie ma powodu
+   siedziec w polowie szerokosci - druga kolumna bylaby pustym polem. */
+.offer:not(:has(.offer__media.is-ready)) { grid-template-columns: minmax(0, 1fr); }
+
 /* --- zespół --------------------------------------------------------------- */
 
 .team {
@@ -1141,7 +1142,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 @media (max-width: 1024px) {
-  .cards--three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .offer { grid-template-columns: 1fr; gap: 2.5rem; }
   .offer__media { position: static; max-width: 560px; }
   .hero__inner { min-height: 0; padding-block: 4rem 5rem; }
@@ -1171,7 +1171,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .nav__wordmark { font-size: 0.72rem; letter-spacing: 0.1em; }
   .partners__bg { width: 70%; opacity: 0.22; }
   .facts { grid-template-columns: 1fr; }
-  .org { grid-template-columns: 1fr; gap: 1.5rem; }
   .media--band { aspect-ratio: 5 / 2; }
 }
 
@@ -1221,8 +1220,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .radar__here { font-size: 22px; }
   .radar__coords { font-size: 17px; }
 
-  .cards,
-  .cards--three { grid-template-columns: 1fr; }
+  .cards { grid-template-columns: 1fr; }
   .card { padding: 2.25rem 1.5rem 2.5rem; }
   .card__body { max-width: none; }
   .team { grid-template-columns: repeat(2, minmax(0, 1fr)); }
