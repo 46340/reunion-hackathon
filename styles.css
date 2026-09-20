@@ -933,6 +933,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .team__photo {
   width: 100%;
   max-width: 168px;
+  /* Bez tego atrybut height="400" z <img> wygrywa z aspect-ratio i portret
+     wychodzi elipsa: proporcja dziala dopiero, gdy wysokosc jest auto. */
+  height: auto;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   object-fit: cover;

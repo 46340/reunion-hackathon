@@ -8,23 +8,38 @@ const CONFIG = {
   CONTACT_EMAIL: "maks.rokosz@globalpolsoc.com",
   INSTAGRAM_URL: "",
   LINKEDIN_URL: "",
-  // UWAGA: tablica TEAM nizej to wciaz osiem atrap "Imie Nazwisko".
-  // Przed pushem albo wchodza prawdziwe dane, albo ta flaga wraca na false.
   SHOW_TEAM: true,
   SHOW_PRIZE_POOL: false,
   // Kwoty nagrod nie ma w decku, wiec nie ma jej tez zaszytej w kodzie.
   PRIZE_POOL_LABEL: "",
-  // 8 placeholderow do podmiany. Puste photo rysuje kolo z numerem porzadkowym.
-  // bio: dwa krotkie zdania. Zdjecia: kwadrat min 1000x1000, kadr wysrodkowany (obcinane do kola).
+  // Zdjecia: kwadrat 400x400, kadr od gory (obcinane do kola przez CSS).
+  // role = miasto, w ktorym dana osoba na co dzien studiuje: to jedyna
+  // funkcja, jaka mam potwierdzona. Gdy przyjda role w zespole, podmieniam.
   TEAM: [
-    { name: "Imię Nazwisko", role: "Lead", university: "Uczelnia", bio: "Dwa krótkie zdania opisu. Tu wpisz, za co odpowiada ta osoba i co wnosi do wydarzenia.", linkedin: "", photo: "" },
-    { name: "Imię Nazwisko", role: "Partnerships", university: "Uczelnia", bio: "Dwa krótkie zdania opisu. Tu wpisz, za co odpowiada ta osoba i co wnosi do wydarzenia.", linkedin: "", photo: "" },
-    { name: "Imię Nazwisko", role: "Program", university: "Uczelnia", bio: "Dwa krótkie zdania opisu. Tu wpisz, za co odpowiada ta osoba i co wnosi do wydarzenia.", linkedin: "", photo: "" },
-    { name: "Imię Nazwisko", role: "Operations", university: "Uczelnia", bio: "Dwa krótkie zdania opisu. Tu wpisz, za co odpowiada ta osoba i co wnosi do wydarzenia.", linkedin: "", photo: "" },
-    { name: "Imię Nazwisko", role: "Marketing", university: "Uczelnia", bio: "Dwa krótkie zdania opisu. Tu wpisz, za co odpowiada ta osoba i co wnosi do wydarzenia.", linkedin: "", photo: "" },
-    { name: "Imię Nazwisko", role: "Community", university: "Uczelnia", bio: "Dwa krótkie zdania opisu. Tu wpisz, za co odpowiada ta osoba i co wnosi do wydarzenia.", linkedin: "", photo: "" },
-    { name: "Imię Nazwisko", role: "Tech", university: "Uczelnia", bio: "Dwa krótkie zdania opisu. Tu wpisz, za co odpowiada ta osoba i co wnosi do wydarzenia.", linkedin: "", photo: "" },
-    { name: "Imię Nazwisko", role: "Finance", university: "Uczelnia", bio: "Dwa krótkie zdania opisu. Tu wpisz, za co odpowiada ta osoba i co wnosi do wydarzenia.", linkedin: "", photo: "" }
+    {
+      name: "Mikołaj Sapek",
+      role: "Kopenhaga",
+      university: "Copenhagen Business School",
+      bio: "Business Administration and Data Science (MSc). Vice President i współzałożyciel PolSoc Denmark, wyróżniony uczestnik AEC Hackathon.",
+      linkedin: "https://www.linkedin.com/in/miko%C5%82aj-pawe%C5%82-sapek-8b5633267",
+      photo: "assets/img/team/mikolaj-sapek.webp"
+    },
+    {
+      name: "Alicja Rudawy",
+      role: "Amsterdam",
+      university: "University of Amsterdam",
+      bio: "Business Administration (BSc).",
+      linkedin: "",
+      photo: "assets/img/team/alicja-rudawy.webp"
+    },
+    {
+      name: "Alicja Dorobis",
+      role: "Amsterdam",
+      university: "University of Amsterdam",
+      bio: "Computational Science (MSc). Współorganizuje zawody triathlonowe w Polsce.",
+      linkedin: "https://www.linkedin.com/in/alicjadorobis/",
+      photo: "assets/img/team/alicja-dorobis.webp"
+    }
   ]
 };
 
