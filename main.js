@@ -8,9 +8,9 @@ const CONFIG = {
   CONTACT_EMAIL: "maks.rokosz@globalpolsoc.com",
   INSTAGRAM_URL: "",
   LINKEDIN_URL: "",
-  // Zespol wraca dopiero z prawdziwymi nazwiskami i zdjeciami - osiem atrap
-  // "Imie Nazwisko" bylo do tej pory widoczne publicznie.
-  SHOW_TEAM: false,
+  // UWAGA: tablica TEAM nizej to wciaz osiem atrap "Imie Nazwisko".
+  // Przed pushem albo wchodza prawdziwe dane, albo ta flaga wraca na false.
+  SHOW_TEAM: true,
   SHOW_PRIZE_POOL: false,
   // Kwoty nagrod nie ma w decku, wiec nie ma jej tez zaszytej w kodzie.
   PRIZE_POOL_LABEL: "",
