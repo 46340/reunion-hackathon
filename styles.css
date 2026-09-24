@@ -247,7 +247,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* --- sekcje --------------------------------------------------------------- */
 
 .section {
-  padding-block: 8.5rem;
+  padding-block: 5rem;
   scroll-margin-top: var(--nav-h);
 }
 
@@ -1155,7 +1155,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 @media (max-width: 900px) {
-  .section { padding-block: 5.5rem; }
+  .section { padding-block: 3.75rem; }
   .slots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   /* Miedzy progiem menu mobilnego a 900 px pelna nawigacja ledwo sie miesci
@@ -1285,7 +1285,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 @media (max-width: 420px) {
   :root { --gutter: 1.25rem; }
-  .section { padding-block: 4.25rem; }
+  .section { padding-block: 3rem; }
   .btn { width: 100%; }
   .btn--sm { width: auto; }
   .btn-row { flex-direction: column; align-items: stretch; }
