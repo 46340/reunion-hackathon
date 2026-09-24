@@ -128,6 +128,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    krotsza miara pilnuje, zeby blok nie urosl ponad trzy linie. */
 .lead--tight { max-width: 46ch; margin-bottom: 3rem; }
 
+/* Naglowki sekcji sa wysrodkowane; hero zostaje wyrownane do lewej obok celownika. */
+.section .kicker,
+.section .h2,
+.section .lead {
+  text-align: center;
+  margin-inline: auto;
+}
+
 /* --- przyciski ------------------------------------------------------------ */
 
 .btn {
@@ -247,7 +255,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* --- sekcje --------------------------------------------------------------- */
 
 .section {
-  border-top: var(--line);
   padding-block: 8.5rem;
   scroll-margin-top: var(--nav-h);
 }
@@ -380,7 +387,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   gap: 2.5rem 3rem;
   margin: 0;
   padding-top: 1rem;
-  border-top: var(--line);
   /* "Warszawa" jest skladana mniejszym stopniem niz "100", wiec bez tego
      jej podpis wisialby wyzej niz pozostale trzy. */
   align-items: end;
@@ -418,6 +424,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   text-transform: uppercase;
   color: var(--ink-60);
   margin: 2.5rem 0 0;
+  text-align: center;
 }
 
 /* --- pas logotypow uczelni ------------------------------------------------ */
@@ -427,7 +434,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .org {
   margin-top: 2.5rem;
   padding-top: 2.5rem;
-  border-top: var(--line);
 }
 
 .org__body { color: var(--ink-60); font-size: 0.98rem; margin: 0; }
@@ -437,8 +443,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-size: 1.05rem;
   font-weight: 500;
   max-width: 62ch;
-  border-left: 2px solid var(--red);
-  padding-left: 1.25rem;
+  margin-inline: auto;
+  text-align: center;
 }
 
 /* --- grafiki -------------------------------------------------------------- */
@@ -478,8 +484,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .logos {
   margin-top: 5rem;
-  border-top: var(--line);
-  border-bottom: var(--line);
   padding-block: 1.6rem;
   overflow: hidden;
 }
@@ -783,7 +787,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   gap: 0.6rem 1.25rem;
   margin-top: 4rem;
   padding-top: 1.5rem;
-  border-top: var(--line);
   font-family: var(--font-mono);
   font-weight: 500;
   font-size: 0.78rem;
@@ -845,7 +848,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   align-items: start;
   margin-top: 4rem;
   padding-top: 3rem;
-  border-top: var(--line);
 }
 
 .kicker--sub { margin-bottom: 0.75rem; }
@@ -898,7 +900,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-style: normal;
   margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: var(--line);
 }
 
 .contact__who {
@@ -1131,7 +1132,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .footer__bottom {
   margin-top: 2.5rem;
   padding-top: 1.5rem;
-  border-top: var(--line);
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.1em;
