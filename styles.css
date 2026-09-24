@@ -128,14 +128,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    krotsza miara pilnuje, zeby blok nie urosl ponad trzy linie. */
 .lead--tight { max-width: 46ch; margin-bottom: 3rem; }
 
-/* Naglowki sekcji sa wysrodkowane; hero zostaje wyrownane do lewej obok celownika. */
-.section .kicker,
-.section .h2,
-.section .lead {
-  text-align: center;
-  margin-inline: auto;
-}
-
 /* --- przyciski ------------------------------------------------------------ */
 
 .btn {
@@ -424,7 +416,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   text-transform: uppercase;
   color: var(--ink-60);
   margin: 2.5rem 0 0;
-  text-align: center;
 }
 
 /* --- pas logotypow uczelni ------------------------------------------------ */
@@ -443,8 +434,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-size: 1.05rem;
   font-weight: 500;
   max-width: 62ch;
-  margin-inline: auto;
-  text-align: center;
 }
 
 /* --- grafiki -------------------------------------------------------------- */
