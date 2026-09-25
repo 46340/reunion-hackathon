@@ -879,6 +879,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 
 .offer__note {
+  scroll-margin-top: calc(var(--nav-h) + 2rem);
   color: var(--ink-60);
   font-size: 0.92rem;
   margin: 1.5rem 0 1.75rem;
@@ -887,7 +888,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .contact {
   font-style: normal;
-  scroll-margin-top: calc(var(--nav-h) + 2rem);
   margin-top: 2rem;
   padding-top: 1.5rem;
 }
