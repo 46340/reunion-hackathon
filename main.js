@@ -62,7 +62,7 @@ const CONFIG = {
       role: "Partnerships",
       university: "University of Amsterdam",
       bio: "",
-      linkedin: "",
+      linkedin: "https://www.linkedin.com/in/alicjarudawy/",
       photo: "assets/img/team/alicja-rudawy.webp"
     },
     {
