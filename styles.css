@@ -1342,3 +1342,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .team__member { text-align: center; }
 .team__photo { display: block; margin-left: auto; margin-right: auto; }
 .team__photo.team__photo--empty { display: grid; }
+
+/* Czerwony box sciezek i kolumna oferty partnerskiej: tresc na srodku. */
+.track-cta { text-align: center; }
+.track-cta__body { margin-left: auto; margin-right: auto; }
+.offer__text { text-align: center; }
+.offer__note { margin-left: auto; margin-right: auto; }
+.offer__text .btn-row { justify-content: center; }
+.tier { text-align: left; }
