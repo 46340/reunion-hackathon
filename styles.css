@@ -1341,3 +1341,4 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 #rekrutacja .btn-row { justify-content: center; }
 .team__member { text-align: center; }
 .team__photo { display: block; margin-left: auto; margin-right: auto; }
+.team__photo.team__photo--empty { display: grid; }
