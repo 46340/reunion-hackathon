@@ -79,7 +79,7 @@ const CONFIG = {
       university: "TU Delft",
       bio: "",
       linkedin: "https://www.linkedin.com/in/jakubpartyka/",
-      photo: ""
+      photo: "assets/img/team/avatar.svg"
     },
   ]
 };
