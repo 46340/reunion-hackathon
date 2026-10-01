@@ -34,6 +34,22 @@ const CONFIG = {
       photo: "assets/img/team/mikolaj-sapek.webp"
     },
     {
+      name: "Maksymilian Rokosz",
+      role: "Partnerships",
+      university: "Imperial College London",
+      bio: "",
+      linkedin: "",
+      photo: ""
+    },
+    {
+      name: "Jakub Pecka",
+      role: "Partnerships",
+      university: "University of Amsterdam",
+      bio: "",
+      linkedin: "",
+      photo: ""
+    },
+    {
       name: "Alicja Rudawy",
       role: "Partnerships",
       university: "University of Amsterdam",
@@ -48,6 +64,14 @@ const CONFIG = {
       bio: "Współorganizuje zawody triathlonowe w Polsce.",
       linkedin: "https://www.linkedin.com/in/alicjadorobis/",
       photo: "assets/img/team/alicja-dorobis.webp"
+    },
+    {
+      name: "Jakub Partyka",
+      role: "Program",
+      university: "TU Delft",
+      bio: "",
+      linkedin: "",
+      photo: ""
     },
     { name: "Imię Nazwisko", role: "Marketing", university: "Uczelnia", bio: "", linkedin: "", photo: "" },
     { name: "Imię Nazwisko", role: "Community", university: "Uczelnia", bio: "", linkedin: "", photo: "" },
