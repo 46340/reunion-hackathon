@@ -1331,3 +1331,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .section > .wrap > .h2,
 .section > .wrap > .lead--tight { text-align: center; }
 .section > .wrap > .h2 { margin-left: auto; margin-right: auto; }
+
+/* Tresc wezsza niz kontener tez na srodku. Bloki na cala szerokosc
+   (siatki kart, zdjecia, agenda, pas faktow, czerwony box) zostaja bez zmian. */
+.figures__note,
+.org { text-align: center; }
+.org__body--pull { margin-left: auto; margin-right: auto; }
+.counters { justify-content: center; }
+#rekrutacja .btn-row { justify-content: center; }
+.team__member { text-align: center; }
+.team__photo { display: block; margin-left: auto; margin-right: auto; }
