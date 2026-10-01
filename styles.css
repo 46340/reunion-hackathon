@@ -1346,7 +1346,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* Czerwony box sciezek i kolumna oferty partnerskiej: tresc na srodku. */
 .track-cta { text-align: center; }
 .track-cta__body { margin-left: auto; margin-right: auto; }
-.offer__text { text-align: center; }
-.offer__note { margin-left: auto; margin-right: auto; }
-.offer__text .btn-row { justify-content: center; }
-.tier { text-align: left; }
+.offer__text > .kicker, .offer__title { text-align: center; }
+
+/* Deck partnerski i kontakt pod oferta, na srodku strony. */
+.offer__cta { text-align: center; margin-top: 3.5rem; }
+.offer__cta .offer__note { margin-left: auto; margin-right: auto; }
+.offer__cta .btn-row { justify-content: center; }
