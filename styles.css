@@ -974,7 +974,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* --- FAQ ------------------------------------------------------------------ */
 
-.faq { border-top: var(--line); max-width: 78ch; }
+.faq { border-top: var(--line); max-width: 78ch; margin-left: auto; margin-right: auto; }
 .faq__item { border-bottom: var(--line); }
 
 .faq__q {
