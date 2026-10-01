@@ -38,7 +38,7 @@ const CONFIG = {
       role: "Operations",
       university: "Copenhagen Business School",
       bio: "",
-      linkedin: "",
+      linkedin: "https://www.linkedin.com/in/hubert-szymanowski/",
       photo: ""
     },
     {
@@ -46,7 +46,7 @@ const CONFIG = {
       role: "Partnerships",
       university: "Imperial College London",
       bio: "",
-      linkedin: "",
+      linkedin: "https://www.linkedin.com/in/maksymilian-rokosz/",
       photo: ""
     },
     {
@@ -54,7 +54,7 @@ const CONFIG = {
       role: "Partnerships",
       university: "University of Amsterdam",
       bio: "",
-      linkedin: "",
+      linkedin: "https://www.linkedin.com/in/jakub-pecka-5b27a3385/",
       photo: ""
     },
     {
@@ -78,7 +78,7 @@ const CONFIG = {
       role: "Program",
       university: "TU Delft",
       bio: "",
-      linkedin: "",
+      linkedin: "https://www.linkedin.com/in/jakubpartyka/",
       photo: ""
     },
   ]
