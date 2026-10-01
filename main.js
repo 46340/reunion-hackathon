@@ -21,7 +21,7 @@ const CONFIG = {
       name: "Adam Bączek",
       role: "Lead",
       university: "Copenhagen Business School",
-      bio: "Prezes i współzałożyciel PolSoc Denmark.",
+      bio: "",
       linkedin: "https://www.linkedin.com/in/adam-b%C4%85czek-269921273",
       photo: "assets/img/team/adam-baczek.webp"
     },
@@ -29,9 +29,17 @@ const CONFIG = {
       name: "Mikołaj Sapek",
       role: "Operations",
       university: "Copenhagen Business School",
-      bio: "Wiceprezes i współzałożyciel PolSoc Denmark.",
+      bio: "",
       linkedin: "https://www.linkedin.com/in/miko%C5%82aj-pawe%C5%82-sapek-8b5633267",
       photo: "assets/img/team/mikolaj-sapek.webp"
+    },
+    {
+      name: "Hubert Szymanowski",
+      role: "Operations",
+      university: "Copenhagen Business School",
+      bio: "",
+      linkedin: "",
+      photo: ""
     },
     {
       name: "Maksymilian Rokosz",
@@ -61,7 +69,7 @@ const CONFIG = {
       name: "Alicja Dorobis",
       role: "Program",
       university: "University of Amsterdam",
-      bio: "Współorganizuje zawody triathlonowe w Polsce.",
+      bio: "",
       linkedin: "https://www.linkedin.com/in/alicjadorobis/",
       photo: "assets/img/team/alicja-dorobis.webp"
     },
@@ -73,10 +81,6 @@ const CONFIG = {
       linkedin: "",
       photo: ""
     },
-    { name: "Imię Nazwisko", role: "Marketing", university: "Uczelnia", bio: "", linkedin: "", photo: "" },
-    { name: "Imię Nazwisko", role: "Community", university: "Uczelnia", bio: "", linkedin: "", photo: "" },
-    { name: "Imię Nazwisko", role: "Tech",      university: "Uczelnia", bio: "", linkedin: "", photo: "" },
-    { name: "Imię Nazwisko", role: "Finance",   university: "Uczelnia", bio: "", linkedin: "", photo: "" }
   ]
 };
 
