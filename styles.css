@@ -124,9 +124,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   margin: 0 0 2rem;
 }
 
-/* Wariant do sekcji, w ktorych proza jest juz tylko podpisem pod dominanta:
-   krotsza miara pilnuje, zeby blok nie urosl ponad trzy linie. */
-.lead--tight { max-width: 46ch; margin-bottom: 3rem; }
+/* Wstep sekcji pod naglowkiem: rozciagniety na cala szerokosc kontenera,
+   zeby nie zostawial pustej prawej polowy strony. */
+.lead--tight { max-width: none; margin-bottom: 3rem; }
 
 /* --- przyciski ------------------------------------------------------------ */
 
