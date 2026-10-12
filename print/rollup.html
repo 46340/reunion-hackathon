@@ -1,0 +1,46 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>Reunion Hackathon · roll-up 85x200</title>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600..900&family=Barlow+Condensed:wght@100;300&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="print.css">
+<style>
+  @page { size: 85cm 200cm; margin: 0; } @media print { body { background: none; } .sheet { zoom: 3.7795; } }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .sheet { width: 850px; height: 2000px; }
+  .top { position: absolute; left: 48px; right: 48px; top: 60px; display: flex; justify-content: space-between; z-index: 2; }
+  #block { position: absolute; left: 0; right: 0; top: 200px; text-align: center; z-index: 2; }
+  .kind { position: absolute; left: 0; right: 0; top: 430px; text-align: center; font-size: 58px; letter-spacing: .38em; padding-left: .38em; z-index: 2; }
+  .ru-globe { left: -140px; width: 1130px; height: 1130px; top: 530px; }
+  .sky { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+  .sky svg { position: absolute; overflow: visible; }
+  .msg { position: absolute; left: 48px; right: 48px; top: 1235px; z-index: 2; }
+  .msg h2 { font-size: 78px; line-height: .98; text-shadow: 0 2px 18px rgba(80,0,10,.25); }
+  .facts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+  .facts li { list-style: none; border: 2px solid #fff; padding: 10px 16px; background: rgba(200,16,46,.55); }
+  .cta { position: absolute; left: 48px; right: 48px; top: 1590px; display: flex; justify-content: space-between; align-items: flex-end; z-index: 2; }
+  .cta .qr { width: 170px; }
+  .cta .mono { font-size: 15px; }
+  .cta b { display: block; font: 900 44px/1 "Big Shoulders Display"; letter-spacing: .01em; text-transform: none; margin-top: 8px; }
+  .safe { position: absolute; left: 0; right: 0; top: 1800px; border-top: 2px dashed rgba(255,255,255,.35); z-index: 2; }
+  .safe span { position: absolute; right: 16px; top: 8px; font: 500 11px "IBM Plex Mono"; letter-spacing: .12em; opacity: .6; }
+</style></head><body>
+<div class="sheet grain" data-shot="rollup-85x200">
+  <div class="globe ru-globe" data-globe></div>
+  <div class="sky" id="sky"></div>
+  <div class="top mono"><span style="display:flex;align-items:center;gap:10px"><img src="../assets/logos/gpss-planet-white.png" alt="" style="width:30px;height:30px">Organizator: GPSS · Edycja 01</span><span>Warszawa · 5–7 lutego 2027</span></div>
+  <div class="block" id="block">REUNION</div>
+  <div class="thin kind">Hackathon</div>
+  <div class="msg">
+    <h2 class="serif">Hackathon dla Polaków studiujących <i>za granicą.</i></h2>
+    <ul class="facts mono"><li>100 miejsc</li><li>48 godzin</li><li>Udział bezpłatny</li><li>Solo lub zespołowo</li></ul>
+  </div>
+  <div class="cta"><div><p class="mono">Aplikuj</p><b>reunion-hackathon.pl</b></div><div class="qr"><img src="qr.svg" alt="QR"></div></div>
+  <div class="safe"><span>strefa za stołem, bez treści</span></div>
+</div>
+<script src="print.js"></script>
+<script>
+  Print.block(document.getElementById("block"), 212);
+  document.querySelector("[data-globe]").innerHTML = Print.globe({ op: .34, arcs: false });
+  // swallows diving home, as on the poster (Trepkowski, "Wracajcie")
+  const flock = [[230, 690, 32, .95], [480, 640, 36, .4], [395, 820, 28, .52], [625, 745, 40, .32], [555, 900, 34, .27], [315, 990, 26, .22]];
+  document.getElementById("sky").innerHTML = `<svg viewBox="0 0 850 2000" style="left:0;top:0;width:850px;height:2000px"><defs><filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="9" dy="14" stdDeviation="5" flood-color="#5a0612" flood-opacity=".32"/></filter></defs><g filter="url(#sh)">${flock.map(([x, y, a, k]) => Print.swallow(x, y, a, k)).join("")}</g></svg>`;
+</script>
+</body></html>

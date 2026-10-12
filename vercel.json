@@ -1,0 +1,5 @@
+{
+  "headers": [
+    { "source": "/(.*)", "missing": [{ "type": "host", "value": "www.reunion-hackathon.pl" }], "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] }
+  ]
+}

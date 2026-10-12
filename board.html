@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reunion · tablica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=Big+Shoulders+Display:wght@500..900&display=swap" rel="stylesheet">
+<!--
+  One split-flap board, three modes (same tiles everywhere, so the intro can land exactly on the hero board):
+    intro.html                      intro: REUNION HACKATHON / WARSZAWA / dates, then the countdown flips in
+    intro.html?mode=countdown       live countdown only (the hero board): WARSZAWA / DDD : HH : MM : SS / date
+    intro.html?lines=a|b|c          static board (agenda and other sections); "*" = red tile
+  Options: embed=1 (transparent, no mark), cw=<px> tile width, cols=<n>, font=<family>, redrow=<n> | reddigits=1,
+           t=<ms> render one still frame (fixed clock), handoff=1 (tell the parent page where the board is at the end).
+-->
+<style>
+  :root { --paper: #F2EDE4; --ink: #17130E; --ink-60: rgba(23,19,14,.6); --red: #C8102E;
+    --cols: 22; --cw: min(2.75vw, 50px); --ch: calc(var(--cw) * 1.3); }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { height: 100%; }
+  body { display: grid; place-items: center; overflow: hidden; font-family: "Archivo", Arial, sans-serif; background: var(--red); }
+  body::after { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .5; mix-blend-mode: multiply;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='5'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 .16'/></feComponentTransfer></filter><rect width='220' height='220' filter='url(%23n)'/></svg>"); }
+  body.embed::after, body.landed::after { display: none; }
+  .stage { display: flex; flex-direction: column; align-items: center; gap: calc(var(--cw) * 1.1); }
+
+  .mark { display: flex; align-items: center; gap: calc(var(--cw) * .45); font-weight: 800; font-stretch: 125%;
+    font-size: calc(var(--cw) * .82); letter-spacing: .03em; color: #fff; transition: opacity .5s; }
+  .mark .sig { width: calc(var(--cw) * 1.35); height: calc(var(--cw) * 1.35); }
+  .blink { animation: blink 1.2s steps(1, end) infinite; }
+  @keyframes blink { 0%, 60% { opacity: 1; } 61%, 100% { opacity: .12; } }
+
+  /* housing: thin black frame, deep soft shadow (Vestaboard) */
+  .board { position: relative; padding: calc(var(--cw) * 1.35) calc(var(--cw) * 1.5);
+    background: linear-gradient(160deg, #1d1c1a 0%, #0c0b0a 45%, #121110 100%);
+    box-shadow: 0 0 0 1px #000, 0 0 0 calc(var(--cw) * .07) #2a2826 inset,
+                0 calc(var(--cw) * 1.1) calc(var(--cw) * 1.6) calc(var(--cw) * -.4) rgba(20,16,10,.55),
+                calc(var(--cw) * .6) calc(var(--cw) * 1.4) calc(var(--cw) * 2.6) rgba(20,16,10,.28); }
+  .board::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(115deg, rgba(255,255,255,.05) 0%, rgba(255,255,255,0) 38%); }
+  .grid { display: grid; grid-template-columns: repeat(var(--cols), var(--cw)); grid-auto-rows: var(--ch);
+    gap: calc(var(--cw) * .42) calc(var(--cw) * .15); }
+
+  /* one split-flap tile */
+  .cell { position: relative; contain: layout paint; font-weight: 540; font-size: calc(var(--ch) * .64);
+    color: #fff; text-shadow: 0 0 1px rgba(255,255,255,.25); }
+  .cell::before { content: ""; position: absolute; left: 4%; right: 4%; bottom: calc(var(--ch) * -.08); height: calc(var(--ch) * .12);
+    border-radius: 0 0 2px 2px; background: repeating-linear-gradient(180deg, #232120 0 1px, #111 1px 2px); }
+  .half, .leaf { position: absolute; left: 0; right: 0; height: 50%; overflow: hidden; backface-visibility: hidden; }
+  .half span, .leaf span { position: absolute; left: 0; right: 0; height: var(--ch); line-height: var(--ch); text-align: center; }
+  .top, .ltop { top: 0; border-radius: 2px 2px 0 0; background: linear-gradient(180deg, #2c2a28, #232120); }
+  .bot, .lbot { bottom: 0; border-radius: 0 0 2px 2px; background: linear-gradient(180deg, #1d1b1a, #161514); }
+  .bot span, .lbot span { top: calc(var(--ch) * -.5); }
+  /* leaves exist only while a tile turns (display: none otherwise), so will-change makes layers only for the few turning ones:
+     the squash then runs on the compositor instead of repainting each leaf every frame */
+  .leaf { display: none; will-change: transform; }
+  .ltop { transform-origin: 50% 100%; z-index: 2; } .lbot { transform-origin: 50% 0; z-index: 2; }
+  .ltop { background: linear-gradient(180deg, #2c2a28, #1a1918); } .lbot { background: linear-gradient(180deg, #121110, #1d1b1a); }
+  .cell::after { content: ""; position: absolute; left: 0; right: 0; top: calc(50% - .5px); height: 1px; z-index: 3; background: rgba(0,0,0,.45); }
+  .top.r, .ltop.r { background: linear-gradient(180deg, #d10f10, #c20506); }
+  .bot.r, .lbot.r { background: linear-gradient(180deg, #b30001, #a00001); }
+  .half.rt span, .leaf.rt span { color: #ff2a24; }
+
+  .ctrl { position: fixed; right: 16px; bottom: 16px; }
+  .ctrl button { font: 500 11px "IBM Plex Mono", monospace; background: var(--ink); color: var(--paper); border: 0; padding: 10px 14px; cursor: pointer; }
+  body.still .ctrl, body.embed .ctrl, body.handoff .ctrl { display: none; }
+  body.still .blink { animation: none; }
+  body.embed { background: transparent; min-height: 0; }
+  body.embed .mark { display: none; }
+  body.embed .board { box-shadow: 0 0 0 1px #000, 0 24px 40px -24px rgba(20,16,10,.5); }
+  body.landed { background: transparent; }
+  body.landed .mark { opacity: 0; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="mark" id="mark"><svg class="sig" viewBox="0 0 48 48" aria-hidden="true"><path d="M21.59 2.01 A22.13 22.13 0 0 0 23.40 46.12" fill="none" stroke="#fff" stroke-width="3.75" stroke-linecap="round"/><path d="M33.58 43.94 A22.13 22.13 0 0 0 32.84 3.72" fill="none" stroke="#fff" stroke-width="3.75" stroke-linecap="round"/><circle class="blink" cx="27.72" cy="24" r="4.39" fill="#fff"/></svg><span>REUNION HACKATHON</span></div>
+  <div class="board" id="board" role="img" aria-label="Tablica przylotów: polscy studenci z siedmiu krajów lądują w Warszawie. Odliczanie do startu Reunion Hackathon, Warszawa, 5-7 lutego 2027.">
+    <div class="grid" id="grid" aria-hidden="true"></div>
+  </div>
+</div>
+<div class="ctrl"><button id="replay">↻ powtórz</button></div>
+
+<script>
+const Q = new URLSearchParams(location.search);
+const MODE = Q.has("lines") ? "static" : (Q.get("mode") || "intro");
+const COLS = +(Q.get("cols") || 22), FLIP = MODE === "intro" ? 120 : 85, RED = "●";   // intro flaps a little slower, so the letters can be read
+const STATIC = MODE === "static" ? Q.get("lines").split("|") : null;
+const ROWS = STATIC ? STATIC.length : 5;
+document.documentElement.style.setProperty("--cols", COLS);
+const pad = (s) => (s + " ".repeat(COLS)).slice(0, COLS);
+const EN = Q.get("lang") === "en";
+const CITY = EN ? "WARSAW" : "WARSZAWA", DATES = EN ? (COLS < 17 ? "5-7 FEB 2027" : "5-7 FEBRUARY 2027") : "5-7 LUTEGO 2027";
+if (EN) { document.documentElement.lang = "en"; document.getElementById("board").setAttribute("aria-label", "Reunion Hackathon, Warsaw, 5-7 February 2027: countdown to the start."); }
+const mid = (s) => pad(" ".repeat(Math.max(0, Math.floor((COLS - s.length) / 2))) + s);
+
+// ---------------------------------------------------------------- content
+// intro title card: the event, the city and the dates; WARSZAWA and the dates sit where the countdown keeps them
+const TITLE = () => [mid("REUNION HACKATHON"), mid(CITY), "", mid(DATES), ""].map(pad);
+// countdown board: WARSZAWA / DDD : HH : MM : SS (red) / date, the same rows as the hero board
+const START = Date.parse("2027-02-05T16:00:00+01:00");          // opening, hour to confirm
+const CD_ROW = 2;
+function cdRows(now) {
+  let s = Math.max(0, Math.floor((START - now) / 1000));
+  const d = Math.floor(s / 86400); s %= 86400;
+  const two = (n) => String(n).padStart(2, "0");
+  const sep = COLS < 19 ? ":" : " : ";                             // narrow boards (mobile) drop the spaces
+  return ["", mid(CITY), mid([String(d).padStart(3, "0"), two(Math.floor(s / 3600)), two(Math.floor(s / 60) % 60), two(s % 60)].join(sep)),
+          mid(DATES), ""].map(pad);
+}
+
+// ---------------------------------------------------------------- flip schedule (deterministic, so any frame can be rendered)
+const GLYPHS = "ABCDEFGHIJKLMNOPRSTUWYZ0123456789";
+function rand(seed) { const x = Math.sin(seed * 12.9898) * 43758.5453; return x - Math.floor(x); }
+const schedule = Array.from({ length: ROWS }, () => Array.from({ length: COLS }, () => [{ t: -1, ch: " " }]));
+const until = new Float64Array(ROWS * COLS);   // when each tile stops moving; settled tiles are skipped per frame
+let busyEnd = 0, fresh = new Set();              // fresh: tiles given new flips since their last settled frame
+function flipTo(r, c, target, t0, spins) {
+  const s = schedule[r][c];
+  if (s[s.length - 1].ch === target) return;
+  for (let k = 1; k <= spins; k++) s.push({ t: t0 + k * FLIP, ch: GLYPHS[Math.floor(rand(r * 97 + c * 13 + t0 + k) * GLYPHS.length)] });
+  s.push({ t: t0 + (spins + 1) * FLIP, ch: target });
+  until[r * COLS + c] = t0 + (spins + 2) * FLIP; busyEnd = Math.max(busyEnd, until[r * COLS + c]); fresh.add(r * COLS + c);
+}
+function writePage(lines, t0, rowGap, colGap, spin, jitter = 4) {
+  lines.forEach((line, r) => [...pad(line)].forEach((ch, c) =>
+    flipTo(r, c, ch, t0 + r * rowGap + c * colGap, spin + Math.floor(rand(r * 31 + c + t0) * jitter))));
+}
+
+const still = Q.has("t");
+let wall0 = still ? Date.parse("2026-10-01T12:00:00+02:00") : Date.now();   // fixed clock for stills
+let CD_AT = 0, LAND_AT = 0;
+const cdSettle = Array(COLS).fill(0);
+// the agenda turns in a slower wave (user, 2026-10-13): about 20 tiles move at once instead of about 90, so phones keep every frame
+if (MODE === "static") writePage(STATIC.map(l => l.replace(/\*/g, RED)), ...(Q.has("play") ? [250, 110, 28, 1, 2] : [0, 0, 0, 0]));
+else if (MODE === "countdown") { writePage(cdRows(wall0), 0, 0, 0, 0); CD_AT = 0; }
+else {
+  // a short title card instead of the country arrivals (user, 2026-10-12): the title flips away and the countdown flips in
+  writePage(TITLE(), 450, 90, 11, 1, 2);                                                   // 0.45 - 1.3 s  title card, held about 1 s
+  CD_AT = 2400;                                                                            // 2.4 - 3.8 s   the board becomes the countdown
+  writePage(cdRows(wall0 + CD_AT), CD_AT, 90, 16, 3);
+  schedule[CD_ROW].forEach((s, c) => cdSettle[c] = s[s.length - 1].t);                   // red only once a tile shows its countdown digit
+  LAND_AT = CD_AT + 5 * 90 + COLS * 16 + 7 * FLIP + 250;
+}
+let lastCd = MODE === "static" ? "" : cdRows(wall0 + CD_AT)[CD_ROW];
+function tick(t) {   // live countdown: only the tiles that change flip, once a second
+  if (MODE === "static" || still || t < LAND_AT) return;   // in countdown mode LAND_AT = 0
+  const line = cdRows(Date.now())[CD_ROW];                         // real clock: iframes may start drawing late
+  if (line === lastCd) return;
+  lastCd = line;
+  [...line].forEach((ch, c) => flipTo(CD_ROW, c, ch, t, 0));
+}
+
+// ---------------------------------------------------------------- tiles
+const grid = document.getElementById("grid");
+const cells = [];
+for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+  const el = document.createElement("div");
+  el.className = "cell";
+  el.innerHTML = '<div class="half top"><span></span></div><div class="half bot"><span></span></div><div class="leaf ltop"><span></span></div><div class="leaf lbot"><span></span></div>';
+  grid.appendChild(el);
+  const [top, bot, ltop, lbot] = el.children;
+  cells.push({ r, c, el, top, bot, ltop, lbot, key: "" });
+}
+// red glyphs: the countdown row (intro after CD_AT, countdown mode always), or what the page asks for
+const redRow = Q.has("redrow") ? +Q.get("redrow") : (MODE === "static" ? -1 : CD_ROW);
+const redAll = Q.has("reddigits");
+function face(cell, half, ch, t) {
+  half.classList.toggle("r", ch === RED);
+  const redGlyph = ch === ";" || (/[0-9:]/.test(ch) && (redAll || (cell.r === redRow && t >= Math.max(CD_AT, cdSettle[cell.c]))));
+  half.classList.toggle("rt", redGlyph);
+  half.firstChild.textContent = ch === RED ? "" : ch;
+}
+// sound: tell the parent page how many flaps started since the last frame (it plays the clacks)
+let heardUntil = -1;
+function flapsSince(t) {
+  let n = 0;
+  for (const row of schedule) for (const s of row) for (const e of s) if (e.t > heardUntil && e.t <= t) n++;
+  heardUntil = t;
+  return n;
+}
+function renderAt(t) {
+  tick(t);
+  if (MODE === "intro" && !still && parent !== window) { const n = flapsSince(t); if (n) try { parent.ReunionSound && parent.ReunionSound.flips(n); } catch (e) { /* cross-origin */ } }
+  for (const cell of cells) {
+    const idx = cell.r * COLS + cell.c;
+    if (cell.key && t >= until[idx] && !fresh.has(idx)) continue;   // settled and already drawn
+    const s = schedule[cell.r][cell.c];
+    let i = 0; while (i + 1 < s.length && s[i + 1].t <= t) i++;
+    const cur = s[i].ch, prev = i ? s[i - 1].ch : " ";
+    const p = i ? Math.min(1, (t - s[i].t) / FLIP) : 1;
+    // faces (text, colours, which leaf shows) change only a few times per flap; per frame only the leaf's squash moves
+    const phase = p >= 1 ? 2 : p < 0.5 ? 0 : 1;
+    if (phase === 2 && t >= until[idx]) fresh.delete(idx);   // drawn settled this frame, skipped from the next
+    const key = cur + prev + phase + (t >= cdSettle[cell.c]) + (t >= CD_AT);
+    const leaf = phase === 0 ? cell.ltop : cell.lbot;
+    if (key !== cell.key) {
+      cell.key = key;
+      face(cell, cell.top, cur, t); face(cell, cell.bot, phase === 0 ? prev : cur, t);
+      if (phase === 2) { cell.ltop.style.display = cell.lbot.style.display = "none"; continue; }
+      face(cell, leaf, phase === 0 ? prev : cur, t);
+      (phase === 0 ? cell.lbot : cell.ltop).style.display = "none"; leaf.style.display = "block";
+    }
+    if (phase < 2) leaf.style.transform = `scaleY(${(phase === 0 ? 1 - 2 * p : 2 * p - 1).toFixed(3)})`;   // 2D squash only
+  }
+  if (MODE === "intro") {
+    const e = Math.min(1, Math.max(0, t / 225));
+    const board = document.getElementById("board");
+    board.style.opacity = e; board.style.transform = `translateY(${(1 - e) * 18}px)`;
+    document.getElementById("mark").style.opacity = document.body.classList.contains("landed") ? 0 : e;
+    if (t >= LAND_AT && !announced) announce();
+  }
+}
+// handoff: tell the parent page where the board is, it flies it onto the hero board
+let announced = false;
+function announce() {
+  announced = true;
+  if (!Q.has("handoff") || parent === window) return;
+  const r = document.getElementById("board").getBoundingClientRect();
+  parent.postMessage({ type: "reunion-board-ready", rect: { left: r.left, top: r.top, width: r.width, height: r.height } }, "*");
+}
+addEventListener("message", (e) => { if (e.data && e.data.type === "reunion-land") document.body.classList.add("landed"); });
+
+// ---------------------------------------------------------------- run
+if (Q.has("font")) { const st = document.createElement("style"); st.textContent = `.cell { font-family: "${Q.get("font")}", sans-serif; font-stretch: normal; font-weight: 700; font-size: calc(var(--ch) * .8); }`; document.head.appendChild(st); }
+if (Q.has("embed")) { document.body.classList.add("embed"); if (Q.has("cw")) document.documentElement.style.setProperty("--cw", Q.get("cw") + "px"); }
+if (Q.has("handoff")) document.body.classList.add("handoff");
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+let start, raf, warp = null;   // warp: a click fast-forwards the intro at WARP x speed until it lands
+const WARP = 5;
+function loop(now) {
+  if (start == null) start = now;
+  let t = now - start;
+  if (warp) { t = warp.t + (now - warp.at) * WARP; if (t >= LAND_AT) { start = now - t; warp = null; } }
+  renderAt(t);
+  if (t < busyEnd || (MODE === "intro" && !announced)) { raf = requestAnimationFrame(loop); return; }
+  if (MODE === "static") return;                                   // nothing will ever change again
+  if (!onScreen || document.hidden) { asleep = true; return; }       // countdown off screen or tab hidden: sleep until it is back
+  setTimeout(() => (raf = requestAnimationFrame(loop)), 1000 - (Date.now() % 1000) + 5);   // wake on the next second
+}
+// the hero countdown sleeps while it is scrolled away or the tab is hidden, then catches up (it reads the real clock)
+let onScreen = true, asleep = false;
+const wake = () => { if (asleep && onScreen && !document.hidden) { asleep = false; raf = requestAnimationFrame(loop); } };
+new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; wake(); }).observe(document.body);
+document.addEventListener("visibilitychange", wake);
+function play() { cancelAnimationFrame(raf); start = null; announced = false; document.body.classList.remove("landed"); raf = requestAnimationFrame(loop); }
+if (still) { document.body.classList.add("still"); renderAt(+Q.get("t")); }
+else if (reduce && MODE === "intro") { start = performance.now() - LAND_AT; raf = requestAnimationFrame(loop); }
+else if (Q.has("wait")) {   // loaded ahead of time: show blank tiles, flip only when the page says the board is on screen
+  renderAt(0);
+  addEventListener("message", function go(e) { if (e.data && e.data.type === "reunion-play") { removeEventListener("message", go); play(); } });
+}
+else play();
+// click or key skips the intro to the countdown
+const skip = () => {   // fast-forward, not a jump: the rest of the board flips in under a second (and clatters, once the tap has turned the sound on)
+  if (MODE !== "intro" || start == null || warp) return;
+  const now = performance.now(), t = now - start;
+  if (t < LAND_AT) warp = { at: now, t };
+};
+addEventListener("click", (e) => e.target.id !== "replay" && skip());
+addEventListener("keydown", skip);
+document.getElementById("replay").addEventListener("click", (e) => { e.stopPropagation(); if (MODE === "intro") play(); });
+</script>
+</body>
+</html>

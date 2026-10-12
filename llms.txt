@@ -1,0 +1,21 @@
+# Reunion Hackathon
+
+> A 48-hour hackathon in Warsaw, 5–7 February 2027, for 100 Polish students and recent graduates of universities abroad. Theme: AI transformation. Free to take part, with selection by application. Organised by Global Polish Student Society (GPSS).
+
+- Dates: 5–7 February 2027. Friday 16:00 registration, 17:00 opening gala, 20:00 coding starts; Saturday 12:00 pitching workshop; Sunday 15:30 closing gala.
+- Place: Warsaw, Poland. The exact venue will be announced before applications open.
+- Who: 100 places for Polish students and recent graduates of universities abroad, mainly computer science, AI/ML, engineering and data science. Apply solo or as a team.
+- Cost: free.
+- Language: Polish; some workshops and materials may be in English.
+- Tracks: AI for people, AI in business and AI in government (partner tracks), plus an open track for a partner's own challenge.
+- Applications: opening soon; the form will appear on the website.
+- Partners: four packages (Title Sponsor, Track Partner, Supporting Partner, Patron). Contact: maks.rokosz@globalpolsoc.com
+
+## Pages
+
+- [Reunion Hackathon (Polish)](https://www.reunion-hackathon.pl/): the full event page in Polish
+- [Reunion Hackathon (English)](https://www.reunion-hackathon.pl/en.html): the full event page in English
+
+## Organiser
+
+- [Global Polish Student Society](https://globalpolsoc.com): network of Polish students abroad

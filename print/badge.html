@@ -1,0 +1,87 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>Reunion Hackathon · identyfikatory i smycze</title>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600..900&family=Barlow+Condensed:wght@100;300&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="print.css">
+<style>
+  /* badge 90 x 130 mm, drawn at 4 px per mm (360 x 520) */
+  body { background: #EDE8E0; }
+  .badge { position: relative; width: 360px; height: 520px; background: #fff; color: var(--ink); overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 20px 40px -24px rgba(20,16,10,.5); }
+  .badge .slot { position: absolute; left: 50%; top: 14px; width: 64px; height: 12px; margin-left: -32px; border-radius: 6px; background: #EDE8E0; box-shadow: inset 0 1px 2px rgba(0,0,0,.25); z-index: 3; }
+  .badge .top { position: relative; overflow: hidden; height: 212px; background: var(--red); color: #fff; padding: 40px 22px 0; }
+  .badge .top .lockup { font-size: 12px; position: absolute; left: 22px; right: 22px; top: 40px; justify-content: space-between; display: flex; }
+  .badge .top .lockup .by { border-left: 0; }
+  .badge .top .blk { position: absolute; left: 0; right: 0; top: 76px; text-align: center; }
+  .badge .top .kind { position: absolute; left: 0; right: 0; top: 154px; text-align: center; font-size: 22px; letter-spacing: .38em; padding-left: .38em; }
+  .badge .top .g { position: absolute; left: -30px; right: -30px; bottom: -300px; height: 420px; opacity: .22; }
+  .badge .top .g svg { width: 100%; height: 100%; }
+  .badge .body { flex: 1; padding: 20px 22px 0; display: flex; flex-direction: column; }
+  .badge dt { font: 500 9px "IBM Plex Mono"; letter-spacing: .18em; text-transform: uppercase; color: rgba(20,18,16,.6); }
+  .badge .name { font: 900 38px/.95 "Big Shoulders Display"; text-transform: uppercase; margin-top: 4px; }
+  .badge .name.tpl { color: rgba(20,18,16,.38); }
+  .badge .school { font: 500 11px "IBM Plex Mono"; letter-spacing: .06em; margin-top: 8px; color: rgba(20,18,16,.7); }
+  .badge .row { display: flex; justify-content: space-between; align-items: flex-end; margin-top: auto; padding: 12px 0 14px; border-top: 2px solid var(--ink); }
+  .badge .row dd { font: 800 22px/1 "Big Shoulders Display"; text-transform: uppercase; margin-top: 3px; }
+  .badge .row .seat dd { font: 100 52px/.8 "Barlow Condensed"; color: var(--red); }
+  .badge .role { height: 58px; display: flex; align-items: center; justify-content: space-between; padding: 0 22px; font: 900 30px/1 "Big Shoulders Display"; letter-spacing: .08em; text-transform: uppercase; }
+  .badge .role span { font: 600 10px "IBM Plex Mono"; letter-spacing: .16em; }
+  .role.uczestnik { background: var(--red); color: #fff; }
+  .role.zaloga { background: var(--ink); color: #fff; }
+  .role.mentor { background: #fff; color: var(--red); box-shadow: inset 0 0 0 4px var(--red); }
+  .role.jury { background: var(--pink); color: var(--red); }
+  .role.partner { background: #fff; color: var(--ink); box-shadow: inset 0 0 0 4px var(--ink); }
+  .badges { display: flex; gap: 28px; padding: 40px; }
+
+  /* lanyard, 20 mm wide, one repeat is 280 mm, drawn at 4 px per mm */
+  .lanyard { width: 1120px; height: 80px; position: relative; overflow: hidden; display: flex; align-items: center; gap: 28px; padding: 0 20px; white-space: nowrap; }
+  .lanyard.red { background: var(--red); color: #fff; }
+  .lanyard.ink { background: var(--ink); color: #fff; }
+  .lanyard.white { background: #fff; color: var(--red); box-shadow: inset 0 0 0 1px rgba(20,18,16,.12); }
+  .lanyard .t { font: 900 34px/1 "Big Shoulders Display"; letter-spacing: .06em; text-transform: uppercase; }
+  .lanyard .m { font: 600 15px "IBM Plex Mono"; letter-spacing: .2em; text-transform: uppercase; }
+  .lanyard svg.mk { width: 38px; height: 38px; flex: none; }
+  .lanyard svg.sw { width: 54px; height: 40px; flex: none; overflow: visible; }
+  .lanyard img { width: 40px; height: 40px; flex: none; }
+  .lanyards { display: grid; gap: 22px; padding: 40px; }
+</style></head><body>
+<div class="badges" id="badges"></div>
+<div class="lanyards" id="lanyards"></div>
+<script src="print.js"></script>
+<script>
+  const badge = (role, label, name, school, team, seat, from) => `
+    <article class="badge" data-shot="badge-${role}">
+      <i class="slot"></i>
+      <div class="top grain">
+        <div class="g">${Print.globe({ op: 1, width: 6, arcs: false })}</div>
+        <div class="lockup"><span style="display:flex;align-items:center;gap:.45em">${Print.mark()}Edycja 01</span><span class="by">${Print.gpss("white")}</span></div>
+        <div class="blk"><div class="block" data-px="64">REUNION</div></div>
+        <div class="thin kind">Hackathon</div>
+      </div>
+      <div class="body">
+        <dt>${role === "uczestnik" ? "Pasażer" : "Imię i nazwisko"}</dt>
+        <div class="name ${name ? "" : "tpl"}">${name || "Imię<br>Nazwisko"}</div>
+        <p class="school">${school}</p>
+        <dl class="row">${seat ? `
+          <div class="seat"><dt>Miejsce</dt><dd>${seat}</dd></div>
+          <div><dt>Trasa</dt><dd>${from} → WAW</dd></div>
+          <div style="text-align:right"><dt>Zespół</dt><dd>${team}</dd></div>` : `
+          <div><dt>Organizacja</dt><dd>${team}</dd></div>
+          <div style="text-align:right"><dt>Edycja</dt><dd>01 · Warszawa</dd></div>`}
+        </dl>
+      </div>
+      <div class="role ${role}">${label}<span>05–07.02.2027</span></div>
+    </article>`;
+  document.getElementById("badges").innerHTML = [
+    badge("uczestnik", "Uczestnik", "", "Uczelnia", "—", "042", "LHR"),
+    badge("zaloga", "Załoga", "Mikołaj<br>Sapek", "Operations", "GPSS"),
+    badge("mentor", "Mentor", "", "Stanowisko", "Firma"),
+    badge("jury", "Jury", "", "Stanowisko", "Firma"),
+    badge("partner", "Partner", "", "Stanowisko", "Firma"),
+  ].join("");
+  document.querySelectorAll(".block[data-px]").forEach((el) => Print.block(el, +el.dataset.px, 14));
+
+  // lanyard repeat: name, mark, swallow, dates, return(home);
+  const sw = (fill) => `<svg class="sw" viewBox="-110 -100 190 180">${Print.swallow(0, 0, 0, 1, fill)}</svg>`;
+  const lan = (cls, a, b, planet) => `<div class="lanyard ${cls}" data-shot="lanyard-${cls}">${[0, 1].map(() =>
+    `${Print.mark(a, b).replace("<svg", '<svg class="mk"')}<span class="t">Reunion Hackathon</span>${sw(b)}<span class="m">Warszawa · 5–7.02.2027</span>${Print.gpss(planet)}<span class="m">return(home);</span>${sw(b)}`).join("")}</div>`;
+  document.getElementById("lanyards").innerHTML = lan("red", "#fff", "#fff", "white") + lan("ink", "#fff", "#C8102E", "white") + lan("white", "#141210", "#C8102E", "red");
+</script>
+</body></html>

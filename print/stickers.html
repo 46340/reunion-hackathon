@@ -1,0 +1,57 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>Reunion Hackathon · naklejki</title>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600..900&family=Barlow+Condensed:wght@100;300&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="print.css">
+<style>
+  /* sticker sheet, 4 px per mm; every sticker sits in a white die-cut border */
+  body { background: #EDE8E0; }
+  .sheet-st { display: flex; flex-wrap: wrap; gap: 36px; padding: 44px; width: 1300px; align-items: center; }
+  .st { position: relative; flex: none; filter: drop-shadow(0 10px 14px rgba(20,16,10,.22)); }
+  .st svg { display: block; overflow: visible; }
+  .st text { font-family: "IBM Plex Mono"; font-weight: 600; }
+  .air { width: 400px; height: 260px; background: #fff; border-radius: 14px; padding: 12px;
+    background-image: repeating-linear-gradient(135deg, var(--red) 0 22px, #fff 22px 34px, var(--ink) 34px 56px, #fff 56px 68px); }
+  .air .in { height: 100%; background: #fff; border-radius: 6px; display: grid; grid-template-columns: 1fr auto; padding: 16px 20px; position: relative; overflow: hidden; }
+  .air .k { font: 600 12px "IBM Plex Mono"; letter-spacing: .2em; text-transform: uppercase; color: var(--red); }
+  .air .big { font: 900 112px/.8 "Big Shoulders Display"; color: var(--red); margin-top: 14px; }
+  .air .sub { font: 500 12px "IBM Plex Mono"; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); margin-top: 12px; }
+  .air .stamp { width: 96px; height: 96px; border: 3px solid var(--red); border-radius: 50%; display: grid; place-items: center; text-align: center; color: var(--red); transform: rotate(-12deg); align-self: start; font: 800 15px/1 "Big Shoulders Display"; letter-spacing: .06em; text-transform: uppercase; }
+  .term { width: 420px; background: var(--ink); color: #fff; border-radius: 12px; box-shadow: 0 0 0 12px #fff; padding: 0 0 26px; font: 600 30px "IBM Plex Mono"; }
+  .term .bar { display: flex; gap: 8px; padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,.15); font-size: 12px; letter-spacing: .1em; color: rgba(255,255,255,.55); align-items: center; }
+  .term .bar i { width: 11px; height: 11px; border-radius: 50%; background: rgba(255,255,255,.3); }
+  .term .bar i:first-child { background: var(--red); }
+  .term p { padding: 24px 24px 0; } .term .dim { color: rgba(255,255,255,.5); } .term .k { color: #ff4a4a; }
+  .term .cur { display: inline-block; width: 18px; height: 32px; background: var(--red); vertical-align: -5px; margin-left: 4px; }
+  .flap { display: flex; gap: 6px; background: #1b1916; padding: 14px; border-radius: 10px; box-shadow: 0 0 0 12px #fff; }
+  .flap b { position: relative; width: 84px; height: 112px; background: linear-gradient(#2a2724 50%, #24211e 50%); color: #fff; font: 800 92px/112px "Big Shoulders Display"; text-align: center; border-radius: 6px; }
+  .flap b::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: #0d0c0b; }
+  .flap b.r { color: #ff3b4e; }
+  .tall { width: 230px; height: 330px; background: var(--red); color: #fff; border-radius: 14px; box-shadow: 0 0 0 12px #fff; position: relative; overflow: hidden; text-align: center; }
+  .tall .n { font: 100 150px/.8 "Barlow Condensed"; margin-top: 46px; letter-spacing: -.02em; }
+  .tall .m { font: 600 13px "IBM Plex Mono"; letter-spacing: .2em; margin-top: 16px; }
+  .tall .g { position: absolute; left: -40px; right: -40px; bottom: -190px; height: 310px; opacity: .3; } .tall .g svg { width: 100%; height: 100%; }
+</style></head><body>
+<div class="sheet-st" id="sheet"></div>
+<script src="print.js"></script>
+<script>
+  const ring = (r, text, fill) => `<defs><path id="rp${r}" d="M ${-r} 0 A ${r} ${r} 0 1 1 ${r} 0 A ${r} ${r} 0 1 1 ${-r} 0"/></defs><text font-size="15" letter-spacing="5.2" fill="${fill}"><textPath href="#rp${r}" startOffset="0">${text}</textPath></text>`;
+  const st = (name, html) => `<div class="st" data-shot="sticker-${name}">${html}</div>`;
+  const mark = Print.mark("#fff").replace('viewBox="0 0 48 48"', 'x="-58" y="-58" width="116" height="116" viewBox="0 0 48 48"');
+  const swallowCut = `<svg width="300" height="230" viewBox="-130 -110 230 200"><g stroke="#fff" stroke-width="18" stroke-linejoin="round">${Print.swallow(0, 0, 0, 1, "#fff")}</g>${Print.swallow(0, 0, 0, 1, "#C8102E")}</svg>`;
+  document.getElementById("sheet").innerHTML = [
+    // 1. round: Reunion mark, name around it
+    st("okragla", `<svg width="300" height="300" viewBox="-150 -150 300 300"><circle r="148" fill="#fff"/><circle r="136" fill="#C8102E"/>${ring(104, "REUNION HACKATHON · WARSZAWA · 5–7.02.2027 ·", "#fff")}${mark}</svg>`),
+    // 2. airmail luggage label
+    st("bagaz", `<div class="air"><div class="in"><div><div class="k">Bagaż · Poczta lotnicza</div><div class="big">WAW</div><div class="sub">Reunion Hackathon<br>5–7.02.2027</div></div><div class="stamp">Wracam<br>do domu</div></div></div>`),
+    // 3. code
+    st("kod", `<div class="term"><div class="bar"><i></i><i></i><i></i><span style="margin-left:8px">reunion.js</span></div><p><span class="k">return</span>(home);<span class="cur"></span></p></div>`),
+    // 4. swallow die-cut
+    st("jaskolka", swallowCut),
+    // 5. split-flap WAW
+    st("tablica", `<div class="flap"><b>W</b><b>A</b><b>W</b><b class="r">27</b></div>`),
+    // 6. 100 seats
+    st("100", `<div class="tall grain"><div class="g">${Print.globe({ op: 1, width: 7, arcs: false })}</div><div class="n">100</div><p class="m">MIEJSC · 48H</p><p class="m" style="margin-top:6px;opacity:.75">WARSZAWA 2027</p></div>`),
+    // 7. GPSS planet round
+    st("gpss", `<svg width="300" height="300" viewBox="-150 -150 300 300"><circle r="148" fill="#fff"/><circle r="136" fill="#fff" stroke="#C8102E" stroke-width="3"/>${ring(112, "GLOBAL POLISH STUDENT SOCIETY · ORGANIZATOR ·", "#C8102E")}<image href="../assets/logos/gpss-planet-red.png" x="-80" y="-80" width="160" height="160"/></svg>`),
+  ].join("");
+</script>
+</body></html>

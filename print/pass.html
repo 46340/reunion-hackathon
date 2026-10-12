@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Reunion Hackathon · karta pokładowa</title>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600..900&family=Barlow+Condensed:wght@100;300&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="print.css">
+<style>
+  /* ?view=invite (the page an accepted person sees) or ?view=story (1080x1920 for Instagram), ?from=LHR&seat=042&name=... */
+  body { background: #EDE8E0; margin: 0; }
+  .pass { position: relative; display: grid; grid-template-columns: 1fr 230px; background: var(--red); color: #fff; overflow: hidden; }
+  .pass .main { padding: 30px 34px 28px; position: relative; }
+  .pass .stub { position: relative; padding: 30px 26px 28px; border-left: 3px dashed rgba(255,255,255,.45); display: flex; flex-direction: column; justify-content: space-between; }
+  .pass .stub::before, .pass .stub::after { content: ""; position: absolute; left: -16px; width: 30px; height: 30px; border-radius: 50%; background: var(--bg, #EDE8E0); }
+  .pass .stub::before { top: -15px; } .pass .stub::after { bottom: -15px; }
+  .brand { display: flex; align-items: center; justify-content: space-between; font: 600 12px "IBM Plex Mono"; letter-spacing: .18em; text-transform: uppercase; }
+  .brand b { font: 900 22px/1 "Big Shoulders Display"; letter-spacing: .04em; }
+  .route { display: grid; grid-template-columns: auto 1fr auto; align-items: end; gap: 20px; margin-top: 26px; }
+  .iata { font: 900 108px/.8 "Big Shoulders Display"; letter-spacing: .01em; }
+  .iata.to { text-shadow: var(--x); }
+  .city { font: 500 12px "IBM Plex Mono"; letter-spacing: .16em; text-transform: uppercase; margin-top: 10px; opacity: .85; }
+  .path { position: relative; height: 70px; }
+  .path svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .fields { display: grid; grid-template-columns: repeat(4, auto); justify-content: space-between; gap: 16px 22px; margin-top: 28px; border-top: 2px solid rgba(255,255,255,.4); padding-top: 16px; }
+  .f dt { font: 500 10px "IBM Plex Mono"; letter-spacing: .18em; text-transform: uppercase; opacity: .75; }
+  .f dd { font: 800 26px/1.1 "Big Shoulders Display"; letter-spacing: .02em; text-transform: uppercase; margin-top: 4px; }
+  .f dd.tpl { opacity: .55; }
+  .stub .seat dt { font: 500 10px "IBM Plex Mono"; letter-spacing: .18em; opacity: .75; }
+  .stub .seat dd { font: 100 96px/.85 "Barlow Condensed"; margin-top: 6px; }
+  .stub .seat span { font: 500 12px "IBM Plex Mono"; letter-spacing: .14em; opacity: .75; }
+  .ret { font: 600 15px "IBM Plex Mono"; }
+  .bars { display: flex; gap: 2px; height: 46px; align-items: stretch; margin-top: 10px; }
+  .bars i { background: #fff; display: block; }
+  .grainy::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .25;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='5'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 .16'/></feComponentTransfer></filter><rect width='220' height='220' filter='url(%23n)'/></svg>"); }
+
+  /* invitation page */
+  .invite { width: 1200px; padding: 70px 80px; font-family: "IBM Plex Mono"; color: var(--ink); background: #FBF9F5; --bg: #FBF9F5; }
+  .invite .label { color: var(--red); font: 500 13px "IBM Plex Mono"; letter-spacing: .2em; text-transform: uppercase; }
+  .invite h1 { font: 400 54px/1.05 "Instrument Serif"; margin: 14px 0 34px; } .invite h1 em { color: var(--red); }
+  .invite .pass { width: 1040px; box-shadow: 0 24px 60px -24px rgba(20,16,10,.45); }
+  .actions { display: flex; gap: 14px; margin-top: 34px; flex-wrap: wrap; }
+  .actions a { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 22px; font: 600 13px "IBM Plex Mono"; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; border: 2px solid var(--ink); color: var(--ink); }
+  .actions a.primary { background: var(--red); border-color: var(--red); color: #fff; }
+  .note { margin-top: 18px; font-size: 13px; color: rgba(20,18,16,.62); max-width: 70ch; }
+
+  /* Instagram story */
+  .story { width: 1080px; height: 1920px; position: relative; overflow: hidden; background: var(--red); --bg: var(--red); color: #fff; }
+  .story .head { position: absolute; left: 80px; right: 80px; top: 120px; display: flex; justify-content: space-between; font: 600 22px "IBM Plex Mono"; letter-spacing: .18em; }
+  .story .say { position: absolute; left: 80px; right: 80px; top: 230px; font: 400 104px/1 "Instrument Serif"; }
+  .story .say em { font-style: italic; }
+  .story .pass { position: absolute; left: 60px; right: 60px; top: 560px; grid-template-columns: 1fr; background: #fff; color: var(--ink); --bg: var(--red); box-shadow: 0 40px 80px -30px rgba(60,0,10,.55); }
+  .story .pass .stub { border-left: 0; border-top: 4px dashed rgba(20,18,16,.25); flex-direction: row; align-items: flex-end; }
+  .story .pass .stub::before, .story .pass .stub::after { top: -18px; left: auto; width: 36px; height: 36px; }
+  .story .pass .stub::before { left: -18px; } .story .pass .stub::after { right: -18px; bottom: auto; }
+  .story .pass .main { padding: 46px 50px 40px; }
+  .story .pass .stub { padding: 40px 50px 46px; justify-content: space-between; gap: 30px; }
+  .story .iata { font-size: 170px; color: var(--ink); } .story .iata.to { color: var(--red); text-shadow: none; }
+  .story .brand { font-size: 18px; color: var(--red); } .story .brand b { font-size: 34px; color: var(--ink); }
+  .story .city { font-size: 18px; color: rgba(20,18,16,.6); opacity: 1; }
+  .story .fields { border-top-color: rgba(20,18,16,.18); grid-template-columns: repeat(2, 1fr); }
+  .story .f dt { font-size: 15px; color: rgba(20,18,16,.6); opacity: 1; } .story .f dd { font-size: 44px; }
+  .story .stub .seat dd { font-size: 150px; color: var(--red); } .story .stub .seat dt, .story .stub .seat span { font-size: 16px; color: rgba(20,18,16,.6); opacity: 1; }
+  .story .bars { height: 90px; width: 380px; } .story .bars i { background: var(--ink); }
+  .story .ret { font-size: 22px; color: var(--red); margin-top: 12px; }
+  .story .sky { position: absolute; inset: 0; pointer-events: none; }
+  .story .foot { position: absolute; left: 80px; right: 80px; bottom: 140px; display: flex; justify-content: space-between; align-items: flex-end; font: 600 24px "IBM Plex Mono"; letter-spacing: .14em; }
+  .story .foot b { display: block; font: 900 64px/1 "Big Shoulders Display"; letter-spacing: .01em; margin-top: 10px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="print.js"></script>
+<script>
+  const q = new URLSearchParams(location.search);
+  const CITIES = { LHR: "Londyn", AMS: "Amsterdam", CPH: "Kopenhaga", ARN: "Sztokholm", ZRH: "Zurych", MXP: "Mediolan", MAD: "Madryt" };
+  const from = (q.get("from") || "LHR").toUpperCase(), seat = (q.get("seat") || "042").padStart(3, "0"), name = q.get("name") || "Imię Nazwisko";
+  const view = q.get("view") || "invite";
+  // decorative bars, derived from the seat so every pass looks a little different (no data, nothing to scan)
+  const bars = (n) => Array.from({ length: n }, (_, i) => `<i style="width:${1 + ((i * 7 + +seat) % 4)}px;opacity:${(i * 13 + +seat) % 5 ? 1 : .35}"></i>`).join("");
+  const arc = (col) => `<svg viewBox="0 0 300 70" preserveAspectRatio="none"><path d="M6 60 Q150 -10 294 60" fill="none" stroke="${col}" stroke-width="2.5" stroke-dasharray="7 7"/></svg>`;
+  const birdIn = (col, x, y, a, k) => `<svg viewBox="0 0 300 70" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible" preserveAspectRatio="xMidYMid meet">${Print.swallow(x, y, a, k, col)}</svg>`;
+  const pass = (dark) => `
+    <article class="pass ${dark ? "" : "grainy"}" ${dark ? "" : `data-shot="bilet-${from}"`}>
+      <div class="main">
+        <div class="brand"><b>REUNION HACKATHON</b><span>Karta pokładowa · Edycja 01</span></div>
+        <div class="route">
+          <div><div class="iata">${from}</div><div class="city">${CITIES[from] || "Twoja uczelnia"}</div></div>
+          <div class="path">${arc(dark ? "rgba(20,18,16,.35)" : "rgba(255,255,255,.7)")}${birdIn(dark ? "#C8102E" : "#fff", 150, 26, 12, .32)}</div>
+          <div style="text-align:right"><div class="iata to">WAW</div><div class="city">Warszawa</div></div>
+        </div>
+        <dl class="fields">
+          <div class="f"><dt>Pasażer</dt><dd class="${q.get("name") ? "" : "tpl"}">${name}</dd></div>
+          <div class="f"><dt>Wylot</dt><dd>05.02.2027</dd></div>
+          <div class="f"><dt>Boarding</dt><dd>16:00</dd></div>
+          <div class="f"><dt>Bramka</dt><dd class="tpl">Wkrótce</dd></div>
+        </dl>
+      </div>
+      <div class="stub">
+        <dl class="seat"><dt>MIEJSCE</dt><dd>${seat}</dd><span>z 100</span></dl>
+        <div><div class="bars">${bars(46)}</div><p class="ret">return(home);</p></div>
+      </div>
+    </article>`;
+  const root = document.getElementById("root");
+  if (view === "story") {
+    root.innerHTML = `<section class="story" data-shot="stories-${from}">
+      <div class="sky" id="sky"></div>
+      <div class="head"><span>5–7.02.2027</span><span>WARSZAWA</span></div>
+      <p class="say">Wracam<br><em>do Warszawy.</em></p>
+      ${pass(true)}
+      <div class="foot"><div>Reunion Hackathon<b>reunion-hackathon.pl</b></div><div style="text-align:right">100 miejsc<br>48 godzin</div></div>
+    </section>`;
+    const flock = [[870, 300, 30, .9], [740, 430, 34, .45], [960, 470, 38, .32], [180, 1470, 26, .55], [330, 1560, 30, .3]];
+    document.getElementById("sky").innerHTML = `<svg viewBox="0 0 1080 1920" style="position:absolute;inset:0;width:100%;height:100%"><g style="filter:drop-shadow(10px 16px 6px rgba(90,6,18,.32))">${flock.map(([x, y, a, k]) => Print.swallow(x, y, a, k)).join("")}</g></svg>`;
+  } else {
+    root.innerHTML = `<section class="invite">
+      <p class="label">Zaproszenie · Reunion Hackathon</p>
+      <h1>Masz miejsce na sali. <em>Do zobaczenia w Warszawie.</em></h1>
+      ${pass(false)}
+      <div class="actions">
+        <a class="primary" href="../assets/reunion-hackathon-2027.ics" download>Dodaj do kalendarza · Apple, Outlook</a>
+        <a href="#">Google Calendar</a>
+        <a href="?view=story&from=${from}&seat=${seat}">Udostępnij na Stories</a>
+      </div>
+      <p class="note">Bramka to miejsce wydarzenia. Uzupełnimy je, kiedy ogłosimy lokalizację.</p>
+    </section>`;
+  }
+  document.documentElement.style.setProperty("--x", "4px 6px 0 rgba(109,6,19,.45)");
+</script>
+</body>
+</html>

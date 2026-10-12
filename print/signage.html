@@ -1,0 +1,63 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>Reunion Hackathon · oznakowanie sali</title>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600..900&family=Barlow+Condensed:wght@100;300&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="print.css">
+<style>
+  /* directional signs 100 x 30 cm, table numbers A5 tent, agenda board A2; 1 px = 1 mm (signs) */
+  body { background: #EDE8E0; }
+  .wall { display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; width: 2400px; align-items: flex-start; }
+  .sign { width: 1000px; height: 300px; display: grid; grid-template-columns: 300px 1fr; background: var(--red); color: #fff; overflow: hidden; position: relative; flex: none; }
+  .sign.ink { background: var(--ink); } .sign.white { background: #fff; color: var(--ink); box-shadow: inset 0 0 0 2px rgba(20,18,16,.12); }
+  .sign .pic { display: grid; place-items: center; background: rgba(0,0,0,.14); }
+  .sign.white .pic { background: var(--red); color: #fff; }
+  .sign .pic svg { width: 190px; height: 190px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: square; stroke-linejoin: miter; }
+  .sign .txt { padding: 44px 50px; display: flex; flex-direction: column; justify-content: space-between; }
+  .sign .t { white-space: nowrap; font: 900 104px/.86 "Big Shoulders Display"; text-transform: uppercase; letter-spacing: .005em; }
+  .sign .s { display: flex; justify-content: space-between; font: 600 20px "IBM Plex Mono"; letter-spacing: .16em; text-transform: uppercase; opacity: .8; }
+  .sign .s svg { width: 32px; height: 32px; }
+  .tent { width: 600px; height: 420px; background: #fff; color: var(--ink); position: relative; flex: none; display: flex; flex-direction: column; box-shadow: 0 18px 30px -18px rgba(20,16,10,.5); }
+  .tent .band { background: var(--red); color: #fff; height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; font: 600 15px "IBM Plex Mono"; letter-spacing: .18em; text-transform: uppercase; }
+  .tent .band .lockup { font-size: 18px; }
+  .tent .num { flex: 1; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 30px; padding: 0 34px; }
+  .tent .num b { font: 100 250px/.8 "Barlow Condensed"; color: var(--red); letter-spacing: -.02em; }
+  .tent .num dt { font: 500 13px "IBM Plex Mono"; letter-spacing: .18em; text-transform: uppercase; color: rgba(20,18,16,.6); }
+  .tent .num dd { font: 900 46px/1 "Big Shoulders Display"; text-transform: uppercase; margin-top: 4px; }
+  .tent .num .line { height: 2px; background: rgba(20,18,16,.3); margin: 26px 0 8px; }
+  .tent .foot { border-top: 2px solid var(--ink); margin: 0 34px; padding: 12px 0 18px; display: flex; justify-content: space-between; font: 600 13px "IBM Plex Mono"; letter-spacing: .14em; color: var(--red); }
+  .agenda { width: 1190px; height: 1684px; flex: none; }
+  .agenda .hd { position: absolute; left: 70px; right: 70px; top: 64px; display: flex; justify-content: space-between; align-items: center; font: 600 22px "IBM Plex Mono"; letter-spacing: .18em; text-transform: uppercase; z-index: 2; }
+  .agenda .hd .lockup { font-size: 28px; }
+  .agenda .ttl { position: absolute; left: 70px; top: 170px; z-index: 2; }
+  .agenda .ttl .say { font: 400 84px/1 "Instrument Serif"; margin-top: 24px; } .agenda .ttl em { font-style: italic; }
+  .agenda .bd { position: absolute; left: 0; right: 0; top: 560px; display: flex; justify-content: center; z-index: 2; }
+  .agenda .g { position: absolute; left: -200px; right: -200px; top: 1240px; height: 1600px; opacity: .2; } .agenda .g svg { width: 100%; height: 100%; }
+  .agenda .ft { position: absolute; left: 70px; right: 70px; bottom: 60px; display: flex; justify-content: space-between; font: 600 20px "IBM Plex Mono"; letter-spacing: .16em; text-transform: uppercase; z-index: 2; }
+</style></head><body>
+<div class="wall" id="wall"></div>
+<script src="print.js"></script>
+<script>
+  const pic = { reg: `<svg viewBox="0 0 100 100"><rect x="20" y="16" width="60" height="74" stroke-width="7"/><path d="M38 10h24v14H38zM34 44h32M34 58h32M34 72h20" stroke-width="7"/></svg>`,
+    hall: `<svg viewBox="0 0 100 100"><rect x="12" y="20" width="76" height="48" stroke-width="7"/><path d="M4 78h92M40 68v10M60 68v10M30 36l12 10-12 10M50 56h18" stroke-width="7"/></svg>`,
+    quiet: `<svg viewBox="0 0 100 100"><path d="M70 62A30 30 0 1 1 46 18a24 24 0 0 0 24 44z" stroke-width="7"/><path d="M66 14h18L66 34h18" stroke-width="6"/></svg>`,
+    food: `<svg viewBox="0 0 100 100"><path d="M30 10v80M20 10v22a10 10 0 0 0 20 0V10M70 90V10c-12 6-16 22-16 38h16" stroke-width="7"/></svg>` };
+  const sign = (cls, p, t, s, deg) => `<div class="sign ${cls} ${cls === "white" ? "" : "grain"}" data-shot="znak-${p}"><div class="pic">${pic[p]}</div><div class="txt"><div class="t">${t}</div><div class="s"><span>${s}</span><svg viewBox="0 0 100 100" style="transform:rotate(${deg}deg);width:54px;height:54px;fill:none;stroke:currentColor"><path d="M14 50h66M52 22l28 28-28 28" stroke-width="10"/></svg></div></div></div>`;
+  const tent = (n) => `<div class="tent" data-shot="stol-${n}"><div class="band"><span class="lockup">${Print.mark()}Reunion Hackathon</span><span>Stanowisko</span></div>
+    <div class="num"><b>${n}</b><div><dt>Zespół</dt><div class="line"></div><dt>Ścieżka</dt><div class="line"></div></div></div>
+    <div class="foot"><span>WAW · 05–07.02.2027</span><span>return(home);</span></div></div>`;
+  document.getElementById("wall").innerHTML = [
+    sign("", "reg", "Rejestracja", "Identyfikatory · od 16:00", 0),
+    sign("ink", "hall", "Sala główna", "Stanowiska zespołów · całą dobę", -90),
+    sign("white", "quiet", "Strefa ciszy", "Odpoczynek · prosimy o ciszę", 180),
+    sign("", "food", "Jedzenie", "Posiłki według planu", 45),
+    tent("07"), tent("23"),
+    `<section class="sheet grain agenda" data-shot="plakat-agenda">
+      <div class="hd"><span class="lockup">${Print.mark()}Reunion Hackathon<span class="by">${Print.gpss("white")}</span></span><span>Odloty · WAW</span></div>
+      <div class="ttl"><div class="block" id="ab">PLAN</div><p class="say">48 godzin. Od pomysłu do <em>demo.</em></p></div>
+      <div class="bd"><iframe class="board" id="abd"></iframe></div>
+      <div class="g">${Print.globe({ op: 1, width: 6, arcs: false })}</div>
+      <div class="ft"><span>Warszawa · 5–7 lutego 2027</span><span>reunion-hackathon.pl</span></div>
+    </section>`,
+  ].join("");
+  Print.block(document.getElementById("ab"), 210);
+  Print.board(document.getElementById("abd"), ["PT 16:00 REJESTRACJA", "PT 17:00 GALA OTWARCIA", "PT 19:00 ZNAJDŹ ZESPÓŁ", "PT 20:00 START KODOWANIA", "SB 12:00 WARSZTAT PITCHU", "ND --:-- KONIEC ZGŁOSZEŃ", "ND --:-- PREZENTACJE", "ND 13:30 LUNCH", "ND 15:30 GALA ZAMKNIĘCIA", "ND 17:00 NETWORKING"].map((l) => l.padEnd(24)), 36, 24);
+</script>
+</body></html>

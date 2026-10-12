@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regulamin · Reunion Hackathon</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Regulamin Reunion Hackathon: szkic zasad udziału, przebiegu, oceny projektów i nagród.">
+<meta name="theme-color" content="#C8102E">
+<link rel="canonical" href="https://www.reunion-hackathon.pl/regulamin.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Barlow:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--red:#C8102E;--paper:#FBF9F5;--ink:#141210}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 Barlow,system-ui,sans-serif;overflow-wrap:anywhere}
+a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+.top{background:var(--red);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 16px}
+.top a{color:#fff}
+.brand-row{display:flex;align-items:center;gap:14px}
+.brand-row a{display:flex;align-items:center;min-height:44px;text-decoration:none}
+.brand svg{width:30px;height:30px;display:block}
+.by{gap:10px;padding-left:14px;border-left:1px solid #fff}
+.by img{height:30px;width:auto;display:block}
+.by span{font:800 14px/1.1 "Big Shoulders Display",sans-serif;text-transform:uppercase;letter-spacing:.06em;color:#fff;max-width:7em}
+.back{display:inline-flex;align-items:center;min-height:44px;font:600 16px Barlow,sans-serif;white-space:nowrap}
+main{max-width:calc(760px + 32px);margin:0 auto;padding:40px 16px 56px}
+.lbl{font:500 12px/1.4 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.14em;margin:0}
+h1{font:900 clamp(40px,7vw,72px)/1.05 "Big Shoulders Display",sans-serif;text-transform:uppercase;margin:0 0 12px}
+h2{font:800 26px/1.15 "Big Shoulders Display",sans-serif;text-transform:uppercase;margin:0 0 12px}
+h2 span{color:var(--red)}
+.intro{margin:24px 0 32px}
+nav ul{list-style:none;margin:12px 0 0;padding:0}
+nav li a{display:inline-block;padding:6px 0}
+section{scroll-margin-top:24px;margin-top:48px}
+ol{margin:0;padding-left:1.6em}
+li{margin:0 0 12px}
+li ol{margin-top:12px}
+footer{border-top:1px solid var(--ink);max-width:calc(760px + 32px);margin:0 auto;padding:24px 16px 40px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:16px}
+footer a{display:inline-block;padding:10px 0}
+@media(min-width:701px){.by span{font-size:20px;max-width:none}.top{padding:8px 56px}main,footer{padding-left:56px;padding-right:56px;max-width:calc(760px + 112px)}}
+@media(max-width:700px){h2{font-size:24px}}
+.draft{margin:24px 0 32px;padding:16px 20px;background:#fff;border-left:3px solid var(--red);font-weight:600}
+mark.todo{background:#FFF1B8;color:var(--ink);border-radius:2px;padding:0 3px}
+ol[type=a]{list-style:lower-alpha}
+h1+.lbl{margin-bottom:24px}
+</style>
+</head>
+<body>
+<div class="top"><div class="brand-row"><a class="brand" href="./" aria-label="Reunion Hackathon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M21.59 2.01 A22.13 22.13 0 0 0 23.40 46.12" fill="none" stroke="#fff" stroke-width="3.75" stroke-linecap="round"/><path d="M33.58 43.94 A22.13 22.13 0 0 0 32.84 3.72" fill="none" stroke="#fff" stroke-width="3.75" stroke-linecap="round"/><circle cx="27.72" cy="24" r="4.39" fill="#fff"/></svg></a><a class="by" href="https://globalpolsoc.com" target="_blank" rel="noopener" aria-label="Organizator: Global Polish Student Society"><img src="assets/logos/gpss-planet-white.png" alt=""><span>Global Polish Student Society</span></a></div><a class="back" href="./">← Strona główna</a></div>
+<main>
+<div class="draft" role="note"><strong>Szkic do akceptacji.</strong> Pola oznaczone [DO UZUPEŁNIENIA] wymagają decyzji organizatorów, a całość sprawdzenia przez osobę odpowiedzialną prawnie.</div>
+<h1>Regulamin</h1>
+<p class="lbl">Reunion Hackathon · Warszawa · 5–7 lutego 2027</p>
+<nav aria-labelledby="toc"><p class="lbl" id="toc">Spis treści</p>
+<ul>
+<li><a href="#par-1">§ 1. Postanowienia ogólne</a></li>
+<li><a href="#par-2">§ 2. Termin i miejsce</a></li>
+<li><a href="#par-3">§ 3. Warunki udziału</a></li>
+<li><a href="#par-4">§ 4. Zgłoszenia i selekcja</a></li>
+<li><a href="#par-5">§ 5. Zespoły</a></li>
+<li><a href="#par-6">§ 6. Przebieg Hackathonu</a></li>
+<li><a href="#par-7">§ 7. Ścieżki i zadania</a></li>
+<li><a href="#par-8">§ 8. Prezentacje i ocena</a></li>
+<li><a href="#par-9">§ 9. Nagrody</a></li>
+<li><a href="#par-10">§ 10. Prawa do projektów</a></li>
+<li><a href="#par-11">§ 11. Wizerunek</a></li>
+<li><a href="#par-12">§ 12. Zasady zachowania</a></li>
+<li><a href="#par-13">§ 13. Odpowiedzialność</a></li>
+<li><a href="#par-14">§ 14. Dane osobowe</a></li>
+<li><a href="#par-15">§ 15. Reklamacje</a></li>
+<li><a href="#par-16">§ 16. Postanowienia końcowe</a></li>
+</ul></nav>
+
+<section id="par-1"><h2><span>§ 1.</span> Postanowienia ogólne</h2><ol>
+<li>Organizatorem wydarzenia Reunion Hackathon jest Fundacja „Global Polish Student Society” („GPSS”) z siedzibą przy ul. Księskiej 2A/4 we Wrocławiu, KRS 0001223849, NIP 8993050236, REGON 544021914 (dalej: „Organizator”).</li>
+<li>Kontakt z Organizatorem w sprawach wydarzenia: <mark class="todo">[DO UZUPEŁNIENIA: adres e-mail dla uczestników wydarzenia; kontakt maks.rokosz@globalpolsoc.com jest przeznaczony wyłącznie dla partnerów]</mark>.</li>
+<li>Użyte w Regulaminie określenia oznaczają:
+<ol type="a">
+<li>Hackathon: wydarzenie Reunion Hackathon, 48-godzinny konkurs pracy nad wyzwaniami firm i instytucji, którego tematem jest transformacja AI;</li>
+<li>Uczestnik: osoba zakwalifikowana przez Organizatora do udziału w Hackathonie;</li>
+<li>Zespół: Uczestnicy pracujący wspólnie nad jednym projektem, a także Uczestnik pracujący samodzielnie;</li>
+<li>Jury: zespół osób oceniających projekty;</li>
+<li>Partner: firma lub instytucja współpracująca z Organizatorem przy Hackathonie, w szczególności zgłaszająca wyzwanie;</li>
+<li>Strona: serwis internetowy reunion-hackathon.pl.</li>
+</ol></li>
+<li>Regulamin określa zasady udziału w Hackathonie. Zgłaszając się do udziału, osoba zgłaszająca potwierdza, że zapoznała się z Regulaminem i go akceptuje.</li>
+<li>Regulamin jest dostępny na Stronie.</li>
+</ol></section>
+
+<section id="par-2"><h2><span>§ 2.</span> Termin i miejsce</h2><ol>
+<li>Hackathon odbywa się w Warszawie w dniach 5–7 lutego 2027 i trwa 48 godzin.</li>
+<li>Dokładną lokalizację Organizator ogłosi przed rozpoczęciem rekrutacji. <mark class="todo">[DO UZUPEŁNIENIA: nazwa i adres miejsca po jego potwierdzeniu]</mark></li>
+<li>Sala jest otwarta przez całą dobę, od rozpoczęcia kodowania w piątek o 20:00 do oddania projektów w niedzielę.</li>
+</ol></section>
+
+<section id="par-3"><h2><span>§ 3.</span> Warunki udziału</h2><ol>
+<li>W Hackathonie mogą wziąć udział polscy studenci i niedawni absolwenci uczelni zagranicznych, głównie kierunków informatycznych, AI/ML, inżynieryjnych i data science.</li>
+<li>Liczba miejsc jest ograniczona do 100. O udziale decyduje selekcja na podstawie zgłoszeń.</li>
+<li>Uczestnikiem może być osoba, która ukończyła 18 lat. <mark class="todo">[DO UZUPEŁNIENIA: decyzja o wieku (18+ czy inaczej) oraz o ewentualnej zgodzie opiekuna prawnego dla osób niepełnoletnich]</mark></li>
+<li>Udział w Hackathonie jest bezpłatny.</li>
+<li>Organizator może odmówić udziału osobie, która podała w zgłoszeniu nieprawdziwe dane lub nie spełnia warunków Regulaminu.</li>
+<li>Znaczenie określenia „niedawny absolwent”: <mark class="todo">[DO UZUPEŁNIENIA: ile lat od ukończenia studiów, np. do 2 lat, albo inna granica]</mark></li>
+</ol></section>
+
+<section id="par-4"><h2><span>§ 4.</span> Zgłoszenia i selekcja</h2><ol>
+<li>Zgłoszenia przyjmowane są przez formularz zamieszczony na Stronie. Formularz pojawi się wkrótce. Można zgłosić się samodzielnie albo z zespołem.</li>
+<li>Termin zgłoszeń: <mark class="todo">[DO UZUPEŁNIENIA: data rozpoczęcia i zakończenia rekrutacji]</mark></li>
+<li>Organizator wybiera Uczestników na podstawie zgłoszeń. Dokładne kryteria selekcji zostaną opublikowane razem z formularzem. <mark class="todo">[DO UZUPEŁNIENIA: kryteria selekcji]</mark></li>
+<li>Organizator powiadomi o wyniku selekcji wszystkie zgłoszone osoby. <mark class="todo">[DO UZUPEŁNIENIA: termin i forma powiadomienia, np. e-mail na adres podany w formularzu]</mark></li>
+<li>Lista rezerwowa: <mark class="todo">[DO UZUPEŁNIENIA: czy będzie lista rezerwowa i jak będą przyznawane zwolnione miejsca]</mark></li>
+<li>Zakwalifikowany Uczestnik potwierdza udział. <mark class="todo">[DO UZUPEŁNIENIA: sposób i termin potwierdzenia oraz skutek braku potwierdzenia]</mark></li>
+<li>Szczegóły logistyki, w tym dojazdu i noclegu, Organizator przekaże zakwalifikowanym Uczestnikom. <mark class="todo">[DO UZUPEŁNIENIA: czy Organizator pokrywa dojazd lub nocleg, a jeśli tak, na jakich zasadach]</mark></li>
+</ol></section>
+
+<section id="par-5"><h2><span>§ 5.</span> Zespoły</h2><ol>
+<li>Uczestnik może pracować samodzielnie albo w Zespole.</li>
+<li>Zespoły można też tworzyć na miejscu podczas otwarcia Hackathonu.</li>
+<li>Liczebność Zespołu: <mark class="todo">[DO UZUPEŁNIENIA: minimalna i maksymalna liczba osób]</mark></li>
+<li>Każdy Zespół wskazuje osobę kontaktową dla Organizatora. <mark class="todo">[DO UZUPEŁNIENIA: czy ten wymóg obowiązuje]</mark></li>
+<li>Zmiany w składzie Zespołu: <mark class="todo">[DO UZUPEŁNIENIA: do kiedy można zmieniać skład, czy osoba spoza listy Uczestników może dołączyć]</mark></li>
+</ol></section>
+
+<section id="par-6"><h2><span>§ 6.</span> Przebieg Hackathonu</h2><ol>
+<li>Program Hackathonu obejmuje:
+<ol type="a">
+<li>piątek: 16:00 rejestracja, 17:00 gala otwarcia, 19:00 networking i znajdowanie zespołu, 20:00 start kodowania;</li>
+<li>sobota: 12:00 warsztat z pitchowania;</li>
+<li>niedziela: zamknięcie zgłoszeń projektów (godzina <mark class="todo">[DO UZUPEŁNIENIA: godzina zamknięcia]</mark>), prezentacje, 13:30 lunch, 15:30 gala zamknięcia, 17:00 networking.</li>
+</ol></li>
+<li>Organizator może zmienić program z ważnych powodów i poinformuje o tym Uczestników.</li>
+<li>Sala jest otwarta przez całą dobę. Uczestnik sam decyduje, kiedy pracuje i odpoczywa.</li>
+<li>Uczestnicy pracują na własnym sprzęcie. <mark class="todo">[DO UZUPEŁNIENIA: czy Organizator zapewnia zasilanie, sieć, dodatkowy sprzęt]</mark></li>
+<li>Projekt powstaje w czasie Hackathonu. Zasady dotyczące kodu i materiałów powstałych przed wydarzeniem oraz oprogramowania open source: <mark class="todo">[DO UZUPEŁNIENIA: czy wolno użyć wcześniej napisanego kodu, jak go oznaczyć, jakie licencje open source są dopuszczalne, czy wolno korzystać z narzędzi AI]</mark></li>
+<li>Język Hackathonu: polski. Część warsztatów i materiałów może być po angielsku.</li>
+<li>Wyżywienie i opieka medyczna na miejscu: <mark class="todo">[DO UZUPEŁNIENIA: co zapewnia Organizator]</mark></li>
+</ol></section>
+
+<section id="par-7"><h2><span>§ 7.</span> Ścieżki i zadania</h2><ol>
+<li>Tematem Hackathonu jest transformacja AI.</li>
+<li>Hackathon obejmuje ścieżki partnerskie: „AI dla ludzi”, „AI w firmie” i „AI w państwie”, oraz ścieżkę otwartą „Twoje wyzwanie”, w której wyzwanie zgłasza Partner.</li>
+<li>Opisy wyzwań Partnerów Organizator opublikuje <mark class="todo">[DO UZUPEŁNIENIA: kiedy i gdzie, np. na Stronie przed Hackathonem albo na otwarciu]</mark>.</li>
+<li>Zespół wybiera jedną ścieżkę. <mark class="todo">[DO UZUPEŁNIENIA: kiedy zespół deklaruje ścieżkę i czy może ją zmienić, czy jeden projekt może startować w kilku ścieżkach]</mark></li>
+<li>Partner może udostępnić Zespołom dane lub materiały do wyzwania. Zasady ich użycia: <mark class="todo">[DO UZUPEŁNIENIA: poufność danych Partnera, ewentualne umowy o zachowaniu poufności]</mark></li>
+</ol></section>
+
+<section id="par-8"><h2><span>§ 8.</span> Prezentacje i ocena</h2><ol>
+<li>Każdy Zespół ma 3 minuty na pitch i 2 minuty na pytania Jury.</li>
+<li>Skład Jury: <mark class="todo">[DO UZUPEŁNIENIA: kto zasiada w Jury i kto je wyznacza, np. przedstawiciele Organizatora i Partnerów]</mark></li>
+<li>Kryteria oceny: <mark class="todo">[DO UZUPEŁNIENIA: lista kryteriów i ich wagi]</mark></li>
+<li>Sposób wyłaniania zwycięzców: <mark class="todo">[DO UZUPEŁNIENIA: czy nagrody są przyznawane w każdej ścieżce, czy łącznie; jak postępować przy równej liczbie punktów]</mark></li>
+<li>Decyzje Jury są ostateczne. <mark class="todo">[DO UZUPEŁNIENIA: czy potwierdzić, że nie przysługuje od nich odwołanie]</mark></li>
+</ol></section>
+
+<section id="par-9"><h2><span>§ 9.</span> Nagrody</h2><ol>
+<li>Nagrody: <mark class="todo">[DO UZUPEŁNIENIA: lista nagród, ich liczba i wartość]</mark></li>
+<li>Fundatorzy nagród: <mark class="todo">[DO UZUPEŁNIENIA: Organizator, Partnerzy albo inni; kto odpowiada za wydanie nagrody]</mark></li>
+<li>Warunki odbioru nagrody i termin: <mark class="todo">[DO UZUPEŁNIENIA]</mark></li>
+<li>Podatki: <mark class="todo">[DO UZUPEŁNIENIA: czy nagrody podlegają opodatkowaniu, kto je rozlicza, czy nagrody pieniężne są wypłacane po potrąceniu podatku]</mark></li>
+<li>Nagrody nie podlegają wymianie na ekwiwalent pieniężny. <mark class="todo">[DO UZUPEŁNIENIA: zatwierdzić albo usunąć]</mark></li>
+</ol></section>
+
+<section id="par-10"><h2><span>§ 10.</span> Prawa do projektów</h2><ol>
+<li>Zasady praw do projektów: <mark class="todo">[DO UZUPEŁNIENIA: organizatorzy wybierają jedną z opcji. Opcja A: Zespół zachowuje pełne prawa do swojego projektu, a Organizator i Partnerzy nie uzyskują żadnych praw. Opcja B: Zespół zachowuje prawa, ale udziela Partnerowi, który zgłosił wyzwanie, niewyłącznej licencji na korzystanie z projektu (zakres, czas, terytorium do określenia). Opcja C: prawa do projektu nagrodzonego przechodzą na fundatora nagrody z chwilą jej przyjęcia (wymaga opinii prawnika i wyraźnej zgody Zespołu)]</mark></li>
+<li>Uczestnik oświadcza, że jego projekt nie narusza praw osób trzecich, w szczególności praw autorskich i licencji. <mark class="todo">[DO UZUPEŁNIENIA: potwierdzić treść oświadczenia i skutki jego naruszenia]</mark></li>
+<li>Organizator może prezentować nazwę i opis projektu w materiałach o Hackathonie. <mark class="todo">[DO UZUPEŁNIENIA: czy zgoda Zespołu jest wymagana]</mark></li>
+</ol></section>
+
+<section id="par-11"><h2><span>§ 11.</span> Wizerunek</h2><ol>
+<li>Podczas Hackathonu mogą być robione zdjęcia i nagrania. <mark class="todo">[DO UZUPEŁNIENIA: organizatorzy wybierają jedną z opcji. Opcja A: Organizator wykorzystuje zdjęcia i nagrania z wydarzenia w komunikacji o Hackathonie na podstawie zgody Uczestnika zebranej w formularzu zgłoszeniowym, z możliwością jej wycofania. Opcja B: Organizator wykorzystuje zdjęcia i nagrania grupowe bez odrębnej zgody, a wizerunek pojedynczych osób tylko za ich zgodą. Opcja C: Uczestnik, który nie wyraża zgody, oznacza to identyfikatorem lub informuje Organizatora na miejscu. Do uzgodnienia z osobą odpowiedzialną prawnie]</mark></li>
+<li>Zakres, czas i pola eksploatacji wykorzystania wizerunku: <mark class="todo">[DO UZUPEŁNIENIA]</mark></li>
+<li>Przetwarzanie danych osobowych w związku z wizerunkiem opisuje Polityka prywatności (§ 14).</li>
+</ol></section>
+
+<section id="par-12"><h2><span>§ 12.</span> Zasady zachowania</h2><ol>
+<li>Uczestnicy, Partnerzy, Jury i Organizator traktują się nawzajem z szacunkiem.</li>
+<li>Niedopuszczalne jest nękanie, dyskryminacja, groźby, wulgarne lub obraźliwe zachowania oraz naruszanie prywatności innych osób, w tym ze względu na pochodzenie, płeć, orientację, wiek, niepełnosprawność, religię lub poglądy.</li>
+<li>Uczestnik dba o mienie w miejscu wydarzenia i stosuje się do regulaminu obiektu oraz poleceń Organizatora i obsługi.</li>
+<li>Organizator może upomnieć Uczestnika lub usunąć go z Hackathonu, jeżeli narusza Regulamin lub zasady zachowania. Usunięty Uczestnik może zostać wykluczony z oceny i traci prawo do nagrody.</li>
+<li>Naruszenia zasad zachowania można zgłaszać: <mark class="todo">[DO UZUPEŁNIENIA: osoba lub adres e-mail do zgłaszania, także na miejscu podczas wydarzenia]</mark></li>
+<li>Zasady dotyczące alkoholu, substancji i bezpieczeństwa w obiekcie: <mark class="todo">[DO UZUPEŁNIENIA: czy dodać, zgodnie z regulaminem miejsca]</mark></li>
+</ol></section>
+
+<section id="par-13"><h2><span>§ 13.</span> Odpowiedzialność</h2><ol>
+<li>Uczestnicy odpowiadają za własny sprzęt i rzeczy osobiste. Organizator nie odpowiada za ich utratę lub uszkodzenie, chyba że wynika to z jego winy.</li>
+<li>Uczestnik odpowiada za szkody wyrządzone Organizatorowi, Partnerom lub osobom trzecim z jego winy. <mark class="todo">[DO UZUPEŁNIENIA: czy zawęzić lub rozszerzyć ten zapis]</mark></li>
+<li>Ubezpieczenie: <mark class="todo">[DO UZUPEŁNIENIA: czy Organizator zapewnia ubezpieczenie uczestników lub wydarzenia, czy Uczestnik ma ubezpieczyć się sam]</mark></li>
+<li>Organizator nie odpowiada za działania Partnerów i osób trzecich, na które nie ma wpływu. <mark class="todo">[DO UZUPEŁNIENIA: do weryfikacji prawnej]</mark></li>
+<li>Odwołanie lub zmiana terminu wydarzenia z przyczyn niezależnych od Organizatora: <mark class="todo">[DO UZUPEŁNIENIA: zasady informowania i ewentualnych skutków]</mark></li>
+</ol></section>
+
+<section id="par-14"><h2><span>§ 14.</span> Dane osobowe</h2><ol>
+<li>Administratorem danych osobowych jest Fundacja „Global Polish Student Society” z siedzibą we Wrocławiu.</li>
+<li>Zasady przetwarzania danych osobowych w związku z Hackathonem opisuje <a href="polityka-prywatnosci.html">Polityka prywatności</a>.</li>
+<li>Dane Uczestników mogą być przekazywane Partnerom. <mark class="todo">[DO UZUPEŁNIENIA: czy i na jakiej podstawie (np. zgoda w formularzu), zgodnie z Polityką prywatności]</mark></li>
+</ol></section>
+
+<section id="par-15"><h2><span>§ 15.</span> Reklamacje</h2><ol>
+<li>Reklamacje dotyczące Hackathonu można składać na piśmie na adres e-mail: <mark class="todo">[DO UZUPEŁNIENIA: adres e-mail do reklamacji]</mark>.</li>
+<li>Reklamacja powinna zawierać imię i nazwisko, dane kontaktowe oraz opis zastrzeżeń.</li>
+<li>Organizator rozpatruje reklamację w terminie <mark class="todo">[DO UZUPEŁNIENIA: liczba dni]</mark> od jej otrzymania i informuje osobę zgłaszającą o wyniku.</li>
+<li>Reklamacje dotyczące oceny Jury: <mark class="todo">[DO UZUPEŁNIENIA: czy są dopuszczalne, w związku z § 8 ust. 5]</mark></li>
+</ol></section>
+
+<section id="par-16"><h2><span>§ 16.</span> Postanowienia końcowe</h2><ol>
+<li>Organizator może zmienić Regulamin. Zmiany ogłasza na Stronie. <mark class="todo">[DO UZUPEŁNIENIA: czy zmiany po zakończeniu rekrutacji wymagają informacji e-mail do Uczestników i od kiedy obowiązują]</mark></li>
+<li>W sprawach nieuregulowanych w Regulaminie stosuje się prawo polskie.</li>
+<li>Spory wynikające z Regulaminu rozstrzyga właściwy sąd powszechny. <mark class="todo">[DO UZUPEŁNIENIA: do weryfikacji prawnej]</mark></li>
+<li>Regulamin wchodzi w życie z dniem <mark class="todo">[DO UZUPEŁNIENIA: data wejścia w życie]</mark>.</li>
+</ol></section>
+</main>
+<footer><p>© 2026 Global Polish Student Society · Reunion Hackathon</p><a href="./">Strona główna</a></footer>
+</body>
+</html>

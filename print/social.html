@@ -1,0 +1,98 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>Reunion Hackathon · social media</title>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600..900&family=Barlow+Condensed:wght@100;300&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="print.css">
+<style>
+  /* Instagram posts 1080 x 1350, LinkedIn cover 1584 x 396, event cover 1920 x 1005 */
+  body { background: #EDE8E0; }
+  .wall { display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; width: 3500px; align-items: flex-start; }
+  .post { width: 1080px; height: 1350px; flex: none; }
+  .post.white { background: var(--white); color: var(--ink); }
+  .head { position: absolute; left: 64px; right: 64px; top: 56px; display: flex; justify-content: space-between; align-items: center; z-index: 3; font: 600 20px "IBM Plex Mono"; letter-spacing: .18em; text-transform: uppercase; }
+  .head .lockup { font-size: 26px; }
+  .foot { position: absolute; left: 64px; right: 64px; bottom: 56px; display: flex; justify-content: space-between; align-items: flex-end; z-index: 3; font: 600 20px "IBM Plex Mono"; letter-spacing: .16em; text-transform: uppercase; }
+  .foot b { display: block; font: 900 52px/1 "Big Shoulders Display"; letter-spacing: .01em; margin-top: 8px; text-transform: none; }
+  .center { position: absolute; left: 0; right: 0; text-align: center; z-index: 2; }
+  .g { position: absolute; z-index: 1; opacity: .2; } .g svg { width: 100%; height: 100%; }
+  .say { font: 400 92px/1 "Instrument Serif"; } .say em { font-style: italic; }
+  .huge { font: 100 520px/.78 "Barlow Condensed"; letter-spacing: -.03em; }
+  .chips { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .chips span { border: 3px solid currentColor; padding: 14px 22px; font: 600 22px "IBM Plex Mono"; letter-spacing: .14em; text-transform: uppercase; }
+  .tiers { display: grid; gap: 18px; }
+  .tiers div { display: flex; justify-content: space-between; align-items: baseline; border-top: 3px solid var(--ink); padding-top: 14px; }
+  .tiers b { font: 900 64px/1 "Big Shoulders Display"; text-transform: uppercase; }
+  .tiers span { font: 600 18px "IBM Plex Mono"; letter-spacing: .12em; text-transform: uppercase; color: rgba(20,18,16,.6); }
+  .tiers div.top b { color: var(--red); }
+  .cover { width: 1584px; height: 396px; flex: none; }
+  .event { width: 1920px; height: 1005px; flex: none; }
+  .og { width: 1200px; height: 630px; flex: none; }   /* link preview (og:image), language-neutral: one image for PL and EN */
+  .cable { position: absolute; inset: 0; z-index: 2; }
+</style></head><body>
+<div class="wall" id="wall"></div>
+<script src="print.js"></script>
+<script>
+  const lock = (tone) => `<span class="lockup">${Print.mark()}Reunion Hackathon<span class="by">${Print.gpss(tone)}</span></span>`;
+  const flock = (w, h, list, fill = "#fff") => `<svg viewBox="0 0 ${w} ${h}" style="position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none"><g style="filter:drop-shadow(8px 12px 5px rgba(90,6,18,.3))">${list.map(([x, y, a, k]) => Print.swallow(x, y, a, k, fill)).join("")}</g></svg>`;
+  const W = document.getElementById("wall");
+  W.innerHTML = `
+  <section class="sheet grain post" data-shot="ig-ogloszenie">
+    <div class="head">${lock("white")}<span>Edycja 01</span></div>
+    <div class="g" style="left:-160px;right:-160px;top:760px;height:1400px">${Print.globe({ op: 1, width: 6, arcs: false })}</div>
+    <div class="center" style="top:250px"><div class="block" id="b1">REUNION</div><div class="thin" style="font-size:60px;letter-spacing:.38em;padding-left:.38em;margin-top:22px">Hackathon</div></div>
+    <div class="center" style="top:640px"><iframe class="board" id="bd1" style="margin:0 auto"></iframe></div>
+    <div class="foot"><div>48 godzin · 100 miejsc<b>reunion-hackathon.pl</b></div><div style="text-align:right">Organizator<b>GPSS</b></div></div>
+  </section>
+
+  <section class="sheet grain post" data-shot="ig-rekrutacja">
+    <div class="head">${lock("white")}<span>Rekrutacja wkrótce</span></div>
+    ${flock(1080, 1350, [[820, 300, 30, .9], [690, 420, 34, .42], [900, 470, 38, .3]])}
+    <div class="center" style="top:250px"><div class="huge">100</div><div class="thin" style="font-size:76px;letter-spacing:.3em;padding-left:.3em;margin-top:18px">miejsc</div></div>
+    <div class="center say" style="top:880px">Szukamy <em>stu osób.</em></div>
+    <div class="center" style="top:1010px"><div class="chips"><span>Udział bezpłatny</span><span>Solo lub zespołowo</span></div></div>
+    <div class="foot"><div>5–7.02.2027 · Warszawa<b>reunion-hackathon.pl</b></div></div>
+  </section>
+
+  <section class="sheet post white" data-shot="ig-partnerzy">
+    <div class="head" style="color:var(--red)">${lock("red").replace(Print.mark(), Print.mark("#141210", "#C8102E"))}<span>Dla firm</span></div>
+    <div style="position:absolute;left:64px;right:64px;top:200px">
+      <p class="mono" style="color:var(--red);font-size:20px">Transformacja AI · 48 godzin · 100 osób</p>
+      <div class="block" style="color:var(--ink);font-size:150px;margin-top:20px;white-space:normal">Zbuduj to<br><span style="color:var(--red)">z nami.</span></div>
+      <div class="tiers" style="margin-top:70px">
+        <div class="top"><b>Sponsor Tytularny</b><span>1 miejsce</span></div>
+        <div><b>Partner Ścieżki</b><span>Maks. 3</span></div>
+        <div><b>Partner Wspierający</b><span>Liczba otwarta</span></div>
+        <div><b>Patron</b><span>Startupy do 50 osób</span></div>
+      </div>
+    </div>
+    <div class="foot" style="color:var(--ink)"><div>Kontakt dla partnerów<b>Maks Rokosz</b></div><div style="text-align:right;color:var(--red)">maks.rokosz@<br>globalpolsoc.com</div></div>
+  </section>
+
+  <section class="sheet grain cover" data-shot="linkedin-cover">
+    <div class="g" style="left:820px;width:900px;top:120px;height:900px;opacity:.22">${Print.globe({ op: 1, width: 6, arcs: false })}</div>
+    <div style="position:absolute;left:470px;top:70px;z-index:2"><div class="block" id="b2">REUNION</div><div class="thin" style="font-size:34px;letter-spacing:.38em;margin-top:14px">Hackathon</div></div>
+    <div style="position:absolute;right:70px;top:84px;z-index:2"><iframe class="board" id="bd2"></iframe></div>
+    <div style="position:absolute;left:470px;bottom:40px;z-index:2" class="mono">Warszawa · 5–7.02.2027 · Organizator: Global Polish Student Society</div>
+  </section>
+
+  <section class="sheet grain event" data-shot="wydarzenie-cover">
+    <div class="head" style="font-size:22px">${lock("white")}<span>Warszawa · 5–7 lutego 2027</span></div>
+    <div class="g" style="left:260px;right:260px;top:560px;height:1400px;opacity:.2">${Print.globe({ op: 1, width: 6, arcs: false })}</div>
+    ${flock(1920, 1005, [[1560, 300, 30, .8], [1440, 400, 34, .4], [1650, 440, 38, .3], [250, 520, 26, .45]])}
+    <div class="center" style="top:190px"><div class="block" id="b3">REUNION</div><div class="thin" style="font-size:64px;letter-spacing:.38em;padding-left:.38em;margin-top:20px">Hackathon</div></div>
+    <div class="center say" style="top:640px;font-size:64px">48 godzin pracy nad wyzwaniami firm i <em>instytucji.</em></div>
+    <div class="foot" style="font-size:20px"><div>100 miejsc · udział bezpłatny<b>reunion-hackathon.pl</b></div><div style="text-align:right">Organizator<b>Global Polish Student Society</b></div></div>
+  </section>
+
+  <section class="sheet grain og" data-shot="og-image">
+    <div class="head" style="left:56px;right:56px;top:44px;font-size:18px">${lock("white")}<span>WAW · 05–07.02.2027</span></div>
+    <div class="g" style="left:160px;right:160px;top:360px;height:880px;opacity:.2">${Print.globe({ op: 1, width: 6, arcs: false })}</div>
+    <div class="center" style="top:128px"><div class="block" id="b4" style="line-height:.95">REUNION<br>HACKATHON</div></div>
+    <div class="foot" style="left:56px;right:56px;bottom:40px;font-size:16px"><div>48h · 100 · AI<b style="font-size:38px">reunion-hackathon.pl</b></div><div style="text-align:right">Global Polish<br>Student Society</div></div>
+  </section>`;
+  Print.block(document.getElementById("b1"), 230);
+  Print.block(document.getElementById("b4"), 170);
+  Print.block(document.getElementById("b2"), 120);
+  Print.block(document.getElementById("b3"), 210);
+  Print.board(document.getElementById("bd1"), ["", "WARSZAWA", "5-7 LUTEGO 2027", ""], 34, 18);
+  Print.board(document.getElementById("bd2"), ["WARSZAWA", "05.02.2027"], 22, 12);
+</script>
+</body></html>
