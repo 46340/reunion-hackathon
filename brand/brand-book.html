@@ -5,7 +5,7 @@
 <title>Reunion Hackathon · Brand Book</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700..900&family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@900&display=swap">
 <style>
 /* ==========================================================================
    Reunion Hackathon · Brand Book
@@ -23,7 +23,8 @@
   --red-hover: #8F0001;
   --logo-red:  #D2202F;
 
-  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Big Shoulders Display", "Arial Narrow", Arial, sans-serif;
+  --font-body:    "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-mono:    "IBM Plex Mono", ui-monospace, Menlo, monospace;
   --font-numeral: "Playfair Display", Georgia, "Times New Roman", serif;
 }
@@ -38,7 +39,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: 9.5pt;
   line-height: 1.6;
   font-weight: 400;
@@ -102,21 +103,21 @@ body {
 
 h1.title {
   font-family: var(--font-display);
-  font-weight: 800;
-  font-stretch: 125%;
-  font-size: 38pt;
-  line-height: 0.95;
-  letter-spacing: -0.02em;
+  font-weight: 900;
+  font-size: 46pt;
+  line-height: 0.9;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
   margin: 0 0 6mm;
 }
 
 h2 {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-stretch: 100%;
-  font-size: 20pt;
-  line-height: 1.1;
-  letter-spacing: -0.015em;
+  font-weight: 900;
+  font-size: 21pt;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
   margin: 0 0 5mm;
 }
 
@@ -416,7 +417,7 @@ pre {
         <li>Znak zawsze na papierze <span class="mono">#F2EDE4</span> albo na bieli.</li>
         <li>Pole ochronne = promień znaku z każdej strony.</li>
         <li>Minimalna wielkość 20 px / 6 mm.</li>
-        <li>W parze z wordmarkiem: odstęp <span class="mono">0.7rem</span>, Archivo 700, <span class="mono">font-stretch 110%</span>, tracking <span class="mono">0.14em</span>.</li>
+        <li>W parze z wordmarkiem: odstęp <span class="mono">0.7rem</span>, Big Shoulders Display 800, wersaliki, tracking <span class="mono">0.06em</span>.</li>
       </ul>
     </div>
     <div>
@@ -513,18 +514,19 @@ pre {
   <div class="runhead"><span>Reunion Hackathon · Brand Book</span><span>03 · Typografia</span></div>
 
   <p class="kicker">03 · Typografia</p>
-  <h2>Trzy kroje, trzy zadania.</h2>
-  <p class="lead">Archivo niesie treść, IBM Plex Mono robi etykiety i dane, Playfair Display
-    wchodzi wyłącznie pod wielkie liczby.</p>
+  <h2>Cztery kroje, cztery zadania.</h2>
+  <p class="lead">Big Shoulders: logo i nagłówki. Archivo: proza. Plex Mono: etykiety i dane.
+    Playfair: wyłącznie wielkie liczby.</p>
 
   <div style="margin-top:5mm">
-    <h3>Archivo · nagłówki i proza</h3>
-    <p style="font-family:var(--font-display);font-weight:800;font-stretch:125%;font-size:21pt;line-height:.95;letter-spacing:-.02em;margin:0 0 1.5mm">
+    <h3>Big Shoulders Display · logo i nagłówki</h3>
+    <p style="font-family:var(--font-display);font-weight:900;font-size:21pt;line-height:1.08;letter-spacing:.005em;text-transform:uppercase;margin:0 0 1.5mm">
       Budujemy Polskę,<br>do której warto wracać.</p>
     <p class="mono muted" style="font-size:6.5pt;letter-spacing:.14em;margin:0">
-      Zmienna oś szerokości 62..125 · grubości 100..900 · Google Fonts
+      Zawsze wersalikami · grubości 800 i 900 · kanciasty, plakatowy krój · Google Fonts
     </p>
   </div>
+
 
   <div style="margin-top:4mm">
     <h3>IBM Plex Mono · etykiety, dane, nawigacja</h3>
@@ -550,11 +552,11 @@ pre {
       <th style="width:20%">Rola</th><th style="width:16%">Krój</th><th style="width:12%">Waga</th>
       <th style="width:10%">Szer.</th><th style="width:24%">Rozmiar</th><th>Tracking</th>
     </tr>
-    <tr><td class="code">.hero__title</td><td>Archivo</td><td class="code">800</td><td class="code">125%</td><td class="code">clamp(2.6rem, 8vw, 6.5rem)</td><td class="code">-0.02em</td></tr>
-    <tr><td class="code">.h2</td><td>Archivo</td><td class="code">700</td><td class="code">100%</td><td class="code">clamp(1.85rem, 4vw, 3rem)</td><td class="code">-0.015em</td></tr>
+    <tr><td class="code">.hero__title</td><td>Big Shoulders</td><td class="code">900</td><td class="code">—</td><td class="code">clamp(2.6rem, 8vw, 6.5rem)</td><td class="code">0.005em</td></tr>
+    <tr><td class="code">.h2</td><td>Big Shoulders</td><td class="code">900</td><td class="code">—</td><td class="code">clamp(1.85rem, 4vw, 3rem)</td><td class="code">0.01em</td></tr>
     <tr><td class="code">.lead</td><td>Archivo</td><td class="code">400</td><td class="code">100%</td><td class="code">clamp(1.05rem, 1.6vw, 1.25rem)</td><td class="code">—</td></tr>
     <tr><td class="code">body</td><td>Archivo</td><td class="code">400</td><td class="code">100%</td><td class="code">1.05rem / 1.65</td><td class="code">—</td></tr>
-    <tr><td class="code">.nav__wordmark</td><td>Archivo</td><td class="code">700</td><td class="code">110%</td><td class="code">0.8rem</td><td class="code">0.14em</td></tr>
+    <tr><td class="code">.nav__wordmark</td><td>Big Shoulders</td><td class="code">800</td><td class="code">—</td><td class="code">0.8rem</td><td class="code">0.06em</td></tr>
     <tr><td class="code">.figure__num</td><td>Playfair</td><td class="code">900</td><td class="code">—</td><td class="code">clamp(3rem, 7vw, 6rem)</td><td class="code">-0.02em</td></tr>
     <tr><td class="code">.kicker</td><td>Plex Mono</td><td class="code">500</td><td class="code">—</td><td class="code">0.75rem</td><td class="code">0.2em</td></tr>
     <tr><td class="code">.btn</td><td>Plex Mono</td><td class="code">500</td><td class="code">—</td><td class="code">0.82rem</td><td class="code">0.1em</td></tr>
@@ -564,8 +566,8 @@ pre {
   <h3>Zasady</h3>
   <ul class="rules rules--do" style="font-size:7.5pt">
     <li>Etykiety zawsze wersalikami w Plex Mono, tracking <span class="mono">0.08em</span>–<span class="mono">0.2em</span>.</li>
-    <li>Nagłówki mają ujemny tracking — im większy stopień, tym ciaśniej.</li>
-    <li><span class="mono">font-stretch</span> rośnie tylko w wordmarku (110%) i w hero (125%).</li>
+    <li>Logo i nagłówki: Big Shoulders Display wersalikami, tracking <span class="mono">0</span>–<span class="mono">0.06em</span>.</li>
+    <li>Proza zostaje w Archivo w szerokości 100%. Big Shoulders nie ma osi szerokości.</li>
     <li>Miara prozy: <span class="mono">52ch</span> dla leadów, <span class="mono">20ch</span> dla H2.</li>
   </ul>
 
@@ -785,7 +787,7 @@ pre {
   --red:          #BD0001;
   --red-hover:    #8F0001;
 
-  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Big Shoulders Display", "Arial Narrow", Arial, sans-serif;
   --font-body:    "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-mono:    "IBM Plex Mono", ui-monospace, Menlo, monospace;
   --font-numeral: "Playfair Display", Georgia, "Times New Roman", serif;
@@ -800,7 +802,7 @@ pre {
 <pre>&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
 &lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
 &lt;link rel="stylesheet" href="https://fonts.googleapis.com/css2?
-  family=Archivo:wdth,wght@62..125,100..900
+  family=Big+Shoulders+Display:wght@700..900&amp;family=Archivo:wdth,wght@62..125,100..900
   &amp;family=IBM+Plex+Mono:wght@400;500;600
   &amp;family=Playfair+Display:wght@900&amp;display=swap"&gt;</pre>
   <p class="muted" style="font-size:7.5pt;margin-top:-1mm">
@@ -815,7 +817,7 @@ pre {
     <tr><td class="code">04</td><td>Sekcje rozdziela linia <span class="mono">1px</span> w <span class="mono">--ink-14</span>, nie sam odstęp.</td></tr>
     <tr><td class="code">05</td><td>Każda sekcja otwiera się kickerem <span class="mono">NN · NAZWA</span> w czerwieni.</td></tr>
     <tr><td class="code">06</td><td>Etykiety i dane: Plex Mono, wersaliki, tracking od <span class="mono">0.08em</span>.</td></tr>
-    <tr><td class="code">07</td><td>Nagłówki: Archivo, tracking ujemny, miara do <span class="mono">20ch</span>.</td></tr>
+    <tr><td class="code">07</td><td>Logo i nagłówki: Big Shoulders Display, wersaliki, miara do <span class="mono">20ch</span>.</td></tr>
     <tr><td class="code">08</td><td>Playfair wyłącznie pod wielkie liczby. Nigdy pod tekst.</td></tr>
     <tr><td class="code">09</td><td>Proza schodzi do <span class="mono">--ink-60</span>, nagłówki zostają w <span class="mono">--ink</span>.</td></tr>
     <tr><td class="code">10</td><td>Kontrast tekstu minimum 4,5:1. <span class="mono">--ink-25</span> i <span class="mono">--ink-14</span> to dekoracja.</td></tr>

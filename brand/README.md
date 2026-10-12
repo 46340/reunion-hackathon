@@ -17,7 +17,7 @@ kroje z rolami i wagami, geometrię sygnetu, listę krajów na celowniku oraz go
 | 1 | Okładka |
 | 2 | Sygnet — konstrukcja, geometria, gotowy SVG, zasady użycia |
 | 3 | Kolory — próbki, tokeny, kontrasty WCAG, proporcje |
-| 4 | Typografia — trzy kroje, skala, zasady |
+| 4 | Typografia: cztery kroje (Big Shoulders Display w logo i nagłówkach), skala, zasady |
 | 5 | Celownik — siedem krajów ze współrzędnymi, liczbą polskich studentów, źródłami i punktami SVG, budowa |
 | 6 | Komponenty i rytm — przyciski, siatka, logotypy, czego nie robić |
 | 7 | Tokeny — CSS i link do krojów do skopiowania, dziesięć zasad |
