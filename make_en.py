@@ -84,7 +84,7 @@ T = [
  ('Szukamy stu osób. Zgłoś się? <span class="dim">[T/n]</span>', 'We are looking for 100 people. Apply? <span class="dim">[Y/n]</span>'),
  ('Zbuduj to <em>z nami.</em>', 'Build it <em>with us.</em>'),
  ('<i>Pierwszy raz w jednej sali w Warszawie.</i>', '<i>In one room in Warsaw for the first time.</i>'),
- ('Twoje wyzwanie w najlepszych rękach', 'Your challenge in the best hands'),
+ ('Twoje wyzwanie w&nbsp;najlepszych rękach', 'Your challenge in the best hands'),
  ('Przez 48 godzin zespoły z topowych uczelni prototypują rozwiązanie konkretnego problemu Twojej firmy.', 'For 48 hours, teams from top universities prototype a solution to a specific problem your company has.'),
  ('Kontakt, zanim zdecydują', 'Meet them before they decide'),
  ('Ci ludzie wybierają między Londynem, Zurychem a Warszawą. To Ty zdecydujesz, gdzie pojadą.', 'These people are choosing between London, Zurich and Warsaw. You decide where they go.'),

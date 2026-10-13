@@ -684,3 +684,5 @@ a.person:focus-visible { outline: 2px solid #fff; outline-offset: 8px; }
 .venue .ph { display: none; }
 .venue { grid-template-columns: 1fr; }
 .venue .info { padding: 36px 40px; }
+/* partner benefits: titles reserve two lines, so every description starts at the same height */
+@media (min-width: 701px) { .benefits h3 { min-height: 2.1em; } }
