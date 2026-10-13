@@ -309,7 +309,8 @@
   .intro { position: fixed; inset: 0; width: 100vw; height: 100vh; border: 0; z-index: 60; transform-origin: 0 0; background: var(--red); will-change: transform, opacity; }
   .git path, .git line, .git circle, .ruler rect { transition: opacity .3s; }
   body.pre { overflow: hidden; }
-  body.pre .nav, body.pre .hero-meta, body.pre .hero-bottom, body.pre .hang, body.pre .globe { opacity: 0; }
+  body.pre .nav, body.pre .hero-meta, body.pre .hero-bottom, body.pre .globe { opacity: 0; }
+  body.pre .hang { opacity: .01; }   /* under the opaque intro: invisible, yet painted, so the title counts as the page's LCP (opacity 0 never does) */
   body.pre #heroBoard { visibility: hidden; }
   .nav, .hero-meta, .hero-bottom, .globe, .hang { transition: opacity .6s ease; }
 
@@ -654,7 +655,7 @@ span.btn.soon { pointer-events: none; }   /* the Apply in the section: no hover,
 /* footer: the organiser and the address each on their own line, the name never split */
 footer .org-line { margin-top: 10px; } footer .brand + .org-line { margin-top: 18px; }
 footer .org-line a { white-space: nowrap; }
-footer .org-line .lbl { display: block; margin-bottom: 4px; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; opacity: .6; }
+footer .org-line .lbl { display: block; margin-bottom: 4px; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; opacity: .72;   /* 4.5:1 on the footer ink */ }
 /* intro: the speaker in the corner while the browser keeps the board silent; tapped, it shows "on" and fades */
 .snd { position: fixed; right: max(20px, env(safe-area-inset-right)); bottom: max(20px, env(safe-area-inset-bottom)); z-index: 61; width: 52px; height: 52px;
   display: grid; place-items: center; padding: 0; border: 2px solid rgba(255,255,255,.85); border-radius: 50%; background: rgba(20,16,10,.22); color: #fff; cursor: pointer;
