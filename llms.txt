@@ -2,20 +2,36 @@
 
 > A 48-hour hackathon in Warsaw, 5–7 February 2027, for 100 Polish students and recent graduates of universities abroad. Theme: AI transformation. Free to take part, with selection by application. Organised by Global Polish Student Society (GPSS).
 
+Status (13 October 2026): applications are not open yet; the form will appear on the website.
+
 - Dates: 5–7 February 2027. Friday 16:00 registration, 17:00 opening gala, 20:00 coding starts; Saturday 12:00 pitching workshop; Sunday 15:30 closing gala.
 - Place: Warsaw, Poland. The exact venue will be announced before applications open.
-- Who: 100 places for Polish students and recent graduates of universities abroad, mainly computer science, AI/ML, engineering and data science. Apply solo or as a team.
-- Cost: free.
-- Language: Polish; some workshops and materials may be in English.
+- Who: 100 places for Polish students and recent graduates of universities abroad, mainly computer science, AI/ML, engineering and data science.
 - Tracks: AI for people, AI in business and AI in government (partner tracks), plus an open track for a partner's own challenge.
-- Applications: opening soon; the form will appear on the website.
 - Partners: four packages (Title Sponsor, Track Partner, Supporting Partner, Patron). Contact: maks.rokosz@globalpolsoc.com
+
+## FAQ
+
+- Who can apply? Polish students and graduates of universities abroad, mainly in computer science, AI/ML, engineering and data science; selection is based on applications, and the exact criteria will be published with the form.
+- How much does it cost? Taking part is free; places are limited to 100.
+- Do I need a team? No. You can apply solo, and teams can also form on site during the opening.
+- Do I need to code? The core of the event is building a prototype, but good teams also need design and business skills; what counts is what you bring to the project.
+- Do we work at night? Yes. The room is open round the clock, from the start on Friday at 20:00 until projects are submitted on Sunday.
+- How does the pitch work? Each team has 3 minutes for the pitch and 2 minutes for questions from the jury; a pitching workshop runs on Saturday at noon.
+- What language is the event in? Polish; some workshops and materials may be in English.
+- Are travel and accommodation covered? Logistics will be shared with accepted participants.
 
 ## Pages
 
-- [Reunion Hackathon (Polish)](https://www.reunion-hackathon.pl/): the full event page in Polish
-- [Reunion Hackathon (English)](https://www.reunion-hackathon.pl/en.html): the full event page in English
+- [Reunion Hackathon (Polish)](https://www.reunion-hackathon.pl/): the full event page in Polish, with tracks, agenda, recruitment, partners, team and FAQ
+- [Reunion Hackathon (English)](https://www.reunion-hackathon.pl/en.html): the same event page in English
 
 ## Organiser
 
 - [Global Polish Student Society](https://globalpolsoc.com): network of Polish students abroad
+- [LinkedIn](https://www.linkedin.com/company/globalpolsoc)
+- [Instagram](https://www.instagram.com/global_polish_society/)
+
+## Optional
+
+- [Privacy policy](https://www.reunion-hackathon.pl/polityka-prywatnosci.html): how personal data is processed (Polish)

@@ -678,3 +678,9 @@ a.person:focus-visible { outline: 2px solid #fff; outline-offset: 8px; }
 @media (max-width: 700px) { .by span { letter-spacing: .02em; } .bar-end { gap: 8px; } .lang { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; padding: 0; } }
 @media (max-width: 340px) { .lang { min-width: 32px; } .nav .lang { margin-right: 2px; } .bar-end { gap: 2px; } .nav .by, .bar .by { margin-left: 6px; padding-left: 6px; } .by span { font-size: 13px; } .nav .btn.soon, .bar .btn.soon { width: min-content; } }
 .paused { animation-play-state: paused !important; }   /* main.js pauseOffscreen */
+/* mission: one plain sentence (what, where, when, for whom) under the slogan, for search and AI answers */
+.m2-right .lede.def { margin-top: 18px; font-size: 18px; line-height: 1.5; max-width: 38ch; }
+/* venue: no photo frame until the venue is announced; the info takes the whole card */
+.venue .ph { display: none; }
+.venue { grid-template-columns: 1fr; }
+.venue .info { padding: 36px 40px; }

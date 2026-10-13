@@ -7,8 +7,8 @@ LD_PL = '"description": "48 godzin pracy nad wyzwaniami firm i instytucji. 100 u
 LD_EN = '"description": "48 hours of work on challenges from companies and institutions. 100 participants, Warsaw, 5–7 February 2027.", "url": "https://www.reunion-hackathon.pl/en.html"'
 T = [
  ('<html lang="pl">', '<html lang="en">'),
- ('<title>Reunion Hackathon · Warszawa · 5–7 lutego 2027</title>', '<title>Reunion Hackathon · Warsaw · 5–7 February 2027</title>'),
- ('content="48 godzin pracy nad wyzwaniami firm i instytucji. 100 uczestników, Warszawa, 5–7 lutego 2027."', 'content="48 hours of work on challenges from companies and institutions. 100 participants, Warsaw, 5–7 February 2027."'),
+ ('<title>Hackathon AI Warszawa 2027 | Reunion Hackathon, 5–7 lutego</title>', '<title>AI Hackathon Warsaw 2027 | Reunion Hackathon, 5–7 February</title>'),
+ ('content="48-godzinny hackathon AI w Warszawie, 5–7 lutego 2027. 100 miejsc dla polskich studentów i absolwentów z zagranicy. Udział bezpłatny, rekrutacja wkrótce."', 'content="48-hour AI hackathon in Warsaw, 5–7 February 2027, for Polish students and graduates of universities abroad. 100 places, free, selection by application."'),
  ('<link rel="canonical" href="https://www.reunion-hackathon.pl/">', '<link rel="canonical" href="https://www.reunion-hackathon.pl/en.html">'),
  ('<meta property="og:locale" content="pl_PL">\n<meta property="og:locale:alternate" content="en_GB">', '<meta property="og:locale" content="en_GB">\n<meta property="og:locale:alternate" content="pl_PL">'),
  ('<meta property="og:url" content="https://www.reunion-hackathon.pl/">', '<meta property="og:url" content="https://www.reunion-hackathon.pl/en.html">'),
@@ -35,7 +35,11 @@ T = [
  ('<b>Szwajcaria</b>', '<b>Switzerland</b>'), ('<b>Włochy</b>', '<b>Italy</b>'), ('<b>Hiszpania</b>', '<b>Spain</b>'),
  (' stud.</span>', ' students</span>'),
  ('WAW · Warszawa', 'WAW · Warsaw'),
- ('Liczba polskich studentów w kraju: Eurostat 2024, Nuffic i HESA 2024/25.', 'Polish students in each country: Eurostat 2024, Nuffic and HESA 2024/25.'),
+ ('W tych siedmiu krajach studiuje łącznie ponad 12 tys. polskich studentów. Źródła: Eurostat 2024, Nuffic i HESA 2024/25.', 'More than 12,000 Polish students study in these seven countries. Sources: Eurostat 2024, Nuffic and HESA 2024/25.'),
+ ('Reunion Hackathon to 48-godzinny hackathon AI w Warszawie, 5–7 lutego 2027, dla 100 polskich studentów i absolwentów zagranicznych uczelni. Udział jest bezpłatny.', 'Reunion Hackathon is a 48-hour AI hackathon in Warsaw, 5–7 February 2027, for 100 Polish students and graduates of universities abroad. Taking part is free.'),
+ ('"description": "Sieć polskich studentów za granicą."', '"description": "Network of Polish students abroad."'),
+ ('Wkrótce. Formularz pojawi się na tej stronie, obserwuj też kanały GPSS.', 'Soon. The form will appear on this page. Also follow the GPSS channels.'),
+ ('Napisz na maks.rokosz@globalpolsoc.com. Odeślemy deck partnerski z pakietami, świadczeniami i stawkami. Nie udostępniamy go do pobrania.', 'Write to maks.rokosz@globalpolsoc.com. We will send you the partner deck with packages, benefits and rates. It is not available for download.'),
  ('<span class="mono">Organizator</span>', '<span class="mono">Organiser</span>'),
  ('Sieć polskich studentów za granicą · Inspiruj · Jednocz · Wracaj', 'Network of Polish students abroad · Inspire · Unite · Return'),
  ('Kula ziemska: z siedmiu krajów trasy prowadzą do Warszawy', 'Globe: routes lead from seven countries to Warsaw'),
@@ -114,7 +118,7 @@ T = [
  ('>Formularz wkrótce<', '>Form coming soon<'),
  ('aria-label="Global Polish Student Society, strona organizatora"', 'aria-label="Global Polish Student Society, organiser\'s website"'),
  ('<span class="lbl">Organizator</span>', '<span class="lbl">Organiser</span>'),
- ('>Regulamin<', '>Terms<'), ('>Polityka prywatności<', '>Privacy policy<'),
+ ('>Regulamin (wersja robocza)<', '>Terms (draft)<'), ('>Polityka prywatności<', '>Privacy policy<'),
  ('Reunion Hackathon, Warszawa, 5–7 lutego 2027</p>', 'Reunion Hackathon, Warsaw, 5–7 February 2027</p>'),
 ]
 for a, b in T:
