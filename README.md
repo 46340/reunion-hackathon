@@ -14,6 +14,14 @@ Na każdym adresie poza `www.reunion-hackathon.pl` Vercel wysyła `X-Robots-Tag:
 
 ## Do zrobienia
 
+**Gdy coś się wydarzy, zmienić w kilku miejscach naraz:**
+
+- **Ogłoszone miejsce:** w `styles.css` usunąć blok „venue: no photo frame” (`.venue .ph { display: none }` i jednokolumnowy grid), uzupełnić pola Nazwa miejsca / Adres / Dojazd w sekcji #miejsce, w JSON-LD dodać `location.name` i `streetAddress`, zaktualizować FAQ „Kiedy i gdzie” i `llms.txt`.
+- **Otwarta rekrutacja:** „wkrótce / soon” jest w meta description, FAQ, `llms.txt` (linia Status) i przyciskach „Aplikuj wkrótce”; w JSON-LD dodać `offers` (`url` formularza, `validFrom`, `availability`, cena 0).
+- **Gotowy regulamin:** usunąć `noindex` z `regulamin.html`, usunąć „(wersja robocza)” w `index.html` i parę w `make_en.py`, dopisać do `sitemap.xml`.
+- **Znana godzina zakończenia:** `endDate` z godziną w JSON-LD.
+- **Po każdej zmianie w `index.html`:** `python3 make_en.py` (odbudowuje też FAQPage w JSON-LD z widocznego FAQ, PL i EN).
+
 1. `regulamin.html` to szkic: uzupełnić pola [DO UZUPEŁNIENIA], dać do sprawdzenia prawnikowi, potem usunąć `<meta name="robots" content="noindex">`.
 2. Google Search Console: weryfikacja domeny (rekord DNS TXT u aftermarket.pl), zgłosić `sitemap.xml`; Bing Webmaster Tools: import z Search Console.
 3. Google Analytics dopiero z banerem zgody na cookies (polityka prywatności już to opisuje).

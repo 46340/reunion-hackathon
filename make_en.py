@@ -1,8 +1,20 @@
 # Builds en.html from index.html: same markup, English text. Every pair must match at least once.
 # Run after every index.html edit: python3 make_en.py
-import pathlib, re, sys
+import html, json, pathlib, re, sys
 root = pathlib.Path(__file__).parent
-s = (root / "index.html").read_text()
+
+def sync_faq(page):
+    """FAQPage JSON-LD rebuilt from the visible FAQ, so the schema always matches the page word for word (Google requires it)."""
+    m = re.search(r'<script type="application/ld\+json">(.*?)</script>', page, re.S)
+    graph = json.loads(m.group(1))
+    qa = re.findall(r'<summary class="q">(.*?)</summary><div class="a">(.*?)</div></details>', page)
+    faq = next(x for x in graph["@graph"] if x["@type"] == "FAQPage")
+    faq["mainEntity"] = [{"@type": "Question", "name": html.unescape(q),
+                          "acceptedAnswer": {"@type": "Answer", "text": html.unescape(re.sub(r"<[^>]+>", "", a))}} for q, a in qa]
+    return page.replace(m.group(1), json.dumps(graph, ensure_ascii=False))
+
+s = sync_faq((root / "index.html").read_text())
+(root / "index.html").write_text(s)
 LD_PL = '"description": "48 godzin pracy nad wyzwaniami firm i instytucji. 100 uczestników, Warszawa, 5–7 lutego 2027.", "url": "https://www.reunion-hackathon.pl/"'
 LD_EN = '"description": "48 hours of work on challenges from companies and institutions. 100 participants, Warsaw, 5–7 February 2027.", "url": "https://www.reunion-hackathon.pl/en.html"'
 T = [
@@ -38,8 +50,6 @@ T = [
  ('W tych siedmiu krajach studiuje łącznie ponad 12 tys. polskich studentów. Źródła: Eurostat 2024, Nuffic i HESA 2024/25.', 'More than 12,000 Polish students study in these seven countries. Sources: Eurostat 2024, Nuffic and HESA 2024/25.'),
  ('Reunion Hackathon to 48-godzinny hackathon AI w Warszawie, 5–7 lutego 2027, dla 100 polskich studentów i absolwentów zagranicznych uczelni. Udział jest bezpłatny.', 'Reunion Hackathon is a 48-hour AI hackathon in Warsaw, 5–7 February 2027, for 100 Polish students and graduates of universities abroad. Taking part is free.'),
  ('"description": "Sieć polskich studentów za granicą."', '"description": "Network of Polish students abroad."'),
- ('Wkrótce. Formularz pojawi się na tej stronie, obserwuj też kanały GPSS.', 'Soon. The form will appear on this page. Also follow the GPSS channels.'),
- ('Napisz na maks.rokosz@globalpolsoc.com. Odeślemy deck partnerski z pakietami, świadczeniami i stawkami. Nie udostępniamy go do pobrania.', 'Write to maks.rokosz@globalpolsoc.com. We will send you the partner deck with packages, benefits and rates. It is not available for download.'),
  ('<span class="mono">Organizator</span>', '<span class="mono">Organiser</span>'),
  ('Sieć polskich studentów za granicą · Inspiruj · Jednocz · Wracaj', 'Network of Polish students abroad · Inspire · Unite · Return'),
  ('Kula ziemska: z siedmiu krajów trasy prowadzą do Warszawy', 'Globe: routes lead from seven countries to Warsaw'),
@@ -124,6 +134,7 @@ T = [
 for a, b in T:
     if a not in s: sys.exit(f"MISSING: {a[:90]}")
     s = s.replace(a, b)
+s = sync_faq(s)
 (root / "en.html").write_text(s)
 # leftovers: diacritics, or Polish words without them
 POLISH = re.compile(r"\b(Tracki|Rekrutacja|Partnerzy|Zespół|Organizator|Miejsce|Pakiety|Warszawa|lutego|Aplikuj|Kontakt|Napisz|godzin|miejsc|wkrótce)\b")
