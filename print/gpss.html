@@ -1,0 +1,28 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>Reunion Hackathon · GPSS page graphics</title>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600..900&family=Barlow+Condensed:wght@100;300&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="print.css">
+<style>
+  /* Graphics for the GPSS website's Reunion Hackathon page: hero background 1600x900, hero board (transparent), 3 agenda day cards 800x600 */
+  body { background: #EDE8E0; }
+  .wall { display: flex; flex-wrap: wrap; gap: 40px; padding: 40px; width: 3500px; align-items: flex-start; }
+  .hero { width: 1600px; height: 900px; flex: none; }
+  .day { width: 800px; height: 600px; flex: none; display: flex; align-items: center; justify-content: center; }
+  .day iframe { position: relative; z-index: 2; }
+  .tboard { flex: none; background: transparent; display: inline-block; }
+  .g { position: absolute; z-index: 1; opacity: .18; } .g svg { width: 100%; height: 100%; }
+</style></head><body>
+<div class="wall" id="wall"></div>
+<script src="print.js"></script>
+<script>
+  const W = document.getElementById("wall");
+  const day = (n) => `<section class="sheet grain day" data-shot="gpss-day-${n}"><iframe class="board" id="d${n}"></iframe></section>`;
+  W.innerHTML = `
+  <section class="sheet grain hero" data-shot="gpss-hero-bg">
+    <div class="g" style="left:760px;width:1100px;top:160px;height:1100px">${Print.globe({ op: 1, width: 6, arcs: false })}</div>
+  </section>
+  <div class="tboard" data-shot="gpss-hero-board"><iframe class="board" id="hb"></iframe></div>
+  ${day(1)}${day(2)}${day(3)}`;
+  Print.board(document.getElementById("hb"), ["WAW", "05-07.02.2027"], 34, 15);
+  [["05.02", "16:00"], ["06.02", "24H"], ["07.02", "15:30"]].forEach((l, i) => Print.board(document.getElementById("d" + (i + 1)), l, 64, 5));
+</script>
+</body></html>
