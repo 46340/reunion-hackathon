@@ -63,6 +63,7 @@ T = [
  ('Jedna ze ścieżek może być Twoja.', 'One of the tracks can be yours.'),
  ('>Napisz do nas<', '>Get in touch<'),
  ('48 godzin. Od pomysłu do <em>demo.</em>', '48 hours. From idea to <em>demo.</em>'),
+ ('alt="Logo GPSS"', 'alt="GPSS logo"'),
  ('aria-label="48 godzin: otwarcie, praca, finał"', 'aria-label="48 hours: opening, work, final"'),
  ('>OTWARCIE<', '>OPENING<'), ('>PRACA<', '>WORK<'), ('>FINAŁ<', '>FINAL<'),
  ('title="Tablica odlotów z planem wydarzenia" aria-hidden="true" tabindex="-1"', 'title="Departure board with the event plan" aria-hidden="true" tabindex="-1"'),
