@@ -686,3 +686,5 @@ a.person:focus-visible { outline: 2px solid #fff; outline-offset: 8px; }
 .venue .info { padding: 36px 40px; }
 /* partner benefits: titles reserve two lines, so every description starts at the same height */
 @media (min-width: 701px) { .benefits h3 { min-height: 2.1em; } }
+/* text for screen readers and search engines that mirrors a visual-only element (the agenda board) */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
