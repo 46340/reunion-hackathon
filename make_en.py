@@ -101,7 +101,6 @@ T = [
  ('Kontakt dla partnerów', 'Partner contact'),
  ('subject=Reunion%20Hackathon%20-%20deck%20partnerski">Napisz po deck partnerski<', 'subject=Reunion%20Hackathon%20-%20partner%20deck">Ask for the partner deck<'),
  ('Kto za tym stoi.', 'Who is behind it.'),
- (', zdjęcie wkrótce"', ', photo coming soon"'),
  ('Pytania i <em>odpowiedzi.</em>', 'Questions and <em>answers.</em>'),
  ('Kto może aplikować?', 'Who can apply?'),
  ('Polscy studenci i absolwenci uczelni zagranicznych, głównie kierunków informatycznych, AI/ML, inżynieryjnych i data science. Wybieramy na podstawie aplikacji. Dokładne kryteria opublikujemy razem z formularzem.',
