@@ -135,7 +135,8 @@ function sizeBoards() {
     const rows = countdown ? 5 : lines.split("|").length;
     const room = Math.min(+(f.dataset.maxw || 9999), (f.parentElement.clientWidth || innerWidth) - 8);
     let cw = Math.max(8, Math.min(+(f.dataset.cw || 34), Math.floor(room / (cols + (cols - 1) * 0.15 + 3))));
-    if (!countdown) cw = Math.max(8, Math.min(cw, Math.floor(innerHeight * +(f.dataset.hfrac || 0.33) / (rows * 1.3 + (rows - 1) * 0.42 + 2.7))));   // agenda leaves room for the rest
+    // agenda leaves room for the rest of its section; on phones (the CSS phone layout) the page scrolls, so the board fills the column and stays readable
+    if (!countdown && innerWidth > 700) cw = Math.max(8, Math.min(cw, Math.floor(innerHeight * +(f.dataset.hfrac || 0.33) / (rows * 1.3 + (rows - 1) * 0.42 + 2.7))));
     // hero fits one screen on desktop; a phone board fills the column (Safari's toolbars left so little height that it shrank to the 8 px minimum)
     if (countdown && !m) cw = Math.max(8, Math.min(cw, Math.floor(((document.documentElement.classList.contains("shot") ? 900 : innerHeight) - 500) / (rows * 1.3 + (rows - 1) * 0.42 + 2.7))));
     const { w, h } = boardSize(cw, cols, rows);
