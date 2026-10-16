@@ -1,0 +1,428 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500..900&family=Barlow+Condensed:wght@100;200;300&family=Barlow:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../print/print.css"><link rel="stylesheet" href="../book.css"><title>Elementy</title>
+<style>
+  .callout.light { color: var(--w70); }
+  .rowtxt h3 { font: 900 88px/.9 var(--block); text-transform: uppercase; margin-top: 14px; }
+  .rowtxt p.n { margin-top: 18px; font: 400 21px/1.45 var(--body); max-width: 40ch; opacity: .85; }
+  .rowtxt p.m { max-width: 700px; margin-top: 14px; font: 500 14px/1.6 var(--mono); letter-spacing: .08em; text-transform: uppercase; opacity: .7; }
+  /* split-flap tile, drawn big: same values as board.html, constants in px multiplied by --s (= cw / 40) */
+  .bt { --ch: calc(var(--cw) * 1.3); position: relative; width: var(--cw); height: var(--ch); font: 700 calc(var(--ch) * .8) "Big Shoulders Display"; color: #fff; text-shadow: 0 0 1px rgba(255,255,255,.25); }
+  .bt .h { position: absolute; left: 0; right: 0; height: 50%; overflow: hidden; }
+  .bt .h span { position: absolute; left: 0; right: 0; height: var(--ch); line-height: var(--ch); text-align: center; }
+  .bt .t { top: 0; border-radius: calc(var(--s) * 2) calc(var(--s) * 2) 0 0; background: linear-gradient(180deg, #2c2a28, #232120); }
+  .bt .b { bottom: 0; border-radius: 0 0 calc(var(--s) * 2) calc(var(--s) * 2); background: linear-gradient(180deg, #1d1b1a, #161514); }
+  .bt .b span { top: calc(var(--ch) * -.5); }
+  .bt::after { content: ""; position: absolute; left: 0; right: 0; top: calc(50% - var(--s) / 2); height: var(--s); z-index: 3; background: rgba(0,0,0,.45); }
+  .bt .t.r { background: linear-gradient(180deg, #d10f10, #c20506); } .bt .b.r { background: linear-gradient(180deg, #b30001, #a00001); }
+  .bt .rt { color: #ff2a24; }
+  .bh { position: absolute; padding: calc(var(--cw) * 1.35) calc(var(--cw) * 1.5); background: linear-gradient(160deg, #1d1c1a 0%, #0c0b0a 45%, #121110 100%);
+    box-shadow: 0 0 0 1px #000, 0 0 0 calc(var(--cw) * .07) #2a2826 inset, 0 calc(var(--cw) * 1.1) calc(var(--cw) * 1.6) calc(var(--cw) * -.4) rgba(20,16,10,.55), calc(var(--cw) * .6) calc(var(--cw) * 1.4) calc(var(--cw) * 2.6) rgba(20,16,10,.28); }
+  .bh .gr { display: grid; grid-template-columns: repeat(3, var(--cw)); grid-auto-rows: calc(var(--cw) * 1.3); gap: calc(var(--cw) * .42) calc(var(--cw) * .15); }
+  .tilebox { position: absolute; }
+  /* site components (styles.css), reproduced for the spec drawings */
+  .u-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--red); color: #fff; font: 600 14px var(--mono); letter-spacing: .14em; padding: 20px 34px; text-transform: uppercase; white-space: nowrap; text-decoration: none; }
+  .on-r { color: #fff; } .on-r .u-btn { background: #fff; color: var(--red); } .on-r .u-btn.off { background: transparent !important; color: #fff !important; }
+  .u-btn.sm { padding: 13px 22px; font-size: 12px; }
+  .u-btn.go { position: relative; overflow: hidden; gap: 14px; font-size: 16px; padding: 22px 36px; }
+  .u-btn.go svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: square; }
+  .u-btn.go .shine { position: absolute; top: 0; bottom: 0; left: 58%; width: 30%; transform: skewX(-20deg); background: linear-gradient(90deg, transparent, rgba(200,16,46,.18), transparent); }
+  .u-btn.hot { background: #141210; color: #fff; }
+  .u-btn.off { background: transparent !important; color: inherit !important; border: 2px solid currentColor; opacity: .8; }
+  .u-chip { display: block; border: 2px solid #fff; padding: 10px 16px; font: 600 13px var(--mono); letter-spacing: .1em; white-space: nowrap; color: #fff; }
+  .u-q { display: grid; grid-template-columns: 1fr auto; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--ink-14); font: 700 30px/1.1 var(--block); text-transform: uppercase; color: var(--ink); }
+  .u-q::after { content: "+"; font: 300 34px/1 var(--mono); color: var(--red); display: inline-block; }
+  .u-q.open { border-bottom: 0; } .u-q.open::after { transform: rotate(45deg); }
+  .u-a { padding: 0 0 28px; border-bottom: 1px solid var(--ink-14); color: var(--ink-60); font: 400 18px/1.55 var(--body); max-width: 58ch; }
+  .u-brand { display: flex; align-items: center; color: #fff; }
+  .u-brand .sg svg { width: 30px; height: 30px; display: block; }
+  .u-by { display: flex; align-items: center; align-self: stretch; margin-left: 14px; padding-left: 12px; border-left: 1px solid rgba(255,255,255,.45); gap: 10px; color: #fff; }
+  .u-by img { width: 30px; height: 30px; object-fit: contain; }
+  .u-by span { font: 800 20px/1 var(--block); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+  .u-links { display: flex; gap: 16px; margin-left: auto; } .u-links a { font: 500 13px var(--mono); letter-spacing: .04em; text-transform: uppercase; padding: 8px 2px; color: #fff; }
+  .u-lang { display: inline-flex; font: 600 13px var(--mono); letter-spacing: .12em; color: #fff; padding: 12px 4px; border-bottom: 2px solid transparent; }
+  .u-lang.hov { border-bottom-color: #fff; }
+  .u-lang.t44 { align-items: center; justify-content: center; min-width: 44px; min-height: 44px; padding: 0; outline: 1px dashed rgba(255,255,255,.7); }
+  .u-snd { display: grid; place-items: center; width: 52px; height: 52px; border: 2px solid rgba(255,255,255,.85); border-radius: 50%; background: rgba(20,16,10,.22); color: #fff; }
+  .u-snd.hov { background: rgba(20,16,10,.4); }
+  .u-snd svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .u-ed { width: 540px; background: #141210; color: #fff; box-shadow: 0 40px 60px -30px rgba(20,18,16,.6); }
+  .u-ed .bar { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,.12); font: 500 13px var(--mono); letter-spacing: .1em; color: rgba(255,255,255,.6); }
+  .u-ed .bar span { margin-right: auto; } .u-ed .bar i { width: 11px; height: 11px; background: rgba(255,255,255,.25); } .u-ed .bar i:last-child { background: var(--red); }
+  .u-ed .code { font: 500 23px/1.5 var(--mono); white-space: pre; padding: 22px 26px 26px; color: #fff; }
+  .u-ed .k, .u-ed .n { color: #ff4a4a; } .u-ed .s { color: #F1C9CE; } .u-ed .c { color: rgba(255,255,255,.45); }
+  .u-term { background: #141210; color: #fff; padding: 22px 26px; font: 500 20px/1.5 var(--mono); width: 520px; box-shadow: 0 24px 40px -26px rgba(0,0,0,.6); }
+  .u-term .dim { color: rgba(255,255,255,.45); position: static; font: inherit; letter-spacing: 0; z-index: auto; }
+  .caretx { display: inline-block; width: .55em; height: 1.05em; background: currentColor; vertical-align: -.15em; }
+  .cursorx { display: inline-block; width: .5em; height: .95em; background: #fff; }
+  .gz { position: absolute; inset: 0; opacity: 1; background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='5'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 .16'/></feComponentTransfer></filter><rect width='220' height='220' filter='url(%23n)'/></svg>") 0 0 / 880px 880px; }
+  .ico { fill: none; stroke: currentColor; stroke-width: 1.25; stroke-linecap: round; stroke-linejoin: round; display: block; }
+  .icell { position: absolute; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 96px; text-align: center; padding-left: 20px; padding-right: 20px; }
+  .icell h4 { margin-top: 26px; min-height: 54px; display: flex; align-items: center; font: 800 26px/1 var(--block); text-transform: uppercase; }
+  .icell p { margin-top: 10px; font: 500 12px/1.5 var(--mono); letter-spacing: .1em; text-transform: uppercase; opacity: .62; }
+</style></head><body data-chapter="Elementy">
+
+<!-- 1. DIVIDER -->
+<section class="board divider">
+  <div class="field"><div class="top red grain"><span class="lockup"></span></div>
+    <div class="band"><h1 data-px="210">Elementy</h1><p class="mono ver"></p></div></div>
+  <div class="side surface-paper">
+    <iframe class="flap" id="f0" style="position:absolute;left:69px;top:380px;transform:rotate(-4deg)"></iframe>
+    <p class="cap" style="left:69px;top:700px">Tablica split-flap · na żywo</p>
+  </div>
+</section>
+
+<!-- 2. SPLIT-FLAP HERO -->
+<section class="board content">
+  <aside class="rail"><h2>Split-flap</h2>
+    <p>Główny przedmiot marki: tablica przylotów, na której zamiast lotu odlicza się czas do hackathonu. Ten sam kafel stoi w nagłówku strony, intro, agendzie i na planszach.</p>
+    <ul><li>Obudowa czarna, kafle ciemne</li><li>Cyfry odliczania na czerwono</li><li>Tło czerwone, ziarno</li><li>Nigdy w innym kolorze obudowy</li></ul></aside>
+  <div class="canvas red grain" id="cv2">
+    <div class="g" id="g2" style="position:absolute;left:150px;top:150px;width:1240px;height:1240px;opacity:.16"></div>
+    <p class="cap light" style="left:150px;top:64px;z-index:2">Tablica przylotów · tryb: odliczanie · na żywo</p>
+    <iframe class="flap" id="f2" style="position:absolute;left:150px;top:132px;z-index:2"></iframe>
+    <p class="cap light" style="left:150px;bottom:48px;z-index:2">Kafel 44 px · 22 kolumny × 5 wierszy · font Big Shoulders Display 700</p>
+    <p class="mono" style="position:absolute;right:150px;bottom:44px;z-index:2;font-size:22px;color:#fff;letter-spacing:.04em;text-transform:none">return(home);</p>
+  </div>
+  <div class="metrics"><div><b>22 × 5</b><span>kolumn i wierszy tablicy w nagłówku</span></div><div><b>do 34 px</b><span>szerokość kafla na stronie</span></div><div><b>85 ms</b><span>jeden obrót płatka</span></div><div><b>5.02, 16:00</b><span>cel odliczania (godzina do potwierdzenia)</span></div></div>
+</section>
+
+<!-- 3. ANATOMY -->
+<section class="board content">
+  <aside class="rail"><h2>Budowa kafla</h2>
+    <p>Wszystko liczy się od szerokości kafla cw. Wysokość, odstępy i obudowa są jej wielokrotnościami, więc tablica skaluje się bez zmiany proporcji.</p>
+    <ul><li>Kafel: cw × 1,3 cw</li><li>Odstęp: 0,15 cw w poziomie, 0,42 cw w pionie</li><li>Obudowa: 1,5 cw po bokach, 1,35 cw góra i dół</li><li>Znak: 0,8 wysokości kafla</li></ul></aside>
+  <div class="canvas white" id="cv3"></div>
+  <div class="metrics"><div><b>1,3 cw</b><span>wysokość kafla</span></div><div><b>0,15 / 0,42</b><span>odstęp poziomy i pionowy, w cw</span></div><div><b>1,5 / 1,35</b><span>padding obudowy, w cw</span></div><div><b>85 ms</b><span>obrót płatka (120 ms w intro)</span></div></div>
+</section>
+
+<!-- 4. IN USE -->
+<section class="board content">
+  <aside class="rail"><h2>Trzy tryby</h2>
+    <p>Jedna tablica, trzy zachowania. Kafle są te same, dlatego intro ląduje dokładnie na tablicy w nagłówku.</p>
+    <ul><li>Intro: karta tytułowa, potem odliczanie</li><li>Odliczanie: tablica w nagłówku</li><li>Statyczna: agenda i inne listy</li><li>Gwiazdka w tekście to czerwony kafel</li></ul></aside>
+  <div class="canvas" style="display:grid;grid-template-rows:1fr 1fr 1fr" id="cv4">
+    <div class="red grain rowtxt" style="position:relative;padding:38px 0 0 80px"><p class="mono" style="color:var(--w70);position:relative;z-index:2">01 · intro</p><h3 style="position:relative;z-index:2">Karta tytułowa</h3>
+      <p class="m" style="position:relative;z-index:2;margin-top:12px">Płatek 120 ms · fala 90 ms na wiersz, 11 ms na kolumnę · klik lub klawisz przyspiesza 5×</p>
+      <iframe class="flap" id="f4a" style="position:absolute;right:70px;top:38px;z-index:2"></iframe></div>
+    <div class="ink rowtxt" style="position:relative;padding:38px 0 0 80px;background:#34302c"><p class="mono" style="color:var(--w70)">02 · odliczanie</p><h3>Odliczanie</h3>
+      <p class="m">Cyfry na czerwono · płatek 85 ms · tylko zmienione kafle, raz na sekundę · pauza poza ekranem</p>
+      <iframe class="flap" id="f4b" style="position:absolute;right:70px;top:38px"></iframe></div>
+    <div class="paper rowtxt" style="position:relative;padding:38px 0 0 80px"><p class="mono" style="color:var(--ink-60)">03 · statyczna</p><h3>Agenda, listy</h3>
+      <p class="m">Płatek 85 ms · fala 110 ms na wiersz, 28 ms na kolumnę · * = czerwony kafel</p>
+      <iframe class="flap" id="f4c" style="position:absolute;right:70px;top:38px"></iframe></div>
+  </div>
+  <div class="metrics"><div><b>3</b><span>tryby jednej tablicy</span></div><div><b>2,4 s</b><span>karta tytułowa zmienia się w odliczanie</span></div><div><b>1 × na s</b><span>odświeżenie licznika</span></div><div><b>28 × 11</b><span>kolumny i wiersze agendy</span></div></div>
+</section>
+
+<!-- 5. GLOBE -->
+<section class="board content">
+  <aside class="rail"><h2>Globus</h2>
+    <p>Dwa globusy: siatka w tle nagłówka i druków oraz kula 3D z trasami z siedmiu krajów do Warszawy.</p>
+    <ul><li>Siatka: biała linia 6–7 na czerwieni</li><li>Krycie na czerwieni 0,16–0,22</li><li>Trasy: czerwone, do WAW</li><li>Kropki: Polska czerwona, siedem krajów różowe</li></ul></aside>
+  <div class="canvas" id="cv5" style="display:grid;grid-template-columns:520px 1fr">
+    <div class="red grain" style="position:relative;overflow:hidden">
+      <div id="g5a" style="position:absolute;left:-60px;top:372px;width:640px;height:640px;opacity:.22"></div>
+      <p class="serif" style="position:absolute;left:64px;top:56px;z-index:2;font-size:88px;line-height:.95;color:#fff">Siatka,<br><em>nie mapa.</em></p>
+      <p class="cap light" style="left:64px;top:316px;width:392px;z-index:2">okrąg r 190 · elipsy rx 60 i 125 · osie · układ 400 × 400</p></div>
+    <div class="paper" style="position:relative">
+      <div id="g5b" style="position:absolute;left:48px;top:36px;width:924px"></div>
+      <div id="tiles5" style="position:absolute;left:48px;top:492px;width:924px"></div>
+      <p class="cap" style="left:48px;bottom:36px;width:924px">kropki kuli 3D: Polska #C70F2E · siedem krajów #DB5C6E · reszta atrament 62 %</p></div>
+  </div>
+  <div class="metrics"><div><b>r 190</b><span>promień siatki w układzie 400 × 400</span></div><div><b>7</b><span>krajów i 7 tras do Warszawy</span></div><div><b>0,16–0,22</b><span>krycie siatki na czerwieni</span></div><div><b>0,45</b><span>krycie trasy na kuli 3D</span></div></div>
+</section>
+
+<!-- 6. EXTRUDED -->
+<section class="board content">
+  <aside class="rail"><h2>Litery z głębią</h2>
+    <p>Wielkie litery stoją jak plakat z lat 50.: biały przód, różowy bok, ciemna krawędź. Głębię buduje się cieniem tekstu, bez grafiki.</p>
+    <ul><li>Używaj: znak słowny, słowa rozdziałów, duże liczby</li><li>Nie używaj: tekst ciągły i podpisy</li><li>Strona: 26, 16 lub 7 warstw</li><li>Druk: krok rośnie razem z literą</li></ul></aside>
+  <div class="canvas red grain" id="cv6">
+    <div class="block" id="w6" style="position:absolute;left:84px;top:56px;z-index:2">Reunion</div>
+    <div class="block" id="r1" style="position:absolute;left:84px;top:530px;z-index:2">R</div>
+    <div class="block" id="r2" style="position:absolute;left:390px;top:530px;z-index:2">R</div>
+    <div class="block" id="r3" style="position:absolute;left:696px;top:530px;z-index:2">R</div>
+    <div class="block" id="r4" style="position:absolute;left:1002px;top:530px;z-index:2">R</div>
+    <p class="cap light" style="left:84px;top:500px">1 warstwa</p><p class="cap light" style="left:390px;top:500px">8 warstw</p><p class="cap light" style="left:696px;top:500px">26 warstw</p>
+    <p class="cap light" style="left:1002px;top:500px">krok powiększony 6×</p>
+    <div class="mono" style="position:absolute;left:1250px;top:530px;z-index:2;display:grid;gap:22px;color:#fff;font-size:14px">
+      <span><i style="display:inline-block;width:26px;height:26px;background:#fff;vertical-align:middle;margin-right:12px"></i>lico #FFFFFF</span>
+      <span><i style="display:inline-block;width:26px;height:26px;background:#EBC9CC;vertical-align:middle;margin-right:12px"></i>bok #EBC9CC</span>
+      <span><i style="display:inline-block;width:26px;height:26px;background:#6D0613;vertical-align:middle;margin-right:12px;outline:1px solid rgba(255,255,255,.4)"></i>krawędź #6D0613</span>
+      <span><i style="display:inline-block;width:26px;height:26px;background:rgba(20,16,10,.12);vertical-align:middle;margin-right:12px;outline:1px solid rgba(255,255,255,.4)"></i>cień czarny 12 %</span></div>
+  </div>
+  <div class="metrics"><div><b>26</b><span>warstw głębi, ostatnia to krawędź</span></div><div><b>0,55 × 1 px</b><span>krok jednej warstwy przy 150 px</span></div><div><b>0,06 × 0,11 em</b><span>przesunięcie cienia, 12 % czerni</span></div><div><b>16 · 7</b><span>warstw na sekcjach i małych tytułach strony</span></div></div>
+</section>
+
+<!-- 7. GRAIN -->
+<section class="board content">
+  <aside class="rail"><h2>Ziarno</h2>
+    <p>Cienka tekstura szumu na czerwieni. Zabiera cyfrowy połysk, a czerwień wygląda jak farba na papierze.</p>
+    <ul><li>Tylko na czerwieni</li><li>Kafelek 220 × 220 px, seed 5</li><li>Warstwa nad tłem, pod tekstem</li><li>Bez zmiany koloru: szum jest szary</li></ul></aside>
+  <div class="canvas" id="cv7" style="display:grid;grid-template-columns:1fr 1fr 1fr">
+    <div style="position:relative;background:var(--red)"><div class="mk" style="position:absolute;left:50%;top:50%;width:320px;height:320px;transform:translate(-50%,-50%)"></div><p class="cap light" style="left:40px;top:40px">A · bez ziarna</p></div>
+    <div class="grain" style="position:relative;background:var(--red)"><div class="mk" style="position:absolute;left:50%;top:50%;width:320px;height:320px;transform:translate(-50%,-50%);z-index:2"></div><p class="cap light" style="left:40px;top:40px;z-index:2">B · z ziarnem</p></div>
+    <div style="position:relative;background:var(--red);overflow:hidden"><div class="gz"></div><p class="cap light" style="left:40px;top:40px;z-index:2">C · powiększenie 4×</p>
+      <p class="cap light" style="left:40px;bottom:40px;z-index:2">sam szum, bez krycia 30 %<br>kafelek 220 px → 880 px</p></div>
+  </div>
+  <div class="metrics"><div><b>0,85</b><span>baseFrequency szumu fraktalnego</span></div><div><b>2</b><span>oktawy</span></div><div><b>0–0,16</b><span>alfa szumu (tableValues)</span></div><div><b>30 %</b><span>krycie warstwy ziarna</span></div></div>
+</section>
+
+<!-- 8. SWALLOWS + PLANE -->
+<section class="board content">
+  <aside class="rail"><h2>Jaskółki i samolot</h2>
+    <p>Jaskółka z plakatu Trepkowskiego „Wracajcie” to znak powrotu. Samolot w pasy, w stylu Hilschera, siedzi na stronie obok partnerów.</p>
+    <ul><li>Stado: jeden duży ptak, reszta mniejsza i dalej</li><li>Skala 0,25–0,6 pierwszego ptaka</li><li>Lecą w dół, w stronę domu</li><li>Cień pod stadem: tylko na plakacie</li></ul></aside>
+  <div class="canvas" id="cv8" style="display:grid;grid-template-columns:930px 1fr">
+    <div class="red grain" style="position:relative;overflow:hidden"><div id="flock" style="position:absolute;left:44px;top:60px;width:930px;height:640px;z-index:2"></div><p class="cap light" style="left:40px;bottom:36px;z-index:2">stado z plakatu · skala i kąt każdego ptaka · cień 10 × 16 px, #5A0612 przy 32 %</p></div>
+    <div style="display:grid;grid-template-rows:290px 250px 1fr">
+      <div class="paper" style="position:relative"><div id="sw1" style="position:absolute;left:180px;top:36px;width:250px;height:220px"></div></div>
+      <div class="red grain" style="position:relative;display:grid;place-items:center;border-left:3px solid var(--white)"><div id="pl1" style="width:500px;transform:rotate(-4deg);position:relative;z-index:2"></div></div>
+      <div class="white" style="position:relative;display:grid;place-items:center"><div id="pl2" style="width:500px;transform:rotate(-4deg)"></div></div>
+    </div>
+  </div>
+  <div class="metrics"><div><b>6</b><span>ptaków na plakacie, 2–3 na koszulce</span></div><div><b>0,25–1,1</b><span>skala ptaka (1 = 172 × 164 jednostki)</span></div><div><b>26–40°</b><span>kąt nachylenia w stadzie</span></div><div><b>800 × 200</b><span>pole rysunku samolotu</span></div></div>
+</section>
+
+<!-- 9. CODE -->
+<section class="board content">
+  <aside class="rail"><h2>Motyw kodu</h2>
+    <p>Hackathon mówi też kodem. Edytor, terminal i return(home); to drugi motyw marki, zawsze krojem mono.</p>
+    <ul><li>IBM Plex Mono, bez ozdobników</li><li>Ciemne pole, jasny tekst, czerwone słowa kluczowe</li><li>Karetka migocze, nigdy nie znika</li><li>Komendy po polsku, pytanie z [T/n]</li></ul></aside>
+  <div class="canvas" id="cv9">
+    <div class="paper" style="position:absolute;left:0;top:0;right:0;height:470px"></div>
+    <div class="red grain" style="position:absolute;left:0;top:470px;right:0;bottom:0"></div>
+    <div style="position:absolute;left:70px;top:76px;z-index:2"><div class="u-ed" style="zoom:1.2"><div class="bar"><span>reunion.js</span><i></i><i></i><i></i></div>
+      <div class="code"><span class="k">const</span> reunion = {
+  uczestnicy: <span class="n">100</span>,
+  godziny: <span class="n">48</span>,
+  miasto: <span class="s">"Warszawa"</span>,
+  spolecznosc: <span class="s">"10 000+"</span>, <span class="c">// GPSS</span>
+};<span class="caretx"></span></div></div></div>
+    <div style="position:absolute;left:830px;top:76px;z-index:2"><div class="u-term" style="zoom:1.2"><div><span class="dim">~/reunion $</span> reunion apply --edycja 01</div>
+      <div>Szukamy stu osób. Zgłoś się? <span class="dim">[T/n]</span> <span class="caretx"></span></div></div></div>
+    <p class="cap" style="left:70px;top:32px">reunion.js · edytor z sekcji o misji</p><p class="cap" style="left:830px;top:32px">terminal · sekcja rekrutacji</p>
+    <p class="cap" style="left:830px;top:290px;line-height:1.8">pisanie: start po 0,5 s, 70–130 ms na znak<br>po 0,4 s od ostatniego znaku pojawia się pytanie<br>karetka: 1 s, mruga bez płynnego przejścia</p>
+    <p class="mono" id="rh" style="position:absolute;left:0;right:0;top:548px;z-index:2;display:flex;align-items:center;justify-content:center;gap:.15em;font:500 124px var(--mono);letter-spacing:-.02em;text-transform:none;color:#fff"><span>return(home);</span><span class="cursorx"></span></p>
+  </div>
+  <div class="metrics"><div><b>124 px</b><span>return(home); na końcu strony</span></div><div><b>1 s</b><span>mrugnięcie karetki</span></div><div><b>70–130 ms</b><span>odstęp między wpisywanymi znakami</span></div><div><b>[T/n]</b><span>pytanie kończące komendę</span></div></div>
+</section>
+
+<!-- 10. BUTTONS -->
+<section class="board content">
+  <aside class="rail"><h2>Przyciski i znaczniki</h2>
+    <p>Kanciaste, bez zaokrągleń, w kroju mono. Na czerwieni przycisk jest biały, na jasnym czerwony. Aplikowanie jeszcze nie działa, więc przycisk jest ciszą, nie linkiem.</p>
+    <ul><li>Wersalik, odstęp liter 0,14 em</li><li>Brak zaokrągleń i obramowań</li><li>Nieaktywny: bez najechania i kliknięcia</li><li>Znaczniki: ramka 2 px, biel na czerwieni</li></ul></aside>
+  <div class="canvas" id="cv10">
+    <div class="red grain on-r" style="position:absolute;left:0;top:0;right:0;height:410px"></div>
+    <div class="paper" style="position:absolute;left:0;top:410px;right:0;bottom:0"></div>
+  </div>
+  <div class="metrics"><div><b>20 × 34 px</b><span>padding przycisku .btn</span></div><div><b>22 × 36 px</b><span>padding przycisku ze strzałką</span></div><div><b>13 × 22 px</b><span>padding małego przycisku w menu</span></div><div><b>2 px</b><span>ramka znacznika i wyłączonego przycisku</span></div></div>
+</section>
+
+<!-- 11. NAV / FAQ / SOUND / LANG -->
+<section class="board content">
+  <aside class="rail"><h2>Menu, dźwięk, pytania</h2>
+    <p>Pasek nawigacji niesie sygnet i organizatora. Okrągły przycisk włącza dźwięk tablicy, przełącznik języka ma cel dotyku 44 px.</p>
+    <ul><li>Sygnet 30 px, kreska 1 px przed GPSS</li><li>Dźwięk: koło 52 px, biała ramka 2 px</li><li>Język: PL i EN, cel dotyku 44 px</li><li>Pytania: plus czerwony, po otwarciu krzyżyk</li></ul></aside>
+  <div class="canvas" id="cv11">
+    <div class="red grain" style="position:absolute;left:0;top:0;right:0;height:230px"></div>
+    <div class="paper" style="position:absolute;left:0;top:230px;width:770px;bottom:0"></div>
+    <div class="red grain" style="position:absolute;left:770px;top:230px;right:0;bottom:0"></div>
+  </div>
+  <div class="metrics"><div><b>30 px</b><span>sygnet i planeta GPSS w pasku</span></div><div><b>52 px</b><span>przycisk dźwięku</span></div><div><b>44 px</b><span>cel dotyku przełącznika języka</span></div><div><b>30 px</b><span>pytanie FAQ, Big Shoulders 700</span></div></div>
+</section>
+
+<!-- 12. ICONS -->
+<section class="board content">
+  <aside class="rail"><h2>Ikony</h2>
+    <p>Kontur w stylu Feather i Lucide: cienka linia, bez wypełnień, jeden kolor. Ikony zastępują numery i ozdobniki, niczego nie ilustrują dosłownie.</p>
+    <ul><li>Siatka 24 × 24, linia 1,25</li><li>Zakończenia i łączenia okrągłe</li><li>Czerwone na jasnym, białe na czerwieni</li><li>Strzałka w przycisku: linia 2,4, kwadratowe końce</li></ul></aside>
+  <div class="canvas white" id="cv12"></div>
+  <div class="metrics"><div><b>24 × 24</b><span>siatka ikony</span></div><div><b>1,25</b><span>grubość linii (1,3 przy świadczeniach)</span></div><div><b>52–96 px</b><span>ikony ścieżek, rosną z wysokością ekranu</span></div><div><b>40–56 px</b><span>ikony świadczeń dla partnerów</span></div></div>
+</section>
+
+<script src="../../../print/print.js"></script><script src="../book.js"></script>
+<script>
+const $ = (s) => document.querySelector(s);
+const NB = "&nbsp;";
+// iframe of ../../../board.html (same sizing formula as the site's boardSize())
+const flap = (el, o) => {
+  const rows = o.rows || (o.lines ? o.lines.length : 5);
+  const q = new URLSearchParams({ embed: 1, font: "Big Shoulders Display", cw: o.cw, cols: o.cols });
+  if (o.mode) q.set("mode", o.mode);
+  if (o.lines) q.set("lines", o.lines.join("|"));
+  if (o.still != null) q.set("t", o.still);
+  if (o.reddigits) q.set("reddigits", 1);
+  el.src = "../../../board.html?" + q;
+  el.style.width = Math.ceil(o.cw * (o.cols + (o.cols - 1) * 0.15 + 3)) + "px";
+  el.style.height = Math.ceil(o.cw * (rows * 1.3 + (rows - 1) * 0.42 + 2.7)) + 30 + "px";
+};
+flap($("#f0"), { cw: 21, cols: 22, mode: "countdown" });
+flap($("#f2"), { cw: 44, cols: 22, mode: "countdown" });
+flap($("#f4a"), { cw: 17, cols: 22, mode: "intro", still: 1500 });
+flap($("#f4b"), { cw: 17, cols: 22, mode: "countdown", still: 99999 });
+flap($("#f4c"), { cw: 17, cols: 28, reddigits: 1, still: 99999,
+  lines: ["DZ GODZ  PROGRAM", "PT 16:00 REJESTRACJA", "PT 17:00 GALA OTWARCIA", "PT 20:00 START KODOWANIA *", "ND 15:30 GALA ZAMKNIĘCIA"] });
+$("#g2").innerHTML = Print.globe({ op: 1, width: 7, arcs: false });
+$("#g5a").innerHTML = Print.globe({ op: 1, width: 7, arcs: false });
+(() => { // routes as in print.js: orthographic projection (lon 12, lat 40), quadratic arcs lifted by 0.45 of the distance
+  const R = 190, rad = Math.PI / 180, LON0 = 12, LAT0 = 40;
+  const proj = (lat, lng) => [200 + R * Math.cos(lat * rad) * Math.sin((lng - LON0) * rad),
+    200 - R * (Math.cos(LAT0 * rad) * Math.sin(lat * rad) - Math.sin(LAT0 * rad) * Math.cos(lat * rad) * Math.cos((lng - LON0) * rad))];
+  const W = proj(52.23, 21.01);
+  let g = '<g stroke="rgba(20,18,16,.10)" stroke-width=".35" fill="none">';
+  for (let i = 70; i <= 280; i += 10) g += `<path d="M${i} 112V210"/>`; for (let j = 112; j <= 210; j += 10) g += `<path d="M70 ${j}H285"/>`;
+  g += "</g>"; const lab = [];
+  Print.CITIES.forEach(([name, n, lat, lng], i) => { const [x, y] = proj(lat, lng), mx = (x + W[0]) / 2, my = Math.min(y, W[1]) - Math.hypot(W[0] - x, W[1] - y) * .45;
+    g += `<path d="M${x} ${y} Q${mx} ${my} ${W[0]} ${W[1]}" fill="none" stroke="#C8102E" stroke-width=".7" stroke-linecap="round"/><circle cx="${x}" cy="${y}" r="1.3" fill="#C8102E"/>`;
+    const ly = [128, 138, 158, 148, 168, 178, 188][i];
+    g += `<path d="M148 ${ly - 1.4}H${x - 4}L${x} ${y}" fill="none" stroke="rgba(20,18,16,.28)" stroke-width=".25"/><text x="146" y="${ly}" text-anchor="end" font-family="IBM Plex Mono" font-size="4.6" letter-spacing=".2" fill="#141210">${name} · ${String(n).replace(/\B(?=(\d{3})+$)/g, " ")}</text>`; });
+  g += `<circle cx="${W[0]}" cy="${W[1]}" r="4.6" fill="none" stroke="#C8102E" stroke-width=".6" opacity=".6"/><circle cx="${W[0]}" cy="${W[1]}" r="2.2" fill="#C8102E"/><text x="${W[0] + 6}" y="${W[1] + 1.6}" font-family="IBM Plex Mono" font-weight="600" font-size="5" letter-spacing=".3" fill="#141210">WAW · WARSZAWA</text>`;
+  $("#g5b").innerHTML = `<svg viewBox="70 112 215 98" style="width:100%;height:auto;overflow:visible">${g}</svg>`;
+  const codes = ["ARN", "CPH", "LHR", "AMS", "ZRH", "MXP", "MAD"], t = "font:500 15px/1 var(--mono);letter-spacing:.12em";
+  $("#tiles5").innerHTML = Print.CITIES.map(([name, n], i) => `<div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--ink-14);padding:6px 0;${t}"><span style="color:var(--ink)">${name}</span><span style="color:var(--ink-60)">${String(n).replace(/\B(?=(\d{3})+$)/g, " ")} stud. · <b style="color:var(--ink)">${codes[i]}</b> → <b style="color:#fff;background:var(--red);padding:3px 6px">WAW</b></span></div>`).join("");
+})();
+document.querySelectorAll("#cv7 .mk").forEach((m) => (m.innerHTML = Book.MARK("#fff", "#fff")));
+
+// ---- layer-stacked text shadow (print.js formula, k = px / 150, n layers)
+const ex = (el, px, n, k = px / 150) => { el.style.fontSize = px + "px"; const l = [];
+  for (let i = 1; i <= n; i++) l.push(`${(i * .55 * k).toFixed(2)}px ${(i * k).toFixed(2)}px 0 ${i === n ? "#6d0613" : "#EBC9CC"}`);
+  l.push(`${(px * .06).toFixed(0)}px ${(px * .11).toFixed(0)}px 0 rgba(20,16,10,.12)`); el.style.textShadow = l.join(","); };
+ex($("#w6"), 410, 26); ex($("#r1"), 150, 1); ex($("#r2"), 150, 8); ex($("#r3"), 150, 26); ex($("#r4"), 150, 8, 6);
+
+// ---- swallows
+$("#flock").innerHTML = `<svg viewBox="150 540 700 480" width="930" height="640"><defs><filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="10" dy="16" stdDeviation="6" flood-color="#5a0612" flood-opacity=".32"/></filter></defs><g filter="url(#sh)">${
+  [[270, 640, 32, 1.1], [560, 590, 36, .45], [455, 770, 28, .6], [720, 700, 40, .36], [630, 845, 34, .3], [380, 915, 26, .25]].map(([x, y, a, k]) => Print.swallow(x, y, a, k)).join("")}</g>${
+  [[270, 640, 32, 1.1], [560, 590, 36, .45], [455, 770, 28, .6], [720, 700, 40, .36], [630, 845, 34, .3], [380, 915, 26, .25]].map(([x, y, a, k]) => `<text x="${x - 36}" y="${y + 74 * k + 26}" font-family="IBM Plex Mono" font-size="12" letter-spacing="1.2" fill="#fff" opacity=".8">×${String(k).replace(".", ",")} · ${a}°</text>`).join("")}</svg>`;
+$("#sw1").innerHTML = `<svg viewBox="-110 -100 190 180" width="250" height="237" style="overflow:visible">${Print.swallow(0, 0, 0, 1, "#C8102E")}</svg>`;
+function plane(on) {  // main.js plane(): Hilscher-style plane, nose to the left
+  const P = on === "red" ? { a: "#fff", b: "#8E0B20", c: "#141210", d: "#F1C9CE" } : { a: "#D9D0C3", b: "#C8102E", c: "#141210", d: "#9C968D" };
+  const rows = [[110, 8, [[150, 640, "a"]]], [118, 7, [[92, 330, "b"], [352, 600, "a"], [622, 700, "b"]]],
+    [125, 8, [[52, 262, "c"], [282, 522, "a"], [544, 762, "c"]]], [133, 8, [[34, 402, "a"], [422, 562, "b"], [582, 724, "d"]]],
+    [141, 8, [[40, 202, "b"], [222, 642, "a"], [664, 744, "c"]]], [149, 8, [[72, 462, "d"], [482, 702, "c"]]]];
+  const k = 14;
+  const bars = rows.flatMap(([y, h, segs]) => segs.map(([a, b, c]) => `<path d="M${a + k} ${y}H${b + k}L${b} ${y + h}H${a}Z" fill="${P[c]}"/>`)).join("");
+  return `<svg viewBox="0 0 800 200" aria-hidden="true"><path d="M330 150H520L470 184H290Z" fill="${P.c}"/>
+    <path d="M610 112L702 22H764L742 112Z" fill="#141210"/><clipPath id="fin-${on}"><path d="M610 112L702 22H764L742 112Z"/></clipPath>
+    <g clip-path="url(#fin-${on})"><rect x="600" y="62" width="180" height="11" fill="#fff"/><rect x="600" y="73" width="180" height="11" fill="#C8102E"/></g>
+    <circle cx="728" cy="42" r="13" fill="#fff"/><path d="M724.6 31.6a10.4 10.4 0 0 0 .8 20.7" fill="none" stroke="#141210" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M730.2 50.9a10.4 10.4 0 0 0-.4-18.9" fill="none" stroke="#C8102E" stroke-width="2.2" stroke-linecap="round"/><circle cx="729" cy="42" r="2.2" fill="#C8102E"/>${bars}</svg>`;
+}
+$("#pl1").innerHTML = plane("red"); $("#pl2").innerHTML = plane("white");
+
+// ---- helpers for spec drawings: dimensions and callouts in canvas coordinates
+const add = (cv, html) => cv.insertAdjacentHTML("beforeend", html);
+const dh = (cv, x, y, w, t, c = "") => add(cv, `<div class="dim h ${c}" style="left:${x}px;top:${y}px;width:${w}px"><span>${t}</span></div>`);
+const dv = (cv, x, y, h, t, c = "") => add(cv, `<div class="dim v ${c}" style="left:${x}px;top:${y}px;height:${h}px"><span>${t}</span></div>`);
+// text beside a target point: side "r" = text left of the point (leader runs right to it), "l" = text right of it
+const co = (cv, t, tx, ty, side, w = 220, len = 56, c = "") => { const L = side === "r" ? tx - len - 12 - w : tx + len + 12;
+  add(cv, `<p class="callout ${side} ${c}" style="left:${L}px;top:${ty - 9}px;width:${w}px;${side === "r" ? "text-align:right" : ""}">${t}</p>`); };
+const rel = (el, cv) => { const a = el.getBoundingClientRect(), b = cv.getBoundingClientRect(); return { x: a.left - b.left, y: a.top - b.top, w: a.width, h: a.height }; };
+const R = Math.round;
+
+// ---- 3. anatomy
+(() => {
+  const cv = $("#cv3");
+  const T = (cw, g, o = {}) => `<div class="bt" style="--cw:${cw}px;--s:${cw / 40}px"><div class="h t${o.r ? " r" : ""}"><span class="${o.rt ? "rt" : ""}">${g}</span></div><div class="h b${o.r ? " r" : ""}"><span class="${o.rt ? "rt" : ""}">${g}</span></div></div>`;
+  const tx = 400, ty = 230, tw = 240, th = 312;
+  add(cv, `<div class="tilebox" style="left:${tx}px;top:${ty}px;filter:drop-shadow(0 30px 24px rgba(20,16,10,.35))">${T(tw, "W")}</div>`);
+  dh(cv, tx, ty - 40, tw, "cw"); dv(cv, tx + tw + 36, ty, th, "1,3 cw");
+  co(cv, "narożnik 2 px", tx, ty + 3, "r", 250, 40);
+  co(cv, "góra<br>#2C2A28 → #232120", tx, ty + 50, "r", 250, 40);
+  co(cv, "znak: Big Shoulders 700<br>0,8 wysokości kafla", tx + 40, ty + 104, "r", 250, 40 + 40);
+  co(cv, "linia podziału<br>1 px · rgba(0,0,0,.45)", tx, ty + th / 2, "r", 250, 40);
+  co(cv, "dół<br>#1D1B1A → #161514", tx, ty + th - 46, "r", 250, 40);
+  add(cv, `<p class="cap" style="left:${tx}px;top:${ty + th + 40}px;width:330px;line-height:1.6">kafel w powiększeniu 6×<br>(cw 240 zamiast 40)</p>`);
+  // 2 x 3 group in housing, cw = 90
+  const cw = 80, g = [["W", {}], ["A", {}], ["W", {}], ["5", { rt: 1 }], ["", { r: 1 }], ["7", { rt: 1 }]];
+  const hx = 970, hy = 128, pw = cw * 1.5, ph = cw * 1.35, gx = cw * .15, gy = cw * .42, ch = cw * 1.3;
+  add(cv, `<div class="bh" style="--cw:${cw}px;--s:${cw / 40}px;left:${hx}px;top:${hy}px"><div class="gr">${g.map(([c, o]) => T(cw, c, o)).join("")}</div></div>`);
+  const xs = [hx, hx + pw, hx + pw + cw, hx + pw + cw + gx, hx + pw + 2 * cw + gx, hx + pw + 2 * cw + 2 * gx, hx + pw + 3 * cw + 2 * gx, hx + 2 * pw + 3 * cw + 2 * gx];
+  const lab = ["1,5 cw", "cw", "0,15 cw", "cw", "0,15 cw", "cw", "1,5 cw"];
+  for (let i = 0; i < 7; i++) dh(cv, xs[i], hy - 40, xs[i + 1] - xs[i], lab[i], [2, 4].includes(i) ? "below" : "");
+  const ys = [hy, hy + ph, hy + ph + ch, hy + ph + ch + gy, hy + ph + 2 * ch + gy, hy + 2 * ph + 2 * ch + gy], vl = ["1,35 cw", "1,3 cw", "0,42 cw", "1,3 cw", "1,35 cw"];
+  for (let i = 0; i < 5; i++) dv(cv, hx - 40, ys[i], ys[i + 1] - ys[i], vl[i], "left");
+  add(cv, `<p class="cap" style="left:${hx}px;top:${ys[5] + 36}px;width:504px;line-height:1.6">obudowa: tło 160° #1D1C1A → #0C0B0A → #121110, ramka 1 px #000, wewnętrzny pierścień 0,07 cw #2A2826 · cyfry #FF2A24, czerwony kafel #D10F10 → #A00001 · powiększenie 2×</p>`);
+})();
+
+// ---- 10. buttons (drawn with zoom; measured dimensions come from the render)
+(() => {
+  const cv = $("#cv10"), z = 1.3, arrow = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h16m-6-6 6 6-6 6"/></svg>';
+  // wrapper is positioned, the inner element carries the zoom (zoom would also scale left/top)
+  const el = (html, x, y, cls = "", zz = z) => { add(cv, `<div class="${cls}" style="position:absolute;left:${x}px;top:${y}px;z-index:3"><div style="zoom:${zz};display:inline-block">${html}</div></div>`); return cv.lastElementChild.querySelector(".u-btn"); };
+  const onr = "on-r", C1 = 96, C2 = 660, C3 = 1190, RB = 410, P1 = RB + 104, P2 = RB + 231;
+  const a = el(`<span class="u-btn">Napisz po deck partnerski</span>`, C1, 116, onr);
+  const b = el(`<span class="u-btn go">Aplikuj wkrótce${arrow}</span>`, C2, 116, onr);
+  el(`<span class="u-btn off">Formularz wkrótce</span>`, C1, 288, onr);
+  el(`<span class="u-btn sm">Aplikuj wkrótce</span>`, C2, 288, onr);
+  add(cv, `<div style="position:absolute;left:${C3}px;top:116px;z-index:3"><div class="on-r" style="zoom:1.15;display:grid;gap:10px;justify-items:start"><span class="u-chip">SELEKCJA APLIKACYJNA</span><span class="u-chip">UDZIAŁ BEZPŁATNY</span><span class="u-chip">SOLO LUB ZESPOŁOWO</span><span class="u-chip">STUDENCI I ABSOLWENCI</span></div></div>`);
+  const e = el(`<span class="u-btn">Napisz po deck partnerski</span>`, C1, P1);
+  el(`<span class="u-btn go"><span class="shine"></span>Aplikuj wkrótce${arrow}</span>`, C1, P2);
+  el(`<span class="u-btn hot">Napisz po deck partnerski</span>`, C2, P1);
+  el(`<span class="u-btn go hot">Aplikuj wkrótce${arrow}</span>`, C2, P2);
+  const lab = (t, x, y, c = "") => add(cv, `<p class="cap ${c}" style="left:${x}px;top:${y}px;white-space:nowrap">${t}</p>`);
+  lab("btn · na czerwieni", C1, 40, "light"); lab("btn go · wkrótce, nieaktywny", C2, 40, "light"); lab("btn off · wyłączony", C1, 258, "light"); lab("btn sm · menu", C2, 258, "light"); lab("znaczniki", C3, 40, "light");
+  lab("btn · na jasnym", C1, RB + 30); lab("btn · najechanie", C2, RB + 30); lab("btn go · czerwony z błyskiem", C1, P2 - 28); lab("btn go · najechanie", C2, P2 - 28);
+  add(cv, `<p class="cap" style="left:${C3}px;top:${P2}px;width:300px;line-height:1.8">błysk co 4 s,<br>strzałka +6 px co 1,4 s<br>najechanie: atrament #141210</p>`);
+  document.fonts.ready.then(() => requestAnimationFrame(() => {
+    const A = rel(a, cv), D = rel(e, cv), Bg = rel(b, cv);
+    dh(cv, A.x, A.y - 18, A.w, `${R(A.w / z)} px`, "light"); dv(cv, A.x + A.w + 16, A.y, A.h, `${R(A.h / z)} px`, "light");
+    dh(cv, A.x, A.y + A.h + 14, 34 * z, "34", "light below"); dv(cv, A.x - 18, A.y, 20 * z, "20", "light left");
+    dh(cv, Bg.x, Bg.y - 18, Bg.w, `${R(Bg.w / z)} px`, "light"); dv(cv, Bg.x + Bg.w + 16, Bg.y, Bg.h, `${R(Bg.h / z)} px`, "light");
+    dh(cv, D.x, D.y - 18, D.w, `${R(D.w / z)} px`); dv(cv, D.x + D.w + 16, D.y, D.h, `${R(D.h / z)} px`);
+  }));
+})();
+
+// ---- 11. nav, sound, language, FAQ (inner elements carry the zoom, wrappers carry the position)
+(() => {
+  const cv = $("#cv11"), mark = Book.MARK("#fff", "#fff");
+  const spk = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/>', off = spk + '<path d="m23 9-6 6M17 9l6 6"/></svg>', on = spk + '<path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.75"/></svg>';
+  const at = (x, y, html, zz = 1, extra = "") => add(cv, `<div style="position:absolute;left:${x}px;top:${y}px;z-index:3"><div style="zoom:${zz};${extra}">${html}</div></div>`);
+  at(48, 100, `<div style="display:flex;align-items:center;gap:32px;width:1180px">
+    <div class="u-brand"><span class="sg">${mark}</span><a class="u-by"><img src="../../../assets/logos/gpss-planet-white.png" alt=""><span>Global Polish Student Society</span></a></div>
+    <div class="u-links" style="margin-left:auto"><a>Tracki</a><a>Agenda</a><a>Rekrutacja</a><a>Partnerzy</a><a>Zespół</a><a>FAQ</a></div>
+    <span class="u-lang">EN</span><span class="u-btn sm" style="background:#fff;color:var(--red)">Aplikuj wkrótce</span></div>`, 1.2);
+  add(cv, `<p class="cap light" style="left:60px;top:32px;z-index:3">pasek nawigacji · sygnet, organizator, linki, język, przycisk</p>`);
+  add(cv, `<p class="cap" style="left:64px;top:292px;z-index:3">wiersz pytania · zamknięty i otwarty</p>`);
+  at(64, 336, `<div style="width:640px"><div class="u-q">Ile kosztuje udział?</div><div class="u-q">Czy muszę mieć zespół?</div><div class="u-q open">Kto może aplikować?</div>
+    <div class="u-a">Polscy studenci i absolwenci uczelni zagranicznych, głównie kierunków informatycznych, AI/ML, inżynieryjnych i data science.</div></div>`);
+  const X = 770 + 56;
+  add(cv, `<p class="cap light" style="left:${X}px;top:274px">dźwięk · wyłączony, włączony</p>`);
+  at(X, 352, `<span class="u-snd">${off}</span>`, 2.4); at(X + 190, 352, `<span class="u-snd hov">${on}</span>`, 2.4);
+  add(cv, `<p class="cap light" style="left:${X}px;top:520px">przełącznik języka · zwykły, najechany, cel dotyku</p>`);
+  at(X, 570, `<span class="u-lang">EN</span>`, 2.4); at(X + 150, 570, `<span class="u-lang hov">EN</span>`, 2.4); at(X + 300, 570, `<span class="u-lang t44" id="t44">PL</span>`, 2.4);
+  document.fonts.ready.then(() => requestAnimationFrame(() => {
+    const t = rel($("#t44"), cv), s = rel(cv.querySelector(".u-snd"), cv);
+    dh(cv, t.x, t.y + t.h + 14, t.w, "44 px", "light below"); dv(cv, t.x + t.w + 14, t.y, t.h, "44 px", "light");
+    dh(cv, s.x, s.y - 16, s.w, "52 px", "light");
+  }));
+})();
+
+// ---- 12. icons
+(() => {
+  const cv = $("#cv12");
+  const P = {
+    users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+    building: '<path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4M10 10h4M10 14h4M10 18h4"/>',
+    landmark: '<path d="M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7"/><path d="M12 2 20 7H4z"/>',
+    plus: '<path d="M5 12h14M12 5v14"/>',
+    target: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+    handshake: '<path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/>',
+    fast: '<path d="M13 19 22 12 13 5zM2 19 11 12 2 5z"/>',
+    star: '<path d="M12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26z"/>' };
+  const cells = [["users", "AI dla ludzi", "ścieżka"], ["building", "AI w firmie", "ścieżka"], ["landmark", "AI w państwie", "ścieżka"], ["plus", "Twoje wyzwanie", "ścieżka otwarta", 1],
+                 ["target", "Wyzwanie w najlepszych rękach", "świadczenie"], ["handshake", "Kontakt, zanim zdecydują", "świadczenie"], ["fast", "Fast track", "świadczenie"], ["star", "Partner Założycielski", "świadczenie"]];
+  // construction drawing: 24 grid
+  let grid = ""; for (let i = 0; i <= 24; i += 1) grid += `<path d="M${i} 0V24M0 ${i}H24" stroke="rgba(20,18,16,${i % 4 ? .06 : .14})" stroke-width=".05"/>`;
+  add(cv, `<svg viewBox="-3 -3 30 30" style="position:absolute;left:30px;top:150px;width:480px;height:480px;overflow:visible"><g>${grid}</g><rect x="0" y="0" width="24" height="24" fill="none" stroke="rgba(200,16,46,.45)" stroke-width=".08" stroke-dasharray=".5 .4"/><g class="ico" style="color:var(--red)" fill="none" stroke="#C8102E" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">${P.users}</g></svg>`);
+  dh(cv, 30 + 480 * 3 / 30, 122, 480 * 24 / 30, "24"); dv(cv, 30 + 480 * 27 / 30 + 20, 150 + 480 * 3 / 30, 480 * 24 / 30, "24");
+  add(cv, `<p class="cap" style="left:78px;top:660px;width:430px;line-height:1.6">linia 1,25 · okrągłe końce i łączenia · kolor currentColor, bez wypełnień</p>`);
+  const x0 = 560, w = 245, h = 396;
+  cells.forEach(([k, t, s, red], i) => { const x = x0 + (i % 4) * w, y = (i < 4 ? 0 : 1) * h;
+    const bg = i < 3 ? "var(--white)" : i === 3 ? "var(--red)" : "var(--paper)", col = i === 3 ? "#fff" : "var(--red)";
+    add(cv, `<div class="icell" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;background:${bg};color:${i === 3 ? "#fff" : "var(--ink)"};border-left:1px solid var(--ink-14)"><svg class="ico" viewBox="0 0 24 24" style="width:120px;height:120px;color:${col};stroke-width:${i < 4 ? 1.25 : 1.3}">${P[k]}</svg><h4>${t}</h4><p>${s}</p></div>`); });
+})();
+</script>
+</body></html>

@@ -1,0 +1,102 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500..900&family=Barlow+Condensed:wght@100;200;300&family=Barlow:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../print/print.css"><link rel="stylesheet" href="../book.css"><title>Pliki</title>
+<style>
+  .tb { position: absolute; left: 56px; right: 56px; top: 36px; }
+  .tb .r { display: grid; grid-template-columns: 190px 230px 150px 1fr 1fr; gap: 20px; padding: 17px 0; border-top: 1px solid var(--ink-14); align-items: baseline; }
+  .tb.d .r { grid-template-columns: 190px 200px 380px 1fr; padding: 22px 0; }
+  .tb .r.h { border-top: 2px solid var(--ink); }
+  .tb .r.h span { font: 600 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--red); }
+  .tb b { font: 800 26px/1 var(--block); text-transform: uppercase; }
+  .tb span, .tb i { font: 400 17px/1.4 var(--body); font-style: normal; color: var(--ink); }
+  .tb i { font: 500 14px/1.45 var(--mono); letter-spacing: .02em; color: var(--ink-60); overflow-wrap: anywhere; }
+  .tb i.no { color: rgba(20,18,16,.4); }
+  .code { position: absolute; background: var(--ink); color: #fff; border-radius: 10px; padding: 22px 26px; font: 500 16px/1.7 var(--mono); z-index: 3; }
+  .code em { font-style: normal; color: #ff8a9b; }
+  .ft { position: absolute; left: 56px; right: 56px; }
+  .ft .r { display: grid; grid-template-columns: 250px 1fr 150px; gap: 20px; padding: 20px 0; border-top: 1px solid var(--ink-14); align-items: baseline; }
+</style></head><body data-chapter="Pliki">
+
+<section class="board divider">
+  <div class="field"><div class="top red grain"><span class="lockup"></span></div>
+    <div class="band"><h1 data-px="260">Pliki</h1><p class="mono ver"></p></div></div>
+  <div class="side surface-paper" style="display:grid;place-items:center">
+    <div class="obj card" style="position:relative;width:560px;background:#fff;padding:56px;border-radius:8px;transform:rotate(-3deg)">
+      <p class="mono" style="color:var(--red);font-size:18px">Repozytorium</p>
+      <p style="margin-top:28px;font:500 28px/1.8 var(--mono);text-transform:none;letter-spacing:0">print/<br>print/out/<br>brand/book/<br>brand/book/out/druk/<br>index.html · en.html</p></div>
+  </div>
+</section>
+
+<!-- print deliverables -->
+<section class="board content">
+  <aside class="rail"><h2>Produkcja: druk</h2>
+    <p>Każdy materiał ma widok HTML w&nbsp;print/, rendery PNG w&nbsp;print/out/ i&nbsp;PDF do drukarni w&nbsp;brand/book/out/druk/.</p>
+    <ul><li>PDF ze spadem 3 mm: bilet, identyfikatory, smycze</li><li>Pozostałe: PDF w&nbsp;formacie końcowym</li><li>Nakłady i&nbsp;drukarnia: do ustalenia z&nbsp;drukarnią</li></ul></aside>
+  <div class="canvas white">
+    <div class="tb">
+      <div class="r h"><span>Materiał</span><span>Format i&nbsp;nośnik</span><span>Widok</span><span>PNG w&nbsp;print/out/</span><span>PDF w&nbsp;brand/book/out/druk/</span></div>
+      <div class="r"><b>Karta pokładowa</b><span>203 × 82 mm, karton 300 g</span><i>pass.html</i><i>bilet-LHR.png</i><i>bilet-karta-pokladowa-203x82-spad3.pdf</i></div>
+      <div class="r"><b>Plakat</b><span>50 × 70 cm, kreda mat 170 g</span><i>poster.html</i><i>plakat-50x70.png</i><i>plakat-50x70-druk.pdf</i></div>
+      <div class="r"><b>Plakat z&nbsp;planem</b><span>A2, kreda mat 170 g</span><i>signage.html</i><i>plakat-agenda.png</i><i>plakat-agenda-A2-druk.pdf</i></div>
+      <div class="r"><b>Roll-up</b><span>85 × 200 cm, baner PET, kaseta</span><i>rollup.html</i><i>rollup-85x200.png</i><i>rollup-85x200-druk.pdf</i></div>
+      <div class="r"><b>Identyfikatory</b><span>90 × 130 mm, karton 350 g lub PVC, 5 rodzajów</span><i>badge.html</i><i>badge-*.png</i><i>identyfikator-*-90x130-spad3.pdf</i></div>
+      <div class="r"><b>Smycze</b><span>20 mm, sublimacja, 3 kolory</span><i>badge.html</i><i>lanyard-*.png</i><i>smycz-*-280x20-spad3.pdf</i></div>
+      <div class="r"><b>Naklejki</b><span>60–100 mm, folia winylowa, wykrojnik</span><i>stickers.html</i><i>sticker-*.png (7)</i><i>naklejki-arkusz-A3-druk.pdf</i></div>
+      <div class="r"><b>Kierunkowskazy</b><span>100 × 30 cm, PCV 3 mm</span><i>signage.html</i><i>znak-*.png (4)</i><i>znak-*-100x30-druk.pdf</i></div>
+      <div class="r"><b>Stanowiska</b><span>A5 namiot, karton 300 g</span><i>signage.html</i><i>stol-07.png, stol-23.png</i><i>stol-*-A5-druk.pdf</i></div>
+      <div class="r"><b>Certyfikaty</b><span>A4 poziomo, kreda mat 250 g</span><i>diploma.html</i><i>certyfikat-*.png</i><i>certyfikat-*-A4-druk.pdf</i></div>
+      <div class="r"><b>Koszulki</b><span>S–XXL, sitodruk, 2 wzory</span><i>tshirt.html</i><i>koszulki-*.png</i><i class="no">brak PDF, do ustalenia z&nbsp;drukarnią</i></div>
+      <div class="r"><b>Deck materiałów</b><span>A4 poziomo</span><i>deck.html</i><i>deck.pdf</i><i>node print/pdf.mjs</i></div>
+    </div>
+  </div>
+</section>
+
+<!-- digital + site -->
+<section class="board content">
+  <aside class="rail"><h2>Produkcja: ekran</h2>
+    <p>Social i&nbsp;podglądy linków powstają z&nbsp;tych samych plików co druk. Strona wydarzenia to czysty HTML, CSS i&nbsp;JS, bez budowania.</p>
+    <ul><li>Social: print/social.html</li><li>Strona: PL w&nbsp;index.html, EN generowana</li><li>Podgląd linku: assets/og-image.jpg</li></ul></aside>
+  <div class="canvas white">
+    <div class="tb d">
+      <div class="r h"><span>Materiał</span><span>Format</span><span>Widok lub plik</span><span>Wynik</span></div>
+      <div class="r"><b>Posty IG</b><span>1080 × 1350, PNG</span><i>print/social.html</i><i>print/out/ig-ogloszenie.png, ig-rekrutacja.png, ig-partnerzy.png</i></div>
+      <div class="r"><b>Stories</b><span>1080 × 1920, PNG</span><i>print/pass.html?view=story&amp;from=XXX</i><i>stories-AMS.png i&nbsp;inne miasta uczelni (kody lotnisk)</i></div>
+      <div class="r"><b>Okładki</b><span>1584 × 396 i&nbsp;1920 × 1005</span><i>print/social.html</i><i>print/out/linkedin-cover.png, wydarzenie-cover.png</i></div>
+      <div class="r"><b>Podglądy linków</b><span>1200 × 630, 16:9, 4:3, 1:1</span><i>print/social.html</i><i>print/out/og-image*.png, na stronie assets/og-image*.jpg</i></div>
+      <div class="r"><b>Strona PL</b><span>HTML, CSS, JS</span><i>index.html, styles.css, main.js, board.html, globe.js</i><i>www.reunion-hackathon.pl</i></div>
+      <div class="r"><b>Strona EN</b><span>HTML</span><i>en.html z&nbsp;index.html przez make_en.py</i><i>www.reunion-hackathon.pl/en.html</i></div>
+      <div class="r"><b>SEO i&nbsp;pliki techniczne</b><span>tekst</span><i>robots.txt, sitemap.xml, llms.txt, vercel.json</i><i>w&nbsp;katalogu głównym repozytorium</i></div>
+      <div class="r"><b>Ikony</b><span>PNG, ICO, SVG</span><i>favicon.ico, apple-touch-icon.png, assets/favicon.svg, assets/icon-192.png</i><i>w&nbsp;katalogu głównym i&nbsp;w&nbsp;assets/</i></div>
+      <div class="r"><b>Brand Book</b><span>16:9, 1920 × 1080</span><i>brand/book/sections/*.html</i><i>brand/book/out/Reunion-Hackathon-Brand-Book.pdf</i></div>
+    </div>
+  </div>
+</section>
+
+<!-- fonts, regeneration, contacts -->
+<section class="board content">
+  <aside class="rail"><h2>Pisma, odtwarzanie, kontakt</h2>
+    <p>Wszystkie pięć krojów to Google Fonts na licencji SIL Open Font License: wolno ich używać w&nbsp;druku i&nbsp;w&nbsp;sieci, także komercyjnie.</p>
+    <ul><li>Serwer lokalny na porcie 8091</li><li>Render: Playwright, Chromium</li><li>Po zmianie index.html: make_en.py</li></ul></aside>
+  <div class="canvas paper">
+    <div class="ft" style="top:40px">
+      <div class="r" style="border-top:2px solid var(--ink)"><span class="mono" style="color:var(--red)">Krój</span><span class="mono" style="color:var(--red)">Zastosowanie</span><span class="mono" style="color:var(--red)">Licencja</span></div>
+      <div class="r"><b style="font:900 30px/1 var(--block);text-transform:uppercase">Big Shoulders Display</b><span style="font:400 17px var(--body)">znak słowny, nagłówki, liczby</span><span class="mono">OFL</span></div>
+      <div class="r"><b style="font:100 34px/1 var(--thin);text-transform:uppercase">Barlow Condensed</b><span style="font:400 17px var(--body)">cienkie duże napisy, 100–300</span><span class="mono">OFL</span></div>
+      <div class="r"><b style="font:500 26px/1 var(--body)">Barlow</b><span style="font:400 17px var(--body)">tekst ciągły</span><span class="mono">OFL</span></div>
+      <div class="r"><b style="font:italic 400 34px/1 var(--serif)">Instrument Serif</b><span style="font:400 17px var(--body)">hasła, kursywa na akcencie</span><span class="mono">OFL</span></div>
+      <div class="r"><b style="font:600 22px/1 var(--mono)">IBM Plex Mono</b><span style="font:400 17px var(--body)">etykiety, kod, wymiary</span><span class="mono">OFL</span></div>
+    </div>
+    <div class="code" style="left:56px;top:562px;width:720px;font-size:18px;line-height:1.85"><em>$</em> cd ~/reunion-hackathon &amp;&amp; python3 -m http.server 8091<br><em>$</em> node print/render.mjs social.html pass.html<br><em>$</em> node print/pdf.mjs deck.pdf<br><em>$</em> python3 make_en.py<br><em>$</em> node brand/book/druk.mjs<br><em>$</em> node brand/book/druk-pass.mjs<br><em>$</em> python3 brand/book/optimize.py<br><em>$</em> node brand/book/render.mjs</div>
+    <p class="cap" style="left:56px;top:530px">Odtwarzanie plików</p>
+    <div style="position:absolute;left:830px;top:530px;right:56px;z-index:3">
+      <p class="cap" style="position:static">Kontakt</p>
+      <p style="margin-top:16px;font:900 52px/1 var(--block);text-transform:uppercase">Global Polish Student Society</p>
+      <p style="margin-top:12px;font:400 19px/1.5 var(--body);color:var(--ink-60)">Organizator. Fundacja Global Polish Student Society, Wrocław, KRS&nbsp;0001223849. globalpolsoc.com</p>
+      <p class="cap" style="position:static;margin-top:36px">Kontakt dla partnerów</p>
+      <p style="margin-top:10px;font:800 40px/1 var(--block);text-transform:uppercase;color:var(--red)">Maks Rokosz</p>
+      <p style="margin-top:10px;font:500 18px/1.6 var(--mono);text-transform:none;letter-spacing:.02em">Head of Partnerships<br>maks.rokosz@globalpolsoc.com<br>+48 538 444 835</p>
+    </div>
+  </div>
+</section>
+<script src="../../../print/print.js"></script><script src="../book.js"></script>
+</body></html>

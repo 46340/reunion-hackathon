@@ -7,7 +7,7 @@
   .sheet { width: 1000px; height: 1400px; }
   .top { position: absolute; left: 56px; right: 56px; top: 44px; display: flex; justify-content: space-between; z-index: 2; }
   .poster-globe { left: -40px; width: 1080px; height: 1080px; top: 470px; }
-  #block { position: absolute; left: 0; right: 0; top: 150px; text-align: center; z-index: 2; }
+  #block { position: absolute; left: 0; right: 0; top: 120px; text-align: center; z-index: 2; }
   .kind { position: absolute; left: 0; right: 0; top: 405px; text-align: center; font-size: 64px; letter-spacing: .38em; padding-left: .38em; z-index: 2; }
   .sky { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
   .sky svg { position: absolute; overflow: visible; }
@@ -21,8 +21,7 @@
   <div class="globe poster-globe" data-globe></div>
   <div class="sky" id="sky"></div>
   <div class="top mono"><span>Warszawa · 5–7 lutego 2027 · Edycja 01</span><span>100 uczestników · 48 godzin</span></div>
-  <div class="block" id="block">REUNION</div>
-  <div class="thin kind">Hackathon</div>
+  <div class="block" id="block" style="line-height:.95">REUNION<br>HACKATHON</div>
   <div class="low">
     <div><h2 class="serif">Hackathon dla Polaków studiujących <i>za granicą.</i></h2><p class="mono">reunion-hackathon.pl · 5–7 lutego 2027</p></div>
     <div class="qrbox"><div class="qr"><img src="qr.svg" alt="QR do reunion-hackathon.pl"></div><p class="mono" style="font-size:11px;display:flex;align-items:center;gap:10px">Organizator: Global Polish Student Society<img src="../assets/logos/gpss-planet-white.png" alt="" style="width:34px;height:34px"></p></div>
@@ -30,7 +29,7 @@
 </div>
 <script src="print.js"></script>
 <script>
-  Print.block(document.getElementById("block"), 250);
+  Print.block(document.getElementById("block"), 185);
   document.querySelector("[data-globe]").innerHTML = Print.globe({ op: .34, arcs: false });
   // swallows diving home, one large and the rest further away, as on Trepkowski's "Wracajcie" (1946)
   const flock = [[270, 640, 32, 1.1], [560, 590, 36, .45], [455, 770, 28, .6], [720, 700, 40, .36], [630, 845, 34, .3], [380, 915, 26, .25]];

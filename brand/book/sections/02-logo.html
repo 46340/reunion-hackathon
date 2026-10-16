@@ -1,0 +1,149 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500..900&family=Barlow+Condensed:wght@100;200;300&family=Barlow:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../print/print.css"><link rel="stylesheet" href="../book.css"><title>Logo</title>
+<style>
+  .sg { position:absolute; left:50%; top:50%; width:648px; height:648px; transform:translate(-50%,-50%); overflow:visible; }
+  .grid line { stroke: rgba(20,18,16,.07); stroke-width: .06; }
+  .chip { display:inline-block; width:22px; height:22px; vertical-align:middle; margin-right:10px; border:1px solid rgba(20,18,16,.2); }
+  .vari { position:absolute; display:flex; align-items:center; justify-content:center; }
+  .big3 { font-size:48px; gap:22px; } .big3 svg { width:76px; height:76px; } .big3 .by { gap:16px; padding-left:22px; } .big3 .by img { width:66px; height:66px; } .big3 .by span { font-size:28px; }
+</style></head><body data-chapter="Logo">
+<section class="board divider">
+  <div class="field"><div class="top red grain"><span class="lockup"></span></div>
+    <div class="band"><h1 data-px="260">Logo</h1><p class="mono ver"></p></div></div>
+  <div class="side surface-paper" style="display:grid;place-items:center"><div style="width:420px;height:420px" id="bigmark"></div></div>
+</section>
+
+<section class="board content">
+  <aside class="rail"><h2>Sygnet</h2>
+    <p>Dwa łuki jednego okręgu i punkt zbiórki. Lewy łuk w kolorze tekstu, prawy i punkt w czerwieni: ktoś już wrócił, ktoś jeszcze leci.</p>
+    <ul><li>Siatka 48 × 48</li><li>Okrąg r = 22,13, środek 24 · 24</li><li>Łuk 3,75, zakończenia okrągłe</li><li>Punkt r = 4,39, przesunięty o 3,7</li></ul></aside>
+  <div class="canvas white">
+    <svg class="sg" viewBox="-6 -6 60 60">
+      <g class="grid" id="grid"></g>
+      <circle cx="24.03" cy="24" r="22.13" fill="none" stroke="rgba(200,16,46,.35)" stroke-width=".12" stroke-dasharray=".6 .5"/>
+      <line x1="24.03" y1="0" x2="24.03" y2="48" stroke="rgba(200,16,46,.35)" stroke-width=".1" stroke-dasharray=".6 .5"/>
+      <line x1="0" y1="24" x2="48" y2="24" stroke="rgba(200,16,46,.35)" stroke-width=".1" stroke-dasharray=".6 .5"/>
+      <path d="M21.59 2.01 A22.13 22.13 0 0 0 23.40 46.12" fill="none" stroke="#141210" stroke-width="3.75" stroke-linecap="round"/>
+      <path d="M33.58 43.94 A22.13 22.13 0 0 0 32.84 3.72" fill="none" stroke="#C8102E" stroke-width="3.75" stroke-linecap="round"/>
+      <circle cx="27.72" cy="24" r="4.39" fill="#C8102E"/>
+      <circle cx="24.03" cy="24" r=".45" fill="#141210"/>
+      <rect x="0" y="0" width="48" height="48" fill="none" stroke="rgba(20,18,16,.35)" stroke-width=".08"/>
+    </svg>
+    <div class="dim h" style="left:446px;top:138px;width:648px"><span>48</span></div>
+    <div class="dim v" style="left:1130px;top:216px;height:648px"><span>48</span></div>
+    <div class="dim h below" style="left:770px;top:900px;width:44px"><span>3,7</span></div>
+    <p class="callout r" style="left:270px;top:420px;--len:150px;text-align:right;width:160px">łuk 3,75<br>#141210</p>
+    <p class="callout l" style="left:1230px;top:560px;--len:110px">punkt r 4,39<br>#C8102E</p>
+    <p class="callout l" style="left:1230px;top:300px;--len:120px">okrąg r 22,13</p>
+  </div>
+  <div class="metrics"><div><b>48 × 48</b><span>siatka konstrukcyjna</span></div><div><b>3,75</b><span>grubość łuku (7,8 %)</span></div><div><b>½ znaku</b><span>pole ochronne z każdej strony</span></div><div><b>16 px</b><span>najmniejszy rozmiar na ekranie, 6 mm w druku</span></div></div>
+</section>
+
+<section class="board content">
+  <aside class="rail"><h2>Znak słowny</h2>
+    <p>REUNION HACKATHON zawsze wersalikami, Big Shoulders Display 900, biały na czerwieni, z głębią jak litery na plakacie.</p>
+    <ul><li>Głębia: 26 warstw</li><li>Krok: 0,55 × 1 px przy 150 px</li><li>Bok #EBC9CC, krawędź #6D0613</li><li>Cień 0,06 × 0,11 em, 12 %</li></ul></aside>
+  <div class="canvas red grain">
+    <div class="block" data-px="150" style="position:absolute;left:150px;top:250px;z-index:2">Reunion Hackathon</div>
+    <div class="dim v light" style="left:110px;top:256px;height:129px"><span style="left:auto;right:14px">0,86</span></div>
+    <div class="block" data-px="64" style="position:absolute;left:150px;top:640px;z-index:2">Reunion Hackathon</div>
+    <p class="cap light" style="left:150px;top:600px">64 px · nawigacja, social, druk małego formatu</p>
+    <div style="position:absolute;left:960px;top:610px;z-index:2;display:flex;gap:28px;align-items:center;color:#fff" class="mono">
+      <span><i class="chip" style="background:#fff"></i>lico #FFFFFF</span><span><i class="chip" style="background:#EBC9CC"></i>bok #EBC9CC</span><span><i class="chip" style="background:#6D0613"></i>krawędź #6D0613</span></div>
+  </div>
+  <div class="metrics"><div><b>900</b><span>grubość kroju</span></div><div><b>0,005 em</b><span>światło między literami</span></div><div><b>0,86</b><span>interlinia przy dwóch liniach</span></div><div><b>26</b><span>warstw głębi (7 w małych rozmiarach)</span></div></div>
+</section>
+
+<section class="board content">
+  <aside class="rail"><h2>Zestawienie z GPSS</h2>
+    <p>Sygnet, nazwa i planeta GPSS w jednej linii, rozdzielone cienką kreską. Organizator stoi zawsze po prawej.</p>
+    <ul><li>Na czerwieni: całość biała</li><li>Na jasnym: atrament + czerwień</li><li>Na atramencie: biel + czerwień</li><li>Kreska 1 px, odstęp 0,5 wysokości</li></ul></aside>
+  <div class="canvas" style="display:grid;grid-template-rows:1fr 1fr 1fr">
+    <div class="red grain" style="position:relative;display:flex;align-items:center;padding-left:90px"><span class="lockup big3" id="l1"></span></div>
+    <div class="paper" style="position:relative;display:flex;align-items:center;padding-left:90px"><span class="lockup big3" id="l2" style="color:var(--ink)"></span></div>
+    <div class="ink" style="position:relative;display:flex;align-items:center;padding-left:90px"><span class="lockup big3" id="l3"></span></div>
+  </div>
+  <div class="metrics"><div><b>1 : 1</b><span>sygnet i planeta tej samej wysokości</span></div><div><b>0,5 h</b><span>odstęp od kreski</span></div><div><b>1 px</b><span>kreska rozdzielająca</span></div><div><b>120 px</b><span>najmniejsza szerokość całości</span></div></div>
+</section>
+
+<section class="board content">
+  <aside class="rail"><h2>Pole ochronne</h2>
+    <p>Wokół zestawienia zostaje pusto na połowę wysokości sygnetu. Nic nie wchodzi w to pole: ani tekst, ani krawędź kartki.</p>
+    <ul><li>Pole: 0,5 h z każdej strony</li><li>h: wysokość sygnetu</li><li>Poniżej minimum: sam sygnet</li></ul></aside>
+  <div class="canvas paper">
+    <style>
+      .big-lock { position:absolute; left:50%; top:170px; transform:translateX(-50%); padding:46px; outline:2px dashed rgba(200,16,46,.6); background:rgba(255,255,255,.5); }
+      .big-lock .lockup { color:var(--ink); font-size:48px; gap:22px; letter-spacing:.06em; }
+      .big-lock .lockup svg { width:92px; height:92px; } .big-lock .lockup .by { gap:16px; padding-left:22px; }
+      .big-lock .lockup .by img { width:80px; height:80px; } .big-lock .lockup .by span { font-size:28px; }
+      .mins { position:absolute; left:110px; right:110px; bottom:64px; display:grid; grid-template-columns:repeat(4,1fr); gap:28px; }
+      .mins > div { background:#fff; border:1px solid var(--ink-14); height:200px; position:relative; display:grid; place-items:center; }
+      .mins p { position:absolute; left:20px; bottom:16px; font:500 14px var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--ink-60); }
+    </style>
+    <div class="big-lock" id="bl"><span class="lockup" id="cs"></span></div>
+    <div class="mins">
+      <div><div id="m48" style="width:48px;height:48px"></div><p>48 px</p></div>
+      <div><div id="m32" style="width:32px;height:32px"></div><p>32 px</p></div>
+      <div><div id="m16" style="width:16px;height:16px"></div><p>16 px · minimum</p></div>
+      <div><span class="lockup" id="cs2" style="color:var(--ink);font-size:16px;gap:8px"></span><p>zestawienie · 120 px</p></div>
+    </div>
+  </div>
+  <div class="metrics"><div><b>0,5 h</b><span>pole ochronne z każdej strony</span></div><div><b>16 px</b><span>sygnet na ekranie</span></div><div><b>6 mm</b><span>sygnet w druku</span></div><div><b>30 mm</b><span>zestawienie w druku</span></div></div>
+</section>
+
+<section class="board content">
+  <aside class="rail"><h2>Warianty</h2>
+    <p>Sygnet ma trzy wersje kolorystyczne i jedną jednobarwną. Wersja zależy od tła, nigdy od upodobań.</p>
+    <ul><li>Czerwień: biały, oba łuki</li><li>Jasne tło: atrament + czerwień</li><li>Atrament: biel + czerwień</li><li>Jednobarwny: tylko atrament</li></ul></aside>
+  <div class="canvas" style="display:grid;grid-template-columns:repeat(4,1fr)">
+    <div class="red grain" style="position:relative;display:grid;place-items:center"><div id="v1" style="width:260px;height:260px;position:relative;z-index:2"></div><p class="cap light" style="left:36px;bottom:30px">na czerwieni</p></div>
+    <div class="white" style="position:relative;display:grid;place-items:center"><div id="v2" style="width:260px;height:260px"></div><p class="cap" style="left:36px;bottom:30px">na jasnym tle</p></div>
+    <div class="ink" style="position:relative;display:grid;place-items:center"><div id="v3" style="width:260px;height:260px"></div><p class="cap light" style="left:36px;bottom:30px">na atramencie</p></div>
+    <div class="paper" style="position:relative;display:grid;place-items:center"><div id="v4" style="width:260px;height:260px"></div><p class="cap" style="left:36px;bottom:30px">jednobarwny</p></div>
+  </div>
+  <div class="metrics"><div><b>favicon.ico</b><span>16, 32 i 48 px</span></div><div><b>192 px</b><span>ikona PNG dla wyszukiwarek</span></div><div><b>180 px</b><span>ikona iPhone, białe tło</span></div><div><b>SVG</b><span>wektor dla przeglądarek</span></div></div>
+</section>
+
+<section class="board content">
+  <aside class="rail"><h2>Czego nie robić</h2>
+    <p>Znak działa tylko w jednej postaci. Każda z tych zmian go psuje.</p>
+    <ul><li>Bez rozciągania i obracania</li><li>Bez innych kolorów</li><li>Bez głębi w małych rozmiarach</li><li>Bez obrysu zamiast wypełnienia</li></ul></aside>
+  <div class="canvas paper" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr">
+    <div class="red grain" style="position:relative;overflow:hidden"><div class="block" style="position:absolute;left:50%;top:50%;font-size:30px;transform:translate(-50%,-50%) scaleX(1.6);z-index:2">Reunion Hackathon</div><p class="cap light" style="left:28px;bottom:24px">Nie rozciągamy</p></div>
+    <div style="position:relative;background:#1f5fbf;overflow:hidden"><div class="block" data-px="58" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2">Reunion Hackathon</div><p class="cap light" style="left:28px;bottom:24px">Nie zmieniamy koloru tła</p></div>
+    <div class="red grain" style="position:relative;overflow:hidden"><div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-14deg);width:150px;height:150px;z-index:2" id="d3"></div><p class="cap light" style="left:28px;bottom:24px">Nie obracamy sygnetu</p></div>
+    <div class="white" style="position:relative;overflow:hidden"><div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:900 50px/1 var(--block);text-transform:uppercase;color:transparent;-webkit-text-stroke:2px #C8102E;white-space:nowrap">Reunion Hackathon</div><p class="cap" style="left:28px;bottom:24px">Nie robimy obrysu</p></div>
+    <div class="red grain" style="position:relative;overflow:hidden"><p style="position:absolute;left:40px;top:50%;transform:translateY(-50%);font:400 22px/1.5 var(--body);color:#fff;max-width:26ch;z-index:2;text-shadow:0.55px 1px 0 #EBC9CC,1.1px 2px 0 #EBC9CC,1.65px 3px 0 #EBC9CC,2.2px 4px 0 #6d0613">Głębia na zwykłym tekście męczy oczy i nic nie dodaje.</p><p class="cap light" style="left:28px;bottom:24px">Nie dodajemy głębi do tekstu</p></div>
+    <div style="position:relative;overflow:hidden;background:url(../../../assets/img/praca.jpg) center/cover"><div class="block" data-px="58" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;color:#fff">Reunion Hackathon</div><p class="cap light" style="left:0;right:0;bottom:0;padding:14px 28px;background:rgba(20,18,16,.82);color:#fff">Nie kładziemy na zdjęciu bez tła</p></div>
+  </div>
+  <div class="metrics"><div><b>1</b><span>postać znaku słownego</span></div><div><b>0°</b><span>sygnet zawsze prosto</span></div><div><b>3</b><span>dozwolone tła: czerwień, jasne, atrament</span></div><div><b>40 px</b><span>poniżej tej wysokości bez głębi</span></div></div>
+</section>
+<script src="../../../print/print.js"></script><script src="../book.js"></script>
+<script>
+  document.getElementById("bigmark").innerHTML = Book.MARK();
+  document.querySelector("#bigmark svg").setAttribute("style", "width:100%;height:100%");
+  const g = document.getElementById("grid"); for (let i = 0; i <= 48; i += 2) g.insertAdjacentHTML("beforeend", `<line x1="${i}" y1="0" x2="${i}" y2="48"/><line x1="0" y1="${i}" x2="48" y2="${i}"/>`);
+  const gp = (tone) => `<span class="by" style="border-color:currentColor"><img src="../../../assets/logos/gpss-planet-${tone}.png" alt=""><span>Global Polish Student Society</span></span>`;
+  document.getElementById("l1").innerHTML = Book.MARK("#fff", "#fff") + "Reunion Hackathon" + gp("white");
+  document.getElementById("l2").innerHTML = Book.MARK("#141210", "#C8102E") + "Reunion Hackathon" + gp("red");
+  document.getElementById("l3").innerHTML = Book.MARK("#fff", "#C8102E") + "Reunion Hackathon" + gp("white");
+  document.getElementById("cs").innerHTML = Book.MARK("#141210", "#C8102E") + "Reunion Hackathon" + gp("red");
+  document.getElementById("cs2").innerHTML = Book.MARK("#141210", "#C8102E") + "Reunion Hackathon";
+  { const scope = document.getElementById("cs2"); scope.querySelector("svg").setAttribute("style", "width:24px;height:24px"); }
+  // clear-space dimension lines measured from the real lockup: 0.5 h on each side
+  requestAnimationFrame(() => document.fonts.ready.then(() => {
+    const box = document.getElementById("bl"), cv = box.parentElement, b = box.getBoundingClientRect(), c = cv.getBoundingClientRect();
+    const mk = document.querySelector("#cs svg").getBoundingClientRect(), h = mk.height, pad = 46;
+    const L = b.left - c.left, T = b.top - c.top;
+    cv.insertAdjacentHTML("beforeend",
+      `<div class="dim h" style="left:${L}px;top:${T - 26}px;width:${pad}px"><span>0,5 h</span></div>` +
+      `<div class="dim v left" style="left:${L - 26}px;top:${T + pad}px;height:${h}px"><span>h</span></div>` +
+      `<div class="dim h below" style="left:${b.right - c.left - pad}px;top:${b.bottom - c.top + 26}px;width:${pad}px"><span>0,5 h</span></div>` +
+      `<div class="dim v left" style="left:${L - 26}px;top:${b.bottom - c.top - pad}px;height:${pad}px"><span>0,5 h</span></div>`);
+  }));
+  for (const [id, a, b] of [["m48", "#141210", "#C8102E"], ["m32", "#141210", "#C8102E"], ["m16", "#141210", "#C8102E"], ["v1", "#fff", "#fff"], ["v2", "#141210", "#C8102E"], ["v3", "#fff", "#C8102E"], ["v4", "#141210", "#141210"], ["d3", "#fff", "#fff"]]) {
+    const el = document.getElementById(id); el.innerHTML = Book.MARK(a, b); el.firstChild.setAttribute("style", "width:100%;height:100%;display:block");
+  }
+</script>
+</body></html>

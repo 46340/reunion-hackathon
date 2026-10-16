@@ -66,6 +66,25 @@
   .story .sky { position: absolute; inset: 0; pointer-events: none; }
   .story .foot { position: absolute; left: 80px; right: 80px; bottom: 140px; display: flex; justify-content: space-between; align-items: flex-end; font: 600 24px "IBM Plex Mono"; letter-spacing: .14em; }
   .story .foot b { display: block; font: 900 64px/1 "Big Shoulders Display"; letter-spacing: .01em; margin-top: 10px; }
+
+  /* ?view=print: the pass at its printed size, 203 x 82 mm drawn at 4 px per mm (812 x 328). &bleed=1 adds 3 mm (12 px) of red on every side and drops the cut-outs (the printer cuts them). */
+  .pp { width: 812px; height: 328px; grid-template-columns: 1fr 200px; }
+  .pp .main { padding: 24px 28px 22px; display: flex; flex-direction: column; }
+  .pp .iata { font-size: 92px; }
+  .pp .route { margin-top: 18px; }
+  .pp .path { height: 60px; }
+  .pp .fields { margin-top: auto; gap: 12px 14px; padding-top: 14px; }
+  .pp .f dd { font-size: 24px; }
+  .pp .stub { padding: 24px 22px 22px; }
+  .pp .stub::before, .pp .stub::after { display: none; }
+  .pp .stub .seat dd { font-size: 84px; }
+  .pp .bars { height: 40px; }
+  .pp:not(.nb) { -webkit-mask-image: radial-gradient(circle 15px at 613.5px 0, transparent 14.5px, #000 15px), radial-gradient(circle 15px at 613.5px 100%, transparent 14.5px, #000 15px); mask-image: radial-gradient(circle 15px at 613.5px 0, transparent 14.5px, #000 15px), radial-gradient(circle 15px at 613.5px 100%, transparent 14.5px, #000 15px); -webkit-mask-composite: source-in; mask-composite: intersect; }
+  .pp.nb { background: transparent; }
+  .pp.nb::after { display: none; }
+  .bleedbox { position: relative; width: 836px; height: 352px; padding: 12px; background: var(--red); overflow: hidden; }
+  .bleedbox.grainy::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .25; background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' seed='5'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 .16'/></feComponentTransfer></filter><rect width='220' height='220' filter='url(%23n)'/></svg>"); }
+  body.is-print { background: transparent; } body.is-print .pass { --bg: transparent; }
 </style>
 </head>
 <body>
@@ -80,8 +99,8 @@
   const bars = (n) => Array.from({ length: n }, (_, i) => `<i style="width:${1 + ((i * 7 + +seat) % 4)}px;opacity:${(i * 13 + +seat) % 5 ? 1 : .35}"></i>`).join("");
   const arc = (col) => `<svg viewBox="0 0 300 70" preserveAspectRatio="none"><path d="M6 60 Q150 -10 294 60" fill="none" stroke="${col}" stroke-width="2.5" stroke-dasharray="7 7"/></svg>`;
   const birdIn = (col, x, y, a, k) => `<svg viewBox="0 0 300 70" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible" preserveAspectRatio="xMidYMid meet">${Print.swallow(x, y, a, k, col)}</svg>`;
-  const pass = (dark) => `
-    <article class="pass ${dark ? "" : "grainy"}" ${dark ? "" : `data-shot="bilet-${from}"`}>
+  const pass = (dark, cls = "", shot = `bilet-${from}`) => `
+    <article class="pass ${dark ? "" : "grainy"} ${cls}" ${dark ? "" : `data-shot="${shot}"`}>
       <div class="main">
         <div class="brand"><b>REUNION HACKATHON</b><span>Karta pokładowa · Edycja 01</span></div>
         <div class="route">
@@ -98,11 +117,15 @@
       </div>
       <div class="stub">
         <dl class="seat"><dt>MIEJSCE</dt><dd>${seat}</dd><span>z 100</span></dl>
-        <div><div class="bars">${bars(46)}</div><p class="ret">return(home);</p></div>
+        <div><div class="bars">${bars(cls ? 32 : 46)}</div><p class="ret">return(home);</p></div>
       </div>
     </article>`;
   const root = document.getElementById("root");
-  if (view === "story") {
+  if (view === "print") {
+    document.body.classList.add("is-print");
+    const bleed = q.get("bleed") === "1";
+    root.innerHTML = bleed ? `<div class="bleedbox grainy" data-shot="bilet-spad-${from}">${pass(false, "pp nb", "")}</div>` : pass(false, "pp", `bilet-druk-${from}`);
+  } else if (view === "story") {
     root.innerHTML = `<section class="story" data-shot="stories-${from}">
       <div class="sky" id="sky"></div>
       <div class="head"><span>5–7.02.2027</span><span>WARSZAWA</span></div>

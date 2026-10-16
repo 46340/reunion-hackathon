@@ -9,7 +9,7 @@
   .badge .top { position: relative; overflow: hidden; height: 212px; background: var(--red); color: #fff; padding: 40px 22px 0; }
   .badge .top .lockup { font-size: 12px; position: absolute; left: 22px; right: 22px; top: 40px; justify-content: space-between; display: flex; }
   .badge .top .lockup .by { border-left: 0; }
-  .badge .top .blk { position: absolute; left: 0; right: 0; top: 76px; text-align: center; }
+  .badge .top .blk { position: absolute; left: 0; right: 0; top: 72px; text-align: center; }
   .badge .top .kind { position: absolute; left: 0; right: 0; top: 154px; text-align: center; font-size: 22px; letter-spacing: .38em; padding-left: .38em; }
   .badge .top .g { position: absolute; left: -30px; right: -30px; bottom: -300px; height: 420px; opacity: .22; }
   .badge .top .g svg { width: 100%; height: 100%; }
@@ -41,6 +41,13 @@
   .lanyard svg.sw { width: 54px; height: 40px; flex: none; overflow: visible; }
   .lanyard img { width: 40px; height: 40px; flex: none; }
   .lanyards { display: grid; gap: 22px; padding: 40px; }
+
+  /* ?view=print&role=mentor (&bleed=1): one badge at 90 x 130 mm (4 px per mm); ?view=lanyard&c=red (&bleed=1): one 280 mm repeat, 20 mm wide. Bleed = 3 mm (12 px) on every side. */
+  body.is-print { background: transparent; margin: 0; } body.is-print .badges, body.is-print .lanyards { padding: 0; display: block; }
+  .bx { position: relative; overflow: hidden; background: #fff; }
+  .bx > .st { position: absolute; z-index: 0; } .bx > .badge, .bx > .lanyard { position: absolute; z-index: 1; box-shadow: none; }
+  .bx .badge .slot { box-shadow: none; }
+  .lanyard.pr { justify-content: space-around; gap: 0; padding: 0; }
 </style></head><body>
 <div class="badges" id="badges"></div>
 <div class="lanyards" id="lanyards"></div>
@@ -52,8 +59,7 @@
       <div class="top grain">
         <div class="g">${Print.globe({ op: 1, width: 6, arcs: false })}</div>
         <div class="lockup"><span style="display:flex;align-items:center;gap:.45em">${Print.mark()}Edycja 01</span><span class="by">${Print.gpss("white")}</span></div>
-        <div class="blk"><div class="block" data-px="64">REUNION</div></div>
-        <div class="thin kind">Hackathon</div>
+        <div class="blk"><div class="block" data-px="58" style="line-height:.95">REUNION<br>HACKATHON</div></div>
       </div>
       <div class="body">
         <dt>${role === "uczestnik" ? "Pasażer" : "Imię i nazwisko"}</dt>
@@ -83,5 +89,30 @@
   const lan = (cls, a, b, planet) => `<div class="lanyard ${cls}" data-shot="lanyard-${cls}">${[0, 1].map(() =>
     `${Print.mark(a, b).replace("<svg", '<svg class="mk"')}<span class="t">Reunion Hackathon</span>${sw(b)}<span class="m">Warszawa · 5–7.02.2027</span>${Print.gpss(planet)}<span class="m">return(home);</span>${sw(b)}`).join("")}</div>`;
   document.getElementById("lanyards").innerHTML = lan("red", "#fff", "#fff", "white") + lan("ink", "#fff", "#C8102E", "white") + lan("white", "#141210", "#C8102E", "red");
+
+  const Q = new URLSearchParams(location.search), view = Q.get("view"), bleed = Q.get("bleed") === "1", B = bleed ? 12 : 0;
+  if (view === "print" || view === "lanyard") {
+    document.body.classList.add("is-print");
+    const wrap = (w, h, el, strips, bg) => `<div class="bx" style="width:${w + 2 * B}px;height:${h + 2 * B}px;${bleed ? `background:${bg}` : "background:transparent"}">${bleed ? strips : ""}${el.replace("<article", `<article style="left:${B}px;top:${B}px"`).replace('<div class="lanyard', `<div style="left:${B}px;top:${B}px" class="lanyard`)}</div>`;
+    if (view === "print") {
+      const role = Q.get("role") || "uczestnik", el = [...document.querySelectorAll(".badge")].find((b) => b.dataset.shot === "badge-" + role);
+      const col = { uczestnik: "#C8102E", zaloga: "#141210", mentor: "#C8102E", jury: "#EBC9CC", partner: "#141210" }[role], inner = el.outerHTML, W = 360, H = 520;
+      // bleed strips: red/top block, white body, role band (mentor/partner: the frame colour, so the 4 px border runs out to the cut)
+      const st = (l, t, w, h, c, g) => `<i class="st ${g ? "grain" : ""}" style="left:${l}px;top:${t}px;width:${w}px;height:${h}px;background:${c}"></i>`;
+      const strips = st(0, 0, W + 24, 212 + B, "#C8102E", 1) + st(0, 212 + B, W + 24, H - 212 - 58 + B * 0, "#fff") + st(0, B + H - 58, W + 24, 58 + B, col);
+      document.body.innerHTML = `<div id="bw">${wrap(W, H, inner, strips, "#fff")}</div><script src="print.js"><\/script>`;
+      document.querySelector(".bx > .badge").classList.add("shotme");
+      document.querySelector(".bx").setAttribute("data-shot", `druk-badge-${role}${bleed ? "-spad" : ""}`);
+    } else {
+      const c = Q.get("c") || "red", el = document.querySelector(`.lanyard.${c}`), bg = { red: "#C8102E", ink: "#141210", white: "#fff" }[c];
+      const kids = el.innerHTML; el.classList.add("pr"); el.style.boxShadow = c === "white" && !bleed ? "inset 0 0 0 1px rgba(20,18,16,.12)" : "none";
+      if (bleed) el.style.boxShadow = "none";
+      el.innerHTML = kids.replace(/<svg class="mk"[\s\S]*?<\/svg>/, (m) => m); // single unit: the first copy only
+      const units = [...el.children], half = units.length / 2; units.slice(half).forEach((n) => n.remove());
+      const outer = el.outerHTML;
+      document.body.innerHTML = `<div id="bw">${wrap(1120, 80, outer, `<i class="st" style="left:0;top:0;width:100%;height:100%;background:${bg}"></i>`, bg).replace('data-shot="lanyard-' + c + '"', "")}</div>`;
+      document.querySelector(".bx").setAttribute("data-shot", `druk-lanyard-${c}${bleed ? "-spad" : ""}`);
+    }
+  }
 </script>
 </body></html>

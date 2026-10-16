@@ -5,7 +5,9 @@
   /* sticker sheet, 4 px per mm; every sticker sits in a white die-cut border */
   body { background: #EDE8E0; }
   .sheet-st { display: flex; flex-wrap: wrap; gap: 36px; padding: 44px; width: 1300px; align-items: center; }
-  .st { position: relative; flex: none; filter: drop-shadow(0 10px 14px rgba(20,16,10,.22)); }
+  .st { position: relative; flex: none; }
+  /* the white 3 mm die-cut border of the box-shadow stickers sits inside the exported frame */
+  .st:has(> .term, > .flap, > .tall) { padding: 12px; }
   .st svg { display: block; overflow: visible; }
   .st text { font-family: "IBM Plex Mono"; font-weight: 600; }
   .air { width: 400px; height: 260px; background: #fff; border-radius: 14px; padding: 12px;
@@ -36,7 +38,7 @@
   const ring = (r, text, fill) => `<defs><path id="rp${r}" d="M ${-r} 0 A ${r} ${r} 0 1 1 ${r} 0 A ${r} ${r} 0 1 1 ${-r} 0"/></defs><text font-size="15" letter-spacing="5.2" fill="${fill}"><textPath href="#rp${r}" startOffset="0">${text}</textPath></text>`;
   const st = (name, html) => `<div class="st" data-shot="sticker-${name}">${html}</div>`;
   const mark = Print.mark("#fff").replace('viewBox="0 0 48 48"', 'x="-58" y="-58" width="116" height="116" viewBox="0 0 48 48"');
-  const swallowCut = `<svg width="300" height="230" viewBox="-130 -110 230 200"><g stroke="#fff" stroke-width="18" stroke-linejoin="round">${Print.swallow(0, 0, 0, 1, "#fff")}</g>${Print.swallow(0, 0, 0, 1, "#C8102E")}</svg>`;
+  const swallowCut = `<svg width="300" height="230" viewBox="-130 -110 230 200"><g stroke="#fff" stroke-width="24" stroke-linejoin="round">${Print.swallow(0, 0, 0, 1, "#fff")}</g>${Print.swallow(0, 0, 0, 1, "#C8102E")}</svg>`;
   document.getElementById("sheet").innerHTML = [
     // 1. round: Reunion mark, name around it
     st("okragla", `<svg width="300" height="300" viewBox="-150 -150 300 300"><circle r="148" fill="#fff"/><circle r="136" fill="#C8102E"/>${ring(104, "REUNION HACKATHON · WARSZAWA · 5–7.02.2027 ·", "#fff")}${mark}</svg>`),

@@ -1,0 +1,95 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500..900&family=Barlow+Condensed:wght@100;200;300&family=Barlow:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../print/print.css"><link rel="stylesheet" href="../book.css"><title>Ekrany</title>
+<style>
+  .bw { position: absolute; border-radius: 12px; overflow: hidden; background: #fff; z-index: 3; box-shadow: 0 1px 2px rgba(20,16,10,.22), 0 8px 16px -8px rgba(20,16,10,.3), 0 34px 70px -26px rgba(20,16,10,.5); }
+  .bw .bar { height: 30px; background: #E9E5DE; display: flex; align-items: center; gap: 7px; padding: 0 12px; border-bottom: 1px solid rgba(20,18,16,.12); }
+  .bw .bar i { width: 10px; height: 10px; border-radius: 50%; background: #BDB7AD; }
+  .bw .bar span { margin-left: 12px; font: 500 12px var(--mono); letter-spacing: .04em; color: rgba(20,18,16,.6); background: #F7F4EE; border-radius: 6px; padding: 4px 14px; }
+  .bw img { display: block; width: 100%; height: auto; }
+  .ph { position: absolute; z-index: 3; background: #141210; border-radius: 46px; padding: 12px; box-shadow: 0 1px 2px rgba(20,16,10,.3), 0 10px 20px -10px rgba(20,16,10,.4), 0 40px 70px -26px rgba(20,16,10,.55); }
+  .ph img { display: block; width: 100%; height: auto; border-radius: 35px; }
+  .film { position: absolute; left: 0; right: 0; background: var(--ink); z-index: 1; }
+  .rule { position: absolute; z-index: 3; color: #fff; }
+  .rule b { display: block; font: 900 88px/.9 var(--block); text-transform: uppercase; }
+  .rule span { display: block; margin-top: 10px; font: 400 22px/1.4 var(--body); color: var(--w70); max-width: 30ch; }
+</style></head><body data-chapter="Ekrany">
+
+<section class="board divider">
+  <div class="field"><div class="top red grain"><span class="lockup"></span></div>
+    <div class="band"><h1 data-px="260">Ekrany</h1><p class="mono ver"></p></div></div>
+  <div class="side surface-paper">
+    <div class="ph" style="width:280px;left:48px;top:150px"><img src="../shots/web/m-hero.jpg" alt=""></div>
+    <div class="ph" style="width:280px;left:378px;top:420px"><img src="../shots/web/m-tracki.jpg" alt=""></div>
+  </div>
+</section>
+
+<!-- desktop hero + intro filmstrip -->
+<section class="board content">
+  <aside class="rail"><h2>Strona na komputerze</h2>
+    <p>Zrzuty prawdziwej strony www.reunion-hackathon.pl, bez retuszu. Najpierw intro: tablica przylotów przelicza się, pojawia się nazwa, tablica ląduje w&nbsp;hero.</p>
+    <ul><li>Okno 1440 × 900, gęstość 2×</li><li>Intro: tablica, nazwa, lądowanie</li><li>Hero: znak, tablica z&nbsp;odliczaniem</li></ul></aside>
+  <div class="canvas surface-paper">
+    <div class="bw" data-src="../shots/web/d-hero.jpg" data-url="reunion-hackathon.pl" style="left:50px;top:40px;width:780px"></div>
+    <p class="serif" style="position:absolute;left:900px;top:70px;width:560px;font-size:84px;line-height:1;z-index:3">Najpierw tablica, <em>potem strona.</em></p>
+    <p class="mono" style="position:absolute;left:900px;top:380px;width:500px;z-index:3;color:var(--ink-60);line-height:1.7">Hero po wylądowaniu tablicy.<br>Odliczanie do 5.02.2027, 16:00.</p>
+    <div class="film" style="top:590px;height:358px"></div>
+    <div class="bw" data-src="../shots/web/intro-1.jpg" data-url="" style="left:50px;top:610px;width:440px;border-radius:6px"></div>
+    <div class="bw" data-src="../shots/web/intro-2.jpg" data-url="" style="left:550px;top:610px;width:440px;border-radius:6px"></div>
+    <div class="bw" data-src="../shots/web/intro-3.jpg" data-url="" style="left:1050px;top:610px;width:440px;border-radius:6px"></div>
+    <p class="cap light" style="left:50px;top:902px;z-index:4">1 · tablica przelicza litery</p>
+    <p class="cap light" style="left:550px;top:902px;z-index:4">2 · pojawia się nazwa</p>
+    <p class="cap light" style="left:1050px;top:902px;z-index:4">3 · tablica leci na miejsce w&nbsp;hero</p>
+  </div>
+</section>
+
+<!-- phones -->
+<section class="board content">
+  <aside class="rail"><h2>Telefon</h2>
+    <p>Ten sam układ w&nbsp;jednej kolumnie. Tablica ma mniej kolumn, a&nbsp;nazwa łamie się na dwie linie.</p>
+    <ul><li>Profil iPhone 13, 390 px szerokości</li><li>Gęstość 3×</li><li>Przycisk „Aplikuj wkrótce” zawsze w&nbsp;pasku</li></ul></aside>
+  <div class="canvas red grain">
+    <div class="ph" style="width:316px;left:48px;top:160px"><img src="../shots/web/m-hero.jpg" alt=""></div>
+    <div class="ph" style="width:316px;left:416px;top:210px"><img src="../shots/web/m-tracki.jpg" alt=""></div>
+    <div class="ph" style="width:316px;left:784px;top:160px"><img src="../shots/web/m-agenda.jpg" alt=""></div>
+    <div class="ph" style="width:316px;left:1152px;top:210px"><img src="../shots/web/m-faq.jpg" alt=""></div>
+    <p class="cap light" style="left:60px;top:775px">Hero</p><p class="cap light" style="left:428px;top:775px">Tracki</p><p class="cap light" style="left:796px;top:775px">Agenda</p><p class="cap light" style="left:1164px;top:775px">FAQ</p>
+  </div>
+</section>
+
+<!-- section walk-through -->
+<section class="board content">
+  <aside class="rail"><h2>Przejście przez stronę</h2>
+    <p>Sekcje na przemian czerwone i&nbsp;jasne. Każda ma jeden duży nagłówek Big Shoulders i&nbsp;jedną rzecz do zrobienia.</p>
+    <ul><li>Tracki: trzy ścieżki i&nbsp;Twoje wyzwanie</li><li>Agenda: tablica, trzy dni</li><li>Zespół, FAQ, stopka</li><li>Wersja angielska: ta sama strona</li></ul></aside>
+  <div class="canvas surface-paper">
+    <div class="bw" data-src="../shots/web/d-tracki.jpg" data-url="#tracki" style="left:50px;top:54px;width:440px"></div>
+    <div class="bw" data-src="../shots/web/d-agenda.jpg" data-url="#agenda" style="left:550px;top:54px;width:440px"></div>
+    <div class="bw" data-src="../shots/web/d-zespol.jpg" data-url="#zespol" style="left:1050px;top:54px;width:440px"></div>
+    <div class="bw" data-src="../shots/web/d-faq.jpg" data-url="#faq" style="left:50px;top:424px;width:440px"></div>
+    <div class="bw" data-src="../shots/web/d-stopka.jpg" data-url="#stopka" style="left:550px;top:424px;width:440px"></div>
+    <div class="bw" data-src="../shots/web/den-hero.jpg" data-url="reunion-hackathon.pl/en.html" style="left:1050px;top:424px;width:440px"></div>
+    <p class="cap" style="left:50px;top:372px">Tracki</p><p class="cap" style="left:550px;top:372px">Agenda</p><p class="cap" style="left:1050px;top:372px">Zespół</p>
+    <p class="cap" style="left:50px;top:742px">FAQ</p><p class="cap" style="left:550px;top:742px">Stopka</p><p class="cap" style="left:1050px;top:742px">Wersja angielska</p>
+  </div>
+  <div class="metrics"><div><b>1440 × 900</b><span>okno, gęstość 2×</span></div><div><b>3</b><span>dni w&nbsp;agendzie</span></div><div><b>11</b><span>pytań w&nbsp;FAQ</span></div><div><b>2</b><span>wersje: PL i&nbsp;EN</span></div></div>
+</section>
+
+<!-- motion rules -->
+<section class="board content">
+  <aside class="rail"><h2>Ruch i&nbsp;dźwięk</h2>
+    <p>Intro to jednorazowe wejście, nie przeszkoda. Każdy może je przewinąć, a&nbsp;dźwięk włącza się tylko świadomie.</p>
+    <ul><li>Intro ok.&nbsp;5&nbsp;s</li><li>Dotyk lub klawisz przewija do strony</li><li>Dźwięk po dotknięciu albo tam, gdzie przeglądarka pozwala</li><li>Przycisk głośnika w&nbsp;rogu</li></ul></aside>
+  <div class="canvas surface-ink">
+    <div class="bw" data-src="../shots/web/intro-2.jpg" data-url="" style="left:60px;top:50px;width:740px"></div>
+    <div class="callout l" style="left:840px;top:482px;color:#fff;--len:50px;z-index:6;width:300px">przycisk głośnika, przekreślony dopóki dźwięk jest wyłączony</div>
+    <div class="rule" style="left:960px;top:70px"><b>ok. 5 s</b><span>intro, potem strona. Na telefonie tablica znika płynnie zamiast lecieć.</span></div>
+    <div class="rule" style="left:960px;top:240px"><b>Dotyk</b><span>przewija do końca i&nbsp;włącza dźwięk.</span></div>
+    <div class="rule" style="left:60px;top:560px"><b>Bez intro</b><span style="max-width:70ch">po wejściu z&nbsp;innej strony serwisu, przy ?skip i&nbsp;przy ograniczonym ruchu w&nbsp;systemie.</span></div>
+  </div>
+  <div class="metrics"><div><b>ok. 5 s</b><span>czas intro</span></div><div><b>1 dotyk</b><span>przewija intro</span></div><div><b>0</b><span>dźwięku bez zgody przeglądarki lub dotyku</span></div><div><b>1</b><span>przycisk głośnika w&nbsp;rogu</span></div></div>
+</section>
+
+<script src="../../../print/print.js"></script><script src="../book.js"></script>
+<script>document.querySelectorAll(".bw[data-src]").forEach((el) => { const u = el.dataset.url; el.innerHTML = (u ? `<div class="bar"><i></i><i></i><i></i><span>${u}</span></div>` : "") + `<img src="${el.dataset.src}" alt="">`; });</script>
+</body></html>

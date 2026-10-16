@@ -1,0 +1,48 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500..900&family=Barlow+Condensed:wght@100;200;300&family=Barlow:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../print/print.css"><link rel="stylesheet" href="../book.css"><title>Marka</title></head><body data-chapter="Marka">
+<section class="board divider">
+  <div class="field"><div class="top red grain"><span class="lockup"></span></div>
+    <div class="band"><h1 data-px="260">Marka</h1><p class="mono ver"></p></div></div>
+  <div class="side surface-paper">
+    <div class="obj card" style="width:560px;left:60px;top:250px;transform:rotate(4deg);background:#fff;padding:18px 18px 64px"><img src="../../../assets/img/sala.jpg" alt=""><p class="cap" style="left:22px;bottom:20px;color:var(--ink-60)">Sala, 48 godzin, sto osób</p></div>
+  </div>
+</section>
+
+<section class="board content">
+  <aside class="rail"><h2>Idea</h2>
+    <p>Reunion Hackathon to przylot do Warszawy. Najlepsi polscy studenci z zagranicy wracają na 48 godzin, żeby budować w Polsce.</p>
+    <p>Cała identyfikacja wychodzi z lotniska: tablica przylotów, karta pokładowa, trasy na globusie. Do tego kod, bo to hackathon.</p>
+    <ul><li>Lotnisko: przylot, tablica, bilet</li><li>Kod: return(home);</li><li>Plakat: wielkie litery z głębią</li></ul></aside>
+  <div class="canvas red grain">
+    <div class="g" style="position:absolute;left:700px;top:330px;width:1000px;height:1000px;opacity:.18" id="g1"></div>
+    <p class="serif" style="position:absolute;left:96px;top:110px;z-index:2;font-size:112px;line-height:1;color:#fff;max-width:13ch">Budujemy Polskę, do której warto <em>wracać.</em></p>
+    <iframe class="flap" id="bd1" style="position:absolute;left:96px;bottom:70px;border:0;z-index:2"></iframe>
+    <p class="mono" style="position:absolute;right:80px;bottom:90px;z-index:2;font-size:22px;color:#fff;letter-spacing:.04em;text-transform:none">return(home);</p>
+  </div>
+  <div class="metrics"><div><b>48 h</b><span>pracy, od piątku do niedzieli</span></div><div><b>100</b><span>miejsc, selekcja z aplikacji</span></div><div><b>7</b><span>krajów na globusie</span></div><div><b>5–7.02</b><span>2027, Warszawa</span></div></div>
+</section>
+
+<section class="board content">
+  <aside class="rail"><h2>Głos</h2>
+    <p>Mówimy jak zespół, który sam studiował za granicą: krótko, konkretnie, z liczbami. Najpierw po polsku, zawsze z wersją angielską.</p>
+    <ul><li>Fakty zamiast przymiotników</li><li>Jedno zdanie, jedna myśl</li><li>Humor z terminala, bez emoji</li><li>Daty: 5–7 lutego 2027</li></ul></aside>
+  <div class="canvas paper" style="display:grid;grid-template-columns:1fr 1fr">
+    <div style="padding:80px 70px;border-right:1px solid var(--ink-14)">
+      <p class="mono" style="color:var(--red)">Tak</p>
+      <p style="margin-top:34px;font:900 64px/1 var(--block);text-transform:uppercase">48 godzin pracy nad wyzwaniami firm i instytucji.</p>
+      <p class="serif" style="margin-top:40px;font-size:54px;line-height:1.05">Szukamy <em>stu osób.</em></p>
+      <p style="margin-top:40px;font:500 28px var(--mono)">Zgłoś się? [T/n]</p>
+      <p style="margin-top:40px;font:400 26px/1.45 var(--body);color:var(--ink-60);max-width:28ch">Udział jest bezpłatny. Liczba miejsc jest ograniczona do 100, obowiązuje selekcja aplikacyjna.</p>
+    </div>
+    <div style="padding:80px 70px">
+      <p class="mono" style="color:var(--ink-60)">Nie</p>
+      <p style="margin-top:34px;font:900 64px/1 var(--block);text-transform:uppercase;color:rgba(20,18,16,.32);text-decoration:line-through;text-decoration-thickness:4px">Realne wyzwania, unikalna okazja.</p>
+      <p style="margin-top:40px;font:400 26px/1.45 var(--body);color:var(--ink-60);max-width:28ch">Słowa, które niczego nie mówią (realny, unikalny, innowacyjny), zastępujemy faktem: liczbą, datą, nazwą.</p>
+      <p style="margin-top:28px;font:400 26px/1.45 var(--body);color:var(--ink-60);max-width:28ch">Bez wielkich obietnic, których nie da się sprawdzić. Jeśli coś jest jeszcze nieznane, piszemy: wkrótce.</p>
+    </div>
+  </div>
+</section>
+<script src="../../../print/print.js"></script><script src="../book.js"></script>
+<script>document.getElementById("g1").innerHTML = Print.globe({ op: 1, width: 5, arcs: false }); Book.board(document.getElementById("bd1"), ["WAW · WARSZAWA", "05-07.02.2027"], 30, 16);</script>
+</body></html>

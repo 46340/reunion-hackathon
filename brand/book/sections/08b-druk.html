@@ -1,0 +1,338 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500..900&family=Barlow+Condensed:wght@100;200;300&family=Barlow:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../print/print.css"><link rel="stylesheet" href="../book.css"><title>Materiały: duży format</title>
+<style>
+  /* surfaces for the scenes */
+  .wall-c { background: radial-gradient(130% 110% at 28% 12%, #C4C2BD 0%, #AAA8A3 52%, #8F8D88 100%); }
+  .floor { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; background: linear-gradient(#3A3834 0, #2A2825 100%); box-shadow: inset 0 14px 18px -12px rgba(0,0,0,.55); }
+  .floor::before { content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 14px; background: #D8D5CF; box-shadow: 0 -1px 0 rgba(0,0,0,.18) inset; }
+  .tape { position: absolute; width: 74px; height: 24px; background: rgba(240, 234, 214, .72); box-shadow: 0 1px 2px rgba(0,0,0,.2); z-index: 4; }
+  .contact { position: absolute; z-index: 2; border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.45), rgba(0,0,0,0)); }
+  .note { position: absolute; z-index: 5; font: 500 14px/1.5 var(--mono); letter-spacing: .06em; color: var(--ink-60); }
+  .note b { display: block; color: var(--ink); font: 800 22px/1.05 var(--block); letter-spacing: .02em; text-transform: uppercase; margin-bottom: 4px; }
+  .note.light { color: var(--w70); } .note.light b { color: #fff; }
+  .guide { position: absolute; z-index: 4; border: 1.5px dashed rgba(255,255,255,.85); pointer-events: none; }
+  .guide.d { border-color: rgba(20,18,16,.6); }
+  .guide > i { position: absolute; left: 6px; top: -20px; font: 500 13px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; font-style: normal; color: #fff; white-space: nowrap; }
+  .guide.d > i { color: var(--ink-60); }
+  .dim.chip > span { bottom: auto; top: 50%; transform: translate(-50%, -50%); padding: 3px 8px; color: var(--ink); }
+  .dim.chip.red > span { color: #fff; }
+  .cab { position: absolute; width: 3px; z-index: 2; background: linear-gradient(90deg, #4a4742, #9b9890 50%, #4a4742); box-shadow: 1px 0 2px rgba(0,0,0,.25); top: 0; }
+  .lid { position: absolute; border-radius: 30px; background: linear-gradient(155deg, #34343A 0%, #26262B 45%, #1B1B1F 100%); box-shadow: 0 0 0 2px #0c0c0e, inset 0 0 0 2px rgba(255,255,255,.07), inset 0 2px 0 rgba(255,255,255,.12), 0 60px 90px -30px rgba(0,0,0,.8); z-index: 1; }
+  .lid::after { content: ""; position: absolute; inset: 0; border-radius: 30px; background: linear-gradient(115deg, rgba(255,255,255,.06), rgba(255,255,255,0) 35%); pointer-events: none; }
+  .tag { position: absolute; z-index: 5; font: 500 13px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink); background: #fff; padding: 6px 10px; }
+  .crop { position: absolute; overflow: hidden; }
+  .crop > img { position: absolute; display: block; max-width: none; }
+  .tee { position: absolute; overflow: hidden; -webkit-mask-image: radial-gradient(ellipse 52% 80% at 50% 40%,#000 82%,transparent 100%),linear-gradient(180deg,#000 88%,transparent); -webkit-mask-composite: source-in; mask-composite: intersect; }
+  .tee > img { position: absolute; display: block; max-width: none; }
+  .swatch { position: absolute; z-index: 5; display: flex; gap: 14px; align-items: center; font: 500 13px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+  .swatch i { width: 30px; height: 30px; border: 1px solid rgba(20,18,16,.3); flex: none; }
+  .arr { position: absolute; z-index: 5; width: 140px; }
+  .arr .ic { height: 70px; background: var(--red); display: grid; place-items: center; }
+  .arr svg { width: 46px; height: 46px; fill: none; stroke: #fff; stroke-width: 10; stroke-linecap: square; }
+  .arr p { margin-top: 8px; font: 500 13px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-60); }
+  .arr p b { color: var(--ink); font-weight: 600; }
+  .cut-demo { position: absolute; z-index: 5; width: 220px; height: 220px; border-radius: 50%; overflow: hidden; border: 2px solid var(--ink); background: #cdc6b9; }
+  .callout.l::after { content: ""; position: absolute; top: calc(.6em - 3px); right: calc(100% + 12px + var(--len) - 4px); width: 7px; height: 7px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 0 2px #fff; }
+  .callout.r::after { content: ""; position: absolute; top: calc(.6em - 3px); left: calc(100% + 12px + var(--len) - 4px); width: 7px; height: 7px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 0 2px #fff; }
+  .callout::before { background: var(--ink); opacity: .75; }
+  .callout { color: var(--ink); }
+  .ok { color: var(--ink); font-weight: 600; }
+</style></head><body data-chapter="Materiały">
+
+<!-- 1. POSTERS: HERO -->
+<section class="board content">
+  <aside class="rail"><h2>Plakaty</h2>
+    <p>Jedna kompozycja w&nbsp;dwóch formatach: plakat 50 × 70 cm z&nbsp;globusem i&nbsp;jaskółkami oraz plakat A2 z&nbsp;tablicą odlotów i&nbsp;planem 48 godzin.</p>
+    <ul><li>Plakat 50 × 70 cm</li><li>Plan A2, 42 × 59,4 cm</li><li>Kreda mat 170 g</li><li>Spad 3 mm</li></ul></aside>
+  <div class="canvas wall-c grain" id="c1">
+    <div class="floor" style="height:64px"></div>
+    <div class="obj card" style="width:530px;left:210px;top:60px;transform:rotate(-1.2deg)"><img src="../../../print/out/plakat-50x70.png" alt="Plakat 50 × 70 cm">
+      <span class="tape" style="left:-24px;top:10px;transform:rotate(-38deg)"></span><span class="tape" style="right:-24px;top:10px;transform:rotate(38deg)"></span></div>
+    <p class="cap" style="left:210px;top:832px;color:var(--ink)">50 × 70 cm · powieszony na ścianie</p>
+    <div class="contact" style="left:880px;top:866px;width:520px;height:36px"></div>
+    <div class="obj card" style="width:468px;left:930px;top:222px;transform:rotate(3deg);transform-origin:50% 100%"><img src="../../../print/out/plakat-agenda.png" alt="Plakat z planem, A2"></div>
+    <p class="cap light" style="left:930px;top:906px">A2 · plan 48 godzin, oparty o&nbsp;ścianę</p>
+  </div>
+</section>
+
+<!-- 2. POSTER: SPEC -->
+<section class="board content">
+  <aside class="rail"><h2>Plakat: siatka</h2>
+    <p>Wszystko liczy się od szerokości arkusza. Znak słowny wypełnia czerwoną górę, hasło i&nbsp;kod QR zamykają dół.</p>
+    <ul><li>Margines 28 mm, góra 22 mm</li><li>Znak słowny: korpus 9,25 cm</li><li>QR 75 × 75 mm</li><li>Wszystko wewnątrz pola bezpiecznego</li></ul></aside>
+  <div class="canvas paper" id="c2">
+    <div class="obj card" style="width:470px;height:658px;left:230px;top:78px"><img src="../../../print/out/plakat-50x70.png" alt="">
+      <div class="guide" style="left:5.6%;top:3.14%;right:5.6%;bottom:4%"><i>pole bezpieczne</i></div>
+      <div class="guide" style="left:79.4%;top:80.86%;width:15%;height:10.71%;border-style:solid;border-color:#141210"></div>
+    </div>
+    <div class="dim h" style="left:230px;top:50px;width:470px"><span>50 cm (500 mm)</span></div>
+    <div class="dim v" style="left:204px;top:78px;height:658px"><span style="left:auto;right:14px;transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl">70 cm (700 mm)</span></div>
+    <p class="callout l" style="left:780px;top:120px;--len:93px">margines boczny 28 mm<br>góra 22 mm, dół 28 mm</p>
+    <p class="callout l" style="left:780px;top:257px;--len:118px">znak słowny REUNION HACKATHON<br>Big Shoulders 900, korpus 9,25 cm<br>szerokość ok. 80 % arkusza<br>białe lico, różowa głębia</p>
+    <p class="callout l" style="left:780px;top:473px;--len:83px">globus: siatka, 34 % krycia<br>jaskółki w&nbsp;locie do domu</p>
+    <p class="callout l" style="left:780px;top:579px;--len:348px">hasło: Instrument Serif</p>
+    <p class="callout l" style="left:780px;top:636px;--len:102px">QR 75 × 75 mm<br>z&nbsp;białą ramką 5 mm</p>
+    <p class="callout l" style="left:780px;top:690px;--len:104px">stopka: organizator GPSS<br>z&nbsp;planetą</p>
+    <!-- bleed detail -->
+    <div style="position:absolute;left:1212px;top:78px;width:280px;height:280px;overflow:hidden;border:2px solid var(--ink);background:#fff;z-index:5">
+      <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#E9C3C8 0 6px,#F4DDE0 6px 12px)"></div>
+      <div style="position:absolute;left:34px;top:34px;right:0;bottom:0;background:var(--red)"></div>
+      <div style="position:absolute;left:34px;top:34px;right:0;bottom:0;border-left:1.5px solid #141210;border-top:1.5px solid #141210"></div>
+      <div style="position:absolute;left:150px;top:150px;right:0;bottom:0;border-left:1.5px dashed #fff;border-top:1.5px dashed #fff"></div>
+      <p class="mono" style="position:absolute;left:44px;top:44px;font-size:13px;color:#fff;line-height:1.5;letter-spacing:.08em">linia cięcia<br>(format netto)</p>
+      <p class="mono" style="position:absolute;left:160px;top:160px;font-size:13px;color:#fff;line-height:1.5;letter-spacing:.08em">pole<br>bezpieczne</p>
+      <p class="mono" style="position:absolute;left:6px;top:8px;font-size:13px;color:#6D0613;letter-spacing:.1em">spad</p>
+    </div>
+    <div class="dim h below" style="left:1214px;top:374px;width:34px"><span style="left:0;transform:none">3 mm spadu</span></div>
+    <p class="note" style="left:1212px;top:430px;width:280px"><b>Spad 3 mm</b>Kolor i&nbsp;globus wychodzą poza linię cięcia o&nbsp;3 mm. Plik ma rozmiar 50,6 × 70,6 cm.</p>
+    <p class="note" style="left:1212px;top:560px;width:280px"><b>Papier</b>Kreda mat 170 g. Czerwień do druku: Pantone 186 C, CMYK 0 100 80 5. <span class="ok">Do potwierdzenia na próbniku.</span></p>
+  </div>
+  <div class="metrics"><div><b>50 × 70</b><span>cm, format netto</span></div><div><b>3 mm</b><span>spadu z&nbsp;każdej strony</span></div><div><b>170 g</b><span>kreda mat</span></div><div><b>9,25 cm</b><span>korpus znaku (18,5 % szerokości)</span></div></div>
+</section>
+
+<!-- 2b. A2 SPEC is part of the poster spec: separate board for the agenda poster -->
+<section class="board content">
+  <aside class="rail"><h2>Plakat z&nbsp;planem</h2>
+    <p>Format A2 z&nbsp;tablicą odlotów: godziny z&nbsp;harmonogramu, puste pozycje zostają jako --:--. Tablica jest drukowana tak jak na stronie.</p>
+    <ul><li>A2: 42 × 59,4 cm</li><li>Tytuł PLAN, 48 godzin</li><li>Tablica 24 znaki, 10 wierszy</li><li>Kreda mat 170 g, spad 3 mm</li></ul></aside>
+  <div class="canvas paper" id="c2b">
+    <div class="obj card" style="width:420px;height:594px;left:300px;top:86px"><img src="../../../print/out/plakat-agenda.png" alt="">
+      <div class="guide" style="left:24px;top:23px;right:24px;bottom:21px"><i>pole bezpieczne</i></div></div>
+    <div class="dim h" style="left:300px;top:58px;width:420px"><span>42 cm (420 mm)</span></div>
+    <div class="dim v" style="left:272px;top:86px;height:594px"><span style="left:auto;right:14px;writing-mode:vertical-rl;transform:translateY(-50%) rotate(180deg)">59,4 cm (594 mm)</span></div>
+    <p class="callout l" style="left:830px;top:107px;--len:114px">pasek: znak + planeta GPSS<br>ODLOTY · WAW</p>
+    <p class="callout l" style="left:830px;top:170px;--len:353px">PLAN, korpus 7,4 cm<br>z&nbsp;głębią jak na plakacie</p>
+    <p class="callout l" style="left:830px;top:224px;--len:158px">hasło: 48 godzin.<br>Od pomysłu do demo.</p>
+    <p class="callout l" style="left:830px;top:386px;--len:118px">tablica split-flap<br>10 wierszy po 24 znaki<br>godziny czerwone</p>
+    <p class="callout l" style="left:830px;top:575px;--len:138px">globus w&nbsp;tle, 20 % krycia</p>
+    <p class="callout l" style="left:830px;top:646px;--len:118px">stopka: data i&nbsp;adres strony</p>
+    <p class="note" style="left:1180px;top:96px;width:300px"><b>Harmonogram</b>PT 16:00 rejestracja, PT 17:00 gala otwarcia, PT 19:00 znajdź zespół, PT 20:00 start kodowania, SB 12:00 warsztat pitchu, ND 15:30 gala zamknięcia, ND 17:00 networking.</p>
+    <p class="note" style="left:1180px;top:340px;width:300px"><b>Nieznane godziny</b>Koniec zgłoszeń i&nbsp;prezentacje w&nbsp;niedzielę mają jeszcze --:--. Plik przeliczamy, gdy harmonogram jest zamknięty.</p>
+    <p class="note" style="left:1180px;top:512px;width:300px"><b>Spad</b>Plik 42,6 × 59,4 + 3 mm z&nbsp;każdej strony. Tablica nie dotyka pola cięcia.</p>
+  </div>
+  <div class="metrics"><div><b>A2</b><span>42 × 59,4 cm</span></div><div><b>10 × 24</b><span>wiersze i&nbsp;znaki tablicy</span></div><div><b>--:--</b><span>godzina jeszcze nieznana</span></div><div><b>3 mm</b><span>spadu</span></div></div>
+</section>
+
+<!-- 3. ROLL-UP: HERO -->
+<section class="board content">
+  <aside class="rail"><h2>Roll-up</h2>
+    <p>Ten sam układ co plakat, ustawiony w&nbsp;pionie. Znak słowny, globus i&nbsp;jaskółki widać z&nbsp;drugiego końca sali.</p>
+    <ul><li>85 × 200 cm</li><li>Fakty w&nbsp;ramkach</li><li>QR i&nbsp;adres u&nbsp;dołu</li><li>Dolne 20 cm za stołem</li></ul></aside>
+  <div class="canvas wall-c grain" id="c3">
+    <div class="floor" style="height:64px"></div>
+    <div class="contact" style="left:200px;top:850px;width:500px;height:44px"></div>
+    <div style="position:absolute;left:267px;top:56px;width:366px;height:10px;background:linear-gradient(#E8E8EA,#9A9A9E);border-radius:3px;z-index:4;box-shadow:0 2px 4px rgba(0,0,0,.3)"></div>
+    <div class="obj card" style="width:330px;left:285px;top:66px"><img src="../out/druk/rollup-85x200-podglad-bez-prowadnic.png" alt="Roll-up 85 × 200 cm"></div>
+    <div style="position:absolute;left:267px;top:838px;width:366px;height:46px;border-radius:10px 10px 18px 18px;background:linear-gradient(#F4F4F6 0,#BFC0C4 38%,#8C8D92 100%);z-index:4;box-shadow:0 14px 20px -8px rgba(0,0,0,.6),inset 0 1px 0 #fff">
+      <span style="position:absolute;left:14px;right:14px;top:16px;height:2px;background:rgba(0,0,0,.18)"></span></div>
+    <div class="crop obj card" style="left:740px;top:56px;width:500px;height:345px;transform:rotate(1.2deg)"><img src="../out/druk/rollup-85x200-podglad-bez-prowadnic.png" alt="" style="width:500px;left:0;top:0"></div>
+    <p class="cap" style="left:740px;top:418px;color:var(--ink)">detal: pasek z&nbsp;organizatorem i&nbsp;znak słowny</p>
+    <div class="crop obj card" style="left:940px;top:452px;width:500px;height:363px;transform:rotate(-1.4deg)"><img src="../out/druk/rollup-85x200-podglad-bez-prowadnic.png" alt="" style="width:500px;left:0;top:-695px"></div>
+    <p class="cap" style="left:940px;top:838px;color:var(--ink)">detal: hasło, fakty w&nbsp;ramkach, QR 17 cm i&nbsp;adres</p>
+  </div>
+</section>
+
+<!-- 4. ROLL-UP: SPEC -->
+<section class="board content">
+  <aside class="rail"><h2>Roll-up: siatka</h2>
+    <p>Grafika ma 85 × 200 cm, ale czytelna część kończy się na 180 cm. Niżej zasłania ją stół, więc nie ma tam treści.</p>
+    <ul><li>Obszar treści 85 × 180 cm</li><li>Strefa za stołem 20 cm</li><li>Margines boczny 4,8 cm</li><li>Plik 1 : 1, 150 dpi</li></ul></aside>
+  <div class="canvas paper" id="c4">
+    <div class="obj card" style="width:277px;height:652px;left:700px;top:94px"><img src="../../../print/out/rollup-85x200.png" alt="">
+      <div style="position:absolute;left:0;right:0;top:587px;bottom:0;background:repeating-linear-gradient(135deg,rgba(20,18,16,.28) 0 5px,rgba(20,18,16,.0) 5px 10px);z-index:3"></div>
+    </div>
+    <div class="dim h" style="left:700px;top:66px;width:277px"><span>85 cm</span></div>
+    <div class="dim v" style="left:1007px;top:94px;height:652px"><span>200 cm</span></div>
+    <div class="dim v" style="left:1100px;top:94px;height:587px"><span>180 cm: treść</span></div>
+    <div class="dim v" style="left:1100px;top:681px;height:65px"><span>20 cm</span></div>
+    <p class="callout r" style="left:164px;top:107px;--len:156px;width:380px;text-align:right">pasek: organizator i&nbsp;data<br>mono 15 mm, margines 4,8 cm</p>
+    <p class="callout r" style="left:164px;top:179px;--len:202px;width:380px;text-align:right">znak słowny, korpus 15 cm<br>górna krawędź 21,5 cm od góry</p>
+    <p class="callout r" style="left:164px;top:430px;--len:167px;width:380px;text-align:right">globus 113 cm szerokości<br>jaskółki lecą do domu</p>
+    <p class="callout r" style="left:164px;top:499px;--len:150px;width:380px;text-align:right">hasło, Instrument Serif 7,8 cm<br>od 123,5 cm</p>
+    <p class="callout r" style="left:164px;top:553px;--len:150px;width:380px;text-align:right">fakty w&nbsp;ramkach<br>100 miejsc · 48 godzin ·<br>udział bezpłatny · solo lub zespołowo</p>
+    <p class="callout r" style="left:164px;top:619px;--len:374px;width:380px;text-align:right">QR 17 × 17 cm i&nbsp;adres</p>
+    <p class="callout r" style="left:164px;top:705px;--len:164px;width:380px;text-align:right">strefa za stołem<br>bez treści</p>
+    <div style="position:absolute;left:1270px;top:340px;width:210px;z-index:5">
+      <p class="mono" style="color:var(--ink-60)">Plik do druku</p>
+      <p style="font:900 64px/1 var(--block)">150 dpi</p>
+      <p class="mono" style="margin-top:10px;line-height:1.6;color:var(--ink)">5 020 × 11 811 px<br>przy 85 × 200 cm<br>skala 1 : 1</p>
+      <p class="mono" style="margin-top:14px;line-height:1.6;color:var(--ink-60)">ze spadem 3 mm:<br>85,6 × 200,6 cm</p>
+    </div>
+  </div>
+  <div class="metrics"><div><b>85 × 200</b><span>cm, grafika</span></div><div><b>180 cm</b><span>część widoczna nad stołem</span></div><div><b>20 cm</b><span>dół zasłonięty stołem</span></div><div><b>150 dpi</b><span>skala 1 : 1, kaseta, baner PET</span></div></div>
+</section>
+
+<!-- 5. SIGNAGE: SCENE -->
+<section class="board content">
+  <aside class="rail"><h2>Oznakowanie</h2>
+    <p>Kierunkowskazy jak na lotnisku: piktogram, jedno słowo, strzałka. Zawieszone nad głowami, a&nbsp;numery stanowisk stoją na stołach zespołów.</p>
+    <ul><li>Rejestracja, Sala główna</li><li>Strefa ciszy, Jedzenie</li><li>Stanowiska 07, 23 …</li><li>Znaki 100 × 30 cm, A5</li></ul></aside>
+  <div class="canvas wall-c grain" id="c5">
+    <div class="cab" style="left:130px;height:132px"></div><div class="cab" style="left:690px;height:132px"></div>
+    <div class="cab" style="left:840px;height:182px"></div><div class="cab" style="left:1400px;height:182px"></div>
+    <div class="cab" style="left:170px;height:392px"></div><div class="cab" style="left:730px;height:392px"></div>
+    <div class="cab" style="left:880px;height:432px"></div><div class="cab" style="left:1360px;height:432px"></div>
+    <div class="obj card" style="width:640px;left:90px;top:120px;transform:rotate(-.8deg)"><img src="../../../print/out/znak-reg.png" alt="Rejestracja"></div>
+    <div class="obj card" style="width:640px;left:800px;top:170px;transform:rotate(.8deg)"><img src="../../../print/out/znak-hall.png" alt="Sala główna"></div>
+    <div class="obj card" style="width:640px;left:130px;top:386px;transform:rotate(.6deg)"><img src="../../../print/out/znak-quiet.png" alt="Strefa ciszy"></div>
+    <div class="obj card" style="width:640px;left:800px;top:426px;transform:rotate(-.6deg)"><img src="../../../print/out/znak-food.png" alt="Jedzenie"></div>
+    <div style="position:absolute;left:0;right:0;top:644px;bottom:0;z-index:1;background:linear-gradient(#35322E 0,#201E1B 100%);box-shadow:inset 0 10px 14px -8px rgba(0,0,0,.6)"><span style="position:absolute;left:0;right:0;top:0;height:10px;background:#4A4640"></span></div>
+    <div class="obj card" style="width:320px;left:420px;top:664px;transform:rotate(-2deg)"><img src="../../../print/out/stol-07.png" alt="Stanowisko 07"></div>
+    <div class="obj card" style="width:320px;left:850px;top:668px;transform:rotate(2.4deg)"><img src="../../../print/out/stol-23.png" alt="Stanowisko 23"></div>
+    <p class="cap light" style="left:64px;top:730px;width:300px;line-height:1.6">stół zespołu:<br>numer stoi, nazwę i&nbsp;ścieżkę dopisuje się markerem</p>
+  </div>
+</section>
+
+<!-- 6. SIGNAGE: SPEC -->
+<section class="board content">
+  <aside class="rail"><h2>Znak: budowa</h2>
+    <p>Piktogram po lewej, słowo po prawej, strzałka w&nbsp;prawym dolnym rogu. Jedna reguła dla każdego znaku, zmienia się tylko kolor i&nbsp;kierunek.</p>
+    <ul><li>Znak 100 × 30 cm, PCV 3 mm</li><li>Namiot A5, karton 300 g</li><li>Czerwony, czarny, biały</li></ul></aside>
+  <div class="canvas paper" id="c6">
+    <div class="obj card" style="width:900px;height:270px;left:290px;top:82px"><img src="../../../print/out/znak-reg.png" alt="">
+      <div class="dim h light" style="left:49.5px;top:30px;width:171px"><span>19 cm</span></div></div>
+    <div class="dim h" style="left:290px;top:58px;width:900px"><span>100 cm</span></div>
+    <div class="dim v" style="left:262px;top:82px;height:270px"><span style="left:auto;right:14px">30 cm</span></div>
+    <div class="dim h below" style="left:290px;top:368px;width:270px"><span>pole piktogramu 30 × 30 cm</span></div>
+    <p class="note" style="left:290px;top:412px;width:270px"><b>Piktogram</b>Linia 13 mm, końce kwadratowe, biały na czerwonym polu.</p>
+    <p class="note" style="left:590px;top:412px;width:340px"><b>Słowo</b>Jedno słowo wersalikami, Big Shoulders 900, korpus 10,4 cm. Odstęp od piktogramu 5 cm.</p>
+    <p class="note" style="left:960px;top:412px;width:230px"><b>Strzałka</b>5,4 cm, linia 5,4 mm. Kierunek obraca ją o&nbsp;45°.</p>
+    <div class="dim h" style="left:290px;top:548px;width:270px"><span>21 cm</span></div>
+    <div class="obj card" style="width:270px;height:189px;left:290px;top:564px"><img src="../../../print/out/stol-07.png" alt=""></div>
+    <p class="callout l" style="left:620px;top:569px;--len:50px">pasek 22 mm: znak<br>i&nbsp;napis STANOWISKO</p>
+    <p class="callout l" style="left:620px;top:649px;--len:68px">dwie linie: zespół i&nbsp;ścieżka,<br>wypełniane markerem</p>
+    <p class="callout l" style="left:620px;top:696px;--len:220px">numer, Barlow Condensed 100<br>korpus 8,8 cm, czerwony</p>
+    <div class="arr" style="left:1232px;top:512px;width:120px"><div class="ic"><svg viewBox="0 0 100 100"><path d="M14 50h66M52 22l28 28-28 28"/></svg></div><p><b>0°</b><br>Rejestracja</p></div>
+    <div class="arr" style="left:1372px;top:512px;width:120px"><div class="ic"><svg viewBox="0 0 100 100" style="transform:rotate(-90deg)"><path d="M14 50h66M52 22l28 28-28 28"/></svg></div><p><b>−90°</b><br>Sala główna</p></div>
+    <div class="arr" style="left:1232px;top:640px;width:120px"><div class="ic"><svg viewBox="0 0 100 100" style="transform:rotate(180deg)"><path d="M14 50h66M52 22l28 28-28 28"/></svg></div><p><b>180°</b><br>Strefa ciszy</p></div>
+    <div class="arr" style="left:1372px;top:640px;width:120px"><div class="ic"><svg viewBox="0 0 100 100" style="transform:rotate(45deg)"><path d="M14 50h66M52 22l28 28-28 28"/></svg></div><p><b>45°</b><br>Jedzenie</p></div>
+  </div>
+  <div class="metrics"><div><b>100 × 30</b><span>cm, PCV 3 mm</span></div><div><b>A5</b><span>namiot, karton 300 g</span></div><div><b>3 mm</b><span>spadu wokół znaku</span></div><div><b>4 + 2</b><span>kierunkowskazy i&nbsp;numery</span></div></div>
+</section>
+
+<!-- 7. STICKERS: HERO -->
+<section class="board content">
+  <aside class="rail"><h2>Naklejki</h2>
+    <p>Siedem naklejek na laptopa: znak, nalepka bagażowa WAW, return(home);, jaskółka, tablica, 100 miejsc i&nbsp;planeta GPSS.</p>
+    <ul><li>Wykrojnik po obrysie</li><li>Biała obwódka 3 mm</li><li>Folia winylowa mat</li><li>Arkusz A3 z&nbsp;liniami cięcia</li></ul></aside>
+  <div class="canvas surface-ink" id="c7">
+    <div class="lid" style="left:110px;top:56px;width:1320px;height:830px"></div>
+    <div class="obj cut" style="width:330px;left:170px;top:100px;transform:rotate(-8deg)"><img src="../../../print/out/sticker-okragla.png" alt=""></div>
+    <div class="obj cut" style="width:450px;left:540px;top:110px;transform:rotate(4deg)"><img src="../../../print/out/sticker-bagaz.png" alt=""></div>
+    <div class="obj cut" style="width:440px;left:960px;top:150px;transform:rotate(-4deg)"><img src="../../../print/out/sticker-kod.png" alt=""></div>
+    <div class="obj cut" style="width:290px;left:150px;top:470px;transform:rotate(14deg)"><img src="../../../print/out/sticker-jaskolka.png" alt=""></div>
+    <div class="obj cut" style="width:440px;left:520px;top:440px;transform:rotate(-3deg)"><img src="../../../print/out/sticker-tablica.png" alt=""></div>
+    <div class="obj cut" style="width:250px;left:990px;top:380px;transform:rotate(7deg)"><img src="../../../print/out/sticker-100.png" alt=""></div>
+    <div class="obj cut" style="width:280px;left:390px;top:592px;transform:rotate(11deg)"><img src="../../../print/out/sticker-gpss.png" alt=""></div>
+    <div class="obj cut" style="width:230px;left:1196px;top:596px;transform:rotate(-12deg)"><img src="../../../print/out/sticker-okragla.png" alt=""></div>
+  </div>
+</section>
+
+<!-- 8. STICKERS: SPEC -->
+<section class="board content">
+  <aside class="rail"><h2>Naklejki: wymiary</h2>
+    <p>Każda naklejka leży na białej obwódce 3 mm, a&nbsp;wykrojnik biegnie po jej zewnętrznym brzegu.</p>
+    <ul><li>Obwódka biała 3 mm</li><li>Wykrojnik po obrysie</li><li>Wielkość 57–111 mm</li><li>Tekst nie bliżej niż 3 mm od cięcia</li></ul></aside>
+  <div class="canvas paper" id="c8">
+    <div id="stk"></div>
+    <div class="cut-demo" style="left:1252px;top:64px"><img src="../../../print/out/sticker-okragla.png" alt="" style="position:absolute;width:1800px;left:4px;top:-768px;max-width:none"><span style="position:absolute;left:14px;top:0;bottom:0;border-left:2px dashed #E6007E"></span></div>
+    <div class="dim h below" style="left:1268px;top:300px;width:72px"><span style="left:0;transform:none">3 mm</span></div>
+    <p class="note" style="left:1252px;top:358px;width:240px"><b>Obwódka</b>Biała, 3 mm, wliczona w kształt. Wykrojnik (linia przerywana) biegnie po jej zewnętrznym brzegu. Detal powiększony 2&nbsp;razy.</p>
+    <p class="note" style="left:1252px;top:560px;width:240px"><b>Arkusz</b>Siedem wzorów na jednym arkuszu A3 z cienką linią cięcia wokół każdego.</p>
+  </div>
+  <div class="metrics"><div><b>3 mm</b><span>biała obwódka</span></div><div><b>57–111</b><span>mm, dłuższy bok naklejki</span></div><div><b>7</b><span>wzorów w&nbsp;jednym arkuszu</span></div><div><b>A3</b><span>arkusz z&nbsp;liniami cięcia</span></div></div>
+</section>
+
+<!-- 9. T-SHIRTS: HERO -->
+<section class="board content">
+  <aside class="rail"><h2>Koszulki</h2>
+    <p>Osiem koszulek: cztery dla uczestników (biała i&nbsp;czerwona, przód i&nbsp;tył) oraz załoga i&nbsp;mentorzy. Ten sam znak, inne plecy.</p>
+    <ul><li>Uczestnik: biała, czerwona</li><li>Załoga: czarna</li><li>Mentor i&nbsp;jury: biała</li><li>Jaskółki na każdej koszulce</li></ul></aside>
+  <div class="canvas" id="c9" style="background:radial-gradient(120% 100% at 30% 10%,#E6E0D4 0%,#D6CFC0 70%,#C8C0AF 100%)"></div>
+</section>
+
+<!-- 10. T-SHIRTS: SPEC -->
+<section class="board content">
+  <aside class="rail"><h2>Koszulki: druk</h2>
+    <p>Sitodruk jednym lub dwoma kolorami. Wymiary w&nbsp;centymetrach zależą od rozmiaru S–XXL, więc podajemy je jako część szerokości tułowia.</p>
+    <ul><li>Piersi: znak 45&nbsp;% szerokości</li><li>Plecy: tablica 72&nbsp;%</li><li>Czerwona: znak 80&nbsp;%, globus 84&nbsp;%</li><li>Centymetry: do ustalenia z&nbsp;drukarnią</li></ul></aside>
+  <div class="canvas paper" id="c10"></div>
+  <div class="metrics"><div><b>S–XXL</b><span>rozmiary, sitodruk</span></div><div><b>1–2</b><span>kolory farby na koszulkę</span></div><div><b>8</b><span>wzorów koszulek</span></div><div><b>45&nbsp;%</b><span>tułowia: znak na piersi</span></div></div>
+</section>
+
+<!-- 11. CERTIFICATES -->
+<section class="board content">
+  <aside class="rail"><h2>Certyfikaty</h2>
+    <p>Uczestnictwo dla każdej osoby, z&nbsp;trasą z&nbsp;miasta uczelni do WAW. Czerwony dla zwycięskiego zespołu, z&nbsp;miejscem w&nbsp;ścieżce.</p>
+    <ul><li>A4 poziomo, 297 × 210 mm</li><li>Kreda mat 250 g</li><li>Imię lub zespół z&nbsp;bazy</li><li>Podpisy: lead i&nbsp;GPSS</li></ul></aside>
+  <div class="canvas surface-paper" id="c11">
+    <div class="obj card" style="width:660px;height:467px;left:120px;top:112px"><img src="../../../print/out/certyfikat-uczestnik.png" alt="">
+      <div class="guide d" style="left:16px;top:16px;right:16px;bottom:16px"><i style="top:-34px;left:0">ramka 7 mm od brzegu</i></div></div>
+    <div class="obj card" style="width:610px;left:850px;top:166px;transform:rotate(2deg)"><img src="../../../print/out/certyfikat-zwyciezca.png" alt=""></div>
+    <div class="dim h" style="left:120px;top:84px;width:660px"><span>297 mm</span></div>
+    <div class="dim v" style="left:86px;top:112px;height:467px"><span style="left:auto;right:14px;writing-mode:vertical-rl;transform:translateY(-50%) rotate(180deg)">210 mm</span></div>
+    <p class="note" style="left:120px;top:668px;width:320px"><b>Pole imienia</b>Big Shoulders 900, korpus 27,5 mm. Szary szablon znika, gdy wpiszemy imię.</p>
+    <p class="note" style="left:480px;top:668px;width:320px"><b>Trasa</b>LHR → WAW z&nbsp;lotem jaskółki: miasto uczelni zmieniamy dla każdej osoby.</p>
+    <p class="note" style="left:840px;top:668px;width:320px"><b>Podpisy</b>Adam Bączek, lead Reunion Hackathon, oraz GPSS jako organizator.</p>
+    <p class="note" style="left:1200px;top:668px;width:290px"><b>Ramka</b>Cienka linia 7 mm od brzegu. Papier kreda mat 250 g.</p>
+  </div>
+  <div class="metrics"><div><b>A4</b><span>297 × 210 mm, poziomo</span></div><div><b>250 g</b><span>kreda mat</span></div><div><b>2</b><span>wersje: uczestnictwo i&nbsp;zwycięzca</span></div><div><b>3 mm</b><span>spadu, ramka 7 mm od brzegu</span></div></div>
+</section>
+
+<script src="../../../print/print.js"></script><script src="../book.js"></script>
+<script>
+  // tee crops from the 8-shirt PNGs (1800 x 640 css px, 3x): tee x = 55 / 485 / 915 / 1345, y = 62 (row 1) or 69 (row 2)
+  const TX = [55, 485, 915, 1345];
+  const tee = (host, row, i, left, top, w) => {
+    const k = w / 460, y = row === 1 ? 42 : 49, src = row === 1 ? "koszulki-uczestnik" : "koszulki-zaloga";
+    host.insertAdjacentHTML("beforeend", `<div class="tee" style="left:${left}px;top:${top}px;width:${w}px;height:${482 * k}px"><img src="../../../print/out/${src}.png" alt="" style="width:${1800 * k}px;left:${-(TX[i] - 30) * k}px;top:${-y * k}px"></div>`);
+  };
+  const lab = (host, left, top, a, b) => host.insertAdjacentHTML("beforeend", `<p class="cap" style="left:${left}px;top:${top}px;color:var(--ink)">${a}<br><span style="color:var(--ink-60)">${b}</span></p>`);
+  // 9. hero: 8 shirts, two rows
+  const c9 = document.getElementById("c9"), W9 = 356;
+  const names1 = [["Biała, przód", "uczestnik"], ["Biała, tył", "tablica przylotów"], ["Czerwona, przód", "uczestnik"], ["Czerwona, tył", "100 · 48H"]];
+  const names2 = [["Czarna, przód", "załoga"], ["Czarna, tył", "ZAŁOGA"], ["Biała, przód", "mentor i jury"], ["Biała, tył", "MENTOR"]];
+  for (let i = 0; i < 4; i++) {
+    const left = 52 + i * 360;
+    tee(c9, 1, i, left, 36, W9); lab(c9, left + 40, 414, names1[i][0], names1[i][1]);
+    tee(c9, 2, i, left, 476, W9); lab(c9, left + 40, 854, names2[i][0], names2[i][1]);
+  }
+  c9.insertAdjacentHTML("beforeend", `<div style="position:absolute;left:75px;right:75px;top:466px;height:1px;background:rgba(20,18,16,.25)"></div>`);
+
+  // 10. spec: four shirts with print placement as % of torso width (250 u of a 400 u shirt)
+  const c10 = document.getElementById("c10"), K = 0.75, W10 = 460 * K, T0 = 78;
+  const px = (left, u) => left + (u + 30) * K, py = (u) => T0 + (u + 20) * K;
+  const COLS = [52, 410, 768, 1126];
+  COLS.forEach((left, i) => tee(c10, 1, i, left, T0, W10));
+  const dimH = (l, t, w, text, cls = "", bg = "") => c10.insertAdjacentHTML("beforeend", `<div class="dim h ${cls}" style="left:${l}px;top:${t}px;width:${w}px"><span${bg ? ` style="background:${bg}"` : ""}>${text}</span></div>`);
+  COLS.forEach((left) => dimH(px(left, 75), 56, 250 * K, "tułów 100&nbsp;%"));
+  const Y = py(62);
+  dimH(px(52, 183), Y, 113 * K, "45&nbsp;%", "chip", "#F6F3EC");
+  dimH(px(410, 110), Y, 180 * K, "72&nbsp;%", "chip", "#F6F3EC");
+  dimH(px(768, 100), Y, 200 * K, "80&nbsp;%", "chip red", "#C8102E");
+  dimH(px(768, 95), py(193) + 105 * K + 6, 210 * K, "84&nbsp;%", "light below");
+  dimH(px(1126, 121), Y, 159 * K, "64&nbsp;%", "chip red", "#C8102E");
+  const note = (l, t, h, text) => c10.insertAdjacentHTML("beforeend", `<p class="note" style="left:${l}px;top:${t}px;width:330px"><b>${h}</b>${text}</p>`);
+  note(COLS[0], 456, "Biała, przód", "REUNION HACKATHON przy lewej piersi, 45&nbsp;% szerokości tułowia, 20&nbsp;% wysokości od szwu barku. Czerwień, dwie jaskółki.");
+  note(COLS[1], 456, "Biała, tył", "Tablica przylotów z&nbsp;siedmioma krajami i&nbsp;datą, 72&nbsp;% szerokości. Czerń i&nbsp;czerwień, return(home); na dole.");
+  note(COLS[2], 456, "Czerwona, przód", "Znak słowny 80&nbsp;%, połówka globusa 84&nbsp;% szerokości tułowia. Biała farba z&nbsp;różową głębią.");
+  note(COLS[3], 456, "Czerwona, tył", "Liczba 100 w&nbsp;Barlow Condensed 100, 64&nbsp;% szerokości, pod nią 48H · WARSZAWA · 2027.");
+  const sw = (hex, t) => `<div class="swatch" style="position:relative;margin-top:10px"><i style="background:${hex}"></i>${t}</div>`;
+  const body = "font:500 14px/1.6 var(--mono);letter-spacing:.06em;margin-top:12px;text-transform:uppercase;color:var(--ink)";
+  c10.insertAdjacentHTML("beforeend", `<div style="position:absolute;left:${COLS[0]}px;top:618px;width:330px;z-index:5"><p class="mono" style="color:var(--ink-60)">Kolory koszulek</p>${sw("#F6F3EC", "biała #F6F3EC")}${sw("#C8102E", "czerwona #C8102E")}${sw("#1B1916", "czarna #1B1916")}</div>
+    <div style="position:absolute;left:${COLS[1]}px;top:618px;width:330px;z-index:5"><p class="mono" style="color:var(--ink-60)">Farby i&nbsp;druk</p><p style="${body}">sitodruk 1–2 kolory<br>biel + czerwień, Pantone 186 C<br><span style="font-weight:600">do potwierdzenia na próbniku</span></p></div>
+    <div style="position:absolute;left:${COLS[2]}px;top:618px;width:330px;z-index:5"><p class="mono" style="color:var(--ink-60)">Rękaw</p><p style="${body}">EDYCJA 01, 5–7.02.2027,<br>ZAŁOGA, MENTOR<br>napis pod kątem 24°</p></div>
+    <div style="position:absolute;left:${COLS[3]}px;top:618px;width:330px;z-index:5"><p class="mono" style="color:var(--ink-60)">Wymiary w&nbsp;cm</p><p style="${body}">zależą od rozmiaru S–XXL,<br>do ustalenia z&nbsp;drukarnią</p></div>`);
+
+  // 8. stickers at 1 : 3.3 with sizes in mm (png px / 12 = mm)
+  const S = [["okragla", 900, 900, 75, 75, 96, 64], ["bagaz", 1200, 780, 100, 65, 377, 64], ["kod", 1332, 474, 111, 39.5, 733, 64], ["jaskolka", 900, 690, 75, 57.5, 96, 400], ["tablica", 1218, 492, 101.5, 41, 377, 400], ["100", 762, 1062, 63.5, 88.5, 738, 400], ["gpss", 900, 900, 75, 75, 984, 400]];
+  const mm = 3, stk = document.getElementById("stk");
+  S.forEach(([n, pw, ph, wm, hm, l, t]) => {
+    const w = wm * mm, h = hm * mm;
+    stk.insertAdjacentHTML("beforeend", `<div class="obj cut" style="width:${w}px;left:${l}px;top:${t}px"><img src="../../../print/out/sticker-${n}.png" alt=""></div>
+      <div class="dim h below" style="left:${l}px;top:${t + h + 8}px;width:${w}px"><span>${wm} mm</span></div>
+      <div class="dim v" style="left:${l - 16}px;top:${t}px;height:${h}px"><span style="left:auto;right:12px;writing-mode:vertical-rl;transform:translateY(-50%) rotate(180deg)">${hm} mm</span></div>`);
+  });
+</script>
+</body></html>

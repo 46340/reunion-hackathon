@@ -1,0 +1,129 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500..900&family=Barlow+Condensed:wght@100;200;300&family=Barlow:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../print/print.css"><link rel="stylesheet" href="../book.css">
+<title>Obrazy</title>
+<style>
+  .pr { position:absolute; background:#fff; padding:14px 14px 50px; }
+  .pr .cap { left:16px; bottom:16px; color:var(--ink-60); }
+  .tc { position:absolute; width:330px; }
+  .tc .uni { height:44px; display:flex; align-items:center; justify-content:center; padding:6px 8px; margin-bottom:18px; background:#fff; box-shadow:0 0 0 6px #fff; position:relative; z-index:2; }
+  .tc .uni img { height:100%; width:auto; max-width:100%; object-fit:contain; }
+  .tc .ph { width:100%; aspect-ratio:4/5; overflow:hidden; background:#fff; box-shadow:0 0 0 6px #fff, 0 26px 40px -24px rgba(20,16,10,.55); position:relative; z-index:2; }
+  .tc .ph img { width:100%; height:100%; object-fit:cover; object-position:50% 20%; }
+  .tc .ph.init { display:grid; place-items:center; background:var(--red-deep); }
+  .tc .ph.init span { font:100 76px/1 var(--thin); color:#fff; letter-spacing:.02em; }
+  .tc .ph.flp { display:flex; align-items:center; justify-content:center; gap:5%; background:#141210; container-type:inline-size; }
+  .tc .ph.flp span { position:relative; width:34%; aspect-ratio:3/4.2; display:grid; place-items:center; border-radius:4px; background:linear-gradient(#2b2927 0 50%,#1c1a18 50% 100%); box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 3px 6px rgba(0,0,0,.45); font:700 40px/1 var(--block); font-size:30cqw; color:#fff; }
+  .tc .ph.flp span::after { content:""; position:absolute; left:0; right:0; top:calc(50% - 1px); height:2px; background:#0b0a09; }
+  .tc h3 { font:800 34px/1 var(--block); text-transform:uppercase; margin-top:24px; min-height:2em; position:relative; z-index:2; }
+  .tc .mono { color:#fff; margin-top:2px; position:relative; z-index:2; }
+  .lg { position:absolute; display:flex; flex-direction:column; align-items:flex-start; gap:12px; }
+  .lg { position:static; }
+  .lg img { height:64px; width:auto; opacity:.8; }
+  .lg .cap { position:static; font-size:11px; }
+  .ut { position:absolute; display:flex; flex-direction:column; gap:14px; align-items:flex-start; z-index:2; }
+  .ut .t { height:88px; display:flex; align-items:center; justify-content:center; padding:8px 12px; background:#fff; box-shadow:0 0 0 6px #fff; }
+  .ut .t img { height:100%; width:auto; max-width:260px; object-fit:contain; }
+  .ut .cap { position:static; }
+  .tile { position:absolute; width:316px; }
+  .tile .im { position:relative; width:316px; height:237px; overflow:hidden; background:#E7E1D5; }
+  .tile .im img { width:100%; height:100%; object-fit:cover; display:block; }
+  .tile .cap { position:static; display:block; margin-top:12px; color:var(--ink); max-width:34ch; }
+  .tile.no .im::after { content:""; position:absolute; inset:0; background:linear-gradient(to top right, transparent calc(50% - 3px), var(--red) calc(50% - 3px) calc(50% + 3px), transparent calc(50% + 3px)); }
+.bk { background:rgba(20,18,16,.88); padding:4px 10px; display:inline-block; }
+  .lgrow { position:absolute; left:70px; right:70px; display:flex; justify-content:space-between; align-items:flex-start; }
+</style></head><body data-chapter="Obrazy">
+<section class="board divider">
+  <div class="field"><div class="top red grain"><span class="lockup"></span></div>
+    <div class="band"><h1 data-px="260">Obrazy</h1><p class="mono ver"></p></div></div>
+  <div class="side surface-paper">
+    <div class="obj card" style="width:470px;left:70px;top:170px;transform:rotate(-5deg);background:#fff;padding:14px"><img src="../../../assets/img/otwarcie.jpg" alt=""></div>
+    <div class="obj card" style="width:480px;left:190px;top:470px;transform:rotate(4deg);background:#fff;padding:14px 14px 56px"><img src="../../../assets/img/praca.jpg" alt=""><p class="cap" style="left:18px;bottom:18px">Praca, 48 godzin</p></div>
+    <div class="obj card" style="width:330px;left:340px;top:110px;transform:rotate(6deg);background:#fff;padding:12px"><img src="../../../assets/img/mentoring.jpg" alt=""></div>
+  </div>
+</section>
+
+<section class="board content">
+  <aside class="rail"><h2>Styl zdjęć</h2>
+    <p>Czarno-białe zdjęcia z rastrem półtonowym na ciepłym papierze. Pokazują ludzi przy pracy, a kolor pojawia się tylko raz.</p>
+    <ul><li>Ludzie przy pracy, nie pozowanie</li><li>Raster półtonowy, ciepły papier</li><li>Jeden czerwony element w kadrze</li><li>Bez stockowych uśmiechów</li></ul></aside>
+  <div class="canvas surface-paper">
+    <div class="obj card pr" style="width:470px;left:70px;top:80px;transform:rotate(-3deg)"><img src="../../../assets/img/otwarcie.jpg" alt="Otwarcie, sala wykładowa pełna ludzi"><p class="cap">Otwarcie</p></div>
+    <div class="obj card pr" style="width:440px;left:580px;top:50px;transform:rotate(2.5deg)"><img src="../../../assets/img/praca.jpg" alt="Praca przy długich stołach"><p class="cap">Praca</p></div>
+    <div class="obj card pr" style="width:400px;left:1060px;top:70px;transform:rotate(-2deg)"><img src="../../../assets/img/mentoring.jpg" alt="Mentoring przy tablicy"><p class="cap">Mentoring</p></div>
+    <div class="obj card pr" style="width:480px;left:760px;top:420px;transform:rotate(1.5deg);z-index:4"><img src="../../../assets/img/sala.jpg" alt="Sala hackathonu"><p class="cap">Sala</p></div>
+    <p class="serif" style="position:absolute;left:80px;top:520px;font-size:84px;line-height:1;max-width:11ch;z-index:2">Ludzie przy <em>pracy.</em></p>
+    <p class="mono" style="position:absolute;left:84px;top:740px;color:var(--ink-60);z-index:2">sala · otwarcie · praca · mentoring</p>
+  </div>
+  <div class="metrics"><div><b>7</b><span>zdjęć w zestawie</span></div><div><b>1</b><span>czerwony akcent na kadr</span></div><div><b>4 : 3</b><span>format główny, plus panoramy</span></div><div><b>0</b><span>zdjęć stockowych</span></div></div>
+</section>
+
+<section class="board content">
+  <aside class="rail"><h2>Obróbka</h2>
+    <p>Wszystkie zdjęcia mają tę samą obróbkę. Po powiększeniu widać trzy cechy, po których poznajemy własny kadr.</p>
+    <ul><li>Raster półtonowy (punkty)</li><li>Papier #E7E1D5 jako tło i ramka</li><li>Jeden czerwony akcent</li><li>Nie nakładamy filtrów na gotowe pliki</li></ul></aside>
+  <div class="canvas white">
+    <div class="obj card" style="width:580px;left:70px;top:130px;"><img src="../../../assets/img/praca.jpg" alt="Praca, całe zdjęcie"></div>
+    <div style="position:absolute;left:219px;top:424px;width:138px;height:103px;border:2px solid var(--red);z-index:4"></div>
+    <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none" viewBox="0 0 1540 812"><g stroke="#C8102E" stroke-width="1.5" stroke-dasharray="6 5" opacity=".7"><line x1="219" y1="424" x2="720" y2="110"/><line x1="356" y1="527" x2="720" y2="682"/></g></svg>
+    <div class="obj card" style="width:760px;height:572px;left:720px;top:110px;overflow:hidden;background:#E7E1D5"><img src="../../../assets/img/praca.jpg" alt="Powiększony kadr: notes, raster półtonowy" style="position:absolute;width:3200px;max-width:none;left:-820px;top:-1620px;image-rendering:auto"></div>
+    <p class="callout l" style="left:1142px;top:410px;--len:150px;color:#fff;z-index:6"><span class="bk">jeden czerwony akcent<br>notes na stole</span></p>
+    <p class="callout l" style="left:1262px;top:560px;--len:210px;color:#fff;z-index:6"><span class="bk">raster półtonowy</span></p>
+    <p class="cap" style="left:70px;top:601px">Całe zdjęcie, praca.jpg, 800 × 600 px</p>
+    <p class="cap" style="left:70px;top:631px"><i style="display:inline-block;width:18px;height:18px;background:#E7E1D5;border:1px solid var(--ink-14);vertical-align:-4px;margin-right:10px"></i>papier #E7E1D5</p>
+    <p class="cap" style="left:720px;top:700px">Kadr 190 × 143 px powiększony ×4</p>
+  </div>
+  <div class="metrics"><div><b>×4</b><span>powiększenie kadru z pliku</span></div><div><b>800 × 600</b><span>praca.jpg, proporcja 4 : 3</span></div><div><b>1</b><span>czerwony akcent na kadr</span></div><div><b>#E7E1D5</b><span>ton papieru, próbka z pliku</span></div></div>
+</section>
+
+<section class="board content">
+  <aside class="rail"><h2>Zespół</h2>
+    <p>Karta osoby: logo uczelni, portret 4&nbsp;:&nbsp;5 na szarym tle studia, imię i rola. Brakujące zdjęcie zastępują inicjały.</p>
+    <ul><li>Portret 4 : 5, 400 × 500 px</li><li>Biała ramka 6 px wokół kadru</li><li>Brak zdjęcia: inicjały (MR)</li><li>Rezygnacja ze zdjęcia: monogram split-flap</li></ul></aside>
+  <div class="canvas red grain">
+    <div class="tc" style="width:320px;left:70px;top:90px"><div class="uni"><img src="../../../assets/logos/cbs.svg" alt="Copenhagen Business School"></div><div class="ph"><img src="../../../assets/img/team/hubert-szymanowski.jpg" alt="Hubert Szymanowski"></div><h3>Hubert Szymanowski</h3><p class="mono">Operations</p></div>
+    <div class="tc" style="width:320px;left:430px;top:90px"><div class="uni"><img src="../../../assets/logos/cbs.svg" alt="Copenhagen Business School"></div><div class="ph"><img src="../../../assets/img/team/adam-baczek.jpg" alt="Adam Bączek"></div><h3>Adam Bączek</h3><p class="mono">Lead</p></div>
+    <div class="tc" style="width:320px;left:790px;top:90px"><div class="uni"><img src="../../../assets/logos/imperial.svg" alt="Imperial College London"></div><div class="ph init" role="img" aria-label="Maksymilian Rokosz"><span>MR</span></div><h3>Maksymilian Rokosz</h3><p class="mono">Partnerships</p></div>
+    <div class="tc" style="width:320px;left:1150px;top:90px"><div class="uni"><img src="../../../assets/logos/tudelft-card.png" alt="TU Delft"></div><div class="ph flp" role="img" aria-label="Jakub Partyka"><span>J</span><span>P</span></div><h3>Jakub Partyka</h3><p class="mono">Program</p></div>
+    <div class="dim h light" style="left:70px;top:56px;width:320px"><span>4</span></div>
+    <div class="dim v light left" style="left:36px;top:152px;height:400px"><span>5</span></div>
+    <p class="cap light" style="left:70px;top:690px;max-width:320px">Portret ze studia, 400 × 500 px</p>
+    <p class="cap light" style="left:430px;top:690px;max-width:320px">Plik 400 × 400 px, kadrowany do 4 : 5, punkt 50 % 20 %</p>
+    <p class="cap light" style="left:790px;top:690px;max-width:320px">Inicjały, Barlow Condensed 100, tło ciemna czerwień</p>
+    <p class="cap light" style="left:1150px;top:690px;max-width:320px">Monogram split-flap na atramencie, wybór osoby</p>
+  </div>
+  <div class="metrics"><div><b>4 : 5</b><span>proporcja portretu</span></div><div><b>400 × 500</b><span>plik portretu, px</span></div><div><b>6 px</b><span>biała ramka wokół kadru</span></div><div><b>8</b><span>kart w siatce zespołu</span></div></div>
+</section>
+
+<section class="board content">
+  <aside class="rail"><h2>Uczelnie</h2>
+    <p>W pasku uczelni logotypy są szare, w jednej wysokości. Na kartach zespołu stoją w kolorze na białym kafelku.</p>
+    <ul><li>Pasek: szare PNG, 40 px wysokości, krycie 80 %</li><li>Karta: kolorowy logotyp na bieli</li><li>Alt: pełna nazwa uczelni</li><li>Bez przycinania i rozciągania</li></ul></aside>
+  <div class="canvas white">
+    <p class="mono" style="position:absolute;left:70px;top:48px;color:var(--red)">Pasek uczelni, szare</p>
+    <div class="lgrow" style="top:100px"><div class="lg"><img src="../../../assets/logos/grey/imperial.png" alt="Imperial College London"><span class="cap">Imperial College London</span></div><div class="lg"><img src="../../../assets/logos/grey/oxford.png" alt="University of Oxford"><span class="cap">University of Oxford</span></div><div class="lg"><img src="../../../assets/logos/grey/cambridge.png" alt="University of Cambridge"><span class="cap">University of Cambridge</span></div><div class="lg"><img src="../../../assets/logos/grey/ucl.png" alt="University College London"><span class="cap">University College London</span></div><div class="lg"><img src="../../../assets/logos/grey/lse.png" alt="London School of Economics"><span class="cap">London School of Economics</span></div></div>
+    <div class="lgrow" style="top:290px"><div class="lg"><img src="../../../assets/logos/grey/eth.png" alt="ETH Zurich"><span class="cap">ETH Zurich</span></div><div class="lg"><img src="../../../assets/logos/grey/tudelft.png" alt="TU Delft"><span class="cap">TU Delft</span></div><div class="lg"><img src="../../../assets/logos/grey/bocconi.png" alt="Università Bocconi"><span class="cap">Università Bocconi</span></div><div class="lg"><img src="../../../assets/logos/grey/ie.png" alt="IE University"><span class="cap">IE University</span></div><div class="lg"><img src="../../../assets/logos/grey/warwick.png" alt="University of Warwick"><span class="cap">University of Warwick</span></div></div>
+    <div class="red grain" style="position:absolute;left:0;right:0;bottom:0;height:320px"></div>
+    <p class="mono" style="position:absolute;left:70px;top:528px;color:#fff;z-index:2">Karta zespołu, kolor</p>
+    <div class="ut" style="left:70px;top:590px"><div class="t"><img src="../../../assets/logos/cbs.svg" alt="Copenhagen Business School"></div><span class="cap light">Copenhagen Business School</span></div>
+    <div class="ut" style="left:440px;top:590px"><div class="t"><img src="../../../assets/logos/imperial.svg" alt="Imperial College London"></div><span class="cap light">Imperial College London</span></div>
+    <div class="ut" style="left:810px;top:590px"><div class="t"><img src="../../../assets/logos/uva.svg" alt="University of Amsterdam"></div><span class="cap light">University of Amsterdam</span></div>
+    <div class="ut" style="left:1180px;top:590px"><div class="t"><img src="../../../assets/logos/tudelft-card.png" alt="TU Delft"></div><span class="cap light">TU Delft</span></div>
+  </div>
+  <div class="metrics"><div><b>10</b><span>uczelni w pasku</span></div><div><b>40 px</b><span>wysokość logotypu w pasku</span></div><div><b>80 %</b><span>krycie szarych logotypów</span></div><div><b>4</b><span>kolorowe logotypy na kartach</span></div></div>
+</section>
+
+<section class="board content">
+  <aside class="rail"><h2>Zdjęcia: tak i nie</h2>
+    <p>Dobre zdjęcie pokazuje pracę i ma jeden kolor. Poniżej cztery typowe błędy, odtworzone na naszych własnych kadrach.</p>
+    <ul><li>Tak: kadr z oryginalnego pliku</li><li>Nie: drugi kolor akcentu</li><li>Nie: pełny kolor zamiast duotonu</li><li>Nie: rozciąganie i rozmycie</li></ul></aside>
+  <div class="canvas" style="display:grid;grid-template-columns:1fr 1fr">
+    <div style="position:relative;border-right:1px solid var(--ink-14)"><p class="mono" style="position:absolute;left:50px;top:36px;color:var(--red)">Tak</p>
+      <div class="tile " style="left:50px;top:90px"><div class="im"><img src="../../../assets/img/praca.jpg" alt="" style=""></div><span class="cap">Ludzie przy pracy, czerwony notes jako jedyny kolor</span></div><div class="tile " style="left:398px;top:90px"><div class="im"><img src="../../../assets/img/mentoring.jpg" alt="" style=""></div><span class="cap">Rozmowa przy tablicy, jedna czerwona plama</span></div><div class="tile " style="left:50px;top:420px"><div class="im"><img src="../../../assets/img/otwarcie.jpg" alt="" style=""></div><span class="cap">Sala słucha, czerwone smycze</span></div><div class="tile " style="left:398px;top:420px"><div class="im"><img src="../../../assets/img/powrot.jpg" alt="" style="object-position:92% 50%"></div><span class="cap">Przylot: czerwona tablica w&nbsp;tle</span></div></div>
+    <div class="paper" style="position:relative"><p class="mono" style="position:absolute;left:50px;top:36px;color:var(--ink-60)">Nie</p>
+      <div class="tile no" style="left:50px;top:90px"><div class="im"><img src="../../../assets/img/mentoring.jpg" alt="" style="filter:hue-rotate(190deg) saturate(2.2)"></div><span class="cap">Drugi kolor akcentu (niebieski)</span></div><div class="tile no" style="left:398px;top:90px"><div class="im"><img src="../../../assets/img/praca.jpg" alt="" style="filter:saturate(3) sepia(.6) hue-rotate(60deg)"></div><span class="cap">Pełny kolor zamiast duotonu</span></div><div class="tile no" style="left:50px;top:420px"><div class="im"><img src="../../../assets/img/otwarcie.jpg" alt="" style="transform:scaleY(1.7)"></div><span class="cap">Rozciągnięty kadr</span></div><div class="tile no" style="left:398px;top:420px"><div class="im"><img src="../../../assets/img/sala.jpg" alt="" style="filter:blur(4px)"></div><span class="cap">Rozmyte, za mała rozdzielczość</span></div></div>
+  </div>
+  <div class="metrics"><div><b>1</b><span>czerwony akcent, nie dwa</span></div><div><b>4 : 3</b><span>proporcje bez rozciągania</span></div><div><b>800 px</b><span>najmniejsza szerokość pliku</span></div><div><b>0</b><span>filtrów nakładanych na zdjęcia</span></div></div>
+</section>
+<script src="../../../print/print.js"></script><script src="../book.js"></script>
+</body></html>

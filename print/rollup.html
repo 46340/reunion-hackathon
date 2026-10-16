@@ -6,7 +6,7 @@
   body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .sheet { width: 850px; height: 2000px; }
   .top { position: absolute; left: 48px; right: 48px; top: 60px; display: flex; justify-content: space-between; z-index: 2; }
-  #block { position: absolute; left: 0; right: 0; top: 200px; text-align: center; z-index: 2; }
+  #block { position: absolute; left: 0; right: 0; top: 215px; text-align: center; z-index: 2; }
   .kind { position: absolute; left: 0; right: 0; top: 430px; text-align: center; font-size: 58px; letter-spacing: .38em; padding-left: .38em; z-index: 2; }
   .ru-globe { left: -140px; width: 1130px; height: 1130px; top: 530px; }
   .sky { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
@@ -26,8 +26,7 @@
   <div class="globe ru-globe" data-globe></div>
   <div class="sky" id="sky"></div>
   <div class="top mono"><span style="display:flex;align-items:center;gap:10px"><img src="../assets/logos/gpss-planet-white.png" alt="" style="width:30px;height:30px">Organizator: GPSS · Edycja 01</span><span>Warszawa · 5–7 lutego 2027</span></div>
-  <div class="block" id="block">REUNION</div>
-  <div class="thin kind">Hackathon</div>
+  <div class="block" id="block" style="line-height:.95">REUNION<br>HACKATHON</div>
   <div class="msg">
     <h2 class="serif">Hackathon dla Polaków studiujących <i>za granicą.</i></h2>
     <ul class="facts mono"><li>100 miejsc</li><li>48 godzin</li><li>Udział bezpłatny</li><li>Solo lub zespołowo</li></ul>
@@ -37,7 +36,7 @@
 </div>
 <script src="print.js"></script>
 <script>
-  Print.block(document.getElementById("block"), 212);
+  Print.block(document.getElementById("block"), 150);
   document.querySelector("[data-globe]").innerHTML = Print.globe({ op: .34, arcs: false });
   // swallows diving home, as on the poster (Trepkowski, "Wracajcie")
   const flock = [[230, 690, 32, .95], [480, 640, 36, .4], [395, 820, 28, .52], [625, 745, 40, .32], [555, 900, 34, .27], [315, 990, 26, .22]];

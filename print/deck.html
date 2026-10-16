@@ -2,7 +2,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600..900&family=Barlow+Condensed:wght@100;300&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="print.css">
 <style>
-  /* the print kit as one A4 landscape PDF; every item is a 2x render from out/ (node render.mjs ...) */
+  /* the print kit as one A4 landscape PDF; every item is a 3x render from out/ (node render.mjs ...) */
   @page { size: 297mm 210mm; margin: 0; }
   body { background: #777; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .pg { width: 1123px; height: 794px; position: relative; overflow: hidden; background: var(--paper, #F1ECE3); color: var(--ink); page-break-after: always; margin: 0 auto 20px; }
@@ -24,7 +24,7 @@
   .cover .lockup { position: absolute; left: 50px; top: 40px; font-size: 18px; }
   .cover .tag { position: absolute; right: 50px; top: 46px; font: 600 11px "IBM Plex Mono"; letter-spacing: .2em; text-transform: uppercase; }
   .cover .blk { position: absolute; left: 0; right: 0; top: 130px; text-align: center; }
-  .cover .kind { position: absolute; left: 0; right: 0; top: 410px; text-align: center; font: 400 54px/1 "Instrument Serif"; }
+  .cover .kind { position: absolute; left: 0; right: 0; top: 480px; text-align: center; font: 400 54px/1 "Instrument Serif"; }
   .cover .kind em { font-style: italic; }
   .cover .toc { position: absolute; left: 50px; right: 50px; bottom: 44px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px 24px; font: 600 10.5px "IBM Plex Mono"; letter-spacing: .14em; text-transform: uppercase; border-top: 1px solid rgba(255,255,255,.5); padding-top: 14px; }
   .cover .toc span i { font-style: normal; opacity: .6; margin-right: 8px; }
@@ -48,7 +48,7 @@
   n++;
   pages.push(`<section class="pg cover grain"><div class="g">${Print.globe({ op: 1, width: 6, arcs: false })}</div>
     <span class="lockup">${Print.mark()}Reunion Hackathon<span class="by">${Print.gpss("white")}</span></span><span class="tag">Warszawa · 5–7 lutego 2027</span>
-    <div class="blk"><div class="block" id="cb">REUNION</div></div>
+    <div class="blk"><div class="block" id="cb" style="line-height:.95">REUNION<br>HACKATHON</div></div>
     <p class="kind">Bilety, plakaty, roll-up, koszulki <em>i cała reszta.</em></p>
     <div class="toc">${[[2, "Znak i kolory"], [3, "Bilet"], [4, "Plakaty"], [5, "Roll-up"], [6, "Koszulki"], [8, "Identyfikatory"], [9, "Smycze"], [10, "Naklejki"], [11, "Social media"], [13, "Oznakowanie sali"], [14, "Certyfikaty"], [15, "Specyfikacja"]].map(([p, t]) => `<span><i>${String(p).padStart(2, "0")}</i>${t}</span>`).join("")}</div></section>`);
 
@@ -57,8 +57,8 @@
       <div class="lk"><div style="background:var(--red);color:#fff"><span class="lockup" style="font-size:26px">${Print.mark()}Reunion Hackathon<span class="by">${Print.gpss("white")}</span></span></div>
         <div style="background:#fff"><span class="lockup" style="font-size:26px;color:var(--ink)">${Print.mark("#141210", "#C8102E")}Reunion Hackathon<span class="by">${Print.gpss("red")}</span></span></div></div>
       <div class="sw"><div style="background:#C8102E;color:#fff">CZERWIEŃ<br>#C8102E</div><div style="background:#FBF9F5;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)">BIEL<br>#FBF9F5</div><div style="background:#141210;color:#fff">CZERŃ<br>#141210</div><div style="background:#EBC9CC">RÓŻ (EKSTRUZJA)<br>#EBC9CC</div></div>
-      <div class="type"><div><b style="font:900 40px/1 'Big Shoulders Display';text-transform:uppercase">Big Shoulders Display 900</b><span>Nagłówki, REUNION</span></div>
-        <div><b style="font:100 40px/1 'Barlow Condensed';text-transform:uppercase">Barlow Condensed 100</b><span>Liczby, HACKATHON</span></div>
+      <div class="type"><div><b style="font:900 40px/1 'Big Shoulders Display';text-transform:uppercase">Big Shoulders Display 900</b><span>Nagłówki, REUNION HACKATHON</span></div>
+        <div><b style="font:100 40px/1 'Barlow Condensed';text-transform:uppercase">Barlow Condensed 100</b><span>Liczby</span></div>
         <div><b style="font:400 34px/1 'Instrument Serif'">Instrument Serif, <i>akcenty</i></b><span>Hasła</span></div>
         <div><b style="font:500 16px/1 'IBM Plex Mono';letter-spacing:.16em">IBM PLEX MONO · ETYKIETY · return(home);</b><span>Dane, podpisy</span></div></div></div>`,
     notes(["<b>Znak:</b> logo Reunion i obok planeta GPSS, oddzielone cienką kreską. Tak jak na stronie.", "<b>Czerwień i biel</b> to baza. Czerń tylko dla załogi i tablicy przylotów.", "<b>Motywy:</b> jaskółki (Trepkowski), siatka globu, tablica split-flap, return(home);."],
@@ -71,7 +71,7 @@
 
   pages.push(page("<em>Plakaty.</em>",
     `${img("plakat-50x70", "height:100%")}${img("plakat-agenda", "height:100%")}`,
-    notes(["<b>Plakat 50×70:</b> REUNION, globus, jaskółki wracające do domu, QR do strony.", "<b>Plakat z planem (A2):</b> tablica odlotów z godzinami z harmonogramu. Puste godziny zostają jako --:--.", "Organizator z planetą GPSS w stopce."],
+    notes(["<b>Plakat 50×70:</b> REUNION HACKATHON, globus, jaskółki wracające do domu, QR do strony.", "<b>Plakat z planem (A2):</b> tablica odlotów z godzinami z harmonogramu. Puste godziny zostają jako --:--.", "Organizator z planetą GPSS w stopce."],
       [["Formaty", "50 × 70 cm, A2"], ["Papier", "kreda mat 170 g"], ["Spad", "3 mm"]])));
 
   pages.push(page("<em>Roll-up.</em>",
@@ -80,7 +80,7 @@
       [["Format", "85 × 200 cm"], ["Materiał", "baner PET/PVC, kaseta"], ["Plik", "1:1, 150 dpi"]])));
 
   pages.push(page("Koszulki <em>uczestników.</em>", `${img("koszulki-uczestnik", "width:100%")}`,
-    notes(["<b>Biała:</b> mały REUNION na piersi, na plecach tablica przylotów z 7 krajami.", "<b>Czerwona:</b> REUNION i globus z przodu, 100 · 48H na plecach.", "Jaskółki na każdej koszulce."],
+    notes(["<b>Biała:</b> mały REUNION HACKATHON na piersi, na plecach tablica przylotów z 7 krajami.", "<b>Czerwona:</b> REUNION HACKATHON i globus z przodu, 100 · 48H na plecach.", "Jaskółki na każdej koszulce."],
       [["Druk", "sitodruk 1-2 kolory"], ["Kolory", "biel + czerwień Pantone 186 C"]])));
 
   pages.push(page("Koszulki <em>załogi i mentorów.</em>", `${img("koszulki-zaloga", "width:100%")}`,
@@ -104,7 +104,7 @@
 
   pages.push(page("Social <em>media.</em>",
     `${["ig-ogloszenie", "ig-rekrutacja", "ig-partnerzy"].map((s) => img(s, "height:92%")).join("")}`,
-    notes(["<b>Ogłoszenie:</b> REUNION i tablica z datą.", "<b>Rekrutacja:</b> 100 miejsc, „Szukamy stu osób”.", "<b>Dla firm:</b> cztery poziomy i kontakt do Maksa Rokosza."],
+    notes(["<b>Ogłoszenie:</b> REUNION HACKATHON i tablica z datą.", "<b>Rekrutacja:</b> 100 miejsc, „Szukamy stu osób”.", "<b>Dla firm:</b> cztery poziomy i kontakt do Maksa Rokosza."],
       [["Instagram", "1080 × 1350"], ["Teksty", "ze strony, bez nowych obietnic"]])));
 
   pages.push(page("Okładki <em>wydarzenia.</em>",
@@ -133,6 +133,6 @@
       [["Źródła", "~/reunion-hackathon-a/print"], ["Render", "node render.mjs …"]])));
 
   document.getElementById("deck").innerHTML = pages.join("");
-  Print.block(document.getElementById("cb"), 190);
+  Print.block(document.getElementById("cb"), 150);
 </script>
 </body></html>

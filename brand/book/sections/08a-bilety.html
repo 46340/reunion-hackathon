@@ -1,0 +1,238 @@
+<!doctype html><html lang="pl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500..900&family=Barlow+Condensed:wght@100;200;300&family=Barlow:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../print/print.css"><link rel="stylesheet" href="../book.css"><title>Bilety i identyfikatory</title>
+<style>
+  .pc { position: absolute; z-index: 3; transform-origin: 50% 50%; }
+  .pc > img { display: block; width: 100%; height: auto; filter: drop-shadow(0 1px 0 rgba(110,8,24,.95)) drop-shadow(0 2px 2px rgba(20,16,10,.30)) drop-shadow(0 14px 14px rgba(20,16,10,.20)) drop-shadow(0 40px 42px rgba(20,16,10,.26)); }
+  .pc.flat > img { filter: drop-shadow(0 1px 1px rgba(20,16,10,.3)) drop-shadow(0 18px 22px rgba(20,16,10,.25)); }
+  .pc.torn { filter: drop-shadow(0 1px 0 rgba(110,8,24,.95)) drop-shadow(0 2px 2px rgba(20,16,10,.30)) drop-shadow(0 14px 14px rgba(20,16,10,.20)) drop-shadow(0 40px 42px rgba(20,16,10,.26)); }
+  .pc.torn > img { filter: none; }
+  .sheen { position: absolute; inset: 0; pointer-events: none; z-index: 6; background: radial-gradient(90% 70% at 18% 8%, rgba(255,255,255,.34), rgba(255,255,255,0) 60%), radial-gradient(80% 60% at 100% 100%, rgba(20,16,10,.10), rgba(20,16,10,0) 70%); }
+  .tag { position: absolute; z-index: 4; font: 500 14px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-60); }
+  .rail ul + ul { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--ink-14); }
+  .rail .k { font: 500 12px/1.5 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-60); margin-top: 18px; }
+  .lane { position: absolute; background-repeat: repeat-x; z-index: 3; box-shadow: 0 1px 1px rgba(20,16,10,.35), 0 16px 22px -8px rgba(20,16,10,.38), 0 40px 40px -20px rgba(20,16,10,.28); }
+  .lane::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,.2), rgba(255,255,255,0) 35%, rgba(0,0,0,.14)); }
+  .lane::before { content: ""; position: absolute; left: 0; right: 0; top: 6px; bottom: 6px; border-top: 1px dashed rgba(255,255,255,.28); border-bottom: 1px dashed rgba(255,255,255,.28); z-index: 2; }
+  .lane.white::before { border-color: rgba(20,18,16,.18); }
+  .frame { position: absolute; background: #fff; overflow: hidden; z-index: 3; }
+  .frame.browser { border-radius: 14px; box-shadow: 0 1px 2px rgba(20,16,10,.25), 0 30px 60px -20px rgba(20,16,10,.5); }
+  .frame.browser .bar { height: 44px; background: #EDE8E0; display: flex; align-items: center; gap: 8px; padding: 0 16px; border-bottom: 1px solid rgba(20,18,16,.12); }
+  .frame.browser .bar i { width: 11px; height: 11px; border-radius: 50%; background: rgba(20,18,16,.22); }
+  .frame.browser .bar b { margin-left: 14px; font: 500 13px var(--mono); letter-spacing: .06em; color: var(--ink-60); background: #fff; border-radius: 6px; padding: 5px 14px; font-weight: 500; }
+  .frame.browser img { display: block; width: 100%; }
+  .frame.phone { border-radius: 34px; border: 9px solid var(--ink); box-shadow: 0 1px 2px rgba(20,16,10,.3), 0 36px 60px -20px rgba(20,16,10,.55); background: var(--red); }
+  .frame.phone img { display: block; width: 100%; height: 100%; }
+  .swatch { position: absolute; z-index: 3; display: grid; grid-template-columns: 290px 1fr; gap: 20px; align-items: center; }
+  .swatch .band { height: 62px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; font: 900 28px/1 var(--block); letter-spacing: .08em; text-transform: uppercase; box-shadow: 0 10px 20px -12px rgba(20,16,10,.4); }
+  .swatch .band span { font: 600 10px var(--mono); letter-spacing: .14em; }
+  .swatch p { font: 500 13px/1.55 var(--mono); letter-spacing: .06em; color: var(--ink); }
+  .swatch p em { font-style: normal; color: var(--ink-60); }
+  .role.uczestnik { background: var(--red); color: #fff; } .role.zaloga { background: var(--ink); color: #fff; }
+  .role.mentor { background: #fff; color: var(--red); box-shadow: inset 0 0 0 4px var(--red), 0 10px 20px -12px rgba(20,16,10,.4); }
+  .role.jury { background: var(--pink); color: var(--red); }
+  .role.partner { background: #fff; color: var(--ink); box-shadow: inset 0 0 0 4px var(--ink), 0 10px 20px -12px rgba(20,16,10,.4); }
+  .prod { position: absolute; inset: 0; padding: 36px 56px 0 56px; display: grid; align-content: start; }
+  .prod .row { display: grid; grid-template-columns: 150px 360px 340px 70px 1fr; gap: 24px; align-items: center; height: 74px; border-bottom: 1px solid var(--ink-14); font: 500 14px/1.4 var(--mono); letter-spacing: .06em; }
+  .prod .row.h { height: 40px; color: var(--ink-60); text-transform: uppercase; letter-spacing: .14em; font-size: 13px; border-bottom: 2px solid var(--ink); }
+  .prod .row b { font: 800 22px/1.1 var(--block); letter-spacing: .01em; text-transform: uppercase; display: block; }
+  .prod .row small { display: block; color: var(--ink-60); font-size: 12px; margin-top: 3px; letter-spacing: .04em; text-transform: none; }
+  .prod .th { display: flex; align-items: center; justify-content: flex-start; height: 62px; }
+  .prod .th img { max-height: 62px; max-width: 140px; box-shadow: 0 2px 6px rgba(20,16,10,.3); display: block; }
+  .prod .th img.lan { max-width: 140px; }
+</style></head><body data-chapter="Materiały">
+
+<!-- 1. hero -->
+<section class="board content">
+  <aside class="rail"><h2>Karta pokładowa</h2>
+    <p>Każda przyjęta osoba dostaje bilet do Warszawy: miasto, z&nbsp;którego wraca, miejsce na sali i&nbsp;napis return(home);.</p>
+    <ul><li>Siedem miast, siedem kolorów tego samego czerwonego</li><li>Odlot z&nbsp;miasta uczelni, przylot zawsze WAW</li><li>Korzeń do oderwania z&nbsp;numerem miejsca, bramka po ogłoszeniu miejsca</li></ul></aside>
+  <div class="canvas surface-paper" id="c1"></div>
+</section>
+
+<!-- 2. spec -->
+<section class="board content">
+  <aside class="rail"><h2>Bilet: <br>specyfikacja</h2>
+    <p>Karta pokładowa w&nbsp;rozmiarze biletu lotniczego. Plik do druku ma 3&nbsp;mm spadu z&nbsp;każdej strony.</p>
+    <ul><li>Format 203 × 82 mm</li><li>Karton 300 g</li><li>Spad 3 mm, czerwień do krawędzi</li><li>Nacięcia i perforację robi drukarnia</li></ul>
+    <ul><li>Z bazy: imię i&nbsp;nazwisko, miasto uczelni (kod IATA), miejsce 001–100</li><li>Stałe: WAW, 05.02.2027, 16:00, bramka „wkrótce”</li></ul>
+    <p class="k">Litery (1&nbsp;mm = 4&nbsp;px)</p>
+    <ul><li>IATA: Big Shoulders 900, 23&nbsp;mm</li><li>Miejsce: Barlow Condensed 100, 21&nbsp;mm</li><li>Pola: Big Shoulders 800, 6&nbsp;mm</li><li>Etykiety: Plex Mono 500, 2,5&nbsp;mm</li></ul></aside>
+  <div class="canvas white" id="c2"></div>
+  <div class="metrics"><div><b>203 × 82</b><span>mm po przycięciu</span></div><div><b>209 × 88</b><span>mm ze spadem 3 mm</span></div><div><b>50 mm</b><span>szerokość odrywanego korzenia</span></div><div><b>Ø 7,5</b><span>mm nacięcie przy perforacji</span></div></div>
+</section>
+
+<!-- 3. variants -->
+<section class="board content">
+  <aside class="rail"><h2>Siedem miast</h2>
+    <p>Miasto wylotu to miasto uczelni uczestnika. Ten sam bilet, inny kod: to, co łączy wszystkich, to cel.</p>
+    <ul><li>Londyn, Amsterdam, Kopenhaga, Zurych, Mediolan, Madryt, Sztokholm</li><li>Kody jak na lotnisku: LHR, AMS, CPH, ZRH, MXP, MAD, ARN</li><li>Imię i&nbsp;nazwisko wpisujemy z&nbsp;bazy, miejsce losowo z&nbsp;100</li></ul></aside>
+  <div class="canvas surface-paper" id="c3"></div>
+  <div class="metrics"><div><b>7</b><span>miast na globusie</span></div><div><b>1</b><span>cel: WAW</span></div><div><b>3 cyfry</b><span>numer miejsca, z 100</span></div><div><b>1 plik</b><span>PDF z siedmioma stronami</span></div></div>
+</section>
+
+<!-- 4. digital -->
+<section class="board content">
+  <aside class="rail"><h2>Bilet cyfrowo</h2>
+    <p>Ta sama karta na stronie zaproszenia i&nbsp;w&nbsp;Instagramie. Jedno kliknięcie i&nbsp;osoba może pokazać, że wraca do Warszawy.</p>
+    <ul><li>Zaproszenie: karta, kalendarz (Apple, Outlook, Google)</li><li>Stories 1080 × 1920: czerwone tło, jaskółki, karta na białym</li><li>Każde miasto wygląda inaczej, kreski to ozdoba</li></ul></aside>
+  <div class="canvas surface-paper" id="c4"></div>
+  <div class="metrics"><div><b>1200 px</b><span>strona zaproszenia, karta 1040 px</span></div><div><b>1080 × 1920</b><span>Instagram Stories, PNG</span></div><div><b>2</b><span>widoki: zaproszenie i Stories</span></div><div><b>?from=</b><span>miasto, miejsce i imię z adresu</span></div></div>
+</section>
+
+<!-- 5. badges hero -->
+<section class="board content">
+  <aside class="rail"><h2>Identyfikatory</h2>
+    <p>Pięć ról, jeden układ. Czerwona głowa z&nbsp;napisem, białe pole na imię, na dole pas w&nbsp;kolorze roli.</p>
+    <ul><li>Uczestnik, załoga, mentor, jury, partner</li><li>Rola czytelna z&nbsp;daleka: pas na dole</li><li>Uczestnik ma trasę i&nbsp;miejsce z&nbsp;biletu</li></ul></aside>
+  <div class="canvas surface-ink" id="c5"></div>
+</section>
+
+<!-- 6. badge spec -->
+<section class="board content">
+  <aside class="rail"><h2>Identyfikator: specyfikacja</h2>
+    <p>90 × 130 mm, czerwona głowa z&nbsp;otworem na klips smyczy, pole imienia i&nbsp;pas roli na dole.</p>
+    <ul><li>Karton 350 g lub PVC</li><li>Otwór 16 × 3&nbsp;mm, 3,5&nbsp;mm od góry</li><li>Imię: Big Shoulders 900, 9,5&nbsp;mm</li><li>Pas roli: 14,5&nbsp;mm, napis 7,5&nbsp;mm</li></ul></aside>
+  <div class="canvas white" id="c6"></div>
+  <div class="metrics"><div><b>90 × 130</b><span>mm po przycięciu</span></div><div><b>53 mm</b><span>czerwona głowa</span></div><div><b>14,5 mm</b><span>pas roli</span></div><div><b>5</b><span>ról, pięć pasów</span></div></div>
+</section>
+
+<!-- 7. lanyards -->
+<section class="board content">
+  <aside class="rail"><h2>Smycze</h2>
+    <p>Trzy kolory taśmy, jeden wzór: znak, nazwa, jaskółka, data, planeta GPSS i&nbsp;return(home);.</p>
+    <ul><li>Czerwona, atrament, biała</li><li>Szerokość 20 mm</li><li>Raport wzoru 280 mm, powtarzany bez szwu</li><li>Sublimacja, obustronnie</li></ul></aside>
+  <div class="canvas surface-paper" id="c7"></div>
+  <div class="metrics"><div><b>20 mm</b><span>szerokość taśmy</span></div><div><b>280 mm</b><span>długość jednego wzoru</span></div><div><b>3</b><span>kolory: czerwień, atrament, biel</span></div><div><b>2 strony</b><span>sublimacja po obu stronach</span></div></div>
+</section>
+
+<!-- 8. welcome pack -->
+<section class="board content">
+  <aside class="rail"><h2>Pakiet powitalny</h2>
+    <p>Na rejestracji osoba dostaje trzy rzeczy: bilet, identyfikator i&nbsp;smycz. Trasa i&nbsp;miejsce z&nbsp;biletu wracają na identyfikatorze.</p>
+    <ul><li>LHR → WAW i&nbsp;miejsce 042 na obu</li><li>Smycz zapinana na klips w&nbsp;otworze</li><li>Bilet zostaje na pamiątkę, korzeń można oderwać</li></ul></aside>
+  <div class="canvas surface-paper" id="c8"></div>
+</section>
+
+<!-- 9. production -->
+<section class="board content">
+  <aside class="rail"><h2>Pliki do druku</h2>
+    <p>Gotowe PDF-y w&nbsp;prawdziwym rozmiarze, ze spadem 3 mm z&nbsp;każdej strony. Strona jest o&nbsp;6&nbsp;mm większa od gotowego wyrobu.</p>
+    <ul><li>Folder brand/book/out/druk</li><li>TrimBox ustawiony na rozmiar po przycięciu</li><li>Nacięcia i perforacja: do ustalenia z&nbsp;drukarnią</li><li>Kolory RGB, konwersja do CMYK u&nbsp;drukarni</li></ul></aside>
+  <div class="canvas white" id="c9"></div>
+  <div class="metrics"><div><b>9</b><span>plików PDF, 15 stron</span></div><div><b>3 mm</b><span>spad z każdej strony</span></div><div><b>1 : 1</b><span>rozmiar w milimetrach</span></div><div><b>4 px</b><span>na milimetr w plikach źródłowych</span></div></div>
+</section>
+
+<script src="../../../print/print.js"></script><script src="../book.js"></script>
+<script>
+  const I = "../out/druk/prev/";
+  const el = (id) => document.getElementById(id);
+  // a pass object: w = displayed width, left/top/rot in px / deg
+  const pass = (c, w, l, t, r, extra = "") => `<div class="pc" style="width:${w}px;left:${l}px;top:${t}px;transform:rotate(${r}deg);${extra}"><img src="${I}pass-${c}.png" alt=""></div>`;
+  const badge = (r, w, l, t, rot, extra = "") => `<div class="pc" style="width:${w}px;left:${l}px;top:${t}px;transform:rotate(${rot}deg);${extra}"><img src="${I}badge-${r}.png" alt=""></div>`;
+  const dim = (cls, l, t, len, text, extra = "") => `<div class="dim ${cls}" style="left:${l}px;top:${t}px;${cls.includes("h") ? "width" : "height"}:${len}px;${extra}"><span>${text}</span></div>`;
+
+  // ---- 1 hero: two passes, one torn at the perforation
+  const zig = (x) => { const p = []; for (let i = 0; i <= 20; i++) p.push(`${(x + (i % 2 ? .9 : -.9)).toFixed(2)}% ${(i * 5)}%`); return p; };
+  const X = 75.4, left = `polygon(0 0, ${zig(X).join(", ")}, 0 100%)`, right = `polygon(100% 0, ${zig(X).join(", ")}, 100% 100%)`;
+  el("c1").innerHTML = `
+    ${pass("LHR", 920, 520, 90, 2.5)}
+    <div class="pc torn" style="width:920px;left:210px;top:476px;transform:rotate(-2deg);transform-origin:37.7% 50%"><img src="${I}pass-MAD.png" alt="" style="clip-path:${left}"></div>
+    <div class="pc torn" style="width:920px;left:326px;top:496px;transform:rotate(8deg);transform-origin:87.7% 50%"><img src="${I}pass-MAD.png" alt="" style="clip-path:${right}"></div>
+    <div class="sheen"></div>
+    <p class="tag" style="left:64px;top:96px;z-index:7;width:380px">Londyn z przodu, Madryt z&nbsp;oderwanym korzeniem.</p>`;
+
+  // ---- 2 spec: 6 px per mm, pass 1218 x 492
+  const K = 1.5, PL = 190, PT = 118, PW = 812 * K, PH = 328 * K, B = 18;
+  el("c2").innerHTML = `
+    <div style="position:absolute;left:${PL - B}px;top:${PT - B}px;width:${PW + 2 * B}px;height:${PH + 2 * B}px;border:1.5px dashed var(--red);z-index:2"></div>
+    <p class="tag" style="left:${PL - B}px;top:${PT + PH + B + 8}px;color:var(--red)">spad 3 mm</p>
+    <div class="pc flat" style="width:${PW}px;left:${PL}px;top:${PT}px"><img src="${I}pass-LHR.png" alt=""></div>
+    ${dim("h", PL, 52, PW, "203 mm")}
+    ${dim("v left", 120, PT, PH, "82 mm")}
+    ${dim("h below", PL, PT + PH + 56, 42, "7")}
+    ${dim("h below", PL + 42, PT + PH + 56, 834, "139 mm: pole główne")}
+    ${dim("h below", PL + 876, PT + PH + 56, 42, "7")}
+    ${dim("h below", PL + 918, PT + PH + 56, 300, "50 mm: korzeń")}
+    ${dim("v", PL + PW + 62, PT, 36, "6")}
+    ${dim("v", PL + PW + 62, PT + 247 * K, 60, "10")}
+    <div style="position:absolute;left:${PL + 613.5 * K}px;top:${PT - 40}px;width:1px;height:62px;background:var(--red);z-index:4"></div>
+    <p class="tag" style="left:${PL + 613.5 * K + 12}px;top:${PT - 46}px;color:var(--red)">perforacja + nacięcia Ø 7,5 mm</p>
+    <div class="tag" style="left:${PL}px;top:${PT + PH + 130}px;width:1220px;line-height:2.1;color:var(--ink)">
+      <span style="color:var(--red)">■</span> imię i nazwisko z bazy &nbsp; <span style="color:var(--red)">■</span> kod miasta uczelni &nbsp; <span style="color:var(--red)">■</span> numer miejsca 001–100<br>
+      <span style="color:var(--ink-60)">kreski przy korzeniu to ozdoba, nie kod do skanowania</span></div>`;
+
+  // ---- 3 variants
+  const CITY = [["LHR", "Londyn", "Wielka Brytania"], ["AMS", "Amsterdam", "Niderlandy"], ["CPH", "Kopenhaga", "Dania"], ["ZRH", "Zurych", "Szwajcaria"], ["MXP", "Mediolan", "Włochy"], ["MAD", "Madryt", "Hiszpania"], ["ARN", "Sztokholm", "Szwecja"]];
+  const rot = [-1.4, .9, -.7, 1.2, -.9, 1.4, -1.1];
+  el("c3").innerHTML = CITY.map(([c, n, k], i) => { const x = 70 + (i % 3) * 482, y = 56 + Math.floor(i / 3) * 244;
+    return pass(c, 440, x, y, rot[i], "z-index:3") + `<p class="tag" style="left:${x + 4}px;top:${y + 196}px">${c} · ${n}, ${k}</p>`; }).join("") +
+    `<div style="position:absolute;left:${70 + 482}px;top:${56 + 2 * 244}px;width:${440 + 482}px;height:178px;background:var(--ink);color:#fff;z-index:3;padding:26px 36px;box-shadow:0 20px 40px -20px rgba(20,16,10,.5)">
+       <p class="mono" style="color:var(--w70);font-size:13px">Zasada</p>
+       <p class="serif" style="font:400 50px/1.05 var(--serif);margin-top:14px">Odlot z&nbsp;miasta <em>uczelni.</em><br>Przylot do domu.</p></div>`;
+
+  // ---- 4 digital
+  el("c4").innerHTML = `
+    <div class="frame browser" style="left:88px;top:170px;width:660px"><div class="bar"><i></i><i></i><i></i><b>reunion-hackathon.pl</b></div><img src="${I}invite.png" alt=""></div>
+    <p class="tag" style="left:88px;top:${170 + 44 + 660 * .5875 + 28}px">Strona zaproszenia, widok na komputerze</p>
+    <div class="frame phone" style="left:796px;top:120px;width:310px;height:${310 * 1920 / 1080}px"><img src="${I}story-AMS.png" alt=""></div>
+    <div class="frame phone" style="left:1142px;top:120px;width:310px;height:${310 * 1920 / 1080}px"><img src="${I}story-CPH.png" alt=""></div>
+    <p class="tag" style="left:796px;top:${120 + 310 * 1920 / 1080 + 26}px;width:656px">Stories z&nbsp;Amsterdamu (AMS) i&nbsp;Kopenhagi (CPH), 1080 × 1920</p>`;
+
+  // ---- 5 badges hero (fan)
+  // classic fan: each badge is covered from the right, so its head, name and role band stay readable; the front one is complete
+  const fan = [["partner", -8, 130, 300, 300], ["jury", -5.5, 360, 270, 300], ["mentor", -3, 590, 240, 300], ["zaloga", -1, 820, 215, 300], ["uczestnik", 1.5, 1050, 190, 380]];
+  el("c5").innerHTML = fan.map(([r, a, l, t, w], i) => badge(r, w, l, t, a, `z-index:${i + 1}`)).join("") +
+    `<p class="tag light" style="left:64px;bottom:34px;z-index:7;color:var(--w70)">Od lewej: partner, jury, mentor, załoga, uczestnik</p>`;
+
+  // ---- 6 badge spec: scale 1.2 (4,8 px per mm)
+  const S = 1.2, BL = 330, BT = 110, BW = 360 * S, BH = 520 * S, ry = (y) => BT + y * S;
+  const roles = [["uczestnik", "Uczestnik", "tło czerwień #C8102E", "napis biały"], ["zaloga", "Załoga", "tło atrament #141210", "napis biały"], ["mentor", "Mentor", "tło białe, ramka 1 mm czerwona", "napis czerwony"], ["jury", "Jury", "tło róż #EBC9CC", "napis czerwony"], ["partner", "Partner", "tło białe, ramka 1 mm atrament", "napis atrament"]];
+  el("c6").innerHTML = `
+    <div class="pc flat" style="width:${BW}px;left:${BL}px;top:${BT}px"><img src="${I}badge-uczestnik.png" alt=""></div>
+    ${dim("h", BL, 62, BW, "90 mm")}
+    ${dim("v", BL + BW + 40, BT, 212 * S, "53 mm")}
+    ${dim("v", BL + BW + 40, ry(212), 250 * S, "62,5 mm")}
+    ${dim("v", BL + BW + 40, ry(462), 58 * S, "14,5 mm")}
+    ${dim("v", BL + BW + 130, BT, BH, "130 mm")}
+    <p class="callout r" style="left:12px;top:${ry(14)}px;width:230px;--len:${BL + 148 * S - 254}px;text-align:right">otwór 16 × 3 mm<br>3,5 mm od góry</p>
+    <p class="callout r" style="left:12px;top:${ry(100)}px;width:230px;--len:${BL + 100 * S - 274}px;text-align:right">znak słowny<br>58 px, 14,5 mm</p>
+    <p class="callout r" style="left:12px;top:${ry(250)}px;width:230px;--len:${BL + 22 * S - 254}px;text-align:right">imię<br>Big Shoulders 900</p>
+    <p class="callout r" style="left:12px;top:${ry(395)}px;width:230px;--len:${BL + 22 * S - 254}px;text-align:right">miejsce, trasa, zespół</p>
+    ${roles.map(([r, n, a, b], i) => `<div class="swatch" style="left:1000px;top:${130 + i * 120}px;width:490px;grid-template-columns:280px 1fr"><div class="band role ${r}" style="width:280px">${n}<span>05–07.02.2027</span></div><p>${a}<br><em>${b}</em></p></div>`).join("")}
+    <p class="tag" style="left:1000px;top:${130 + 5 * 120 - 10}px">Pas roli: 4 px = 1 mm ramki</p>`;
+
+  // ---- 7 lanyards: scale 1.1 -> 4,4 px per mm; every ribbon is exactly one repeat (1232 px = 280 mm), cut at the repeat boundary
+  const LW = 1232, LH = 88, LL = 154, tile = (c) => `background-image:url(${I}lanyard-${c}.png);background-size:${LW}px ${LH}px;background-position:0 0`;
+  const lane = (c, t, rot) => `<div class="lane ${c}" style="left:${LL}px;top:${t}px;width:${LW}px;height:${LH}px;transform:rotate(${rot}deg);${tile(c)}"></div>`;
+  const line = (l, t, w, h) => `<div style="position:absolute;left:${l}px;top:${t}px;width:${w}px;height:${h}px;background:var(--ink-60);z-index:5"></div>`;
+  const WT = 490;
+  el("c7").innerHTML = lane("red", 130, -1.2) + lane("ink", 310, 1) +
+    `<div class="lane white" style="left:${LL}px;top:${WT}px;width:${LW}px;height:${LH}px;${tile("white")}"></div>
+     ${line(LL, WT + LH, 1, 26)}${line(LL + LW - 1, WT + LH, 1, 26)}${dim("h below", LL, WT + LH + 26, LW, "1 powtórzenie = 280 mm", "")}
+     ${line(LL - 36, WT, 36, 1)}${line(LL - 36, WT + LH - 1, 36, 1)}${dim("v left", LL - 36, WT, LH, "20 mm")}
+     <p class="tag" style="left:${LL}px;top:${WT + LH + 96}px">Czerwona, atrament, biała. Taśma sublimowana po obu stronach.</p>`;
+
+  // ---- 8 welcome pack: ribbon is exactly one repeat (scaled), its end tucks under the badge
+  const WLW = 1100, WLH = 1100 * LH / LW;
+  el("c8").innerHTML = `
+    ${pass("LHR", 860, 110, 465, -3)}
+    <div class="lane ink" style="left:90px;top:${200 - WLH / 2}px;width:${WLW}px;height:${WLH}px;transform:rotate(7deg);background-image:url(${I}lanyard-ink.png);background-size:${WLW}px ${WLH}px;background-position:0 0;z-index:2"></div>
+    ${badge("uczestnik", 400, 1040, 190, 4, "z-index:5")}
+    <p class="tag" style="left:64px;bottom:34px;z-index:7">Bilet LHR → WAW, identyfikator uczestnika, smycz atrament</p>`;
+
+  // ---- 9 production
+  const ROWS = [
+    ["bilet-karta-pokladowa-203x82-spad3.pdf", "pass-LHR", "Karta pokładowa", "203 × 82 mm, strona 209 × 88 mm", "7 stron: LHR, AMS, CPH, ZRH, MXP, MAD, ARN", "karton 300 g"],
+    ["identyfikator-uczestnik-90x130-spad3.pdf", "badge-uczestnik", "Identyfikator: uczestnik", "90 × 130 mm, strona 96 × 136 mm", "otwór 16 × 3 mm", "karton 350 g lub PVC"],
+    ["identyfikator-zaloga-90x130-spad3.pdf", "badge-zaloga", "Identyfikator: załoga", "90 × 130 mm, strona 96 × 136 mm", "otwór 16 × 3 mm", "karton 350 g lub PVC"],
+    ["identyfikator-mentor-90x130-spad3.pdf", "badge-mentor", "Identyfikator: mentor", "90 × 130 mm, strona 96 × 136 mm", "otwór 16 × 3 mm", "karton 350 g lub PVC"],
+    ["identyfikator-jury-90x130-spad3.pdf", "badge-jury", "Identyfikator: jury", "90 × 130 mm, strona 96 × 136 mm", "otwór 16 × 3 mm", "karton 350 g lub PVC"],
+    ["identyfikator-partner-90x130-spad3.pdf", "badge-partner", "Identyfikator: partner", "90 × 130 mm, strona 96 × 136 mm", "otwór 16 × 3 mm", "karton 350 g lub PVC"],
+    ["smycz-red-280x20-spad3.pdf", "lanyard-red", "Smycz czerwona", "280 × 20 mm, strona 286 × 26 mm", "wzór powtarzany bez szwu", "sublimacja, obustronnie"],
+    ["smycz-ink-280x20-spad3.pdf", "lanyard-ink", "Smycz atrament", "280 × 20 mm, strona 286 × 26 mm", "wzór powtarzany bez szwu", "sublimacja, obustronnie"],
+    ["smycz-white-280x20-spad3.pdf", "lanyard-white", "Smycz biała", "280 × 20 mm, strona 286 × 26 mm", "wzór powtarzany bez szwu", "sublimacja, obustronnie"]];
+  el("c9").innerHTML = `<div class="prod"><div class="row h"><span>Podgląd</span><span>Plik</span><span>Format</span><span>Spad</span><span>Papier / nośnik</span></div>${ROWS.map(([f, th, n, fmt, note, paper]) =>
+    `<div class="row"><div class="th"><img class="${th.startsWith("lan") ? "lan" : ""}" src="${I}thumb-${th}.png" alt=""></div><div><b>${n}</b><small>${f}</small></div><div>${fmt}<small>${note}</small></div><span>3 mm</span><span>${paper}</span></div>`).join("")}</div>`;
+</script>
+</body></html>

@@ -28,13 +28,13 @@
   .sleeve { font: 600 7px "IBM Plex Mono"; letter-spacing: .14em; transform: rotate(-24deg); }
 </style></head><body>
 <div class="wall" data-shot="koszulki-uczestnik">
-  <div><div class="tee" id="t1"></div><p class="cap">Biała · przód<span>REUNION na piersi i dwie jaskółki</span></p></div>
+  <div><div class="tee" id="t1"></div><p class="cap">Biała · przód<span>REUNION HACKATHON na piersi i dwie jaskółki</span></p></div>
   <div><div class="tee" id="t2"></div><p class="cap">Biała · tył<span>Tablica przylotów, return(home); i jaskółki</span></p></div>
-  <div><div class="tee" id="t3"></div><p class="cap">Czerwona · przód<span>REUNION, ziemia i jaskółki jak na plakacie</span></p></div>
+  <div><div class="tee" id="t3"></div><p class="cap">Czerwona · przód<span>REUNION HACKATHON, ziemia i jaskółki jak na plakacie</span></p></div>
   <div><div class="tee" id="t4"></div><p class="cap">Czerwona · tył<span>100 · 48H · Warszawa 2027 i jaskółki</span></p></div>
 </div>
 <div class="wall" data-shot="koszulki-zaloga">
-  <div><div class="tee" id="t5"></div><p class="cap">Czarna · przód<span>Załoga: REUNION na piersi</span></p></div>
+  <div><div class="tee" id="t5"></div><p class="cap">Czarna · przód<span>Załoga: REUNION HACKATHON na piersi</span></p></div>
   <div><div class="tee" id="t6"></div><p class="cap">Czarna · tył<span>ZAŁOGA, widoczna z daleka</span></p></div>
   <div><div class="tee" id="t7"></div><p class="cap">Biała · przód<span>Mentor i jury: ten sam znak</span></p></div>
   <div><div class="tee" id="t8"></div><p class="cap">Biała · tył<span>MENTOR na czerwono</span></p></div>
@@ -43,20 +43,20 @@
 <script>
   const SHAPE = (fill, back) => `<svg class="shape" viewBox="0 0 400 440"><path d="M120 20 C140 ${back ? 30 : 44} 260 ${back ? 30 : 44} 280 20 L362 52 L400 132 L340 162 L325 132 L325 432 L75 432 L75 132 L60 162 L0 132 L38 52 Z" fill="${fill}"/><path d="M120 20 C140 ${back ? 30 : 44} 260 ${back ? 30 : 44} 280 20" fill="none" stroke="rgba(0,0,0,.12)" stroke-width="6"/><path d="M75 132 L75 160 M325 132 L325 160" stroke="rgba(0,0,0,.05)" stroke-width="2"/></svg>`;
   const WHITE = "#F6F3EC", RED = "#C8102E";
-  t1.innerHTML = SHAPE(WHITE) + `<div class="p chest"><div class="block" id="b1">REUNION</div><p class="m">WAW · 05.02.2027</p></div><div class="p sleeve" style="left:14px;top:92px;color:#C8102E">EDYCJA 01</div>`;
-  Print.blockRed(document.getElementById("b1"), 30, 12);
+  t1.innerHTML = SHAPE(WHITE) + `<div class="p chest"><div class="block" id="b1" style="line-height:.95">REUNION<br>HACKATHON</div><p class="m">WAW · 05.02.2027</p></div><div class="p sleeve" style="left:14px;top:92px;color:#C8102E">EDYCJA 01</div>`;
+  Print.blockRed(document.getElementById("b1"), 26, 12);
   const rows = Print.CITIES.map(([n, s]) => `<p><span>${n}</span><span>${String(s).replace(/\B(?=(\d{3})+$)/g, " ")}</span></p>`).join("");
   t2.innerHTML = SHAPE(WHITE, 1) + `<div class="p arr"><div class="h"><span>PRZYLOTY · WAW</span><span>STUD.</span></div>${rows}<p class="w"><span>WARSZAWA</span><span>05.02.2027</span></p><span class="ret">return(home);</span></div>`;
-  t3.innerHTML = SHAPE(RED) + `<div class="p front-red"><div class="block" id="b3">REUNION</div><div class="g">${Print.globe({ op: .9, width: 9, arcs: false })}</div></div><div class="p sleeve" style="left:14px;top:92px;color:#fff">5–7.02.2027</div>`;
-  Print.block(document.getElementById("b3"), 60, 14);
+  t3.innerHTML = SHAPE(RED) + `<div class="p front-red"><div class="block" id="b3" style="line-height:.95">REUNION<br>HACKATHON</div><div class="g">${Print.globe({ op: .9, width: 9, arcs: false })}</div></div><div class="p sleeve" style="left:14px;top:92px;color:#fff">5–7.02.2027</div>`;
+  Print.block(document.getElementById("b3"), 46, 14);
   t4.innerHTML = SHAPE(RED, 1) + `<div class="p back-red"><div class="n">100</div><p class="m">48H · WARSZAWA · 2027</p><p class="m" style="opacity:.75;margin-top:6px;font-size:8.5px;letter-spacing:.12em">REUNION HACKATHON · EDYCJA 01</p></div>`;
   const INK = "#1b1916";
   const crewBack = (word, col, sub) => `<div class="p back-red" style="color:${col}"><div style="font:900 74px/.9 'Big Shoulders Display';letter-spacing:.04em">${word}</div><p class="m">${sub}</p></div>`;
-  t5.innerHTML = SHAPE(INK) + `<div class="p chest"><div class="block" id="b5">REUNION</div><p class="m" style="color:#fff">WAW · 05.02.2027</p></div><div class="p sleeve" style="left:14px;top:92px;color:#C8102E">ZAŁOGA</div>`;
-  Print.blockRed(document.getElementById("b5"), 30, 12);
+  t5.innerHTML = SHAPE(INK) + `<div class="p chest"><div class="block" id="b5" style="line-height:.95">REUNION<br>HACKATHON</div><p class="m" style="color:#fff">WAW · 05.02.2027</p></div><div class="p sleeve" style="left:14px;top:92px;color:#C8102E">ZAŁOGA</div>`;
+  Print.blockRed(document.getElementById("b5"), 26, 12);
   t6.innerHTML = SHAPE(INK, 1) + crewBack("ZAŁOGA", "#fff", "REUNION HACKATHON · GPSS");
-  t7.innerHTML = SHAPE(WHITE) + `<div class="p chest"><div class="block" id="b7">REUNION</div><p class="m">WAW · 05.02.2027</p></div><div class="p sleeve" style="left:14px;top:92px;color:#C8102E">MENTOR</div>`;
-  Print.blockRed(document.getElementById("b7"), 30, 12);
+  t7.innerHTML = SHAPE(WHITE) + `<div class="p chest"><div class="block" id="b7" style="line-height:.95">REUNION<br>HACKATHON</div><p class="m">WAW · 05.02.2027</p></div><div class="p sleeve" style="left:14px;top:92px;color:#C8102E">MENTOR</div>`;
+  Print.blockRed(document.getElementById("b7"), 26, 12);
   t8.innerHTML = SHAPE(WHITE, 1) + crewBack("MENTOR", "#C8102E", "REUNION HACKATHON · 2027");
   // swallows on every shirt: red on white, white on red, same shape as the poster
   const birds = (el, list, fill) => el.insertAdjacentHTML("beforeend", `<svg viewBox="0 0 400 440" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none">${list.map(([x, y, a, k]) => Print.swallow(x, y, a, k, fill)).join("")}</svg>`);

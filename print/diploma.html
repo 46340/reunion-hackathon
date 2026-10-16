@@ -15,11 +15,12 @@
   .cert.red .hd .lockup { color: #fff; }
   .cert .kind { position: absolute; left: 70px; top: 150px; font: 400 64px/1 "Instrument Serif"; }
   .cert .kind em { font-style: italic; color: var(--red); } .cert.red .kind em { color: #fff; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 8px; }
-  .cert .who { position: absolute; left: 70px; top: 250px; }
+  /* name + text flow in one column that stops before the route, so long names wrap instead of hitting it */
+  .cert .col { position: absolute; left: 70px; top: 250px; width: 590px; }
   .cert .who dt { font: 500 13px "IBM Plex Mono"; letter-spacing: .2em; text-transform: uppercase; opacity: .65; }
-  .cert .who dd { font: 900 110px/.9 "Big Shoulders Display"; text-transform: uppercase; margin-top: 10px; }
+  .cert .who dd { font: 900 96px/.9 "Big Shoulders Display"; text-transform: uppercase; margin-top: 10px; }
   .cert .who dd.tpl { opacity: .3; }
-  .cert .why { position: absolute; left: 70px; top: 420px; width: 600px; font: 400 21px/1.5 "IBM Plex Mono"; }
+  .cert .why { margin-top: 44px; font: 400 21px/1.5 "IBM Plex Mono"; }
   .cert .route { position: absolute; right: 70px; top: 250px; width: 420px; text-align: right; white-space: nowrap; }
   .cert .route .iata { font: 900 84px/.8 "Big Shoulders Display"; }
   .cert .route .iata b { color: var(--red); } .cert.red .route .iata b { color: #fff; text-shadow: 4px 6px 0 rgba(109,6,19,.45); }
@@ -43,8 +44,8 @@
       <div class="g">${Print.globe({ op: 1, width: 5, arcs: false, stroke: red ? "#fff" : "#C8102E" })}</div>
       <div class="hd"><span class="lockup">${red ? Print.mark() : Print.mark("#141210", "#C8102E")}Reunion Hackathon<span class="by">${Print.gpss(red ? "white" : "red")}</span></span><span>Certyfikat · Edycja 01</span></div>
       <p class="kind">${red ? "Zwycięski <em>zespół.</em>" : "Certyfikat <em>uczestnictwa.</em>"}</p>
-      <dl class="who"><dt>${red ? "Zespół" : "Pasażer"}</dt><dd class="tpl">${red ? "Nazwa zespołu" : "Imię Nazwisko"}</dd></dl>
-      <p class="why">${red ? "Pierwsze miejsce w ścieżce partnerskiej. 48 godzin pracy nad wyzwaniem z obszaru transformacji AI." : "Za udział w Reunion Hackathon: 48 godzin pracy nad realnym wyzwaniem z obszaru transformacji AI."}<br><br>Warszawa, 5–7 lutego 2027.</p>
+      <div class="col"><dl class="who"><dt>${red ? "Zespół" : "Pasażer"}</dt><dd class="tpl">${red ? "Nazwa zespołu" : "Imię Nazwisko"}</dd></dl>
+      <p class="why">${red ? "Pierwsze miejsce w&nbsp;ścieżce partnerskiej. 48&nbsp;godzin pracy nad wyzwaniem z&nbsp;obszaru transformacji&nbsp;AI." : "Za udział w&nbsp;Reunion Hackathon: 48&nbsp;godzin pracy nad realnym wyzwaniem z&nbsp;obszaru transformacji&nbsp;AI."}<br><br>Warszawa, 5–7 lutego 2027.</p></div>
       ${red ? `<div class="place"><b>01</b><p class="mono">Miejsce · ścieżka partnerska</p></div>` : `<div class="route">${route("#C8102E")}</div>`}
       <div class="sig"><div>Adam Bączek<span>Lead, Reunion Hackathon</span></div><div>Global Polish Student Society<span>Organizator</span></div><span class="mono" style="font-size:13px">return(home);</span></div>
     </section>`;
