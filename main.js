@@ -183,8 +183,8 @@ function drawOnView() {
       dots.forEach((d, i) => d.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, delay: 700 + i * 40, fill: "forwards" }));
     });
   }
-  const snake = $(".snake");   // phones: the agenda road draws itself from Friday to the final
-  if (snake && snake.getClientRects().length) {
+  const snake = $$(".snake").find((s) => s.getClientRects().length);   // the agenda road draws itself from Friday to the final (wide or tall one)
+  if (snake) {
     const pen = $(".snake-pen", snake), L = pen.getTotalLength();
     pen.style.strokeDasharray = L; pen.style.strokeDashoffset = L;
     lazy(snake, () => pen.animate([{ strokeDashoffset: L }, { strokeDashoffset: 0 }], { duration: 1400, easing: "linear", fill: "forwards" }), 0.25);   // linear: the day plates wipe in on its timing (styles.css --d/--t)
@@ -346,9 +346,8 @@ stickyBar();
 pauseOffscreen();
 soundOn();
 drawOnView();
-// card 03 steps and the agenda day bands come in from the left when they reach the screen
+// card 03 steps and the agenda day plates come in when they reach the screen (the plates follow the road: styles.css --d / --t)
 if (!reduce) {
-  $$(".days .seg b").forEach((b, k) => b.style.setProperty("--k", k));
   [".days", ".benefits"].forEach((sel) => { const el = $(sel); if (el) { el.classList.add("pre-in"); lazy(el, () => el.classList.add("in"), 0.25); } });
 }
 faq();
