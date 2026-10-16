@@ -136,7 +136,8 @@ function sizeBoards() {
     const room = Math.min(+(f.dataset.maxw || 9999), (f.parentElement.clientWidth || innerWidth) - 8);
     let cw = Math.max(8, Math.min(+(f.dataset.cw || 34), Math.floor(room / (cols + (cols - 1) * 0.15 + 3))));
     if (!countdown) cw = Math.max(8, Math.min(cw, Math.floor(innerHeight * +(f.dataset.hfrac || 0.33) / (rows * 1.3 + (rows - 1) * 0.42 + 2.7))));   // agenda leaves room for the rest
-    if (countdown) cw = Math.max(8, Math.min(cw, Math.floor(((document.documentElement.classList.contains("shot") ? 900 : innerHeight) - 500) / (rows * 1.3 + (rows - 1) * 0.42 + 2.7))));   // hero fits one screen
+    // hero fits one screen on desktop; a phone board fills the column (Safari's toolbars left so little height that it shrank to the 8 px minimum)
+    if (countdown && !m) cw = Math.max(8, Math.min(cw, Math.floor(((document.documentElement.classList.contains("shot") ? 900 : innerHeight) - 500) / (rows * 1.3 + (rows - 1) * 0.42 + 2.7))));
     const { w, h } = boardSize(cw, cols, rows);
     f.style.width = w + "px";
     f.style.height = h + "px";
@@ -182,6 +183,12 @@ function drawOnView() {
       dots.forEach((d, i) => d.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, delay: 700 + i * 40, fill: "forwards" }));
     });
   }
+  const snake = $(".snake");   // phones: the agenda road draws itself from Friday to the final
+  if (snake && snake.getClientRects().length) {
+    const pen = $(".snake-pen", snake), L = pen.getTotalLength();
+    pen.style.strokeDasharray = L; pen.style.strokeDashoffset = L;
+    lazy(snake, () => pen.animate([{ strokeDashoffset: L }, { strokeDashoffset: 0 }], { duration: 1400, easing: "linear", fill: "forwards" }), 0.25);   // linear: the day plates wipe in on its timing (styles.css --d/--t)
+  }
   const ruler = $(".ruler svg");
   if (ruler) {
     const bars = $$("rect", ruler);
@@ -214,7 +221,12 @@ function cameFromSite() {
 function intro() {
   const frame = $("#intro");
   if (reduce || new URLSearchParams(location.search).has("skip") || cameFromSite()) { frame.remove(); reveal(false); return; }   // plays on a fresh visit and on reload
-  frame.src = "board.html?handoff=1&font=Big%20Shoulders%20Display" + (EN ? "&lang=en" : "");
+  let src = "board.html?handoff=1&font=Big%20Shoulders%20Display" + (EN ? "&lang=en" : "");
+  if (phone()) {   // phones: the intro board gets the hero board's tiles, so it flies onto it like on desktop instead of fading into a different board
+    const h = new URLSearchParams($("#heroBoard").dataset.src.split("?")[1]);
+    src += `&cols=${h.get("cols")}&cw=${h.get("cw")}`;
+  }
+  frame.src = src;
   // the gong and the flaps play from the start wherever the browser allows sound on entry; everywhere else the board is
   // silent until a tap (no page may play audio before one). While it is silent a crossed-out speaker sits in the corner:
   // tapping it turns the sound on without skipping, and it goes. A tap anywhere else turns the sound on too and
@@ -240,10 +252,6 @@ function intro() {
     frame.contentWindow.postMessage({ type: "reunion-land" }, "*");
     const hb = $("#heroBoard").getBoundingClientRect(), from = e.data.rect;
     const done = () => { frame.remove(); spk.remove(); reveal(true); };
-    if (phone()) {  // the phone board has fewer columns, so cross-fade instead of flying
-      frame.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 500, fill: "forwards" }).onfinish = done;
-      return;
-    }
     const to = { left: hb.left, top: hb.top + 15, width: hb.width };
     const k = to.width / from.width, tx = to.left - from.left * k, ty = to.top - from.top * k;
     frame.animate([{ transform: "none" }, { transform: `translate(${tx}px, ${ty}px) scale(${k})` }],
@@ -345,8 +353,12 @@ if (!reduce) {
 }
 faq();
 document.fonts.ready.then(intro);
-let resizeTimer;
-addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { sizeBoards(); }, 150); });
+let resizeTimer, lastW = innerWidth;
+addEventListener("resize", () => {
+  if (phone() && innerWidth === lastW) return;   // iOS toolbars sliding in and out: resizing would reload the boards and replay the agenda
+  lastW = innerWidth;
+  clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { sizeBoards(); }, 150);
+});
 // ?measure: report which sections are taller than the screen (dev check, prints into <body data-fit>)
 if (new URLSearchParams(location.search).has("measure")) setTimeout(() => {
   document.body.dataset.fit = $$("section.sec, header.hero").map((s) => `${s.id}:${Math.round(s.getBoundingClientRect().height)}`).join(" ");

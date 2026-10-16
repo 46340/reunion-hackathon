@@ -98,7 +98,8 @@ const mid = (s) => pad(" ".repeat(Math.max(0, Math.floor((COLS - s.length) / 2))
 
 // ---------------------------------------------------------------- content
 // intro title card: the event, the city and the dates; WARSZAWA and the dates sit where the countdown keeps them
-const TITLE = () => [mid("REUNION HACKATHON"), mid(CITY), "", mid(DATES), ""].map(pad);
+// (a phone board is narrower than "REUNION HACKATHON", so there the name takes two rows and the city flips up a row)
+const TITLE = () => (COLS < 17 ? [mid("REUNION"), mid("HACKATHON"), mid(CITY), mid(DATES), ""] : [mid("REUNION HACKATHON"), mid(CITY), "", mid(DATES), ""]).map(pad);
 // countdown board: WARSZAWA / DDD : HH : MM : SS (red) / date, the same rows as the hero board
 const START = Date.parse("2027-02-05T16:00:00+01:00");          // opening, hour to confirm
 const CD_ROW = 2;
@@ -225,7 +226,8 @@ addEventListener("message", (e) => { if (e.data && e.data.type === "reunion-land
 
 // ---------------------------------------------------------------- run
 if (Q.has("font")) { const st = document.createElement("style"); st.textContent = `.cell { font-family: "${Q.get("font")}", sans-serif; font-stretch: normal; font-weight: 700; font-size: calc(var(--ch) * .8); }`; document.head.appendChild(st); }
-if (Q.has("embed")) { document.body.classList.add("embed"); if (Q.has("cw")) document.documentElement.style.setProperty("--cw", Q.get("cw") + "px"); }
+if (Q.has("embed")) document.body.classList.add("embed");
+if (Q.has("cw")) document.documentElement.style.setProperty("--cw", Q.get("cw") + "px");   // also the phone intro: its tiles match the hero board it lands on
 if (Q.has("handoff")) document.body.classList.add("handoff");
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 let start, raf, warp = null;   // warp: a click fast-forwards the intro at WARP x speed until it lands

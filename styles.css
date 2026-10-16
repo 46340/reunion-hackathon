@@ -554,6 +554,36 @@ footer .by img { width: 36px; height: 36px; }
 .days.pre-in.in .seg b { clip-path: inset(0 0 0 0); transition: clip-path .45s cubic-bezier(.6,0,.2,1); transition-delay: calc(var(--k) * 260ms); }
 @media (max-width: 700px) { .day + .day { margin-top: 18px; } .day + .day .seg b:first-child { box-shadow: none; } }
 @media (max-width: 700px) { .seg { flex-direction: column; } .seg b, .seg .o, .seg .f { flex: none; } .seg b + b { box-shadow: inset 0 2px 0 rgba(251,249,245,.55); } }
+/* phones: the three days as one winding road, like a board game (user, 2026-10-16): Friday runs right, turns into Saturday,
+   turns again into Sunday and the final. The road (svg) and the day labels share one 350-unit grid (--u), so they stay aligned at any width;
+   the road is 28-unit fields and every label plate spans whole fields. */
+.snake { display: none; }
+@media (max-width: 700px) {
+  #agenda .days { --u: calc(100cqw / 350); position: relative; display: block; aspect-ratio: 350 / 384; container-type: inline-size; margin-top: 48px; text-align: left; }
+  .snake { display: block; position: absolute; inset: 0; width: 100%; height: 100%; }
+  .days .day, .days .seg { display: contents; }
+  .days .day > .mono, .days .day h3, .days .seg b { position: absolute; margin: 0; white-space: nowrap; }
+  .days .day > .mono { font-size: calc(11 * var(--u)); line-height: 1; }
+  .days .day h3 { font-size: calc(30 * var(--u)); line-height: 1; }
+  .days .seg b { height: calc(58 * var(--u)); justify-content: center; gap: calc(5 * var(--u)); padding: 0 0 0 calc(12 * var(--u)); box-shadow: none; font-size: calc(22 * var(--u)); }   /* each label is a big field: its plate covers the small ones */
+  .days .seg b i { font-size: calc(10.5 * var(--u)); }
+  .days .day:nth-of-type(1) > .mono { left: 0; top: 0; }
+  .days .day:nth-of-type(1) h3 { left: 0; top: calc(18 * var(--u)); }
+  .days .day:nth-of-type(1) .o { left: 0; top: calc(64 * var(--u)); width: calc(112 * var(--u)); --d: 0; --t: 145; }
+  .days .day:nth-of-type(1) .w { left: calc(112 * var(--u)); top: calc(64 * var(--u)); width: calc(112 * var(--u)); --d: 145; --t: 145; }
+  .days .day:nth-of-type(2) > .mono, .days .day:nth-of-type(2) h3 { right: calc(105 * var(--u)); text-align: right; }
+  .days .day:nth-of-type(2) > .mono { top: calc(134 * var(--u)); }
+  .days .day:nth-of-type(2) h3 { top: calc(150 * var(--u)); }
+  .days .day:nth-of-type(2) .w { left: calc(99 * var(--u)); top: calc(192 * var(--u)); width: calc(140 * var(--u)); padding: 0; align-items: center; --d: 617; --t: 181; }
+  .days .day:nth-of-type(3) > .mono { left: calc(106 * var(--u)); top: calc(262 * var(--u)); }
+  .days .day:nth-of-type(3) h3 { left: calc(106 * var(--u)); top: calc(278 * var(--u)); }
+  .days .day:nth-of-type(3) .w { left: calc(110 * var(--u)); top: calc(320 * var(--u)); width: calc(140 * var(--u)); --d: 1089; --t: 181; }
+  .days .day:nth-of-type(3) .f { left: calc(250 * var(--u)); top: calc(320 * var(--u)); width: calc(100 * var(--u)); --d: 1270; --t: 130; }
+  /* the plates appear as the road (1400 ms, linear, 1080 units long) passes them; Saturday runs right to left */
+  .days.pre-in.in .seg b { transition-timing-function: linear; transition-duration: calc(var(--t) * 1ms); transition-delay: calc(var(--d) * 1ms); }
+  .days.pre-in .day:nth-of-type(2) .w { clip-path: inset(0 0 0 100%); }
+  .days.pre-in.in .day:nth-of-type(2) .w { clip-path: inset(0); }
+}
 
 /* 07: line icon, a meter that fills 1/4 .. 4/4 (the order), title and the original one-line body */
 .benefits { gap: clamp(24px, 3vw, 44px); }
