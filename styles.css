@@ -735,3 +735,9 @@ a.person:focus-visible { outline: 2px solid #fff; outline-offset: 8px; }
 @media (min-width: 701px) { .benefits h3 { min-height: 2.1em; } }
 /* text for screen readers and search engines that mirrors a visual-only element (the agenda board) */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* iPhones with a notch or Dynamic Island (viewport-fit=cover): backgrounds run to the screen edges, text stays in the safe area */
+.wrap { padding-left: max(var(--g), env(safe-area-inset-left)); padding-right: max(var(--g), env(safe-area-inset-right)); }
+.hero, .bar { padding-left: max(var(--g), env(safe-area-inset-left)); padding-right: max(var(--g), env(safe-area-inset-right)); }
+footer { padding-bottom: calc(40px + env(safe-area-inset-bottom)); }
+@media (max-width: 700px) { .hero { padding-top: calc(18px + env(safe-area-inset-top)); } .bar { padding-top: calc(10px + env(safe-area-inset-top)); } }
