@@ -188,7 +188,17 @@ function drawOnView() {
   if (snake) {
     const pen = $(".snake-pen", snake), L = pen.getTotalLength();
     pen.style.strokeDasharray = L; pen.style.strokeDashoffset = L;
-    lazy(snake, () => pen.animate([{ strokeDashoffset: L }, { strokeDashoffset: 0 }], { duration: 1400, easing: "linear", fill: "forwards" }), 0.25);   // linear: the day plates wipe in on its timing (styles.css --d/--t)
+    // linear over 1400 ms: the day plates wipe in on its timing (styles.css --d/--t). Stepped by hand, not pen.animate():
+    // iOS Safari never repaints a <mask> whose path is animated by the Web Animations API, so the road stayed invisible on iPhones.
+    lazy(snake, () => {
+      const t0 = performance.now();
+      const step = (t) => {
+        const k = Math.min((t - t0) / 1400, 1);
+        pen.setAttribute("stroke-dashoffset", L * (1 - k)); pen.style.strokeDashoffset = L * (1 - k);
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }, 0.25);
   }
   const ruler = $(".ruler svg");
   if (ruler) {
