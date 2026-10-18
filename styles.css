@@ -9,7 +9,7 @@
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: var(--white); color: var(--ink); font: 400 18px/1.55 var(--body), sans-serif; }
-  img { display: block; max-width: 100%; }
+  img { display: block; max-width: 100%; height: auto; }
   .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--g); position: relative; }
   .sec { padding: 128px 0; position: relative; overflow: hidden; }
   .sec.red { background: var(--red); color: #fff; }
