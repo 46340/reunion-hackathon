@@ -49,7 +49,7 @@
   // square dots on a Fibonacci sphere, coloured by the mask; dots fade towards the limb like on Cloudflare's globe
   function dots(sample) {
     const N = 110000, pos = [], col = [], alp = [], siz = [], ga = Math.PI * (3 - Math.sqrt(5));
-    const ink = [0.08, 0.07, 0.06], pink = [0.86, 0.36, 0.43], red = [0.78, 0.06, 0.18];
+    const ink = [0.08, 0.07, 0.06], pink = [0.82, 0.22, 0.31], red = [0.78, 0.06, 0.18];
     for (let i = 0; i < N; i++) {
       const y = 1 - (i / (N - 1)) * 2, r = Math.sqrt(1 - y * y), t = ga * i, x = Math.cos(t) * r, z = Math.sin(t) * r;
       const lat = 90 - (Math.acos(y) * 180) / Math.PI, lng = (Math.atan2(z, -x) * 180) / Math.PI - 180;
@@ -57,7 +57,7 @@
       if (g < 20) continue;
       pos.push(x, y, z);
       if (g > 200) { col.push(...red); alp.push(1); siz.push(2.3); }
-      else if (g > 100) { col.push(...pink); alp.push(0.85); siz.push(2); }
+      else if (g > 100) { col.push(...pink); alp.push(0.95); siz.push(2); }
       else { col.push(...ink); alp.push(0.62); siz.push(2); }
     }
     const geo = new THREE.BufferGeometry();
