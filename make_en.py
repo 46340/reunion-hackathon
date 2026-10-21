@@ -125,7 +125,7 @@ T = [
   'Write to <a href="mailto:maks.rokosz@globalpolsoc.com">maks.rokosz@globalpolsoc.com</a>. We will send you the partner deck with packages, benefits and rates. It is not available for download.'),
  ('W jakim języku jest wydarzenie?', 'What language is the event in?'),
  ('Po polsku. Część warsztatów i materiałów może być po angielsku.', 'Polish. Some workshops and materials may be in English.'),
- 
+ ('Bądź na sali, kiedy się zacznie.', 'Be in the room when it starts.'),
  ('>Formularz wkrótce<', '>Form coming soon<'),
  ('aria-label="Global Polish Student Society, strona organizatora"', 'aria-label="Global Polish Student Society, organiser\'s website"'),
  ('<span class="lbl">Organizator</span>', '<span class="lbl">Organiser</span>'),
