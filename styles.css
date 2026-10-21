@@ -1,3 +1,5 @@
+/* hidden sections (#miejsce, #partnerzy, #pakiety) until the venue is announced: remove the hidden attributes in index.html to restore */
+[hidden] { display: none !important; }
 /* Reunion Hackathon v2 · red + white, split-flap board, code as the second motif */
 
   /* v3: red + white, Trepkowski blocks, thin caps, serif accents, the split-flap board as a component */
