@@ -567,7 +567,8 @@ footer .by img { width: 36px; height: 36px; }
 .days .seg b i { font-size: calc(10.5 * var(--u)); }
 .days.pre-in.in .seg b { clip-path: inset(0); transition: clip-path linear; transition-duration: calc(var(--t) * 1ms); transition-delay: calc(var(--d) * 1ms); }
 @media (min-width: 1000px) {
-  #agenda .days { --u: calc(100cqw / 1168); aspect-ratio: 1168 / 226; max-width: min(100%, 129vh); margin-inline: auto; }   /* at most a quarter of the screen tall: the section keeps fitting one screen */
+  /* bigger road (user, 2026-10-21): may run past the text column into the side margins, still capped by screen height so the section fits one screen */
+  #agenda .days { --u: calc(100cqw / 1168); --rw: min(100vw - 64px, 145vh, 1420px); aspect-ratio: 1168 / 226; width: var(--rw); max-width: none; margin-inline: calc((100% - var(--rw)) / 2); }
   .snake-h { display: block; }
   .days .day h3 { font-size: calc(34 * var(--u)); }
   .days .seg b { font-size: calc(24 * var(--u)); }
