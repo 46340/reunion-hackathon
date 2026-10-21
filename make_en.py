@@ -95,7 +95,7 @@ T = [
  ('Partner Założycielski', 'Founding Partner'),
  ('Współtworzysz format od pierwszej edycji, z prawem pierwszeństwa na kolejne lata.', 'You shape the format from the first edition, with first refusal in the years ahead.'),
  ('aria-label="Uczelnie"', 'aria-label="Universities"'),
- ('<p class="label">Pakiety</p>', '<p class="label">Packages</p>'), ('<p class="label">Partnerzy GPSS</p>', '<p class="label">GPSS partners</p>'), ('Dotychczasowi partnerzy GPSS', 'Past GPSS partners'), ('Cztery poziomy współpracy.', 'Four levels of partnership.'),
+ ('<p class="label">Pakiety</p>', '<p class="label">Packages</p>'), ('Dotychczasowi partnerzy GPSS', 'Past GPSS partners'), ('Cztery poziomy współpracy.', 'Four levels of partnership.'),
  ('Sponsor Tytularny', 'Title Sponsor'), ('1 miejsce, wyłączność', '1 place, exclusive'), ('Partner Ścieżki', 'Track Partner'), ('Maks. 3, po jednej ścieżce', 'Max. 3, one track each'),
  ('Partner Wspierający', 'Supporting Partner'), ('Liczba otwarta', 'Open number'), ('Wyłącznie startupy i scale-upy do 50 osób', 'Only startups and scale-ups up to 50 people'),
  ('Kontakt dla partnerów', 'Partner contact'),
