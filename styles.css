@@ -754,3 +754,6 @@ footer { padding-bottom: calc(40px + env(safe-area-inset-bottom)); }
 .team > .person { flex: 0 0 calc((100% - (var(--cols) - 1) * 20px) / var(--cols)); min-width: 0; }
 @media (max-width: 1100px) { .team { --cols: 4; } }
 @media (max-width: 700px) { .team { --cols: 2; } }
+/* partner contact lives at the top of the footer while #pakiety is hidden */
+footer .contact { margin: 0 0 64px; padding: clamp(20px, 3vw, 40px); }
+footer .contact .btn { display: inline-flex; }
