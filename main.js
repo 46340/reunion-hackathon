@@ -330,19 +330,74 @@ function stickyBar() {
     .observe($(".hero-bottom"));
 }
 
+// FAQ palace: one copy of the palace per question, each clipped to that question's band with torn edges;
+// every frame a band follows its question, so the palace splits exactly where an answer opens
+function palace(rows, box) {
+  const pk = $(".pkin"); if (!pk) return () => {};
+  const sums = rows.map((d) => $("summary", d)), n = rows.length, TOOTH = 7, STEPS = 14;
+  const imgs = rows.map(() => { const im = new Image(); im.src = "assets/pkin.svg"; im.alt = ""; im.decoding = "async"; pk.append(im); return im; });
+  let tops = [];
+  // edge k is shared by band k-1 (bottom) and band k (top), so the pieces fit back together
+  const edge = (y, k, back) => {
+    const pts = [];
+    for (let i = 0; i <= STEPS; i++) pts.push(`${(i / STEPS * 100).toFixed(2)}% ${(y + (((i * 5 + k * 3) % 4) - 1.5) * TOOTH / 3).toFixed(1)}px`);
+    return (back ? pts.reverse() : pts).join(",");
+  };
+  // where each band must sit for the current layout (rects, not offsetTop: the rows' slide-in transform changes offsetParent)
+  const targets = () => {
+    const y0 = box.getBoundingClientRect().top + box.clientTop;
+    return sums.map((s, i) => s.getBoundingClientRect().top - y0 - tops[i]);
+  };
+  const snap = () => { targets().forEach((y, i) => (imgs[i].style.transform = `translateY(${y}px)`)); pk.style.height = box.clientHeight + "px"; };
+  // compositor-only glide from wherever a band is now (also mid-animation) to its target, timed like the answer
+  const glide = (to) => imgs.forEach((im, i) => {
+    const from = new DOMMatrixReadOnly(getComputedStyle(im).transform).m42;
+    im.style.transform = `translateY(${to[i]}px)`;
+    if (Math.abs(from - to[i]) > .5) im.animate([{ transform: `translateY(${from}px)` }, { transform: `translateY(${to[i]}px)` }], { duration: 320, easing: "cubic-bezier(.2,.8,.2,1)" });
+  });
+  const build = () => {
+    tops = []; let h = 0;
+    sums.forEach((s) => { tops.push(h); h += s.offsetHeight + (s.parentNode.open ? 1 : 0); });  // an open row drops its 1px rule
+    pk.style.setProperty("--pk-h", h + "px");
+    pk.style.width = h * 81 / 140 + "px";   // assets/pkin.svg viewBox is 81 x 140
+    imgs.forEach((im, i) => {
+      const top = i ? edge(tops[i], i) : "0% -40px,100% -40px";
+      const bot = i < n - 1 ? edge(tops[i + 1] + 1, i + 1, true)  // 1px overlap hides the seam while closed
+      : `100% ${h + 40}px,0% ${h + 40}px`;
+      im.style.clipPath = `polygon(${top},${bot})`;
+    });
+    snap();
+  };
+  build(); document.fonts.ready.then(build); addEventListener("resize", build);
+  // called before the answer animates: read the final layout once (a closing row is measured closed for a moment), then glide
+  return (d, opening) => {
+    if (!d) return snap();
+    if (!opening) d.open = false;
+    const to = targets(), h = box.clientHeight;
+    if (!opening) d.open = true;
+    pk.style.height = h + "px";
+    glide(to);
+  };
+}
+
 function faq() {
   const box = $(".qa"); if (!box) return;
-  $$("details", box).forEach((d, i) => {
+  const rows = $$("details", box), track = palace(rows, box);
+  rows.forEach((d, i) => {
     d.classList.add("faq-row"); d.style.animationDelay = i * 60 + "ms";
+    d.addEventListener("toggle", () => reduce && track());
     const sum = $("summary", d), ans = $(".a", d);
     sum.addEventListener("click", (e) => {
       if (reduce) return;
       e.preventDefault();
       const opening = !d.open;
       if (opening) d.open = true;
-      const h = ans.scrollHeight;
-      const a = ans.animate([{ height: opening ? "0px" : h + "px", opacity: opening ? 0 : 1 }, { height: opening ? h + "px" : "0px", opacity: opening ? 1 : 0 }],
-                            { duration: 320, easing: "cubic-bezier(.2,.8,.2,1)" });
+      track(d, opening);
+      // animate the bottom padding with the height: left out, it snapped away after the close in a second step;
+      // box-sizing is border-box here, so the full height is the whole box (offsetHeight), padding and rule included
+      const pb = getComputedStyle(ans).paddingBottom, h = ans.offsetHeight + "px";
+      const shut = { height: "0px", paddingBottom: "0px", opacity: 0 }, full = { height: h, paddingBottom: pb, opacity: 1 };
+      const a = ans.animate(opening ? [shut, full] : [full, shut], { duration: 320, easing: "cubic-bezier(.2,.8,.2,1)" });
       if (!opening) a.onfinish = () => (d.open = false);
     });
   });

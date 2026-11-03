@@ -757,3 +757,26 @@ footer { padding-bottom: calc(40px + env(safe-area-inset-bottom)); }
 /* partner contact lives at the top of the footer while #pakiety is hidden */
 footer .contact { margin: 0 0 64px; padding: clamp(20px, 3vw, 40px); }
 footer .contact .btn { display: inline-flex; }
+
+  /* FAQ: the Palace of Culture runs the full height of the questions and tears exactly where an answer opens (main.js faq) */
+  .f-title { margin-bottom: clamp(20px, 4vh, 48px); }
+  .pkin-col { display: flex; flex-direction: column; align-items: center; }
+  .pkin { position: relative; width: 100%; }
+  .pkin img { position: absolute; top: 0; left: 50%; height: var(--pk-h); width: auto; translate: -50% 0; will-change: transform; }
+  .qa { position: relative; }
+  .f-grid:has(.pkin-col) { align-items: start; }
+  .pkin img { image-rendering: pixelated; }
+  /* FAQ layout: two-line title on top, then palace | questions; sized to fill one screen below the bar
+     with room for one open answer (measured 1280x720 to 1920x1080) */
+  #faq.sec { padding: clamp(16px, 3vh, 54px) 0 clamp(10px, 1.2vh, 32px); align-items: flex-start; }   /* top-aligned: an opening answer grows down */
+  #faq .f-title { font-size: clamp(38px, 6.4vh, 96px); line-height: .9; margin: 0 0 clamp(12px, 2.4vh, 36px); }
+  #faq .f-title em { display: block; }
+  #faq .qa { border-top: 0; }   /* no rules framing the list */
+  #faq .f-grid { grid-template-columns: .8fr 1.2fr; gap: clamp(32px, 5vw, 96px); }
+  #faq .pkin-col { align-items: center; }
+  #faq .q { font-size: clamp(22px, 3.4vh, 42px); padding: clamp(5px, 1vh, 16px) 0; }
+  #faq .q::after { font-size: clamp(26px, 3.6vh, 44px); }
+  #faq .a { font-size: clamp(15px, 2vh, 19px); padding-bottom: clamp(10px, 1.6vh, 24px); }
+  @media (max-width: 1100px) { #faq .pkin-col { display: none; } }
+  /* short screens: tighter rows so one open answer still fits (comes last to win over the rules above) */
+  @media (max-height: 780px) { #faq .q { font-size: 3.4vh; padding: .9vh 0; } #faq .a { font-size: 2vh; padding-bottom: 1.2vh; } }
