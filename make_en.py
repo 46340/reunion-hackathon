@@ -110,7 +110,7 @@ T = [
  ('Czy muszę mieć zespół?', 'Do I need a team?'),
  ('Nie. Możesz aplikować solo, zespoły można też sformować na miejscu podczas otwarcia.', 'No. You can apply solo, and teams can also form on site during the opening.'),
  ('Czy trzeba umieć programować?', 'Do I need to code?'),
- ('Rdzeniem wydarzenia jest praca nad prototypem, ale dobre zespoły potrzebują też designu i biznesu. Liczy się to, co wnosisz do projektu.', 'The core of the event is building a prototype, but good teams also need design and business. What counts is what you bring to the project.'),
+ ('Sercem wydarzenia jest praca nad prototypem, ale dobre zespoły potrzebują też designu i biznesu. Liczy się to, co wnosisz do projektu.', 'The core of the event is building a prototype, but good teams also need design and business. What counts is what you bring to the project.'),
  ('Czy pracujemy w nocy?', 'Do we work at night?'),
  ('Tak. Sala jest otwarta przez całą dobę, od startu w piątek o 20:00 do oddania projektów w niedzielę.', 'Yes. The room is open round the clock, from the start on Friday at 20:00 until projects are submitted on Sunday.'),
  ('Jak wygląda prezentacja projektu?', 'How does the project presentation work?'),
