@@ -24,6 +24,6 @@ Na każdym adresie poza `www.reunion-hackathon.pl` Vercel wysyła `X-Robots-Tag:
 
 1. `regulamin.html` to szkic: uzupełnić pola [DO UZUPEŁNIENIA], dać do sprawdzenia prawnikowi, potem usunąć `<meta name="robots" content="noindex">`.
 2. Google Search Console: weryfikacja domeny (rekord DNS TXT u aftermarket.pl), zgłosić `sitemap.xml`; Bing Webmaster Tools: import z Search Console.
-3. Google Analytics dopiero z banerem zgody na cookies (polityka prywatności już to opisuje).
+3. Google Analytics + Google Ads: tag `GTM-WVPJ4KWN` (GA4 `G-FTYDC75C62`) ładuje `consent.js` dopiero po „Akceptuję” (Consent Mode v2, basic). Nowa strona: dodać `<script src="/consent.js" defer></script>`.
 
 Materiały do druku: `print/` (render: `node print/render.mjs <plik>.html`, wyniki w `print/out/`, nie trafiają na stronę).
