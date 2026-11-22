@@ -34,7 +34,7 @@ Status (13 October 2026): applications are not open yet; the form will appear on
 
 ## Data
 
-- [Polish students abroad: data (Polish)](https://www.reunion-hackathon.pl/polscy-studenci-za-granica.html): how many Polish students study at universities abroad and where, with year and source for every number (UNESCO UIS, Eurostat, HESA, IIE Open Doors, FRSE). In 2024, 21,460 people from Poland were enrolled in full degree programmes abroad (UNESCO UIS).
+- [Polish students abroad: data (Polish)](https://www.reunion-hackathon.pl/polscy-studenci-za-granica.html): how many Polish students study at universities abroad and where, with year and source for every number (UNESCO UIS, Eurostat, HESA, IIE Open Doors, FRSE). English version: https://www.reunion-hackathon.pl/polish-students-abroad.html. In the UK, students from Poland fell from 10,755 in 2020/21 to 2,390 in 2024/25 (HESA). In 2024, 21,460 people from Poland were enrolled in full degree programmes abroad (UNESCO UIS).
 
 ## Optional
 

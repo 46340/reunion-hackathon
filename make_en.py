@@ -47,6 +47,7 @@ T = [
  ('<b>Szwajcaria</b>', '<b>Switzerland</b>'), ('<b>Włochy</b>', '<b>Italy</b>'), ('<b>Hiszpania</b>', '<b>Spain</b>'),
  (' stud.</span>', ' students</span>'),
  ('WAW · Warszawa', 'WAW · Warsaw'),
+ ('<a href="polscy-studenci-za-granica.html">Wszystkie liczby i źródła →</a>', '<a href="polish-students-abroad.html">All numbers and sources →</a>'),
  ('W tych siedmiu krajach studiuje łącznie ponad 12 tys. polskich studentów. Źródła: Eurostat 2024, Nuffic i HESA 2024/25.', 'More than 12,000 Polish students study in these seven countries. Sources: Eurostat 2024, Nuffic and HESA 2024/25.'),
  ('Reunion Hackathon to 48-godzinny hackathon AI w Warszawie, 5–7 lutego 2027, dla 100 polskich studentów i absolwentów zagranicznych uczelni. Udział jest bezpłatny.', 'Reunion Hackathon is a 48-hour AI hackathon in Warsaw, 5–7 February 2027, for 100 Polish students and graduates of universities abroad. Taking part is free.'),
  ('"description": "Sieć polskich studentów za granicą."', '"description": "Network of Polish students abroad."'),
@@ -131,7 +132,7 @@ T = [
  ('>Formularz wkrótce<', '>Form coming soon<'),
  ('aria-label="Global Polish Student Society, strona organizatora"', 'aria-label="Global Polish Student Society, organiser\'s website"'),
  ('<span class="lbl">Organizator</span>', '<span class="lbl">Organiser</span>'),
- ('>Regulamin (wersja robocza)<', '>Terms (draft)<'), ('>Polityka prywatności<', '>Privacy policy<'), ('>Polscy studenci za granicą: liczby<', ' hreflang="pl">Polish students abroad: data (PL)<'),
+ ('>Regulamin (wersja robocza)<', '>Terms (draft)<'), ('>Polityka prywatności<', '>Privacy policy<'), ('href="polscy-studenci-za-granica.html">Polscy studenci za granicą: liczby<', 'href="polish-students-abroad.html">Polish students abroad: data<'),
  ('Reunion Hackathon, Warszawa, 5–7 lutego 2027</p>', 'Reunion Hackathon, Warsaw, 5–7 February 2027</p>'),
 ]
 for a, b in T:
