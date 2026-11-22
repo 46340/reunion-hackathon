@@ -1,5 +1,6 @@
-/* Cookie consent + Google tag (GA4 / Google Ads), Consent Mode v2 in basic mode:
-   the Google tag is not loaded at all until the visitor clicks "Akceptuję" (privacy policy § 8 promises exactly that).
+/* Cookie consent + Google tag (GA4 / Google Ads), Consent Mode v2 in advanced mode:
+   the Google tag always loads (so Google can detect it) with all storage denied, i.e. no cookies and only cookieless pings;
+   cookies start only after "Akceptuję" (privacy policy § 8).
    The choice is kept in localStorage; "Ustawienia cookies" in the footer reopens the banner. */
 (() => {
   const TAG_ID = "GTM-5K3ZTKQG";
@@ -16,17 +17,13 @@
   function gtag() { dataLayer.push(arguments); }
   gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied" });
 
-  let loaded = false;
-  const grant = () => {
-    gtag("consent", "update", { ad_storage: "granted", ad_user_data: "granted", ad_personalization: "granted", analytics_storage: "granted" });
-    if (loaded) return;
-    loaded = true;
-    gtag("js", new Date());
-    const s = document.createElement("script");
-    s.async = true;
-    s.src = "https://www.googletagmanager.com/gtm.js?id=" + TAG_ID;
-    document.head.append(s);
-  };
+  const setConsent = (v) => gtag("consent", "update", { ad_storage: v, ad_user_data: v, ad_personalization: v, analytics_storage: v });
+  const grant = () => setConsent("granted");
+  gtag("js", new Date());
+  const tag = document.createElement("script");
+  tag.async = true;
+  tag.src = "https://www.googletagmanager.com/gtm.js?id=" + TAG_ID;
+  document.head.append(tag);
   const dropGoogleCookies = () => {
     document.cookie.split(";").map((c) => c.split("=")[0].trim()).filter((n) => /^(_ga|_gid|_gcl)/.test(n)).forEach((n) => {
       for (const d of ["", "; domain=" + location.hostname, "; domain=." + location.hostname.replace(/^www\./, "")])
@@ -52,8 +49,7 @@
   const choose = (v) => {
     save(v);
     if (v === "granted") grant();
-    else if (loaded) { dropGoogleCookies(); location.reload(); return; }   // withdrawn after the tag ran: start clean
-    else dropGoogleCookies();
+    else { setConsent("denied"); dropGoogleCookies(); }
     box?.remove(); box = null;
   };
   const show = () => {
