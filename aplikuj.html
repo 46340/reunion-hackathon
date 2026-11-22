@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<!-- Google tag (GA4 + Google Ads); Consent Mode v2: storage denied until "Akceptuję" in consent.js -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied'});
+  try { if (localStorage.getItem('rh-consent') === 'granted') gtag('consent', 'update', {ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted'}); } catch (e) {}
+  gtag('js', new Date());
+</script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5K3ZTKQG"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aplikuj · Reunion Hackathon</title>
+<meta name="description" content="Zgłoszenie na Reunion Hackathon, Warszawa, 5–7 lutego 2027.">
+<!-- Provisional form: hidden from search until the final questions are in. -->
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#C8102E">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="assets/icon-192.png" type="image/png" sizes="192x192">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Barlow:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* Application form. Posts to globalpolsoc.com/api/forms (action "reunion", GPSS database); CVs go straight
+   to Storage via a one-off signed URL. Four steps like the GPSS mentoring form, drawn as a flight to WAW. */
+:root{--red:#C8102E;--red-deep:#8E0B20;--paper:#FBF9F5;--sand:#F1ECE3;--ink:#141210;--muted:#5d5852;--line:#d8d0c4;--err:#B3261E}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 Barlow,system-ui,sans-serif;overflow-wrap:anywhere}
+a{color:var(--red);text-decoration:underline;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.top{background:var(--red);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 16px}
+.top a{color:#fff}
+.brand-row{display:flex;align-items:center;gap:14px}
+.brand-row a{display:flex;align-items:center;min-height:44px;text-decoration:none}
+.brand svg{width:30px;height:30px;display:block}
+.by{gap:10px;padding-left:14px;border-left:1px solid #fff}
+.by img{height:30px;width:auto;display:block}
+.by span{font:800 14px/1.1 "Big Shoulders Display",sans-serif;text-transform:uppercase;letter-spacing:.06em;color:#fff;max-width:7em}
+.back{display:inline-flex;align-items:center;min-height:44px;font:600 16px Barlow,sans-serif;white-space:nowrap}
+main{max-width:calc(720px + 32px);margin:0 auto;padding:40px 16px 64px}
+.lbl{font:500 12px/1.4 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.14em;margin:0;color:var(--muted)}
+h1{font:900 clamp(44px,8vw,80px)/1 "Big Shoulders Display",sans-serif;text-transform:uppercase;margin:8px 0 12px}
+h1 span{color:var(--red)}
+.lead{margin:0 0 32px;color:var(--muted)}
+
+/* Split-flap step board: ink housing, one tile per letter. */
+.board{background:var(--ink);padding:14px 14px 16px;margin:0 0 28px;box-shadow:0 2px 0 var(--red-deep)}
+.board .row{display:flex;flex-wrap:wrap;gap:3px}
+.board .t{display:inline-grid;place-items:center;width:1.45em;height:1.9em;background:#24211e;color:#fff;font:500 clamp(16px,4.6vw,26px)/1 "IBM Plex Mono",monospace;text-transform:uppercase;position:relative}
+.board .t::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:#0b0a09}
+.board .t.r{color:#ff4d63}
+.board .sp{width:.7em}
+.route{display:grid;grid-template-columns:repeat(4,1fr);margin-top:14px;font:500 11px/1.3 "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.08em;color:#a8a29b}
+.route li{list-style:none;position:relative;padding-top:16px}
+.route li::before{content:"";position:absolute;top:4px;left:0;right:0;height:2px;background:#3a3632}
+.route li::after{content:"";position:absolute;top:0;left:0;width:10px;height:10px;border-radius:50%;background:#3a3632}
+.route li.on{color:#fff}.route li.on::before,.route li.on::after{background:var(--red)}
+.route ol{margin:0;padding:0;display:contents}
+
+form{display:grid;gap:22px}
+.step{display:grid;gap:22px;border:0;margin:0;padding:0;min-width:0}
+.step[hidden]{display:none}
+.step>legend{font:800 30px/1.1 "Big Shoulders Display",sans-serif;text-transform:uppercase;padding:0;margin:0 0 4px}
+.field{display:grid;gap:6px}
+label,.q{font-weight:600}
+.hint{color:var(--muted);font-size:15px}
+input[type=text],input[type=email],input[type=tel],select,textarea{width:100%;min-height:48px;padding:10px 12px;font:inherit;color:var(--ink);background:#fff;border:1.5px solid var(--ink);border-radius:0}
+textarea{min-height:7rem;resize:vertical}
+input[type=file]{font:inherit;min-height:44px}
+:is(input,select,textarea):focus-visible{outline:3px solid var(--red);outline-offset:0;border-color:var(--red)}
+:is(input,select,textarea):user-invalid{border-color:var(--err)}
+.error-msg{display:none;color:var(--err);font-size:15px;margin:0}
+:is(input,select,textarea):user-invalid ~ .error-msg{display:block}
+.choices{display:grid;gap:8px;border:0;margin:0;padding:0}
+.choices legend{font-weight:600;padding:0;margin-bottom:6px}
+.opt{display:flex;align-items:center;gap:12px;min-height:48px;padding:8px 12px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font-weight:400}
+.opt:has(input:checked){border-color:var(--red);box-shadow:inset 4px 0 0 var(--red)}
+input[type=radio],input[type=checkbox]{accent-color:var(--red);width:20px;height:20px;flex:none;margin:0}
+.consent{align-items:flex-start;border:0;background:none;padding:4px 0;min-height:0}
+.consent input{margin-top:3px}
+.consent:has(input:checked){box-shadow:none}
+.req{color:var(--red)}
+.teamx{display:grid;gap:6px;margin-top:6px}.teamx[hidden]{display:none}
+.nav{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{min-height:52px;padding:0 28px;font:800 20px/1 "Big Shoulders Display",sans-serif;text-transform:uppercase;letter-spacing:.04em;color:#fff;background:var(--red);border:0;cursor:pointer;box-shadow:0 3px 0 var(--red-deep)}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--red-deep)}
+.btn:disabled{opacity:.6;cursor:progress}
+.btn.ghost{color:var(--ink);background:transparent;box-shadow:inset 0 0 0 1.5px var(--ink)}
+.status{min-height:1.5em;margin:0;font-weight:600}
+.status.err{color:var(--err)}
+.done{display:grid;gap:14px}
+.done[hidden]{display:none}
+.done h2{font:900 clamp(40px,7vw,64px)/1 "Big Shoulders Display",sans-serif;text-transform:uppercase;margin:0}
+.done h2 span{color:var(--red)}
+.done p{margin:0}
+footer{border-top:1px solid var(--ink);max-width:calc(720px + 32px);margin:0 auto;padding:24px 16px 40px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-size:16px}
+footer a{display:inline-block;padding:10px 0}
+@media(min-width:701px){.by span{font-size:20px;max-width:none}.top{padding:8px 56px}main,footer{padding-left:56px;padding-right:56px;max-width:calc(720px + 112px)}}
+@media(prefers-reduced-motion:no-preference){.step{animation:in .2s ease-out}@keyframes in{from{opacity:0;transform:translateY(6px)}}}
+</style>
+</head>
+<body>
+<div class="top"><div class="brand-row"><a class="brand" href="./" aria-label="Reunion Hackathon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M21.59 2.01 A22.13 22.13 0 0 0 23.40 46.12" fill="none" stroke="#fff" stroke-width="3.75" stroke-linecap="round"/><path d="M33.58 43.94 A22.13 22.13 0 0 0 32.84 3.72" fill="none" stroke="#fff" stroke-width="3.75" stroke-linecap="round"/><circle cx="27.72" cy="24" r="4.39" fill="#fff"/></svg></a><a class="by" href="https://globalpolsoc.com" target="_blank" rel="noopener" aria-label="Organizator: Global Polish Student Society"><picture><source srcset="assets/logos/gpss-planet-white.webp" type="image/webp"><img width="505" height="512" src="assets/logos/gpss-planet-white.png" alt="Logo GPSS"></picture><span>Global Polish Student Society</span></a></div><a class="back" href="./">← Strona główna</a></div>
+<main>
+  <p class="lbl">Warszawa · 5–7 lutego 2027</p>
+  <h1>Aplikuj na <span>Reunion</span></h1>
+  <p class="lead">Cztery krótkie kroki. Pola z <span class="req">*</span> są wymagane. Szkic zapisuje się w tej przeglądarce.</p>
+
+  <div class="board" aria-hidden="true"><div class="row" id="flap"></div>
+    <ol class="route" id="route"><li>Ty</li><li>Studia</li><li>Zespół</li><li>WAW</li></ol>
+  </div>
+
+  <noscript><p class="status err">Formularz potrzebuje JavaScriptu. Włącz go albo napisz do maks.rokosz@globalpolsoc.com.</p></noscript>
+
+  <form id="f" novalidate>
+    <fieldset class="step" data-step="1" data-name="O TOBIE">
+      <legend>O Tobie</legend>
+      <div class="field">
+        <label for="full_name">Imię i nazwisko <span class="req">*</span></label>
+        <input type="text" id="full_name" name="full_name" required maxlength="200" autocomplete="name" data-error="e-name">
+        <p id="e-name" class="error-msg">Błąd: wpisz imię i nazwisko.</p>
+      </div>
+      <div class="field">
+        <label for="email">E-mail <span class="req">*</span></label>
+        <span id="h-email" class="hint">Tu wyślemy wynik rekrutacji.</span>
+        <input type="email" id="email" name="email" required maxlength="200" autocomplete="email" aria-describedby="h-email" data-error="e-email">
+        <p id="e-email" class="error-msg">Błąd: wpisz adres w formacie ty@przyklad.pl.</p>
+      </div>
+      <div class="field">
+        <label for="phone">Telefon</label>
+        <span id="h-phone" class="hint">Tylko do kontaktu w dniu wydarzenia.</span>
+        <input type="tel" id="phone" name="phone" maxlength="50" autocomplete="tel" aria-describedby="h-phone">
+      </div>
+    </fieldset>
+
+    <fieldset class="step" data-step="2" data-name="STUDIA" hidden>
+      <legend>Studia</legend>
+      <div class="field">
+        <label for="university">Uczelnia <span class="req">*</span></label>
+        <input type="text" id="university" name="university" required maxlength="200" autocomplete="organization" placeholder="np. Imperial College London" data-error="e-uni">
+        <p id="e-uni" class="error-msg">Błąd: wpisz nazwę uczelni.</p>
+      </div>
+      <div class="field">
+        <label for="country">Kraj studiów</label>
+        <input type="text" id="country" name="country" maxlength="100" autocomplete="country-name" placeholder="np. Wielka Brytania">
+      </div>
+      <div class="field">
+        <label for="level">Etap <span class="req">*</span></label>
+        <select id="level" name="level" required data-error="e-level">
+          <option value="">Wybierz</option>
+          <option value="bachelor">Licencjat / inżynier</option>
+          <option value="master">Magisterka</option>
+          <option value="phd">Doktorat</option>
+          <option value="graduate">Absolwent(ka)</option>
+          <option value="other">Coś innego</option>
+        </select>
+        <p id="e-level" class="error-msg">Błąd: wybierz jedną z opcji.</p>
+      </div>
+      <div class="field">
+        <label for="study">Kierunek i rok</label>
+        <input type="text" id="study" name="study" maxlength="200" placeholder="np. Computer Science, 3 rok">
+      </div>
+      <div class="field">
+        <label for="links">GitHub, LinkedIn albo portfolio</label>
+        <input type="text" id="links" name="links" maxlength="500" inputmode="url" placeholder="https://github.com/…">
+      </div>
+      <div class="field">
+        <label for="cv">CV (PDF, do 5 MB)</label>
+        <span id="h-cv" class="hint">Nieobowiązkowe. Widzą je tylko organizatorzy.</span>
+        <input type="file" id="cv" name="cv" accept="application/pdf,.pdf" aria-describedby="h-cv">
+      </div>
+    </fieldset>
+
+    <fieldset class="step" data-step="3" data-name="ZESPÓŁ" hidden>
+      <legend>Zespół</legend>
+      <fieldset class="choices">
+        <legend>Jak startujesz? <span class="req">*</span></legend>
+        <label class="opt"><input type="radio" name="team" value="have" required> Mam zespół</label>
+        <label class="opt"><input type="radio" name="team" value="looking"> Szukam zespołu</label>
+        <label class="opt"><input type="radio" name="team" value="solo"> Jeszcze nie wiem</label>
+        <div class="teamx" id="teamx" hidden>
+          <label for="team_name">Nazwa zespołu</label>
+          <input type="text" id="team_name" name="team_name" maxlength="100">
+          <label for="team_emails">E-maile pozostałych osób</label>
+          <span id="h-mates" class="hint">Do 3 adresów, po przecinku. Każda osoba aplikuje też sama.</span>
+          <input type="text" id="team_emails" name="team_emails" aria-describedby="h-mates" autocomplete="off">
+        </div>
+      </fieldset>
+      <div class="field">
+        <label for="skills">Co umiesz?</label>
+        <span id="h-skills" class="hint">Np. Python, ML, produkt, design, prawo.</span>
+        <textarea id="skills" name="skills" maxlength="2000" aria-describedby="h-skills"></textarea>
+      </div>
+      <div class="field">
+        <label for="motivation">Dlaczego chcesz przyjechać?</label>
+        <textarea id="motivation" name="motivation" maxlength="2000"></textarea>
+      </div>
+      <fieldset class="choices">
+        <legend>Pierwszy hackathon? <span class="req">*</span></legend>
+        <label class="opt"><input type="radio" name="first" value="yes" required> Tak</label>
+        <label class="opt"><input type="radio" name="first" value="no"> Nie</label>
+      </fieldset>
+    </fieldset>
+
+    <fieldset class="step" data-step="4" data-name="PRZYLOT WAW" hidden>
+      <legend>Przylot</legend>
+      <div class="field">
+        <label for="diet">Dieta</label>
+        <input type="text" id="diet" name="diet" maxlength="200" placeholder="np. wegetariańska, bez glutenu">
+      </div>
+      <div class="field">
+        <label for="accessibility">Czy potrzebujesz udogodnień?</label>
+        <input type="text" id="accessibility" name="accessibility" maxlength="500" placeholder="np. dostęp bez schodów">
+      </div>
+      <div class="field">
+        <label for="source">Skąd wiesz o Reunion?</label>
+        <select id="source" name="source">
+          <option value="">Wybierz</option>
+          <option value="social">Media społecznościowe</option>
+          <option value="ads">Reklama</option>
+          <option value="uni">Uczelnia albo polskie stowarzyszenie</option>
+          <option value="gpss">GPSS</option>
+          <option value="friends">Od znajomych</option>
+          <option value="other">Skądinąd</option>
+        </select>
+      </div>
+      <label class="opt consent"><input type="checkbox" id="adult" name="adult" required>
+        <span>Mam ukończone 18 lat. <span class="req">*</span></span></label>
+      <label class="opt consent"><input type="checkbox" id="image" name="image">
+        <span>Zgadzam się na zdjęcia i nagrania z moim wizerunkiem w materiałach o wydarzeniu. Nieobowiązkowe.</span></label>
+      <label class="opt consent"><input type="checkbox" id="gdpr" name="gdpr" required>
+        <span>Zgadzam się na przetwarzanie moich danych, w tym CV i informacji o diecie oraz udogodnieniach, jeśli je podaję, w celu rekrutacji i organizacji Reunion Hackathon. Administratorem jest Fundacja Global Polish Student Society, zasady opisuje <a href="polityka-prywatnosci.html" target="_blank" rel="noopener">polityka prywatności</a>. <span class="req">*</span></span></label>
+    </fieldset>
+
+    <div class="nav">
+      <button class="btn ghost" type="button" id="prev" hidden>Wstecz</button>
+      <button class="btn" type="submit" id="go">Dalej</button>
+    </div>
+    <p class="status" id="st" role="status" aria-live="polite"></p>
+  </form>
+
+  <section class="done" id="done" hidden tabindex="-1" aria-labelledby="dh">
+    <p class="lbl">Status: przyjęte</p>
+    <h2 id="dh">Do zobaczenia <span>w Warszawie</span></h2>
+    <p>Zgłoszenie dotarło. Wynik rekrutacji wyślemy mailem.</p>
+    <a class="back" href="./">← Strona główna</a>
+  </section>
+</main>
+<footer><p>© 2026 Global Polish Student Society · Reunion Hackathon</p><a href="polityka-prywatnosci.html">Polityka prywatności</a></footer>
+<script>
+const API = "https://globalpolsoc.com/api/forms";
+const SB = "https://jfudfltemgpkidvihska.supabase.co";
+const DRAFT = "rh-apply-draft";
+const f = document.getElementById("f"), st = document.getElementById("st"), go = document.getElementById("go"), prev = document.getElementById("prev");
+const steps = [...f.querySelectorAll(".step")];
+let cur = 0;
+
+const store = (fn) => { try { return fn(localStorage); } catch { return null; } };
+const track = (name, params) => { if (typeof gtag === "function") gtag("event", name, params); };
+
+/* Split-flap header: the step name flips in letter by letter. */
+const flap = document.getElementById("flap");
+function board(text) {
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  flap.replaceChildren(...[...`${cur + 1}/4 ${text}`].map((ch, i) => {
+    const s = document.createElement("span");
+    s.className = ch === " " ? "sp" : "t" + (i < 3 ? " r" : "");
+    if (ch === " ") return s;
+    if (reduce) { s.textContent = ch; return s; }
+    const glyphs = "ABCDEFGHIJKLMNOPRSTUWZ0123456789";
+    let n = 4 + i; const tick = () => { s.textContent = n-- > 0 ? glyphs[(Math.random() * glyphs.length) | 0] : ch; if (n >= 0) setTimeout(tick, 45); };
+    tick();
+    return s;
+  }));
+}
+
+function show(i, focus) {
+  cur = i;
+  steps.forEach((s, k) => { s.hidden = k !== i; });
+  document.querySelectorAll("#route li").forEach((li, k) => li.classList.toggle("on", k <= i));
+  board(steps[i].dataset.name);
+  prev.hidden = i === 0;
+  go.textContent = i === steps.length - 1 ? "Wyślij zgłoszenie" : "Dalej";
+  st.className = "status"; st.textContent = "";
+  if (focus) steps[i].querySelector("input,select,textarea")?.focus();
+  track("apply_step", { step: i + 1, step_name: steps[i].dataset.name.toLowerCase() });
+}
+
+/* Error text joins aria-describedby only while the field is invalid (after the user left it or tried to go on). */
+const link = (el, on) => {
+  const id = el.dataset.error; if (!id) return;
+  const ids = (el.getAttribute("aria-describedby") || "").split(/\s+/).filter((x) => x && x !== id);
+  if (on) ids.push(id);
+  ids.length ? el.setAttribute("aria-describedby", ids.join(" ")) : el.removeAttribute("aria-describedby");
+  el.setAttribute("aria-invalid", on ? "true" : "false");
+};
+f.addEventListener("focusout", (e) => { if (e.target.dataset?.error) link(e.target, !e.target.validity.valid); });
+f.addEventListener("input", (e) => { if (e.target.getAttribute("aria-invalid") === "true") link(e.target, !e.target.validity.valid); });
+
+const mates = () => f.team_emails.value.split(/[,;\s]+/).map((x) => x.trim()).filter(Boolean);
+const err = (msg, el) => { st.className = "status err"; st.textContent = msg; el?.focus(); return false; };
+
+function stepValid(i) {
+  const fields = [...steps[i].querySelectorAll("input,select,textarea")];
+  const bad = fields.filter((el) => !el.validity.valid);
+  fields.forEach((el) => link(el, !el.validity.valid));
+  if (bad.length) { bad[0].reportValidity(); bad[0].focus(); return false; }
+  if (i === 1) {
+    const file = f.cv.files[0];
+    if (file && (file.size > 5 * 1024 * 1024 || !/\.pdf$/i.test(file.name))) return err("CV musi być plikiem PDF do 5 MB.", f.cv);
+  }
+  if (i === 2 && f.team.value === "have") {
+    const m = mates();
+    if (m.length > 3 || m.some((x) => !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(x))) return err("Błąd: podaj do 3 poprawnych adresów e-mail.", f.team_emails);
+  }
+  return true;
+}
+
+/* Draft: text and choices only (never the CV), restored on return, cleared after sending. */
+const DRAFT_SKIP = new Set(["cv"]);
+function saveDraft() {
+  const data = {};
+  for (const el of f.elements) {
+    if (!el.name || DRAFT_SKIP.has(el.name)) continue;
+    if (el.type === "radio") { if (el.checked) data[el.name] = el.value; }
+    else if (el.type === "checkbox") data[el.name] = el.checked;
+    else data[el.name] = el.value;
+  }
+  store((s) => s.setItem(DRAFT, JSON.stringify({ step: cur, data })));
+}
+function loadDraft() {
+  const d = store((s) => JSON.parse(s.getItem(DRAFT) || "null"));
+  if (!d || typeof d !== "object" || !d.data) return 0;
+  for (const [k, v] of Object.entries(d.data)) {
+    const el = f.elements[k]; if (!el || DRAFT_SKIP.has(k)) continue;
+    if (el instanceof RadioNodeList) el.value = v;
+    else if (el.type === "checkbox") el.checked = v === true;
+    else el.value = String(v);
+  }
+  document.getElementById("teamx").hidden = f.team.value !== "have";
+  return Math.min(Math.max(Number(d.step) || 0, 0), steps.length - 1);
+}
+f.addEventListener("input", saveDraft);
+f.addEventListener("change", (e) => {
+  if (e.target.name === "team") document.getElementById("teamx").hidden = f.team.value !== "have";
+  saveDraft();
+});
+
+/* First-touch attribution (UTM, gclid, landing page) kept for this browser session by consent.js. */
+/* The Google Ads click id identifies an ad click, so it goes with the application only after "Akceptuję". */
+const attribution = () => {
+  const a = store(() => JSON.parse(sessionStorage.getItem("rh-attr") || "{}")) || {};
+  if (store((s) => s.getItem("rh-consent")) !== "granted") delete a.gclid;
+  return a;
+};
+
+const post = async (body) => {
+  const res = await fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw Object.assign(new Error(data.error || "HTTP " + res.status), { status: res.status });
+  return data;
+};
+async function uploadCv(file) {
+  const { bucket, path, token, contentType } = await post({ action: "cv", data: { form: "reunion", name: file.name, size: file.size } });
+  const res = await fetch(`${SB}/storage/v1/object/upload/sign/${bucket}/${path}?token=${encodeURIComponent(token)}`, {
+    method: "PUT", headers: { "Content-Type": contentType, "x-upsert": "false" }, body: new Blob([file], { type: contentType }),
+  });
+  if (!res.ok) throw Object.assign(new Error("CV upload failed"), { status: res.status });
+  return path;
+}
+const message = (e) =>
+  e.status === 429 ? "Za dużo prób z tej sieci. Spróbuj za godzinę." :
+  /CV|PDF|File/.test(e.message) ? "CV musi być plikiem PDF do 5 MB." :
+  "Nie udało się wysłać. Spróbuj jeszcze raz za chwilę.";
+
+prev.addEventListener("click", () => show(cur - 1, true));
+
+f.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  if (!stepValid(cur)) return;
+  if (cur < steps.length - 1) { show(cur + 1, true); saveDraft(); return; }
+  const file = f.cv.files[0];
+  go.disabled = prev.disabled = true; st.className = "status"; st.textContent = file ? "Wysyłam CV…" : "Wysyłam…";
+  try {
+    const cv_path = file ? await uploadCv(file) : null;
+    st.textContent = "Wysyłam…";
+    const have = f.team.value === "have";
+    await post({ action: "reunion", data: {
+      full_name: f.full_name.value.trim(), email: f.email.value.trim(), phone: f.phone.value.trim(),
+      university: f.university.value.trim(), country: f.country.value.trim(), level: f.level.value, study: f.study.value.trim(),
+      links: f.links.value.trim(), cv_path,
+      team: f.team.value, team_name: have ? f.team_name.value.trim() : "", team_emails: have ? mates() : [],
+      skills: f.skills.value.trim(), motivation: f.motivation.value.trim(), first_hackathon: f.first.value === "yes",
+      diet: f.diet.value.trim(), accessibility: f.accessibility.value.trim(), source: f.source.value,
+      attribution: attribution(),
+      adult: f.adult.checked, gdpr_consent: f.gdpr.checked, image_consent: f.image.checked,
+    } });
+    track("sign_up", { method: "application_form" });
+    store((s) => s.removeItem(DRAFT));
+    f.hidden = true; document.querySelector(".board").hidden = true; st.textContent = "";
+    const done = document.getElementById("done"); done.hidden = false; done.focus();
+  } catch (x) {
+    st.className = "status err"; st.textContent = message(x); go.disabled = prev.disabled = false;
+  }
+});
+
+show(loadDraft(), false);
+</script>
+<script src="/consent.js" defer></script>
+</body>
+</html>

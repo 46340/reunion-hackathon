@@ -78,8 +78,17 @@
     if (a.href.startsWith("mailto:")) gtag("event", "generate_lead", { method: "email", link_url: a.href.split("?")[0] });
     else if (/^\s*(Aplikuj|Apply)/i.test(a.textContent)) gtag("event", "apply_click", { link_url: a.href });
   });
-  // Application form on the site: any <form> submit counts as sign_up (the main Google Ads conversion).
-  document.addEventListener("submit", (e) => gtag("event", "sign_up", { method: "application_form", form_id: e.target.id || "" }));
+  // sign_up (the main Google Ads conversion) is sent by aplikuj.html only after the server accepted the application.
+  // First-touch attribution for that form: UTM tags, Google Ads click id, landing page, referrer; this tab only.
+  try {
+    if (!sessionStorage.getItem("rh-attr")) {
+      const q = new URLSearchParams(location.search), attr = {};
+      for (const k of ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid"]) if (q.get(k)) attr[k] = q.get(k).slice(0, 300);
+      attr.landing = location.pathname.slice(0, 300);
+      if (document.referrer && !document.referrer.startsWith(location.origin)) attr.referrer = document.referrer.slice(0, 300);
+      sessionStorage.setItem("rh-attr", JSON.stringify(attr));
+    }
+  } catch { /* storage blocked: the form sends no attribution */ }
 
   const v = read();
   if (v === "granted") grant();
