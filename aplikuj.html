@@ -115,6 +115,13 @@ footer a{display:inline-block;padding:10px 0}
     <ol class="route" id="route"><li>Ty</li><li>Studia</li><li>Zespół</li><li>WAW</li></ol>
   </div>
 
+  <section class="done" id="closed" hidden aria-labelledby="ch">
+    <p class="lbl">Status: wkrótce</p>
+    <h2 id="ch">Rekrutacja <span>ruszy wkrótce</span></h2>
+    <p>Zgłoszenia jeszcze nie są przyjmowane. Datę otwarcia podamy na stronie głównej.</p>
+    <a class="back" href="./">← Strona główna</a>
+  </section>
+
   <noscript><p class="status err">Formularz potrzebuje JavaScriptu. Włącz go albo napisz do maks.rokosz@globalpolsoc.com.</p></noscript>
 
   <form id="f" novalidate>
@@ -409,7 +416,14 @@ f.addEventListener("submit", async (e) => {
   }
 });
 
-show(loadDraft(), false);
+/* Applications are closed until OPEN is true; the team previews the form with ?podglad. */
+const OPEN = false;
+if (!OPEN && !new URLSearchParams(location.search).has("podglad")) {
+  f.hidden = true; document.querySelector(".board").hidden = true; document.querySelector(".lead").hidden = true;
+  document.getElementById("closed").hidden = false;
+} else {
+  show(loadDraft(), false);
+}
 </script>
 <script src="/consent.js" defer></script>
 </body>
