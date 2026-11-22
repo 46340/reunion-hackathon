@@ -3,7 +3,6 @@
    cookies start only after "Akceptuję" (privacy policy § 8).
    The choice is kept in localStorage; "Ustawienia cookies" in the footer reopens the banner. */
 (() => {
-  const TAG_ID = "GTM-5K3ZTKQG";
   const KEY = "rh-consent";
   const en = document.documentElement.lang === "en";
   const T = en
@@ -13,17 +12,11 @@
   const read = () => { try { return localStorage.getItem(KEY); } catch { return null; } };
   const save = (v) => { try { localStorage.setItem(KEY, v); } catch { /* private mode: ask again next visit */ } };
 
+  // The Google tag itself and the consent defaults sit inline in each page's <head>.
   window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments); }
-  gtag("consent", "default", { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied" });
-
   const setConsent = (v) => gtag("consent", "update", { ad_storage: v, ad_user_data: v, ad_personalization: v, analytics_storage: v });
   const grant = () => setConsent("granted");
-  gtag("js", new Date());
-  const tag = document.createElement("script");
-  tag.async = true;
-  tag.src = "https://www.googletagmanager.com/gtm.js?id=" + TAG_ID;
-  document.head.append(tag);
   const dropGoogleCookies = () => {
     document.cookie.split(";").map((c) => c.split("=")[0].trim()).filter((n) => /^(_ga|_gid|_gcl)/.test(n)).forEach((n) => {
       for (const d of ["", "; domain=" + location.hostname, "; domain=." + location.hostname.replace(/^www\./, "")])
