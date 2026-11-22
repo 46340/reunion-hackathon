@@ -26,16 +26,19 @@
 
   const css = document.createElement("style");
   css.textContent = `
-    .rh-consent { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 60; max-width: 560px; margin-inline: auto;
-      background: #141210; color: #fff; border: 1px solid rgba(255,255,255,.18); padding: 16px 20px;
-      font: 400 15px/1.5 "Barlow", system-ui, sans-serif; box-shadow: 0 8px 24px rgba(0,0,0,.3); }
-    .rh-consent p { margin: 0 0 12px; }
-    .rh-consent a { color: #fff; text-decoration: underline; }
-    .rh-consent .row { display: flex; gap: 8px; flex-wrap: wrap; }
-    .rh-consent button { min-height: 44px; padding: 0 20px; font: 600 15px "Barlow", system-ui, sans-serif; cursor: pointer;
-      border: 1px solid #fff; background: transparent; color: #fff; }
-    .rh-consent button.yes { background: #C8102E; border-color: #C8102E; }
-    .rh-consent button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }`;
+    .rh-consent { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 60; max-width: 420px;
+      background: #FBF9F5; color: #141210; border-top: 4px solid #C8102E; padding: 20px 24px 24px;
+      font: 400 15px/1.5 "Barlow", system-ui, sans-serif; box-shadow: 0 12px 32px rgba(20,18,16,.28); }
+    .rh-consent .lbl { margin: 0 0 8px; font: 500 12px/1.4 "IBM Plex Mono", ui-monospace, monospace; letter-spacing: .22em; text-transform: uppercase; color: #C8102E; }
+    .rh-consent p { margin: 0 0 16px; }
+    .rh-consent a { color: #141210; text-decoration: underline; text-underline-offset: 3px; }
+    .rh-consent .row { display: flex; gap: 8px; }
+    .rh-consent button { flex: 1; min-height: 48px; padding: 0 16px; cursor: pointer; border: 1px solid #141210; background: transparent; color: #141210;
+      font: 600 13px "IBM Plex Mono", ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; }
+    .rh-consent button.yes { background: #C8102E; border-color: #C8102E; color: #fff; }
+    .rh-consent button:hover { filter: brightness(.92); }
+    .rh-consent button:focus-visible { outline: 2px solid #C8102E; outline-offset: 2px; }
+    @media (min-width: 701px) { .rh-consent { left: 24px; right: auto; bottom: 24px; } }`;
   document.head.append(css);
 
   let box = null;
@@ -51,7 +54,7 @@
     box.className = "rh-consent";
     box.setAttribute("role", "dialog");
     box.setAttribute("aria-label", T.settings);
-    box.innerHTML = `<p>${T.text} <a href="/polityka-prywatnosci.html#par-8">${T.more}</a></p>
+    box.innerHTML = `<p class="lbl">Cookies</p><p>${T.text} <a href="/polityka-prywatnosci.html#par-8">${T.more}</a></p>
       <div class="row"><button type="button" class="yes">${T.yes}</button><button type="button" class="no">${T.no}</button></div>`;
     box.querySelector(".yes").onclick = () => choose("granted");
     box.querySelector(".no").onclick = () => choose("denied");
