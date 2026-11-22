@@ -2,7 +2,7 @@
    the Google tag is not loaded at all until the visitor clicks "Akceptuję" (privacy policy § 8 promises exactly that).
    The choice is kept in localStorage; "Ustawienia cookies" in the footer reopens the banner. */
 (() => {
-  const TAG_ID = "GTM-WVPJ4KWN";
+  const TAG_ID = "GTM-5K3ZTKQG";
   const KEY = "rh-consent";
   const en = document.documentElement.lang === "en";
   const T = en
