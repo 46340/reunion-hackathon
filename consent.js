@@ -68,6 +68,14 @@
     (policy ? policy.parentElement : footer).append(a);
   }
 
+  // Conversion events for GA4 key events -> Google Ads conversions (sent cookieless until consent).
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest("a");
+    if (!a) return;
+    if (a.href.startsWith("mailto:")) gtag("event", "generate_lead", { method: "email", link_url: a.href.split("?")[0] });
+    else if (/^\s*(Aplikuj|Apply)/i.test(a.textContent)) gtag("event", "apply_click", { link_url: a.href });
+  });
+
   const v = read();
   if (v === "granted") grant();
   else if (v !== "denied") show();
