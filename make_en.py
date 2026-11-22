@@ -19,7 +19,7 @@ LD_PL = '"description": "48 godzin pracy nad wyzwaniami firm i instytucji. 100 u
 LD_EN = '"description": "48 hours of work on challenges from companies and institutions. 100 participants, Warsaw, 5–7 February 2027.", "url": "https://www.reunion-hackathon.pl/en.html"'
 T = [
  ('<html lang="pl">', '<html lang="en">'),
- ('<title>Hackathon AI Warszawa 2027 | Reunion Hackathon, 5–7 lutego</title>', '<title>AI Hackathon Warsaw 2027 | Reunion Hackathon, 5–7 February</title>'),
+ ('<title>Hackathon AI Warszawa 2027 dla studentów | Reunion Hackathon</title>', '<title>AI Hackathon Warsaw 2027 for students | Reunion Hackathon</title>'),
  ('content="48-godzinny hackathon AI w Warszawie, 5–7 lutego 2027. 100 miejsc dla polskich studentów i absolwentów z zagranicy. Udział bezpłatny, rekrutacja wkrótce."', 'content="48-hour AI hackathon in Warsaw, 5–7 February 2027, for Polish students and graduates of universities abroad. 100 places, free, selection by application."'),
  ('<link rel="canonical" href="https://www.reunion-hackathon.pl/">', '<link rel="canonical" href="https://www.reunion-hackathon.pl/en.html">'),
  ('<meta property="og:locale" content="pl_PL">\n<meta property="og:locale:alternate" content="en_GB">', '<meta property="og:locale" content="en_GB">\n<meta property="og:locale:alternate" content="pl_PL">'),
@@ -102,6 +102,8 @@ T = [
  ('subject=Reunion%20Hackathon%20-%20deck%20partnerski">Napisz po deck partnerski<', 'subject=Reunion%20Hackathon%20-%20partner%20deck">Ask for the partner deck<'),
  ('Kto za tym stoi.', 'Who is behind it.'),
  ('Pytania i <em>odpowiedzi.</em>', 'Questions and <em>answers.</em>'),
+ ('Czym jest Reunion Hackathon?', 'What is Reunion Hackathon?'),
+ ('To 48-godzinny hackathon AI w Warszawie, 5–7 lutego 2027, dla 100 polskich studentów i absolwentów zagranicznych uczelni. Organizuje go Global Polish Student Society (GPSS), sieć polskich studentów za granicą. Udział jest bezpłatny.', 'A 48-hour AI hackathon in Warsaw, 5–7 February 2027, for 100 Polish students and graduates of universities abroad. It is organised by Global Polish Student Society (GPSS), a network of Polish students abroad. Taking part is free.'),
  ('Kto może aplikować?', 'Who can apply?'),
  ('Polscy studenci i absolwenci uczelni zagranicznych, głównie kierunków informatycznych, AI/ML, inżynieryjnych i data science. Wybieramy na podstawie aplikacji. Dokładne kryteria opublikujemy razem z formularzem.',
   'Polish students and graduates of universities abroad, mainly in computer science, AI/ML, engineering and data science. We select based on applications. We will publish the exact criteria together with the form.'),
@@ -129,7 +131,7 @@ T = [
  ('>Formularz wkrótce<', '>Form coming soon<'),
  ('aria-label="Global Polish Student Society, strona organizatora"', 'aria-label="Global Polish Student Society, organiser\'s website"'),
  ('<span class="lbl">Organizator</span>', '<span class="lbl">Organiser</span>'),
- ('>Regulamin (wersja robocza)<', '>Terms (draft)<'), ('>Polityka prywatności<', '>Privacy policy<'),
+ ('>Regulamin (wersja robocza)<', '>Terms (draft)<'), ('>Polityka prywatności<', '>Privacy policy<'), ('>Polscy studenci za granicą: liczby<', ' hreflang="pl">Polish students abroad: data (PL)<'),
  ('Reunion Hackathon, Warszawa, 5–7 lutego 2027</p>', 'Reunion Hackathon, Warsaw, 5–7 February 2027</p>'),
 ]
 for a, b in T:

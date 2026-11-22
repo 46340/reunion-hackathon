@@ -32,6 +32,10 @@ Status (13 October 2026): applications are not open yet; the form will appear on
 - [LinkedIn](https://www.linkedin.com/company/globalpolsoc)
 - [Instagram](https://www.instagram.com/global_polish_society/)
 
+## Data
+
+- [Polish students abroad: data (Polish)](https://www.reunion-hackathon.pl/polscy-studenci-za-granica.html): how many Polish students study at universities abroad and where, with year and source for every number (UNESCO UIS, Eurostat, IIE Open Doors, FRSE). In 2024, 21,460 people from Poland were enrolled in full degree programmes abroad (UNESCO UIS).
+
 ## Optional
 
 - [Privacy policy](https://www.reunion-hackathon.pl/polityka-prywatnosci.html): how personal data is processed (Polish)
