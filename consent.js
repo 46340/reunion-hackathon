@@ -75,6 +75,8 @@
     if (a.href.startsWith("mailto:")) gtag("event", "generate_lead", { method: "email", link_url: a.href.split("?")[0] });
     else if (/^\s*(Aplikuj|Apply)/i.test(a.textContent)) gtag("event", "apply_click", { link_url: a.href });
   });
+  // Application form on the site: any <form> submit counts as sign_up (the main Google Ads conversion).
+  document.addEventListener("submit", (e) => gtag("event", "sign_up", { method: "application_form", form_id: e.target.id || "" }));
 
   const v = read();
   if (v === "granted") grant();
