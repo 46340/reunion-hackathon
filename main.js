@@ -404,6 +404,19 @@ function faq() {
   if (!reduce) { box.style.visibility = "hidden"; lazy(box, () => { box.style.visibility = ""; box.classList.add("faq-in"); }, 0.2); }
 }
 
+
+// Luma registration: the "Apply" buttons (.luma-cta) stay hidden and the Luma script is not loaded until
+// LUMA_OPEN is true; the team previews them with ?podglad
+const LUMA_OPEN = false;
+function luma() {
+  if (!LUMA_OPEN && !new URLSearchParams(location.search).has("podglad")) return;
+  $$(".btn.soon, #final .btn.off").forEach((el) => (el.hidden = true));
+  $$(".luma-cta").forEach((el) => (el.hidden = false));
+  const sc = document.createElement("script");
+  sc.id = "luma-checkout"; sc.src = "https://embed.lu.ma/checkout-button.js"; sc.async = true;
+  document.body.append(sc);
+}
+
 // ---------------------------------------------------------------- run
 $$(".plane-slot").forEach((el) => (el.innerHTML = plane(el.dataset.on)));
 sizeBoards();
@@ -417,6 +430,7 @@ if (!reduce) {
   [".days", ".benefits"].forEach((sel) => { const el = $(sel); if (el) { el.classList.add("pre-in"); lazy(el, () => el.classList.add("in"), 0.25); } });
 }
 faq();
+luma();
 document.fonts.ready.then(intro);
 let resizeTimer, lastW = innerWidth;
 addEventListener("resize", () => {
