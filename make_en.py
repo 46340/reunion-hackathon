@@ -133,7 +133,7 @@ T = [
  ('>Formularz wkrótce<', '>Form coming soon<'),
  ('aria-label="Global Polish Student Society, strona organizatora"', 'aria-label="Global Polish Student Society, organiser\'s website"'),
  ('<span class="lbl">Organizator</span>', '<span class="lbl">Organiser</span>'),
- ('>Regulamin (wersja robocza)<', '>Terms (draft)<'), ('>Polityka prywatności<', '>Privacy policy<'), ('href="polscy-studenci-za-granica.html">Polscy studenci za granicą: liczby<', 'href="polish-students-abroad.html">Polish students abroad: data<'),
+ ('>Regulamin (wersja robocza)<', '>Terms (draft)<'), ('>Polityka prywatności<', '>Privacy policy<'), ('>Polityka prywatności wydarzeń<', '>Event privacy policy (PL)<'), ('href="polscy-studenci-za-granica.html">Polscy studenci za granicą: liczby<', 'href="polish-students-abroad.html">Polish students abroad: data<'),
  ('Reunion Hackathon, Warszawa, 5–7 lutego 2027</p>', 'Reunion Hackathon, Warsaw, 5–7 February 2027</p>'),
 ]
 for a, b in T:

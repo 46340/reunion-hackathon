@@ -39,3 +39,4 @@ Status (13 October 2026): applications are not open yet; the form will appear on
 ## Optional
 
 - [Privacy policy](https://www.reunion-hackathon.pl/polityka-prywatnosci.html): how personal data is processed (Polish)
+- [Event privacy policy](https://www.reunion-hackathon.pl/polityka-prywatnosci-wydarzen.html): how applicant and participant data is processed for GPSS events (Polish)
